@@ -1,23 +1,21 @@
 {
-    "name": "StartbitV2",
-    "version": "0.0.1",
-    "description": "Blocks for Hiwonder StartbitV2",
-    "license": "MIT",
-    "dependencies": {
-        "core": "*",
-        "RGBSonar": "github:Hiwonder/RGBSonar#v0.0.2"
-    },
-    "files": [
-        "README.md",
-        "StartbitV2.ts",
-        "StartbitRGBLight.ts",
-        "sendbuffer.asm",
-        "_locales/zh/StartbitV2-strings.json",
-        "_locales/zh/StartbitV2-jsdoc-strings.json"
-    ],
-    "testFiles": [
-        "test.ts"
-    ],
-    "public": true,
-    "preferredEditor": "tsprj"
+  "name": "Informatiktheater",
+  "version": "0.0.1",
+  "description": "Blöcke fürs Informatiktheater (Hiwonder StartbitV2)",
+  "license": "MIT",
+  "dependencies": {
+    "core": "*",
+    "RGBSonar": "github:Hiwonder/RGBSonar#v0.0.2"
+  },
+  "files": [
+    "README.md",
+    "StartbitV2.ts",
+    "StartbitRGBLight.ts",
+    "sendbuffer.asm",
+    "_locales/zh/StartbitV2-strings.json",
+    "_locales/zh/StartbitV2-jsdoc-strings.json"
+  ],
+  "testFiles": ["test.ts"],
+  "public": true,
+  "preferredEditor": "tsprj"
 }
