@@ -145,7 +145,7 @@ namespace Informatiktheater {
     port6 = 0x06,
   }
 
-  //% weight=86 blockId=lineFollow_iic_init  block="Initialisiere Linienfolger iic|port %port"
+  //% weight=93 blockId=lineFollow_iic_init  block="Initialisiere Linienfolger iic|port %port"
   export function lineFollow_iic_init(port: startbit_iic) {
     switch (port) {
       case startbit_iic.port3:
