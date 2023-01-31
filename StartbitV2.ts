@@ -45,7 +45,7 @@ namespace Informatiktheater {
 
   let echoPin: DigitalPin;
   let trigPin: DigitalPin;
-  //% weight=91 blockId=ultrasonic_init  block="Initialize ultrasonic|port %port"
+  //% weight=91 blockId=ultrasonic_init  block="Initialisiere Ultraschall|port %port"
   export function ultrasonic_init(port: startbit_ultrasonicPort) {
     switch (port) {
       case startbit_ultrasonicPort.port1:
@@ -67,17 +67,6 @@ namespace Informatiktheater {
   }
 
   let touchSensorPin: DigitalPin;
-  //% weight=93 blockId=touchSensor_init  block="Initialize touchSensor|port %port"
-  export function touchSensor_init(port: startbit_touchKeyPort) {
-    switch (port) {
-      case startbit_touchKeyPort.port1:
-        touchSensorPin = DigitalPin.P1;
-        break;
-      case startbit_touchKeyPort.port2:
-        touchSensorPin = DigitalPin.P13;
-        break;
-    }
-  }
 
   export enum startbit_lineFollowPort {
     //% block="Port 1"
@@ -86,7 +75,7 @@ namespace Informatiktheater {
 
   let lineFollowPin1: AnalogPin;
   let lineFollowPin2: AnalogPin;
-  //% weight=92 blockId=lineFollowSensor_init  block="Initialize lineFollowSensor|port %port"
+  //% weight=92 blockId=lineFollowSensor_init  block="Initialisiere Linienfolger-Sensor|port %port"
   export function lineFollowSensor_init(port: startbit_lineFollowPort) {
     switch (port) {
       case startbit_lineFollowPort.port1:
@@ -97,9 +86,9 @@ namespace Informatiktheater {
   }
 
   export enum startbit_PinIOStatus {
-    //% block="Low"
+    //% block="Aus"
     Low = 0x00,
-    //% block="High"
+    //% block="Ein"
     Hight = 0x01,
   }
 
@@ -121,7 +110,7 @@ namespace Informatiktheater {
   }
 
   let knobPin: AnalogPin;
-  //% weight=99 blockId=knobSensor_init  block="Initialize knobSensor|port %port"
+  //% weight=99 blockId=knobSensor_init  block="Initialisiere Dreh-Sensor|port %port"
   export function knobSensor_init(port: startbit_knobPort) {
     switch (port) {
       case startbit_knobPort.port1:
@@ -140,40 +129,11 @@ namespace Informatiktheater {
     port1 = 0x00,
   }
 
-  let photosensitiveSensorPin1: AnalogPin;
-  let photosensitiveSensorPin2: DigitalPin;
-  //% weight=95 blockId=photosensitiveSensor_init  block="Initialize photosensitiveSensor|port %port"
-  export function photosensitiveSensor_init(
-    port: startbit_PhotosensitiveSensor
-  ) {
-    switch (port) {
-      case startbit_PhotosensitiveSensor.port1:
-        photosensitiveSensorPin1 = AnalogPin.P1;
-        photosensitiveSensorPin2 = DigitalPin.P2;
-        break;
-    }
-  }
-
   export enum startbit_fanPort {
     //% block="Port 1"
     port1,
     //% block="Port 2"
     port2,
-  }
-
-  let fanPin1: AnalogPin;
-  let fanPin2: AnalogPin;
-  export function fanSensor_init(port: startbit_fanPort) {
-    switch (port) {
-      case startbit_fanPort.port1:
-        fanPin1 = AnalogPin.P1;
-        fanPin2 = AnalogPin.P2;
-        break;
-      case startbit_fanPort.port2:
-        fanPin1 = AnalogPin.P13;
-        fanPin2 = AnalogPin.P14;
-        break;
-    }
   }
 
   export enum startbit_iic {
@@ -184,31 +144,8 @@ namespace Informatiktheater {
     //% block="Port 6"
     port6 = 0x06,
   }
-  //% weight=89 blockId=MP3_init  block="Initialize MP3Module|port %port"
-  export function MP3_init(port: startbit_iic) {
-    switch (port) {
-      case startbit_iic.port3:
-        break;
-      case startbit_iic.port4:
-        break;
-      case startbit_iic.port6:
-        break;
-    }
-  }
 
-  //% weight=87 blockId=ASR_init  block="Initialize ASRModule|port %port"
-  export function ASR_init(port: startbit_iic) {
-    switch (port) {
-      case startbit_iic.port3:
-        break;
-      case startbit_iic.port4:
-        break;
-      case startbit_iic.port6:
-        break;
-    }
-  }
-
-  //% weight=86 blockId=lineFollow_iic_init  block="Initialize lineFollow iic|port %port"
+  //% weight=86 blockId=lineFollow_iic_init  block="Initialisiere Linienfolger iic|port %port"
   export function lineFollow_iic_init(port: startbit_iic) {
     switch (port) {
       case startbit_iic.port3:
@@ -220,19 +157,6 @@ namespace Informatiktheater {
     }
   }
 
-  let avoidSensorPin: DigitalPin;
-  //% weight=96 blockId=avoidSensor_init  block="Initialize avoidSensor|port %port"
-  export function avoidSensor_init(port: startbit_touchKeyPort) {
-    switch (port) {
-      case startbit_touchKeyPort.port1:
-        avoidSensorPin = DigitalPin.P1;
-        break;
-      case startbit_touchKeyPort.port2:
-        avoidSensorPin = DigitalPin.P13;
-        break;
-    }
-  }
-
   export enum startbit_servorange {
     //% block="180"
     range1 = 180,
@@ -240,73 +164,10 @@ namespace Informatiktheater {
     range2 = 270,
   }
 
-  export enum startbit_digitaltubePort {
-    //% block="Port 1"
-    port1 = 0x01,
-    //% block="Port 2"
-    port2 = 0x02,
-  }
-
-  export enum startbit_CmdType {
-    //% block="Invalid command"
-    NO_COMMAND = 0,
-    //% block="car run"
-    CAR_RUN = 1,
-    //% block="robot run"
-    ROBOT_RUN = 1,
-    //% block="Servo"
-    SERVO = 2,
-    //% block="Ultrasonic distance"
-    ULTRASONIC = 3,
-    //% block="Temperature"
-    TEMPERATURE = 4,
-    //% block="Light"
-    LIGHT = 6,
-    //% block="Voltage"
-    BAT = 7,
-    //% block="Rgb light"
-    RGB_LIGHT = 8,
-    //% block="Honk horn"
-    DIDI = 9,
-    //% block="Read firmware version"
-    VERSION = 10,
-    //% block="Read angle"
-    READ_ANGLE = 11,
-    //% block="Light belt"
-    RGB_BELT = 12,
-    //% block="WIFI mode"
-    WIFI_MODE = 13,
-    //% block="Get mac"
-    GET_MAC = 14,
-    //% block="Get hand cmd"
-    GET_HAND_CMD = 15,
-  }
-
-  export enum startbit_CarRunCmdType {
-    //% block="Stop"
-    STOP = 0,
-    //% block="Go ahead"
-    GO_AHEAD,
-    //% block="Back"
-    GO_BACK,
-    //% block="Turn left"
-    TURN_LEFT,
-    //% block="Turn right"
-    TURN_RIGHT,
-    //% block="Go ahead slowly"
-    GO_AHEAD_SLOW,
-    //% block="Turn left slowly"
-    TURN_LEFT_SLOW,
-    //% block="Turn right slowly"
-    TURN_RIGHT_SLOW,
-    //% block="Invalid command"
-    COMMAND_ERRO,
-  }
-
   /**
    * Startbit initialization, please execute at boot time
    */
-  //% weight=100 blockId=startbit_Init block="Initialize StartbitV2"
+  //% weight=100 blockId=startbit_Init block="Initialisiere Informatiktheater"
   export function startbit_Init() {
     startbit_initRGBLight();
     serial.redirect(SerialPin.P12, SerialPin.P8, BaudRate.BaudRate115200);
@@ -496,7 +357,7 @@ namespace Informatiktheater {
   /**
    * Set the angle of servo 1 to 8, range of 0~270 degree
    */
-  //% weight=100 blockId=setServo block="Set pwm servo range %range|index %index|angle %angle|duration %duration"
+  //% weight=100 blockId=setServo block="Setze PWM Servo Distanz %range|Index %index|Winkel %angle|Dauer %duration"
   //% angle.min=0 angle.max=270
   //% inlineInputMode=inline
   //% subcategory=Servo/Motor
@@ -524,156 +385,9 @@ namespace Informatiktheater {
   }
 
   /**
-   * Set the angle of bus_servo, range:0~240
-   */
-  //% weight=98 blockId=setBusServo blockGap=50 block="Set bus servo index %index|angle %angle|duration %duration"
-  //% angle.min=0 angle.max=240
-  //% inlineInputMode=inline
-  //% subcategory=Servo/Motor
-  export function setBusServo(
-    index: number = 1,
-    angle: number = 135,
-    duration: number = 500
-  ) {
-    let position = mapRGB(angle, 0, 240, 0, 1000);
-
-    let buf = pins.createBuffer(10);
-    buf[0] = 0x55;
-    buf[1] = 0x55;
-    buf[2] = 0x08;
-    buf[3] = 0x35; //cmd type
-    buf[4] = 0x01;
-    buf[5] = duration & 0xff;
-    buf[6] = (duration >> 8) & 0xff;
-    buf[7] = index;
-    buf[8] = position & 0xff;
-    buf[9] = (position >> 8) & 0xff;
-    serial.writeBuffer(buf);
-    basic.pause(1);
-  }
-
-  /**
-   * Set the servo controller to run a actiongroup
-   * @param times Running times. eg: 1
-   */
-  //% weight=94 blockId=startbit_runActionGroup block="Run ActionGroup|index %index|times %times"
-  //% subcategory=Servo/Motor
-  export function startbit_runActionGroup(index: number, times: number = 1) {
-    let buf = pins.createBuffer(7);
-    buf[0] = 0x55;
-    buf[1] = 0x55;
-    buf[2] = 0x05;
-    buf[3] = 0x06; //cmd type CMD_ACTION_GROUP_RUN
-    buf[4] = index & 0xff;
-    buf[5] = times & 0xff;
-    buf[6] = (times >> 8) & 0xff;
-
-    actiongroup_finished = false;
-    serial.writeBuffer(buf);
-  }
-
-  /**
-   * Stop running actiongroup
-   */
-  //% weight=92 blockId=startbit_stopnActionGroup block="Stop ActionGroup"
-  //% subcategory=Servo/Motor
-  export function startbit_stopActionGroup() {
-    let buf = pins.createBuffer(7);
-    buf[0] = 0x55;
-    buf[1] = 0x55;
-    buf[2] = 0x02;
-    buf[3] = 0x07; //cmd type CMD_ACTION_GROUP_STOP
-
-    actiongroup_finished = false;
-    serial.writeBuffer(buf);
-  }
-
-  /**
-   * Wait for Actiongroup Finishing
-   */
-  //% weight=93 blockId=startbit_actionRunover block="Action run over"
-  //% subcategory=Servo/Motor
-  export function startbit_actionRunover(): boolean {
-    // let ret = false;
-    if (actiongroup_finished == true) {
-      // ret = true;
-      actiongroup_finished = true;
-    } else {
-      actiongroup_finished = false;
-    }
-    return actiongroup_finished;
-  }
-
-  //     /**
-  //      * Send read startbit servos angle command
-  //      */
-  //     //% weight=99 blockId=startbit_readAngle block="Send |%servo|angle command "
-  //     //% subcategory=Servo/Motor
-  //     export function startbit_readAngle(servo: startbit_Servos) {
-  //         let buf = pins.createBuffer(6);
-  //         buf[0] = 0x55;
-  //         buf[1] = 0x55;
-  //         buf[2] = 0x04;
-  //         buf[3] = 0x3E;//cmd type
-  //         buf[4] = 0x05;
-  //         buf[5] = servo;
-  //         serial.writeBuffer(buf);
-  //     }
-
-  //     /**
-  //      * Do someting when Startbit receive angle
-  //      * @param body code to run when event is raised
-  //      */
-  //     //% weight=97 blockId=onStartbit_getAngle blockGap=50 block="on Startbit|%servo|get angle"
-  //     //% subcategory=Servo/Motor
-  //     export function onStartbit_getAngle(servo: startbit_Servos, body: Action) {
-  //         control.onEvent(MESSAGE_ANGLE, servo, body);
-  //     }
-
-  //     /**
-  //      *  Get servos angle
-  //      */
-  //     //% weight=98 blockId=getServosAngle block="Get|%servo|angle(-120~120)"
-  //     //% subcategory=Servo/Motor
-  //     export function getServosAngle(servo: startbit_Servos): number {
-  //         if (servo == startbit_Servos.Servo1) {
-  //             return servo1Angle;
-  //         }
-  //         else if (servo == startbit_Servos.Servo2) {
-  //             return servo2Angle;
-  //         }
-  //         else
-  //             return 0xFFF;
-  //     }
-
-  /**
-   *  Send robot attitude to the servo controller
-   *  @param pitch eg: 0
-   *  @param roll eg: 0
-   */
-  //% weight=91 blockId=startbit_sendAttitude block="Send pitch|%pitch|and roll|%roll"
-  /*
-    export function startbit_sendAttitude(pitch: number, roll: number) {
-        pitch < -90 ? -90 : pitch;
-        pitch > 90 ? 90 : pitch;
-        roll < -90 ? -90 : roll;
-        roll > 90 ? 90 : roll;
-
-        let buf = pins.createBuffer(6);
-        buf[0] = 0x55;
-        buf[1] = 0x55;
-        buf[2] = 0x04;
-        buf[3] = 0x5A;
-        buf[4] = pitch;
-        buf[5] = roll;
-        serial.writeBuffer(buf);
-    }
-    */
-
-  /**
    *	Set the speed of the number 1 motor and number 2 motor, range of -100~100, that can control the tank to go advance or turn of.
    */
-  //% weight=96 blockId=startbit_setMotorSpeed block="Set motor1 speed(-100~100)|%speed1|and motor2|speed %speed2"
+  //% weight=96 blockId=startbit_setMotorSpeed block="Setze Motor1 Geschwindigkeit(-100 bis +100)|%speed1|und Motor2|Geschwindigkeit %speed2"
   //% speed1.min=-100 speed1.max=100
   //% speed2.min=-100 speed2.max=100
   //% subcategory=Servo/Motor
@@ -691,38 +405,6 @@ namespace Informatiktheater {
     buf[4] = speed1;
     buf[5] = speed2;
     serial.writeBuffer(buf);
-  }
-
-  /**
-   *	Set the speed of the fan, range of -100~100.
-   */
-  //% weight=95 blockId=startbit_setFanSpeed blockGap=50 block="Set fan speed(-100~100)|%speed1"
-  //% speed1.min=-100 speed1.max=100
-  //% subcategory=Servo/Motor
-  export function startbit_setFanSpeed(speed1: number) {
-    if (speed1 > 100 || speed1 < -100) {
-      return;
-    }
-
-    if (speed1 < 0) {
-      pins.analogWritePin(fanPin2, 0);
-      pins.analogWritePin(fanPin1, pins.map(-speed1, 0, 100, 0, 1023));
-    } else if (speed1 > 0) {
-      pins.analogWritePin(fanPin1, 0);
-      pins.analogWritePin(fanPin2, pins.map(speed1, 0, 100, 0, 1023));
-    } else {
-      pins.analogWritePin(fanPin2, 0);
-      pins.analogWritePin(fanPin1, 0);
-    }
-  }
-
-  /**
-   *  Get startbit current voltage,the unit is mV
-   */
-  //% weight=93 blockGap=50 blockId=startbit_getBatVoltage block="Get startbit current voltage (mV)"
-  //% subcategory=Sensor
-  export function startbit_getBatVoltage(): number {
-    return currentVoltage;
   }
 
   /**
@@ -868,130 +550,6 @@ namespace Informatiktheater {
       this._write_data_cmd();
       this._write_dsp_ctrl();
     }
-  }
-  /**
-   * 创建 TM1640 对象.
-   * @param clk the CLK pin for TM1640, eg: DigitalPin.P1
-   * @param dio the DIO pin for TM1640, eg: DigitalPin.P2
-   * @param intensity the brightness of the LED, eg: 7
-   * @param count the count of the LED, eg: 4
-   */
-  function startbit_TM1640create(
-    port: startbit_digitaltubePort,
-    intensity: number,
-    count: number
-  ): startbit_TM1640LEDs {
-    let digitaltube = new startbit_TM1640LEDs();
-    switch (port) {
-      case startbit_digitaltubePort.port1:
-        digitaltube.clk = DigitalPin.P2;
-        digitaltube.dio = DigitalPin.P1;
-        break;
-      case startbit_digitaltubePort.port2:
-        digitaltube.clk = DigitalPin.P14;
-        digitaltube.dio = DigitalPin.P13;
-        break;
-    }
-
-    if (count < 1 || count > 5) count = 4;
-    digitaltube.count = count;
-    digitaltube.brightness = intensity;
-    digitaltube.init();
-    return digitaltube;
-  }
-
-  /**
-   * @param clk the CLK pin for TM1640, eg: DigitalPin.P1
-   * @param dio the DIO pin for TM1640, eg: DigitalPin.P2
-   * @param intensity the brightness of the LED, eg: 7
-   * @param count the count of the LED, eg: 4
-   */
-  //% weight=90 blockId=startbit_digitaltube blockGap=50 block="digitaltube|%port|intensity %intensity|LED count %count"
-  export function startbit_digitaltube(
-    port: startbit_digitaltubePort,
-    intensity: number,
-    count: number
-  ) {
-    Digitaltube = startbit_TM1640create(port, intensity, count);
-  }
-
-  /**
-   * show a number.
-   * @param num is a number, eg: 0
-   */
-  //% weight=91 blockId=startbit_showNumber block="digitaltube show number| %num"
-  //% subcategory=LED
-  export function startbit_showNumber(num: number) {
-    Digitaltube.showNumber(num);
-  }
-
-  /**
-   * show a number in given position.
-   * @param num number will show, eg: 5
-   * @param bit the position of the LED, eg: 0
-   */
-  //% weight=89 blockId=startbit_showbit block="digitaltube show digit| %num|at %bit"
-  //% subcategory=LED
-  export function startbit_showbit(num: number = 5, bit: number = 0) {
-    Digitaltube.showbit(num, bit);
-  }
-
-  /**
-   * show a hex number.
-   * @param num is a hex number, eg: 0
-   */
-  //% weight=90 blockId=startbit_showhex block="digitaltube show hex number| %num"
-  //% subcategory=LED
-  export function startbit_showhex(num: number) {
-    Digitaltube.showHex(num);
-  }
-
-  /**
-   * show or hide dot point.
-   * @param bit is the position, eg: 1
-   * @param show is show/hide dp, eg: true
-   */
-  //% weight=88 blockId=startbit_showDP block="digitaltube DotPoint at| %bit|show %show"
-  //% subcategory=LED
-  export function startbit_showDP(bit: number = 1, show: boolean = true) {
-    Digitaltube.showDP(bit, show);
-  }
-
-  /**
-   * set TM1640 intensity, range is [0-8], 0 is off.
-   * @param val the brightness of the TM1640, eg: 7
-   */
-  //% weight=92 blockId=startbit_intensity block=" digitaltube set intensity %val"
-  //% subcategory=LED
-  export function startbit_intensity(val: number = 7) {
-    Digitaltube.intensity(val);
-  }
-
-  /**
-   * turn off LED.
-   */
-  //% weight=86 blockId=startbit_off block="turn off digitaltube"
-  //% subcategory=LED
-  export function startbit_off() {
-    Digitaltube.off();
-  }
-
-  /**
-   * turn on LED.
-   */
-  //% weight=87 blockId=startbit_on block="turn on digitaltube"
-  //% subcategory=LED
-  export function startbit_on() {
-    Digitaltube.on();
-  }
-
-  /**
-   * clear LED.
-   */
-  //%weight=85 blockId=startbit_clear blockGap=50 block="clear digitaltube"
-  //% subcategory=LED
-  export function startbit_clear() {
-    Digitaltube.clear();
   }
 
   const APDS9960_I2C_ADDR = 0x39;
@@ -1213,96 +771,9 @@ namespace Informatiktheater {
   }
 
   /**
-   * Initialize the color sensor,please execute at boot time
-   */
-  //% weight=88 blockId=startbit_init_colorSensor block="Initialize color sensor port at %port"
-  export function startbit_init_colorSensor(port: startbit_iic) {
-    InitColor();
-    enableLightSensor(true);
-    control.waitMicros(100);
-  }
-
-  /**
-   *  Color sensor return the color.
-   */
-  //% weight=99 blockId=startbit_checkCurrentColor block="Current color %color"
-  //% subcategory=Sensor
-  export function startbit_checkCurrentColor(color: startbit_Colors): boolean {
-    let c = i2cread(APDS9960_CDATAL) + i2cread(APDS9960_CDATAH) * 256;
-    let r = i2cread(APDS9960_RDATAL) + i2cread(APDS9960_RDATAH) * 256;
-    let g = i2cread(APDS9960_GDATAL) + i2cread(APDS9960_GDATAH) * 256;
-    let b = i2cread(APDS9960_BDATAL) + i2cread(APDS9960_BDATAH) * 256;
-
-    // serial.writeNumber(c);
-    // serial.writeLine("->ccc");
-    // serial.writeNumber(r);
-    // serial.writeLine("->red");
-    // serial.writeNumber(g);
-    // serial.writeLine("->green");
-    // serial.writeNumber(b);
-    // serial.writeLine("->blue");
-
-    if (r > red_wb) r = red_wb;
-    if (g > green_wb) g = green_wb;
-    if (b > blue_wb) b = blue_wb;
-
-    r = Math.round(mapRGB(r, 0, red_wb, 0, 255));
-    g = Math.round(mapRGB(g, 0, green_wb, 0, 255));
-    b = Math.round(mapRGB(b, 0, blue_wb, 0, 255));
-    // serial.writeNumber(r);
-    // serial.writeLine("->rred");
-    // serial.writeNumber(g);
-    // serial.writeLine("->ggreen");
-    // serial.writeNumber(b);
-    // serial.writeLine("->bblue");
-    let hsv = rgb2hue(r, g, b);
-    // serial.writeNumber(hsv);
-    // serial.writeLine("->hsv");
-    let t = startbit_Colors.None;
-    if (c > 2200 && r > 65 && g > 65 && b > 65) {
-      t = startbit_Colors.White;
-    } else if (c > 800) {
-      if (hsv < 8 || hsv > 350) t = startbit_Colors.Red;
-      else if (hsv > 60 && hsv < 170) {
-        t = startbit_Colors.Green;
-      } else if (hsv > 210 && hsv < 230) {
-        t = startbit_Colors.Blue;
-      }
-    } else if (
-      c > 200 &&
-      r > 10 &&
-      g > 7 &&
-      b > 7 &&
-      r < 16.5 &&
-      g < 15 &&
-      b < 14
-    ) {
-      t = startbit_Colors.Black;
-    }
-    return color == t;
-  }
-
-  /**
-   * Get the obstacle avoidance sensor status,1 detect obstacle,0 no detect obstacle
-   */
-  //% weight=97 blockId=startbit_avoidSensor block="Obstacle avoidance sensor|detect obstacle"
-  //% subcategory=Sensor
-  export function startbit_avoidSensor(): boolean {
-    let status = 0;
-    let flag: boolean = false;
-
-    pins.setPull(avoidSensorPin, PinPullMode.PullUp);
-    status = pins.digitalReadPin(avoidSensorPin);
-
-    if (status == 1) flag = false;
-    else flag = true;
-    return flag;
-  }
-
-  /**
    * Get the condition of the line follower sensor
    */
-  //% weight=96 blockId=startbit_readLineFollowerStatus block="Line follower status|%status"
+  //% weight=96 blockId=startbit_readLineFollowerStatus block="Linenfolger Status|%status"
   //% subcategory=Sensor
   export function startbit_readLineFollowerStatus(
     status: startbit_lineFollower
@@ -1330,7 +801,7 @@ namespace Informatiktheater {
   /**
    * Get the line follower sensor port ad value
    */
-  //% weight=89 blockId=startbit_lineSensorValue blockGap=50 block="Get line follower sensor|%sensor|ad value"
+  //% weight=89 blockId=startbit_lineSensorValue blockGap=50 block="Hole Linienfolger Sensor|%sensor|ad Wert"
   //% subcategory=Sensor
   export function startbit_lineSensorValue(
     sensor: startbit_LineFollowerSensor
@@ -1349,23 +820,12 @@ namespace Informatiktheater {
       return 255 - s2;
     }
   }
-  /**
-   * Get the condition of the touch button,press return 1,or return 0
-   */
-  //% weight=100 blockId=startbit_touchButton block="Touch button is pressed"
-  //% subcategory=Sensor
-  export function startbit_touchButton(): boolean {
-    let status: boolean = false;
-    pins.setPull(touchSensorPin, PinPullMode.PullUp);
-    status = !pins.digitalReadPin(touchSensorPin);
-    return status;
-  }
 
   let distanceBak = 0;
   /**
    * Get the distance of ultrasonic detection to the obstacle
    */
-  //% weight=90 blockId=startbit_ultrasonic  block="Ultrasonic|distance(cm)"
+  //% weight=90 blockId=startbit_ultrasonic  block="Ultraschall|Distanz (cm)"
   //% subcategory=Sensor
   export function startbit_ultrasonic(): number {
     pins.setPull(echoPin, PinPullMode.PullNone);
@@ -1391,40 +851,12 @@ namespace Informatiktheater {
   /**
    * Get the ad value of the knob moudule
    */
-  //% weight=92 blockId=startbit_getKnobValue  block="Get knob|value(0~255)"
+  //% weight=92 blockId=startbit_getKnobValue  block="Hole Dreh-Sensor|Wert (0~255)"
   //% subcategory=Sensor
   export function startbit_getKnobValue(): number {
     let adValue = pins.analogReadPin(knobPin);
     adValue = (adValue * 255) / 1023;
     return adValue;
-  }
-
-  /**
-   * Get the ad value of the photosensitive moudule
-   */
-  //% weight=91 blockId=startbit_getphotosensitiveValue  block="Get Photosensitive|value(0~255)"
-  //% subcategory=Sensor
-  export function startbit_getphotosensitiveValue(): number {
-    let adValue = pins.analogReadPin(photosensitiveSensorPin1);
-    adValue = (adValue * 255) / 1023;
-    return 255 - adValue;
-  }
-
-  /**
-   * Get the Photosensitive sensor status,1 detect bright,0 no detect bright
-   */
-  //% weight=98 blockId=startbit_photosensitiveSensor block="Photosensitive sensor|detect bright"
-  //% subcategory=Sensor
-  export function startbit_photosensitiveSensor(): boolean {
-    let status = 0;
-    let flag: boolean = false;
-
-    pins.setPull(photosensitiveSensorPin2, PinPullMode.PullUp);
-    status = pins.digitalReadPin(photosensitiveSensorPin2);
-
-    if (status == 1) flag = false;
-    else flag = true;
-    return flag;
   }
 
   /**
@@ -1445,7 +877,7 @@ namespace Informatiktheater {
    * Set the brightness of the strip. This flag only applies to future operation.
    * @param brightness a measure of LED brightness in 0-255. eg: 255
    */
-  //% blockId="startbit_setBrightness" block="set brightness %brightness"
+  //% blockId="startbit_setBrightness" block="Setze Helligkeit %brightness"
   //% weight=100
   //% subcategory=LED
   export function startbit_setBrightness(brightness: number): void {
@@ -1453,21 +885,9 @@ namespace Informatiktheater {
   }
 
   /**
-   * Set the color of the colored lights, after finished the setting please perform  the display of colored lights.
-   */
-  //% weight=98 blockId=startbit_setPixelRGB block="Set|%lightoffset|color to %rgb"
-  //% subcategory=LED
-  export function startbit_setPixelRGB(
-    lightoffset: StartbitLights,
-    rgb: StartbitRGBColors
-  ) {
-    lhRGBLight.setPixelColor(lightoffset, rgb);
-  }
-
-  /**
    * Set RGB Color argument
    */
-  //% weight=99 blockId=startbit_setPixelRGBArgs block="Set|%lightoffset|color to %rgb"
+  //% weight=99 blockId=startbit_setPixelRGBArgs block="Setze|%lightoffset|Farbe auf %rgb"
   //% subcategory=LED
   export function startbit_setPixelRGBArgs(
     lightoffset: StartbitLights,
@@ -1479,7 +899,7 @@ namespace Informatiktheater {
   /**
    * Display the colored lights, and set the color of the colored lights to match the use. After setting the color of the colored lights, the color of the lights must be displayed.
    */
-  //% weight=97 blockId=startbit_showLight block="Show light"
+  //% weight=97 blockId=startbit_showLight block="Licht an"
   //% subcategory=LED
   export function startbit_showLight() {
     lhRGBLight.show();
@@ -1488,69 +908,10 @@ namespace Informatiktheater {
   /**
    * Clear the color of the colored lights and turn off the lights.
    */
-  //% weight=96 blockGap=50 blockId=startbit_clearLight block="Clear light"
+  //% weight=96 blockGap=50 blockId=startbit_clearLight block="Licht aus"
   //% subcategory=LED
   export function startbit_clearLight() {
     lhRGBLight.clear();
-  }
-
-  /**
-   * Initialize Light belt
-   */
-  //% weight=97 blockId=startbit_belt_initRGBLight block="Initialize light belt at port %port"
-  export function startbit_belt_initRGBLight(port: startbit_ultrasonicPort) {
-    switch (port) {
-      case startbit_ultrasonicPort.port1:
-        if (!lhRGBLightBelt) {
-          lhRGBLightBelt = StartbitRGBLight.create(
-            DigitalPin.P1,
-            15,
-            StartbitRGBPixelMode.RGB
-          );
-        }
-        break;
-      case startbit_ultrasonicPort.port2:
-        if (!lhRGBLightBelt) {
-          lhRGBLightBelt = StartbitRGBLight.create(
-            DigitalPin.P13,
-            15,
-            StartbitRGBPixelMode.RGB
-          );
-        }
-        break;
-    }
-
-    startbit_clearLight();
-  }
-
-  /**
-   * Set the color of the colored lights, after finished the setting please perform  the display of colored lights.
-   */
-  //% weight=95 blockId=startbit_belt_setPixelRGB block="Set light belt|%lightoffset|color to %rgb"
-  //% subcategory=LED
-  export function startbit_belt_setPixelRGB(
-    lightoffset: StartbitLightsBelt,
-    rgb: StartbitRGBColors
-  ) {
-    lhRGBLightBelt.setPixelColor(lightoffset, rgb);
-  }
-
-  /**
-   * Display the colored lights, and set the color of the colored lights to match the use. After setting the color of the colored lights, the color of the lights must be displayed.
-   */
-  //% weight=94 blockId=startbit_belt_showLight block="Show light belt"
-  //% subcategory=LED
-  export function startbit_belt_showLight() {
-    lhRGBLightBelt.show();
-  }
-
-  /**
-   * Clear the color of the colored lights and turn off the lights.
-   */
-  //% weight=93 blockGap=50 blockId=startbit_belt_clearLight block="Clear light belt"
-  //% subcategory=LED
-  export function startbit_belt_clearLight() {
-    lhRGBLightBelt.clear();
   }
 
   function mapRGB(
@@ -1561,155 +922,6 @@ namespace Informatiktheater {
     out_max: number
   ): number {
     return ((x - in_min) * (out_max - out_min)) / (in_max - in_min) + out_min;
-  }
-
-  /**
-   * Resolve the Bluetooth that phone APP send command type, the total of nine types of commands: tank display command, servo debug command, obtaining the distance of ultrasonic command, obtaining temperature command, obtain sound size rank orders, to obtain the light level command, set the color lights command, honking command, firmware version information command.
-   */
-  //% weight=99 blockId=startbit_analyzeBluetoothCmd block="Get bluetooth command type %str"
-  //% subcategory=Bluetooth
-  export function startbit_analyzeBluetoothCmd(str: string): number {
-    if (str.length > 6) {
-      let cmdHead = str.substr(0, 3);
-
-      if (cmdHead == "CMD") {
-        let cmdTypeStr: string = str.substr(4, 2);
-        let cmdType = strToNumber(cmdTypeStr);
-        if (cmdType > startbit_CmdType.GET_HAND_CMD || cmdType < 0) {
-          return startbit_CmdType.NO_COMMAND;
-        } else {
-          return cmdType;
-        }
-      } else {
-        return startbit_CmdType.NO_COMMAND;
-      }
-    } else {
-      return startbit_CmdType.NO_COMMAND;
-    }
-  }
-  /**
-   * Resolve the parameters that the phone APP send the command,there are 3 parameters of servo debug command,the other command has just one parameter.
-   */
-  //% weight=98  blockId=startbit_cgetArgs block="Get bluetooth command|%str|argument at %index"
-  //% index.min=1 index.max=3
-  //% subcategory=Bluetooth
-  export function startbit_getArgs(str: string, index: number): number {
-    let cmdType = startbit_analyzeBluetoothCmd(str);
-    if (cmdType == startbit_CmdType.NO_COMMAND) {
-      return startbit_CarRunCmdType.COMMAND_ERRO;
-    } else {
-      let dataIndex = 7;
-      let subLegth = 2;
-      if (index == 2) {
-        dataIndex = 10;
-        subLegth = 2;
-      } else if (index == 3) {
-        dataIndex = 13;
-        subLegth = 4;
-      }
-      if (cmdType == startbit_CmdType.SERVO) {
-        if (str.length < 17) {
-          return startbit_CmdType.NO_COMMAND;
-        }
-      }
-      if (
-        (index == 1 && str.length < 10) ||
-        (index == 2 && str.length < 13) ||
-        (index == 3 && str.length < 17)
-      ) {
-        return 0;
-      }
-      let strArgs = str.substr(dataIndex, subLegth);
-      let arg = strToNumber(strArgs);
-      if (arg == -1) return 0;
-      return arg;
-    }
-  }
-
-  /**
-   * Returns the enumeration of the command type, which can be compared with this module after obtaining the bluetooth command type sent by the mobile phone APP.
-   */
-  //% weight=97 blockId=startbit_getBluetoothCmdtype block="Bluetooth command type %type"
-  //% subcategory=Bluetooth
-  export function startbit_getBluetoothCmdtype(type: startbit_CmdType): number {
-    return type;
-  }
-
-  /**
-   * The command type of the tank is stop, go ahead, back, turn left, turn right, slow down, turn left slowly, turn right slowly.
-   */
-  //% weight=96 blockId=startbit_getRunCarType block="Car run type %type"
-  //% subcategory=Bluetooth
-  export function startbit_getRunCarType(type: startbit_CarRunCmdType): number {
-    return type;
-  }
-
-  /**
-   * The distance from the ultrasonic obstacle is the standard command, which is sent to the mobile phone. The APP will indicate the distance of the ultrasonic obstacle.
-   */
-  //% weight=95 blockId=startbit_convertUltrasonic block="Convert ultrasonic distance %data"
-  //% subcategory=Bluetooth
-  export function startbit_convertUltrasonic(data: number): string {
-    let cmdStr: string = "CMD|03|";
-    cmdStr += data.toString();
-    cmdStr += "|$";
-    return cmdStr;
-  }
-
-  /**
-   * The conversion temperature value to standard command, sent to the mobile phone, and the APP displays the current temperature.
-   */
-  //% weight=94 blockId=startbit_convertTemperature block="Convert temperature %data"
-  //% subcategory=Bluetooth
-  export function startbit_convertTemperature(data: number): string {
-    let cmdStr: string = "CMD|04|";
-    cmdStr += data.toString();
-    cmdStr += "|$";
-    return cmdStr;
-  }
-
-  /**
-   * Convert the light value to the standard command and send it to the mobile phone. The APP displays the current light level (0~255).
-   */
-  //% weight=93 blockId=startbit_convertLight block="Convert light %data"
-  //% subcategory=Bluetooth
-  export function startbit_convertLight(data: number): string {
-    let cmdStr: string = "CMD|06|";
-    cmdStr += data.toString();
-    cmdStr += "|$";
-    return cmdStr;
-  }
-
-  /**
-   * Convert the battery value to the standard command and send it to the mobile phone. The APP displays the current voltage.
-   */
-  //% weight=92 blockId=startbit_convertBattery blockGap=50 block="Convert battery %data"
-  //% subcategory=Bluetooth
-  export function startbit_convertBattery(data: number): string {
-    let cmdStr: string = "CMD|07|";
-    cmdStr += data.toString();
-    cmdStr += "|$";
-    return cmdStr;
-  }
-
-  /**
-   * Convert the hand cmd to phone app
-   */
-  //% weight=51 blockId=startbit_convertHandCmd blockGap=50 block="Convert uHand:bit %data"
-  export function startbit_convertHandCmd(data: number): string {
-    let cmdStr: string = "CMD|15|";
-    cmdStr += data.toString();
-    cmdStr += "|$";
-    return cmdStr;
-  }
-
-  /**
-   * Get device mac address
-   */
-  //% weight=100 blockId=startbit_getMacAddress block="Get device id"
-  //% subcategory=Bluetooth
-  export function startbit_getMacAddress(): string {
-    return macStr + "$";
   }
 
   const ASR_I2C_ADDR = 0x79;
@@ -1767,40 +979,10 @@ namespace Informatiktheater {
     return buf[0];
   }
 
+  // TODO: What is this doing?
   //% weight=85 blockId=startbit_ASRSETMODE block="Set to |%mode mode"
   export function startbit_ASRSETMODE(mode: ASRMode) {
     WireWriteDataArray(ASR_I2C_ADDR, ASR_MODE_ADDR, mode);
-  }
-
-  //% weight=84 blockId=startbit_ASRREAD block="Read Data"
-  //% subcategory=Sensor
-  export function startbit_ASRREAD(): number {
-    let val = WireReadDataArray(ASR_I2C_ADDR, ASR_RESULT_ADDR, 1);
-    return val;
-  }
-
-  /**
-   * @param idNum is a number, eg: 1
-   * @param words is text, eg: "ni hao"
-   */
-  //% weight=83 blockId=startbit_ASRAddWords block="Add idNum|%idNum words|%words"
-  //% subcategory=Sensor
-  export function startbit_ASRAddWords(idNum: number, words: string) {
-    let buf = pins.createBuffer(words.length + 2);
-    buf[0] = ASR_ADD_WORDS_ADDR;
-    buf[1] = idNum;
-    for (let i = 0; i < words.length; i++) {
-      buf[2 + i] = words.charCodeAt(i);
-    }
-    pins.i2cWriteBuffer(ASR_I2C_ADDR, buf);
-    basic.pause(50);
-  }
-
-  //% weight=82 blockId=startbit_ASRWORDSERASE block="Erase Data"
-  //% subcategory=Sensor
-  export function startbit_ASRWORDSERASE() {
-    WireWriteDataArray(ASR_I2C_ADDR, ASR_WORDS_ERASE_ADDR, null);
-    basic.pause(60);
   }
 
   const MP3_I2C_ADDR = 0x7b;
@@ -1831,40 +1013,6 @@ namespace Informatiktheater {
     OFF = MP3_SINGLE_LOOP_OFF_ADDR,
   }
 
-  //% weight=87 blockId=startbit_MP3_BUTTON block="MP3 |%button music"
-  //% subcategory=Sensor
-  export function startbit_MP3_BUTTON(button: startbit_mp3button) {
-    WireWriteDataArray(MP3_I2C_ADDR, button, null);
-    basic.pause(20);
-  }
-
-  /**
-   * @param value is a number, eg: 20
-   */
-  //% weight=88 blockId=startbit_MP3_VOL block="MP3 VOL |%value"
-  //% subcategory=Sensor
-  export function startbit_MP3_VOL(value: number) {
-    WireWriteDataArray(MP3_I2C_ADDR, MP3_VOL_VALUE_ADDR, value);
-    basic.pause(20);
-  }
-
-  //% weight=85 blockId=startbit_MP3_SINGLE_LOOP blockGap=50 block="MP3 SINGLE LOOP |%state"
-  //% subcategory=Sensor
-  export function startbit_MP3_SINGLE_LOOP(state: startbit_mp3Loop) {
-    WireWriteDataArray(MP3_I2C_ADDR, state, null);
-    basic.pause(20);
-  }
-
-  /**
-   * @param num is a number, eg: 1
-   */
-  //% weight=86 blockId=startbit_MP3_PLAY_NUM block="MP3 PLAY NUM|%num"
-  //% subcategory=Sensor
-  export function startbit_MP3_PLAY_NUM(num: number) {
-    WireWriteDataArray(MP3_I2C_ADDR, MP3_PLAY_NUM_ADDR, num);
-    basic.pause(20);
-  }
-
   export enum startbit_LineFollowerSensors {
     //% block="S1"
     S1,
@@ -1877,15 +1025,15 @@ namespace Informatiktheater {
   }
 
   export enum startbit_LineColor {
-    //% block="Black"
+    //% block="Schwarz"
     Black,
-    //% block="White"
+    //% block="Weiss"
     White,
   }
 
   const LINE_FOLLOWER_I2C_ADDR = 0x78;
 
-  //% weight=95 blockId=startbit_line_followers blockGap=50 block="Line follower %lineFollowerSensor in %LineColor ?"
+  //% weight=95 blockId=startbit_line_followers blockGap=50 block="Linienfolger %lineFollowerSensor in %LineColor ?"
   //% inlineInputMode=inline
   //% subcategory=Sensor
   export function startbit_line_followers(
