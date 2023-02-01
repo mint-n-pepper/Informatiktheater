@@ -19,20 +19,20 @@ namespace Informatiktheater {
   }
 
   export enum startbit_lineFollower {
-    //% blockId="S1_OUT_S2_OUT" block="Sensor1 and sensor2 are out black line"
+    //% blockId="S1_OUT_S2_OUT" block="Sensor 1 und Sensor 2 sind ausserhalb der schwarzen Linie"
     S1_OUT_S2_OUT = 0x00,
-    //% blockId="S1_OUT_S2_IN" block="Sensor2 in black line but sensor1 not"
+    //% blockId="S1_OUT_S2_IN" block="Sensor 2 auf schwarzer Linie aber Sensor 1 nicht"
     S1_OUT_S2_IN = 0x01,
-    //% blockId="S1_IN_S2_OUT" block="Sensor1 in black line but sensor2 not"
+    //% blockId="S1_IN_S2_OUT" block="Sensor 1 auf schwarzer Linie aber Sensor 2 nicht"
     S1_IN_S2_OUT = 0x02,
-    //% blockId="S1_IN_S2_IN" block="Sensor1 and sensor2 are in black line "
+    //% blockId="S1_IN_S2_IN" block="Sensor 1 und Sensor 2 auf schwarzer Linie"
     S1_IN_S2_IN = 0x03,
   }
 
   export enum startbit_Servos {
-    //% block="servo 1"
+    //% block="Servo 1"
     Servo1 = 0x01,
-    //% block="servo 2"
+    //% block="Servo 2"
     Servo2 = 0x02,
   }
 
@@ -682,7 +682,6 @@ namespace Informatiktheater {
     let c = max - min;
     let hue = 0;
     let segment = 0;
-    let shift = 0;
     if (c == 0) return 0;
     if (r > g && r > b) {
       segment = (60.0 * (g - b)) / c;
@@ -721,17 +720,6 @@ namespace Informatiktheater {
   function getMode(): number {
     let enable_value = i2cread(APDS9960_ENABLE);
     return enable_value;
-  }
-
-  function enableLightSensor(interrupts: boolean) {
-    setAmbientLightGain(DEFAULT_AGAIN);
-    if (interrupts) {
-      setAmbientLightIntEnable(1);
-    } else {
-      setAmbientLightIntEnable(0);
-    }
-    enablePower();
-    setMode(AMBIENT_LIGHT, 1);
   }
 
   function setAmbientLightGain(drive: number) {
@@ -877,9 +865,10 @@ namespace Informatiktheater {
    * Set the brightness of the strip. This flag only applies to future operation.
    * @param brightness a measure of LED brightness in 0-255. eg: 255
    */
-  //% blockId="startbit_setBrightness" block="Setze Helligkeit %brightness"
+  //% blockId="startbit_setBrightness" block="Setze Helligkeit auf Wert %brightness"
   //% weight=100
   //% subcategory=LED
+  //% number.min = 0 number.max=255 number.defl=255
   export function startbit_setBrightness(brightness: number): void {
     lhRGBLight.setBrightness(brightness);
   }
