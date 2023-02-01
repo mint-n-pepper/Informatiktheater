@@ -865,10 +865,11 @@ namespace Informatiktheater {
    * Set the brightness of the strip. This flag only applies to future operation.
    * @param brightness a measure of LED brightness in 0-255. eg: 255
    */
-  //% blockId="startbit_setBrightness" block="Setze Helligkeit auf Wert %brightness"
+  //% blockId="startbit_setBrightness"
+  //% block="Setze Helligkeit auf Wert %brightness"
+  //% brightness.min = 0 brightness.max=255 brightness.defl=255
   //% weight=100
   //% subcategory=LED
-  //% number.min = 0 number.max=255 number.defl=255
   export function startbit_setBrightness(brightness: number): void {
     lhRGBLight.setBrightness(brightness);
   }
