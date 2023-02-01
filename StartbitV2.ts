@@ -1,7 +1,7 @@
 /*
  StartbitV2 package
 */
-//% weight=10 icon="\uf013" color=#2896ff
+//% weight=10 icon="\uf630" color=#2896ff
 namespace Informatiktheater {
   export enum startbit_Colors {
     //% block="Rot"
@@ -914,22 +914,6 @@ namespace Informatiktheater {
     return ((x - in_min) * (out_max - out_min)) / (in_max - in_min) + out_min;
   }
 
-  const ASR_I2C_ADDR = 0x79;
-
-  const ASR_RESULT_ADDR = 100;
-  const ASR_WORDS_ERASE_ADDR = 101;
-  const ASR_MODE_ADDR = 102;
-  const ASR_ADD_WORDS_ADDR = 160;
-
-  export enum ASRMode {
-    //% block="1"
-    mode1 = 0x01,
-    //% block="2"
-    mode2 = 0x02,
-    //% block="3"
-    mode3 = 0x03,
-  }
-
   function II2Cread(reg: number): Buffer {
     let val = pins.i2cReadBuffer(reg, 1);
     return val;
@@ -967,40 +951,6 @@ namespace Informatiktheater {
       return 0;
     }
     return buf[0];
-  }
-
-  // TODO: What is this doing?
-  //% weight=85 blockId=startbit_ASRSETMODE block="Set to |%mode mode"
-  export function startbit_ASRSETMODE(mode: ASRMode) {
-    WireWriteDataArray(ASR_I2C_ADDR, ASR_MODE_ADDR, mode);
-  }
-
-  const MP3_I2C_ADDR = 0x7b;
-  const MP3_PLAY_NUM_ADDR = 1;
-  const MP3_PLAY_ADDR = 5;
-  const MP3_PAUSE_ADDR = 6;
-  const MP3_PREV_ADDR = 8;
-  const MP3_NEXT_ADDR = 9;
-  const MP3_VOL_VALUE_ADDR = 12;
-  const MP3_SINGLE_LOOP_ON_ADDR = 13;
-  const MP3_SINGLE_LOOP_OFF_ADDR = 14;
-
-  export enum startbit_mp3button {
-    //% block="PLAY"
-    PLAY = MP3_PLAY_ADDR,
-    //% block="PAUSE"
-    PAUSE = MP3_PAUSE_ADDR,
-    //% block="PREV"
-    PREV = MP3_PREV_ADDR,
-    //% block="NEXT"
-    NEXT = MP3_NEXT_ADDR,
-  }
-
-  export enum startbit_mp3Loop {
-    //% block="ON"
-    ON = MP3_SINGLE_LOOP_ON_ADDR,
-    //% block="OFF"
-    OFF = MP3_SINGLE_LOOP_OFF_ADDR,
   }
 
   export enum startbit_LineFollowerSensors {
