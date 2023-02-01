@@ -1,7 +1,7 @@
 /*
  StartbitV2 package
 */
-//% weight=10 icon="\uf6fa" color=#2896ff
+//% weight=10 icon="\uf5fc" color=#2896ff
 namespace Informatiktheater {
   export enum startbit_Colors {
     //% block="Rot"
@@ -37,15 +37,13 @@ namespace Informatiktheater {
   }
 
   export enum startbit_ultrasonicPort {
-    //% block="Port 1"
     port1 = 0x01,
-    //% block="Port 2"
     port2 = 0x02,
   }
 
   let echoPin: DigitalPin;
   let trigPin: DigitalPin;
-  //% weight=91 blockId=ultrasonic_init  block="initialisiere Ultraschall| %port"
+  //% weight=91 blockId=ultrasonic_init  block="initialisiere Ultraschall|Port %port"
   export function ultrasonic_init(port: startbit_ultrasonicPort) {
     switch (port) {
       case startbit_ultrasonicPort.port1:
@@ -69,13 +67,12 @@ namespace Informatiktheater {
   let touchSensorPin: DigitalPin;
 
   export enum startbit_lineFollowPort {
-    //% block="Port 1"
     port1 = 0x01,
   }
 
   let lineFollowPin1: AnalogPin;
   let lineFollowPin2: AnalogPin;
-  //% weight=92 blockId=lineFollowSensor_init  block="initialisiere Linienfolger-Sensor| %port"
+  //% weight=92 blockId=lineFollowSensor_init  block="initialisiere Linienfolger-Sensor|Port %port"
   export function lineFollowSensor_init(port: startbit_lineFollowPort) {
     switch (port) {
       case startbit_lineFollowPort.port1:
@@ -105,12 +102,11 @@ namespace Informatiktheater {
   }
 
   export enum startbit_knobPort {
-    //% block="Port 1"
     port1 = 0x01,
   }
 
   let knobPin: AnalogPin;
-  //% weight=99 blockId=knobSensor_init  block="initialisiere Drehknopf| %port"
+  //% weight=99 blockId=knobSensor_init  block="initialisiere Drehknopf|Port %port"
   export function knobSensor_init(port: startbit_knobPort) {
     switch (port) {
       case startbit_knobPort.port1:
@@ -119,33 +115,13 @@ namespace Informatiktheater {
     }
   }
 
-  export enum startbit_photosensitivePort {
-    //% block="Port 1"
-    port1 = 0x01,
-  }
-
-  export enum startbit_PhotosensitiveSensor {
-    //% block="Port 1"
-    port1 = 0x00,
-  }
-
-  export enum startbit_fanPort {
-    //% block="Port 1"
-    port1,
-    //% block="Port 2"
-    port2,
-  }
-
   export enum startbit_iic {
-    //% block="Port 3"
     port3 = 0x03,
-    //% block="Port 4"
     port4 = 0x04,
-    //% block="Port 6"
     port6 = 0x06,
   }
 
-  //% weight=93 blockId=lineFollow_iic_init  block="initialisiere Linienfolger iic| %port"
+  //% weight=93 blockId=lineFollow_iic_init  block="initialisiere Linienfolger iic|Port %port"
   export function lineFollow_iic_init(port: startbit_iic) {
     switch (port) {
       case startbit_iic.port3:
