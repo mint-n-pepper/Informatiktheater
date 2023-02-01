@@ -45,7 +45,7 @@ namespace Informatiktheater {
 
   let echoPin: DigitalPin;
   let trigPin: DigitalPin;
-  //% weight=91 blockId=ultrasonic_init  block="initialisiere Ultraschall|port %port"
+  //% weight=91 blockId=ultrasonic_init  block="initialisiere Ultraschall| %port"
   export function ultrasonic_init(port: startbit_ultrasonicPort) {
     switch (port) {
       case startbit_ultrasonicPort.port1:
@@ -110,7 +110,7 @@ namespace Informatiktheater {
   }
 
   let knobPin: AnalogPin;
-  //% weight=99 blockId=knobSensor_init  block="initialisiere Dreh-Sensor|port %port"
+  //% weight=99 blockId=knobSensor_init  block="initialisiere Drehknopf|%port"
   export function knobSensor_init(port: startbit_knobPort) {
     switch (port) {
       case startbit_knobPort.port1:
@@ -354,10 +354,7 @@ namespace Informatiktheater {
     } else return -1;
   }
 
-  /**
-   * Set the angle of servo 1 to 8, range of 0~270 degree
-   */
-  //% weight=100 blockId=setServo block="setze PWM Servo Distanz %range|Index %index|Winkel %angle|Dauer %duration"
+  //% weight=100 blockId=setServo block="setze Servomotor %index| auf Winkel %angle Grad|für Dauer %duration|Bereich %range Grad"
   //% angle.min=0 angle.max=270
   //% inlineInputMode=inline
   //% subcategory=Servo/Motor
@@ -387,7 +384,7 @@ namespace Informatiktheater {
   /**
    *	Set the speed of the number 1 motor and number 2 motor, range of -100~100, that can control the tank to go advance or turn of.
    */
-  //% weight=96 blockId=startbit_setMotorSpeed block="setze Motor1 Geschwindigkeit(-100 bis +100)|%speed1|und Motor2|Geschwindigkeit %speed2"
+  //% weight=96 blockId=startbit_setMotorSpeed block="setze Geschwindigkeit für |Motor 1 %speed1|und Motor 2 %speed2"
   //% speed1.min=-100 speed1.max=100
   //% speed2.min=-100 speed2.max=100
   //% subcategory=Servo/Motor
@@ -813,7 +810,7 @@ namespace Informatiktheater {
   /**
    * Get the distance of ultrasonic detection to the obstacle
    */
-  //% weight=90 blockId=startbit_ultrasonic  block="Ultraschall|Distanz (cm)"
+  //% weight=90 blockId=startbit_ultrasonic  block="hole Ultraschall|Distanz (cm)"
   //% subcategory=Sensor
   export function startbit_ultrasonic(): number {
     pins.setPull(echoPin, PinPullMode.PullNone);
@@ -839,7 +836,7 @@ namespace Informatiktheater {
   /**
    * Get the ad value of the knob moudule
    */
-  //% weight=92 blockId=startbit_getKnobValue  block="hole Dreh-Sensor|Wert (0~255)"
+  //% weight=92 blockId=startbit_getKnobValue  block="hole Drehknopf|Wert (0~255)"
   //% subcategory=Sensor
   export function startbit_getKnobValue(): number {
     let adValue = pins.analogReadPin(knobPin);
@@ -867,7 +864,7 @@ namespace Informatiktheater {
    */
   //% blockId="startbit_setBrightness"
   //% block="setze Helligkeit auf Wert %brightness"
-  //% brightness.min = 0 brightness.max=255 brightness.defl=255
+  //% brightness.min=0 brightness.max=255 brightness.defl=255
   //% weight=100
   //% subcategory=LED
   export function startbit_setBrightness(brightness: number): void {
@@ -904,6 +901,7 @@ namespace Informatiktheater {
     lhRGBLight.clear();
   }
 
+  // TODO: This will NOT clip values! should we add clipping ?!
   function mapValue(
     x: number,
     in_min: number,
