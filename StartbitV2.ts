@@ -248,13 +248,6 @@ namespace Informatiktheater {
     handleCmd = "";
   }
 
-  function checkADPortValue(value: number): number {
-    if (value == -1) return 2;
-    if (value <= 0x2e) return 0;
-    else if (value >= 0xaa) return 1;
-    else return 2; //未识别电平状态
-  }
-
   function findIndexof(
     src: string,
     strFind: string,
@@ -321,15 +314,30 @@ namespace Informatiktheater {
     } else return -1;
   }
 
-  // TODO: Why is parameter list not mapped correctly to function argument list ?
+  export enum ServoIndex {
+    //% block="S1"
+    S1,
+    //% block="S2"
+    S2,
+    //% block="S3"
+    S3,
+    //% block="S4"
+    S4,
+    //% block="S5"
+    S5,
+    //% block="S6"
+    S6,
+  }
+
   //% weight=100 blockId=setServo
   //% block="setze Servomotor %index| auf Winkel (°) %angle|für Dauer (ms) %duration|Bereich (°) %range"
   //% angle.min=0 angle.max=270
+  //% index.defl=1
   //% duration.shadow=timePicker
   //% inlineInputMode=inline
   //% subcategory=Servo/Motor
   export function setPwmServo(
-    index: number = 1,
+    index: ServoIndex = 1,
     angle: number,
     duration: number = 300,
     range: startbit_servorange
@@ -933,9 +941,9 @@ namespace Informatiktheater {
   }
 
   export enum startbit_LineColor {
-    //% block="Black"
+    //% block="Schwarz"
     Black,
-    //% block="White"
+    //% block="Weiss"
     White,
   }
 
