@@ -1,7 +1,7 @@
 /*
  StartbitV2 package
 */
-//% weight=10 icon="\uf5fc" color=#2896ff
+//% weight=10 icon="\uf013" color=#2896ff
 namespace Informatiktheater {
   export enum startbit_Colors {
     //% block="Rot"
@@ -43,9 +43,9 @@ namespace Informatiktheater {
 
   let echoPin: DigitalPin;
   let trigPin: DigitalPin;
-  //% weight=91 blockId=ultrasonic_init  block="initialisiere Ultraschall|Port %port"
-  export function ultrasonic_init(port: startbit_ultrasonicPort) {
-    switch (port) {
+  //% weight=91 blockId=ultrasonic_init  block="initialisiere Ultraschall|Pin %p"
+  export function ultrasonic_init(p: startbit_ultrasonicPort) {
+    switch (p) {
       case startbit_ultrasonicPort.port1:
         echoPin = DigitalPin.P2;
         trigPin = DigitalPin.P1;
@@ -55,13 +55,6 @@ namespace Informatiktheater {
         trigPin = DigitalPin.P13;
         break;
     }
-  }
-
-  export enum startbit_touchKeyPort {
-    //% block="Port 1"
-    port1 = 0x01,
-    //% block="Port 2"
-    port2 = 0x02,
   }
 
   let touchSensorPin: DigitalPin;
