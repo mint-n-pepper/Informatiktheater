@@ -268,11 +268,11 @@ namespace Informatiktheater {
         }
         if (arg2Int > 1000) arg2Int = 1000;
         if (arg1Int == 1) {
-          servo1Angle = mapRGB(arg2Int, 0, 1000, 0, 240);
+          servo1Angle = mapValue(arg2Int, 0, 1000, 0, 240);
           servo1Angle -= 120;
           control.raiseEvent(MESSAGE_ANGLE, 1);
         } else if (arg1Int == 2) {
-          servo2Angle = mapRGB(arg2Int, 0, 1000, 0, 240);
+          servo2Angle = mapValue(arg2Int, 0, 1000, 0, 240);
           servo2Angle -= 120;
           control.raiseEvent(MESSAGE_ANGLE, 2);
         }
@@ -367,7 +367,7 @@ namespace Informatiktheater {
     angle: number,
     duration: number = 300
   ) {
-    let position = mapRGB(angle, 0, range, 500, 2500);
+    let position = mapValue(angle, 0, range, 500, 2500);
 
     let buf = pins.createBuffer(10);
     buf[0] = 0x55;
@@ -904,7 +904,7 @@ namespace Informatiktheater {
     lhRGBLight.clear();
   }
 
-  function mapRGB(
+  function mapValue(
     x: number,
     in_min: number,
     in_max: number,
