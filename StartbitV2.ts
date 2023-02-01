@@ -45,7 +45,7 @@ namespace Informatiktheater {
 
   let echoPin: DigitalPin;
   let trigPin: DigitalPin;
-  //% weight=91 blockId=ultrasonic_init  block="Initialisiere Ultraschall|port %port"
+  //% weight=91 blockId=ultrasonic_init  block="initialisiere Ultraschall|port %port"
   export function ultrasonic_init(port: startbit_ultrasonicPort) {
     switch (port) {
       case startbit_ultrasonicPort.port1:
@@ -75,7 +75,7 @@ namespace Informatiktheater {
 
   let lineFollowPin1: AnalogPin;
   let lineFollowPin2: AnalogPin;
-  //% weight=92 blockId=lineFollowSensor_init  block="Initialisiere Linienfolger-Sensor|port %port"
+  //% weight=92 blockId=lineFollowSensor_init  block="initialisiere Linienfolger-Sensor|port %port"
   export function lineFollowSensor_init(port: startbit_lineFollowPort) {
     switch (port) {
       case startbit_lineFollowPort.port1:
@@ -110,7 +110,7 @@ namespace Informatiktheater {
   }
 
   let knobPin: AnalogPin;
-  //% weight=99 blockId=knobSensor_init  block="Initialisiere Dreh-Sensor|port %port"
+  //% weight=99 blockId=knobSensor_init  block="initialisiere Dreh-Sensor|port %port"
   export function knobSensor_init(port: startbit_knobPort) {
     switch (port) {
       case startbit_knobPort.port1:
@@ -145,7 +145,7 @@ namespace Informatiktheater {
     port6 = 0x06,
   }
 
-  //% weight=86 blockId=lineFollow_iic_init  block="Initialisiere Linienfolger iic|port %port"
+  //% weight=86 blockId=lineFollow_iic_init  block="initialisiere Linienfolger iic|port %port"
   export function lineFollow_iic_init(port: startbit_iic) {
     switch (port) {
       case startbit_iic.port3:
@@ -167,7 +167,7 @@ namespace Informatiktheater {
   /**
    * Startbit initialization, please execute at boot time
    */
-  //% weight=100 blockId=startbit_Init block="Initialisiere Informatiktheater"
+  //% weight=100 blockId=startbit_Init block="initialisiere Informatiktheater"
   export function startbit_Init() {
     startbit_initRGBLight();
     serial.redirect(SerialPin.P12, SerialPin.P8, BaudRate.BaudRate115200);
@@ -357,7 +357,7 @@ namespace Informatiktheater {
   /**
    * Set the angle of servo 1 to 8, range of 0~270 degree
    */
-  //% weight=100 blockId=setServo block="Setze PWM Servo Distanz %range|Index %index|Winkel %angle|Dauer %duration"
+  //% weight=100 blockId=setServo block="setze PWM Servo Distanz %range|Index %index|Winkel %angle|Dauer %duration"
   //% angle.min=0 angle.max=270
   //% inlineInputMode=inline
   //% subcategory=Servo/Motor
@@ -387,7 +387,7 @@ namespace Informatiktheater {
   /**
    *	Set the speed of the number 1 motor and number 2 motor, range of -100~100, that can control the tank to go advance or turn of.
    */
-  //% weight=96 blockId=startbit_setMotorSpeed block="Setze Motor1 Geschwindigkeit(-100 bis +100)|%speed1|und Motor2|Geschwindigkeit %speed2"
+  //% weight=96 blockId=startbit_setMotorSpeed block="setze Motor1 Geschwindigkeit(-100 bis +100)|%speed1|und Motor2|Geschwindigkeit %speed2"
   //% speed1.min=-100 speed1.max=100
   //% speed2.min=-100 speed2.max=100
   //% subcategory=Servo/Motor
@@ -789,7 +789,7 @@ namespace Informatiktheater {
   /**
    * Get the line follower sensor port ad value
    */
-  //% weight=89 blockId=startbit_lineSensorValue blockGap=50 block="Hole Linienfolger Sensor|%sensor|ad Wert"
+  //% weight=89 blockId=startbit_lineSensorValue blockGap=50 block="hole Linienfolger Sensor|%sensor|ad Wert"
   //% subcategory=Sensor
   export function startbit_lineSensorValue(
     sensor: startbit_LineFollowerSensor
@@ -839,7 +839,7 @@ namespace Informatiktheater {
   /**
    * Get the ad value of the knob moudule
    */
-  //% weight=92 blockId=startbit_getKnobValue  block="Hole Dreh-Sensor|Wert (0~255)"
+  //% weight=92 blockId=startbit_getKnobValue  block="hole Dreh-Sensor|Wert (0~255)"
   //% subcategory=Sensor
   export function startbit_getKnobValue(): number {
     let adValue = pins.analogReadPin(knobPin);
@@ -866,7 +866,7 @@ namespace Informatiktheater {
    * @param brightness a measure of LED brightness in 0-255. eg: 255
    */
   //% blockId="startbit_setBrightness"
-  //% block="Setze Helligkeit auf Wert %brightness"
+  //% block="setze Helligkeit auf Wert %brightness"
   //% brightness.min = 0 brightness.max=255 brightness.defl=255
   //% weight=100
   //% subcategory=LED
@@ -877,7 +877,7 @@ namespace Informatiktheater {
   /**
    * Set RGB Color argument
    */
-  //% weight=99 blockId=startbit_setPixelRGBArgs block="Setze|%lightoffset|Farbe auf %rgb"
+  //% weight=99 blockId=startbit_setPixelRGBArgs block="setze|%lightoffset|Farbe auf %rgb"
   //% subcategory=LED
   export function startbit_setPixelRGBArgs(
     lightoffset: StartbitLights,
