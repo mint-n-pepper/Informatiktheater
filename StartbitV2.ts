@@ -773,7 +773,7 @@ namespace Informatiktheater {
   /**
    * Get the condition of the line follower sensor
    */
-  //% weight=96 blockId=startbit_readLineFollowerStatus block="Linenfolger Status|%status"
+  //% weight=96 blockId=startbit_readLineFollowerStatus block="Linienfolger Status|%status"
   //% subcategory=Sensor
   export function startbit_readLineFollowerStatus(
     status: startbit_lineFollower
