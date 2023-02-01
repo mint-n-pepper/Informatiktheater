@@ -1,7 +1,7 @@
 /*
  StartbitV2 package
 */
-//% weight=10 icon="\uf013" color=#2896ff
+//% weight=10  color=#2896ff
 namespace Informatiktheater {
   export enum startbit_Colors {
     //% block="Rot"
@@ -30,9 +30,7 @@ namespace Informatiktheater {
   }
 
   export enum startbit_Servos {
-    //% block="Servo 1"
     Servo1 = 0x01,
-    //% block="Servo 2"
     Servo2 = 0x02,
   }
 
@@ -43,9 +41,9 @@ namespace Informatiktheater {
 
   let echoPin: DigitalPin;
   let trigPin: DigitalPin;
-  //% weight=91 blockId=ultrasonic_init  block="initialisiere Ultraschall|Pin %p"
-  export function ultrasonic_init(p: startbit_ultrasonicPort) {
-    switch (p) {
+  //% weight=91 blockId=ultrasonic_init  block="initialisiere Ultraschall|%port"
+  export function ultrasonic_init(port: startbit_ultrasonicPort) {
+    switch (port) {
       case startbit_ultrasonicPort.port1:
         echoPin = DigitalPin.P2;
         trigPin = DigitalPin.P1;
@@ -65,7 +63,7 @@ namespace Informatiktheater {
 
   let lineFollowPin1: AnalogPin;
   let lineFollowPin2: AnalogPin;
-  //% weight=92 blockId=lineFollowSensor_init  block="initialisiere Linienfolger-Sensor|Port %port"
+  //% weight=92 blockId=lineFollowSensor_init  block="initialisiere Linienfolger-Sensor|%port"
   export function lineFollowSensor_init(port: startbit_lineFollowPort) {
     switch (port) {
       case startbit_lineFollowPort.port1:
@@ -99,7 +97,7 @@ namespace Informatiktheater {
   }
 
   let knobPin: AnalogPin;
-  //% weight=99 blockId=knobSensor_init  block="initialisiere Drehknopf|Port %port"
+  //% weight=99 blockId=knobSensor_init  block="initialisiere Drehknopf|%port"
   export function knobSensor_init(port: startbit_knobPort) {
     switch (port) {
       case startbit_knobPort.port1:
@@ -114,7 +112,7 @@ namespace Informatiktheater {
     port6 = 0x06,
   }
 
-  //% weight=93 blockId=lineFollow_iic_init  block="initialisiere Linienfolger iic|Port %port"
+  //% weight=93 blockId=lineFollow_iic_init  block="initialisiere Linienfolger iic|%port"
   export function lineFollow_iic_init(port: startbit_iic) {
     switch (port) {
       case startbit_iic.port3:
@@ -323,8 +321,10 @@ namespace Informatiktheater {
     } else return -1;
   }
 
-  //% weight=100 blockId=setServo block="setze Servomotor %index| auf Winkel %angle Grad|für Dauer %duration|Bereich %range Grad"
+  //% weight=100 blockId=setServo
+  //% block="setze Servomotor %index| auf Winkel (°) %angle|für Dauer (ms) %duration|Bereich (°) %range"
   //% angle.min=0 angle.max=270
+  //% duration.shadow=timePicker
   //% inlineInputMode=inline
   //% subcategory=Servo/Motor
   export function setPwmServo(
