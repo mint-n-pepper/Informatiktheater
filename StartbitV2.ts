@@ -321,6 +321,7 @@ namespace Informatiktheater {
     } else return -1;
   }
 
+  // TODO: Why is parameter list not mapped correctly to function argument list ?
   //% weight=100 blockId=setServo
   //% block="setze Servomotor %index| auf Winkel (°) %angle|für Dauer (ms) %duration|Bereich (°) %range"
   //% angle.min=0 angle.max=270
@@ -328,10 +329,10 @@ namespace Informatiktheater {
   //% inlineInputMode=inline
   //% subcategory=Servo/Motor
   export function setPwmServo(
-    range: startbit_servorange,
     index: number = 1,
     angle: number,
-    duration: number = 300
+    duration: number = 300,
+    range: startbit_servorange
   ) {
     let position = mapValue(angle, 0, range, 500, 2500);
 
