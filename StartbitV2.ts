@@ -753,8 +753,8 @@ namespace Informatiktheater {
 
   //% weight=96
   //% blockId=startbit_readLineFollowerStatus
-  //% block="Line follower status|%status"
-  //% block.loc.de="Linienfolger |%status ?"
+  //% block="Line follower status %status"
+  //% block.loc.de="Linienfolger %status ?"
   //% subcategory=Sensor
   export function startbit_readLineFollowerStatus(
     status: startbit_lineFollower
