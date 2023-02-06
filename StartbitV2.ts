@@ -782,7 +782,7 @@ namespace Informatiktheater {
   //% weight=89
   //% blockId=startbit_lineSensorValue blockGap=50
   //% block="get line follower sensor|%sensor|ad value"
-  //% block.loc.de="Linienfolger Sensor|%sensor|ad Wert"
+  //% block.loc.de="Linienfolger |%sensor|ad Wert"
   //% subcategory=Sensor
   export function startbit_lineSensorValue(
     sensor: startbit_LineFollowerSensor
@@ -882,7 +882,7 @@ namespace Informatiktheater {
   //% subcategory=LED
   export function startbit_setPixelRGBArgs(
     lightoffset: StartbitLights,
-    rgb: number
+    rgb: StartbitRGBColors
   ) {
     lhRGBLight.setPixelColor(lightoffset, rgb);
   }
