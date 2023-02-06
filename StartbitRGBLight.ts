@@ -19,7 +19,7 @@ enum StartbitRGBColors {
     //% block.loc.de=Blau
     Blue = 5,
     //% block=indigo
-    //% block.loc.de=Blau
+    //% block.loc.de=Indigo
     Indigo = 6,
     //% block=violet
     //% block.loc.de=Violett

@@ -754,7 +754,7 @@ namespace Informatiktheater {
   //% weight=96
   //% blockId=startbit_readLineFollowerStatus
   //% block="Line follower status|%status"
-  //% block.loc.de="Linienfolger Status|%status"
+  //% block.loc.de="Linienfolger |%status ?"
   //% subcategory=Sensor
   export function startbit_readLineFollowerStatus(
     status: startbit_lineFollower
@@ -878,7 +878,7 @@ namespace Informatiktheater {
 
   //% weight=99 blockId=startbit_setPixelRGBArgs
   //% block="set|%lightoffset|color to %rgb"
-  //% block.loc.de="setze|%lightoffset|Farbe auf %rgb"
+  //% block.loc.de="setze Farbe von|%lightoffset|auf %rgb"
   //% subcategory=LED
   export function startbit_setPixelRGBArgs(
     lightoffset: StartbitLights,
@@ -894,7 +894,7 @@ namespace Informatiktheater {
   //% weight=97 blockId=startbit_showLight
   //% block="Light on"
   //% block.loc.de="Licht an"
-  //% jsdoc.loc.de="Zeige die gefärbten Lichter"
+  //% jsdoc.loc.de="Zeige die gefärbten Lichter. Muss ausgeführt werden nachdem eine Lichtfarbe gesetzt wurde!"
   //% subcategory=LED
   export function startbit_showLight() {
     lhRGBLight.show();
@@ -986,7 +986,7 @@ namespace Informatiktheater {
 
   //% weight=95 blockId=startbit_line_followers blockGap=50
   //% block="Line follower %lineFollowerSensor in %LineColor ?"
-  //% block.loc.de="Linienfolger %lineFollowerSensor in %LineColor ?"
+  //% block.loc.de="Linienfolger %lineFollowerSensor auf %LineColor ?"
   //% inlineInputMode=inline
   //% subcategory=Sensor
   export function startbit_line_followers(
