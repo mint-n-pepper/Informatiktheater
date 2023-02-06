@@ -782,7 +782,7 @@ namespace Informatiktheater {
   //% weight=89
   //% blockId=startbit_lineSensorValue blockGap=50
   //% block="get line follower sensor|%sensor|ad value"
-  //% block.loc.de="hole Linienfolger Sensor|%sensor|ad Wert"
+  //% block.loc.de="Linienfolger Sensor|%sensor|ad Wert"
   //% subcategory=Sensor
   export function startbit_lineSensorValue(
     sensor: startbit_LineFollowerSensor
@@ -809,7 +809,7 @@ namespace Informatiktheater {
   //% weight=90
   //% blockId=startbit_ultrasonic
   //% block="get ultrasonic |distancse (cm)"
-  //% block.loc.de="hole Ultraschall|Distanz (cm)"
+  //% block.loc.de="Ultraschall|Distanz (cm)"
   //% subcategory=Sensor
   export function startbit_ultrasonic(): number {
     pins.setPull(echoPin, PinPullMode.PullNone);
@@ -838,7 +838,7 @@ namespace Informatiktheater {
   //% weight=92
   //% blockId=startbit_getKnobValue
   //% block="get rotating knob|value (0~255)"
-  //% block.loc.de="hole Drehknopf|Wert (0~255)"
+  //% block.loc.de="Drehknopf|Wert (0~255)"
   //% subcategory=Sensor
   export function startbit_getKnobValue(): number {
     let adValue = pins.analogReadPin(knobPin);
