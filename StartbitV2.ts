@@ -1047,4 +1047,39 @@ namespace Informatiktheater {
     }
     return status;
   }
+
+  // //% block="Trittmatte gedrückt"
+  // //
+  // export function trittmattePressed(handler: () => void) {
+  //   handler();
+  // }
+
+  // MP3 Player stuff
+
+  export class SongList {
+    TrackIndex: number = 0;
+    list: Array<number>;
+
+    //% block="setze $this auf $list "
+    //% x.defl=Songliste
+    //% x.shadow=variables_get
+    public createSongListArray(list: number[]) {
+      this.list = list;
+    }
+
+    //% block="Play next track in list $this"
+    //% block.loc.de="nächste Songnummer in Liste $this"
+    public playNextTrack() {
+      if (this.TrackIndex < this.list.length) {
+        this.TrackIndex += 1;
+      } else {
+        this.TrackIndex = 0;
+      }
+    }
+  }
+  // //% block="setze $songlist auf $list "
+  // //% x.defl=Songliste
+  // //% x.shadow=variables_get
+  // export function createSongListArray(songlist: Array<number>, list: number[]) {
+  // }
 }
