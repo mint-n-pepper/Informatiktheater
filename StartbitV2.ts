@@ -1066,12 +1066,15 @@ namespace Informatiktheater {
 
     //% block="setze $this auf $list "
     //% this.defl=Songliste
+    //% subcategory=MP3 Box
     public createSongListArray(list: number[]) {
       this.list = list;
     }
 
     //% block="Play next track in list $this"
     //% block.loc.de="nächste Songnummer in Liste $this"
+    //% this.defl=Songliste
+    //% subcategory=MP3 Box
     public playNextTrack(): number {
       if (this.TrackIndex < this.list.length) {
         this.TrackIndex += 1;
@@ -1083,6 +1086,8 @@ namespace Informatiktheater {
     //
     //% block="Play previous track in list $this"
     //% block.loc.de="vorherige Songnummer in Liste $this"
+    //% this.defl=Songliste
+    //% subcategory=MP3 Box
     public playPreviousTrack(): number {
       if (this.TrackIndex <= 0) {
         this.TrackIndex == 0;
@@ -1094,12 +1099,16 @@ namespace Informatiktheater {
 
     //% block="current song number in list %this"
     //% block.loc.de="Aktuelle Songnummer in liste %this"
+    //% this.defl=Songliste
+    //% subcategory=MP3 Box
     public currentTrack(): number {
       return this.TrackIndex;
     }
 
     //% block="Back to first song in list %this"
     //% block.loc.de="Zurück zur ersten Songnummer in Liste %this"
+    //% this.defl=Songliste
+    //% subcategory=MP3 Box
     public gotoFirstTrack(): number {
       this.TrackIndex = 0;
       return this.currentTrack();
