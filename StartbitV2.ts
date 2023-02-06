@@ -1055,6 +1055,7 @@ namespace Informatiktheater {
   // }
 
   // MP3 Player stuff
+  //
 
   export class SongList {
     TrackIndex: number;
@@ -1067,7 +1068,7 @@ namespace Informatiktheater {
     //% block="setze $this auf $list "
     //% this.defl=Songliste
     //% this.shadow=variables_get
-    //% subcategory=MP3 Box
+    //% subcategory=MP3-Box
     public createSongListArray(list: number[]) {
       this.list = list;
       this.TrackIndex = 0;
@@ -1076,7 +1077,8 @@ namespace Informatiktheater {
     //% block="Play next track in list $this"
     //% block.loc.de="nächste Songnummer in Liste $this"
     //% this.defl=Songliste
-    //% subcategory=MP3 Box
+    //% this.shadow=variables_get
+    //% subcategory=MP3-Box
     public playNextTrack(): number {
       if (this.TrackIndex < this.list.length) {
         this.TrackIndex += 1;
@@ -1089,7 +1091,8 @@ namespace Informatiktheater {
     //% block="Play previous track in list $this"
     //% block.loc.de="vorherige Songnummer in Liste $this"
     //% this.defl=Songliste
-    //% subcategory=MP3 Box
+    //% this.shadow=variables_get
+    //% subcategory=MP3-Box
     public playPreviousTrack(): number {
       if (this.TrackIndex <= 0) {
         this.TrackIndex == 0;
@@ -1102,7 +1105,8 @@ namespace Informatiktheater {
     //% block="current song number in list %this"
     //% block.loc.de="Aktuelle Songnummer in liste %this"
     //% this.defl=Songliste
-    //% subcategory=MP3 Box
+    //% this.shadow=variables_get
+    //% subcategory=MP3-Box
     public currentTrack(): number {
       return this.TrackIndex;
     }
@@ -1110,10 +1114,13 @@ namespace Informatiktheater {
     //% block="Back to first song in list %this"
     //% block.loc.de="Zurück zur ersten Songnummer in Liste %this"
     //% this.defl=Songliste
+    //% this.shadow=variables_get
     //% subcategory=MP3-Box
     public gotoFirstTrack(): number {
       this.TrackIndex = 0;
       return this.currentTrack();
     }
   }
+
+  let Songliste: Informatiktheater.SongList = new Informatiktheater.SongList();
 }
