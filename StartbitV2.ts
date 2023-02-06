@@ -1060,15 +1060,17 @@ namespace Informatiktheater {
     TrackIndex: number;
     list: Array<number>;
 
-    init(): void {
-      this.TrackIndex = 0;
-    }
+    // init(): void {
+    //   this.TrackIndex = 0;
+    // }
 
     //% block="setze $this auf $list "
     //% this.defl=Songliste
+    //% this.shadow=variables_get
     //% subcategory=MP3 Box
     public createSongListArray(list: number[]) {
       this.list = list;
+      this.TrackIndex = 0;
     }
 
     //% block="Play next track in list $this"
@@ -1108,7 +1110,7 @@ namespace Informatiktheater {
     //% block="Back to first song in list %this"
     //% block.loc.de="Zurück zur ersten Songnummer in Liste %this"
     //% this.defl=Songliste
-    //% subcategory=MP3 Box
+    //% subcategory=MP3-Box
     public gotoFirstTrack(): number {
       this.TrackIndex = 0;
       return this.currentTrack();
