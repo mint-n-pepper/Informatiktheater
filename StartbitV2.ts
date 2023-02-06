@@ -1,5 +1,5 @@
 /*
- StartbitV2 package
+ Informatiktheater package
 */
 //% weight=10  color=#2896ff
 namespace Informatiktheater {
