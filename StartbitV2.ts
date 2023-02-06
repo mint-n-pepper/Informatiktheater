@@ -26,20 +26,20 @@ namespace Informatiktheater {
 
   export enum startbit_lineFollower {
     //% blockId="S1_OUT_S2_OUT"
-    //% block="Sensor 1 and sensor 2 beyond black line"
+    //% block="Sensor1 and sensor2 beyond black line"
     //% block.loc.de="Sensor1 und Sensor2 sind ausserhalb der schwarzen Linie"
     S1_OUT_S2_OUT = 0x00,
     //% blockId="S1_OUT_S2_IN
-    //% block="Sensor 2 on black line but not sensor 1"
-    //% block.loc.de="Sensor 2 auf schwarzer Linie aber Sensor 1 nicht"
+    //% block="Sensor2 on black line but not sensor1"
+    //% block.loc.de="Sensor2 auf schwarzer Linie aber Sensor1 nicht"
     S1_OUT_S2_IN = 0x01,
     //% blockId="S1_IN_S2_OUT"
-    //% block="Sensor 1 on black line but not sensor 2"
-    //% block.loc.de="Sensor 1 auf schwarzer Linie aber Sensor 2 nicht"
+    //% block="Sensor1 on black line but not sensor2"
+    //% block.loc.de="Sensor1 auf schwarzer Linie aber Sensor2 nicht"
     S1_IN_S2_OUT = 0x02,
     //% blockId="S1_IN_S2_IN"
-    //% block="Sensor 1 and sensor 2 on black line"
-    //% block.loc.de="Sensor 1 und Sensor 2 auf schwarzer Linie"
+    //% block="Sensor1 and sensor2 on black line"
+    //% block.loc.de="Sensor1 und Sensor2 auf schwarzer Linie"
     S1_IN_S2_IN = 0x03,
   }
 
