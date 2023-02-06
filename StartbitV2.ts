@@ -1057,8 +1057,12 @@ namespace Informatiktheater {
   // MP3 Player stuff
 
   export class SongList {
-    TrackIndex: number = 0;
+    TrackIndex: number;
     list: Array<number>;
+
+    init(): void {
+      this.TrackIndex = 0;
+    }
 
     //% block="setze $this auf $list "
     //% this.defl=Songliste
