@@ -27,7 +27,7 @@ namespace Informatiktheater {
   export enum startbit_lineFollower {
     //% blockId="S1_OUT_S2_OUT"
     //% block="Sensor 1 and sensor 2 beyond black line"
-    //% block.loc.de="Sensor 1 und Sensor 2 sind ausserhalb der schwarzen Linie"
+    //% block.loc.de="Sensor1 und Sensor2 sind ausserhalb der schwarzen Linie"
     S1_OUT_S2_OUT = 0x00,
     //% blockId="S1_OUT_S2_IN
     //% block="Sensor 2 on black line but not sensor 1"
