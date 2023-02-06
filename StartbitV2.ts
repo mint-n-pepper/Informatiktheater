@@ -4,28 +4,42 @@
 //% weight=10  color=#2896ff
 namespace Informatiktheater {
   export enum startbit_Colors {
-    //% block="Rot"
+    //% block="Red"
+    //% block.loc.de="Rot"
     Red = 0x01,
-    //% block="Grün"
+    //% block="Green"
+    //% block.log.de="Grün"
     Green = 0x02,
-    //% block="Blau"
+    //% block="Blue"
+    //% block.loc.de="Blau"
     Blue = 0x03,
-    //% block="Schwarz"
+    //% block="Black"
+    //% block.loc.de="Schwarz"
     Black = 0x04,
-    //% block="Weiss"
+    //% block="White"
+    //% block.loc.de="Weiss"
     White = 0x05,
-    //% block="Leer"
+    //% block="Empty"
+    //% block.loc.de="Leer"
     None = 0x06,
   }
 
   export enum startbit_lineFollower {
-    //% blockId="S1_OUT_S2_OUT" block="Sensor 1 und Sensor 2 sind ausserhalb der schwarzen Linie"
+    //% blockId="S1_OUT_S2_OUT"
+    //% block="Sensor 1 and sensor 2 beyond black line"
+    //% block.loc.de="Sensor 1 und Sensor 2 sind ausserhalb der schwarzen Linie"
     S1_OUT_S2_OUT = 0x00,
-    //% blockId="S1_OUT_S2_IN" block="Sensor 2 auf schwarzer Linie aber Sensor 1 nicht"
+    //% blockId="S1_OUT_S2_IN
+    //% block="Sensor 2 on black line but not sensor 1"
+    //% block.loc.de="Sensor 2 auf schwarzer Linie aber Sensor 1 nicht"
     S1_OUT_S2_IN = 0x01,
-    //% blockId="S1_IN_S2_OUT" block="Sensor 1 auf schwarzer Linie aber Sensor 2 nicht"
+    //% blockId="S1_IN_S2_OUT"
+    //% block="Sensor 1 on black line but not sensor 2"
+    //% block.loc.de="Sensor 1 auf schwarzer Linie aber Sensor 2 nicht"
     S1_IN_S2_OUT = 0x02,
-    //% blockId="S1_IN_S2_IN" block="Sensor 1 und Sensor 2 auf schwarzer Linie"
+    //% blockId="S1_IN_S2_IN"
+    //% block="Sensor 1 and sensor 2 on black line"
+    //% block.loc.de="Sensor 1 und Sensor 2 auf schwarzer Linie"
     S1_IN_S2_IN = 0x03,
   }
 
@@ -41,7 +55,10 @@ namespace Informatiktheater {
 
   let echoPin: DigitalPin;
   let trigPin: DigitalPin;
-  //% weight=91 blockId=ultrasonic_init  block="initialisiere Ultraschall|%port"
+  //% weight=91
+  //% blockId=ultrasonic_init
+  //% block="initialize ultrasonic |%port"
+  //% block.loc.de="initialisiere Ultraschall|%port"
   export function ultrasonic_init(port: startbit_ultrasonicPort) {
     switch (port) {
       case startbit_ultrasonicPort.port1:
@@ -55,15 +72,16 @@ namespace Informatiktheater {
     }
   }
 
-  let touchSensorPin: DigitalPin;
-
   export enum startbit_lineFollowPort {
     port1 = 0x01,
   }
 
   let lineFollowPin1: AnalogPin;
   let lineFollowPin2: AnalogPin;
-  //% weight=92 blockId=lineFollowSensor_init  block="initialisiere Linienfolger-Sensor|%port"
+  //% weight=92
+  //% blockId=lineFollowSensor_init
+  //% block="initialize line follower sensor|%port"
+  //% block.loc.de="initialisiere Linienfolger-Sensor|%port"
   export function lineFollowSensor_init(port: startbit_lineFollowPort) {
     switch (port) {
       case startbit_lineFollowPort.port1:
@@ -74,9 +92,11 @@ namespace Informatiktheater {
   }
 
   export enum startbit_PinIOStatus {
-    //% block="Aus"
+    //% block="Off"
+    //% block.loc.de="Aus"
     Low = 0x00,
-    //% block="Ein"
+    //% block="On"
+    //% block.loc.de="Ein"
     Hight = 0x01,
   }
 
@@ -97,7 +117,10 @@ namespace Informatiktheater {
   }
 
   let knobPin: AnalogPin;
-  //% weight=99 blockId=knobSensor_init  block="initialisiere Drehknopf|%port"
+  //% weight=99
+  //% blockId=knobSensor_init
+  //% block="initialize rotating knob|%port"
+  //% block.loc.de="initialisiere Drehknopf|%port"
   export function knobSensor_init(port: startbit_knobPort) {
     switch (port) {
       case startbit_knobPort.port1:
@@ -112,7 +135,10 @@ namespace Informatiktheater {
     port6 = 0x06,
   }
 
-  //% weight=93 blockId=lineFollow_iic_init  block="initialisiere Linienfolger iic|%port"
+  //% weight=93
+  //% blockId=lineFollow_iic_init
+  //% block="initialize line follower iic|%port"
+  //% block.log.de="initialisiere Linienfolger iic|%port"
   export function lineFollow_iic_init(port: startbit_iic) {
     switch (port) {
       case startbit_iic.port3:
@@ -132,9 +158,13 @@ namespace Informatiktheater {
   }
 
   /**
-   * Startbit initialization, please execute at boot time
+   * Informatiktheater initialization, please execute at boot time
    */
-  //% weight=100 blockId=startbit_Init block="initialisiere Informatiktheater"
+  //% weight=100
+  //% blockId=startbit_Init
+  //% block="initialize Informatiktheater"
+  //% block.loc.de="initialisiere Informatiktheater"
+  //% jsdoc.loc.de="Informatiktheater Initialisation, bitte beim Start ausführen."
   export function startbit_Init() {
     startbit_initRGBLight();
     serial.redirect(SerialPin.P12, SerialPin.P8, BaudRate.BaudRate115200);
@@ -158,13 +188,9 @@ namespace Informatiktheater {
   let MESSAGE_MAC = 0xff;
   let MESSAGE_ANGLE = 0x100;
 
-  let i2cPortValid: boolean = true;
-  let connectStatus: boolean = false;
-
   let servo1Angle: number = 0xfff;
   let servo2Angle: number = 0xfff;
 
-  let macStr: string = "";
   let actiongroup_finished = true;
 
   let Digitaltube: startbit_TM1640LEDs;
@@ -176,9 +202,6 @@ namespace Informatiktheater {
     0x39, 0x5e, 0x79, 0x71,
   ];
 
-  /**
-   * Get the handle command.
-   */
   function getHandleCmd() {
     let charStr: string = serial.readString();
     handleCmd = handleCmd.concat(charStr);
@@ -214,14 +237,7 @@ namespace Informatiktheater {
         }
       }
       if (cmd.charAt(0).compare("M") == 0 && cmd.length == 18) {
-        macStr = cmd.substr(1, 17);
         control.raiseEvent(MESSAGE_MAC, 1);
-      }
-      if (cmd.compare("WIFI_S_CONNECT") == 0) {
-        connectStatus = true;
-      }
-      if (cmd.compare("WIFI_S_DISCONNECT") == 0) {
-        connectStatus = false;
       }
       if (cmd.charAt(0).compare("S") == 0 && cmd.length == 5) {
         let arg1Int: number = strToNumber(cmd.substr(1, 1));
@@ -329,8 +345,10 @@ namespace Informatiktheater {
     S6,
   }
 
-  //% weight=100 blockId=setServo
-  //% block="setze Servomotor %index| auf Winkel (°) %angle|für Dauer (ms) %duration|Bereich (°) %range"
+  //% weight=100
+  //% blockId=setServo
+  //% block="set servo motor %index| angle (°) %angle| duration (ms) %duration|range (°) %range"
+  //% block.loc.de="setze Servomotor %index| auf Winkel (°) %angle|für Dauer (ms) %duration|Bereich (°) %range"
   //% angle.min=0 angle.max=270
   //% index.defl=1
   //% duration.shadow=timePicker
@@ -359,10 +377,10 @@ namespace Informatiktheater {
     basic.pause(1);
   }
 
-  /**
-   *	Set the speed of the number 1 motor and number 2 motor, range of -100~100, that can control the tank to go advance or turn of.
-   */
-  //% weight=96 blockId=startbit_setMotorSpeed block="setze Geschwindigkeit für |Motor 1 %speed1|und Motor 2 %speed2"
+  //% weight=96
+  //% blockId=startbit_setMotorSpeed
+  //% block="set velocity for |motor 1 %speed1|and motor 2 %speed2"
+  //% block.loc.de="setze Geschwindigkeit für |Motor 1 %speed1|und Motor 2 %speed2"
   //% speed1.min=-100 speed1.max=100
   //% speed2.min=-100 speed2.max=100
   //% subcategory=Servo/Motor
@@ -733,10 +751,10 @@ namespace Informatiktheater {
     return val;
   }
 
-  /**
-   * Get the condition of the line follower sensor
-   */
-  //% weight=96 blockId=startbit_readLineFollowerStatus block="Linienfolger Status|%status"
+  //% weight=96
+  //% blockId=startbit_readLineFollowerStatus
+  //% block="Line follower status|%status"
+  //% block.loc.de="Linienfolger Status|%status"
   //% subcategory=Sensor
   export function startbit_readLineFollowerStatus(
     status: startbit_lineFollower
@@ -761,10 +779,10 @@ namespace Informatiktheater {
     }
   }
 
-  /**
-   * Get the line follower sensor port ad value
-   */
-  //% weight=89 blockId=startbit_lineSensorValue blockGap=50 block="hole Linienfolger Sensor|%sensor|ad Wert"
+  //% weight=89
+  //% blockId=startbit_lineSensorValue blockGap=50
+  //% block="get line follower sensor|%sensor|ad value"
+  //% block.loc.de="hole Linienfolger Sensor|%sensor|ad Wert"
   //% subcategory=Sensor
   export function startbit_lineSensorValue(
     sensor: startbit_LineFollowerSensor
@@ -788,7 +806,10 @@ namespace Informatiktheater {
   /**
    * Get the distance of ultrasonic detection to the obstacle
    */
-  //% weight=90 blockId=startbit_ultrasonic  block="hole Ultraschall|Distanz (cm)"
+  //% weight=90
+  //% blockId=startbit_ultrasonic
+  //% block="get ultrasonic |distancse (cm)"
+  //% block.loc.de="hole Ultraschall|Distanz (cm)"
   //% subcategory=Sensor
   export function startbit_ultrasonic(): number {
     pins.setPull(echoPin, PinPullMode.PullNone);
@@ -814,7 +835,10 @@ namespace Informatiktheater {
   /**
    * Get the ad value of the knob moudule
    */
-  //% weight=92 blockId=startbit_getKnobValue  block="hole Drehknopf|Wert (0~255)"
+  //% weight=92
+  //% blockId=startbit_getKnobValue
+  //% block="get rotating knob|value (0~255)"
+  //% block.loc.de="hole Drehknopf|Wert (0~255)"
   //% subcategory=Sensor
   export function startbit_getKnobValue(): number {
     let adValue = pins.analogReadPin(knobPin);
@@ -841,18 +865,20 @@ namespace Informatiktheater {
    * @param brightness a measure of LED brightness in 0-255. eg: 255
    */
   //% blockId="startbit_setBrightness"
-  //% block="setze Helligkeit auf Wert %brightness"
+  //% block="set brightness value to %brightness"
+  //% block.loc.de="setze Helligkeit auf Wert %brightness"
   //% brightness.min=0 brightness.max=255 brightness.defl=255
+  //% jsdoc.loc.de="Setze die Hellighkeit des LED Streifens. Dies gilt nur zukünftige Operationen."
+  //% brightness.loc.de="LED Helligkeit zwischen 0 bis 255"
   //% weight=100
   //% subcategory=LED
   export function startbit_setBrightness(brightness: number): void {
     lhRGBLight.setBrightness(brightness);
   }
 
-  /**
-   * Set RGB Color argument
-   */
-  //% weight=99 blockId=startbit_setPixelRGBArgs block="setze|%lightoffset|Farbe auf %rgb"
+  //% weight=99 blockId=startbit_setPixelRGBArgs
+  //% block="set|%lightoffset|color to %rgb"
+  //% block.loc.de="setze|%lightoffset|Farbe auf %rgb"
   //% subcategory=LED
   export function startbit_setPixelRGBArgs(
     lightoffset: StartbitLights,
@@ -862,9 +888,13 @@ namespace Informatiktheater {
   }
 
   /**
-   * Display the colored lights, and set the color of the colored lights to match the use. After setting the color of the colored lights, the color of the lights must be displayed.
+   * Display the colored lights, and set the color of the colored lights to match the use.
+   * After setting the color of the colored lights, the color of the lights must be displayed.
    */
-  //% weight=97 blockId=startbit_showLight block="Licht an"
+  //% weight=97 blockId=startbit_showLight
+  //% block="Light on"
+  //% block.loc.de="Licht an"
+  //% jsdoc.loc.de="Zeige die gefärbten Lichter"
   //% subcategory=LED
   export function startbit_showLight() {
     lhRGBLight.show();
@@ -873,7 +903,10 @@ namespace Informatiktheater {
   /**
    * Clear the color of the colored lights and turn off the lights.
    */
-  //% weight=96 blockGap=50 blockId=startbit_clearLight block="Licht aus"
+  //% weight=96 blockGap=50 blockId=startbit_clearLight
+  //% block="Light off"
+  //% block.loc.de="Licht aus"
+  //% jsdoc.loc.de="Setze Farbe zurück und schalte LED aus"
   //% subcategory=LED
   export function startbit_clearLight() {
     lhRGBLight.clear();
@@ -941,15 +974,19 @@ namespace Informatiktheater {
   }
 
   export enum startbit_LineColor {
-    //% block="Schwarz"
+    //% block="Black"
+    //% block.loc.de="Schwarz"
     Black,
-    //% block="Weiss"
+    //% block="White"
+    //% block.loc.de="Weiss"
     White,
   }
 
   const LINE_FOLLOWER_I2C_ADDR = 0x78;
 
-  //% weight=95 blockId=startbit_line_followers blockGap=50 block="Linienfolger %lineFollowerSensor in %LineColor ?"
+  //% weight=95 blockId=startbit_line_followers blockGap=50
+  //% block="Line follower %lineFollowerSensor in %LineColor ?"
+  //% block.loc.de="Linienfolger %lineFollowerSensor in %LineColor ?"
   //% inlineInputMode=inline
   //% subcategory=Sensor
   export function startbit_line_followers(
