@@ -1061,25 +1061,44 @@ namespace Informatiktheater {
     list: Array<number>;
 
     //% block="setze $this auf $list "
-    //% x.defl=Songliste
-    //% x.shadow=variables_get
+    //% this.defl=Songliste
     public createSongListArray(list: number[]) {
       this.list = list;
     }
 
     //% block="Play next track in list $this"
     //% block.loc.de="nächste Songnummer in Liste $this"
-    public playNextTrack() {
+    public playNextTrack(): number {
       if (this.TrackIndex < this.list.length) {
         this.TrackIndex += 1;
       } else {
         this.TrackIndex = 0;
       }
+      return this.TrackIndex;
+    }
+    //
+    //% block="Play previous track in list $this"
+    //% block.loc.de="vorherige Songnummer in Liste $this"
+    public playPreviousTrack(): number {
+      if (this.TrackIndex <= 0) {
+        this.TrackIndex == 0;
+      } else {
+        this.TrackIndex--;
+      }
+      return this.TrackIndex;
+    }
+
+    //% block="current song number in list %this"
+    //% block.loc.de="Aktuelle Songnummer in liste %this"
+    public currentTrack(): number {
+      return this.TrackIndex;
+    }
+
+    //% block="Back to first song in list %this"
+    //% block.loc.de="Zurück zur ersten Songnummer in Liste %this"
+    public gotoFirstTrack(): number {
+      this.TrackIndex = 0;
+      return this.currentTrack();
     }
   }
-  // //% block="setze $songlist auf $list "
-  // //% x.defl=Songliste
-  // //% x.shadow=variables_get
-  // export function createSongListArray(songlist: Array<number>, list: number[]) {
-  // }
 }
