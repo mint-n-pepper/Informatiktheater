@@ -1079,13 +1079,12 @@ namespace Informatiktheater {
     //% this.defl=Songliste
     //% this.shadow=variables_get
     //% subcategory=MP3-Box
-    public playNextTrack(): number {
+    public playNextTrack() {
       if (this.TrackIndex < this.list.length) {
         this.TrackIndex += 1;
       } else {
         this.TrackIndex = 0;
       }
-      return this.TrackIndex;
     }
     //
     //% block="Play previous track in list $this"
@@ -1093,13 +1092,12 @@ namespace Informatiktheater {
     //% this.defl=Songliste
     //% this.shadow=variables_get
     //% subcategory=MP3-Box
-    public playPreviousTrack(): number {
+    public playPreviousTrack() {
       if (this.TrackIndex <= 0) {
         this.TrackIndex == 0;
       } else {
         this.TrackIndex--;
       }
-      return this.TrackIndex;
     }
 
     //% block="current song number in list %this"
@@ -1112,13 +1110,12 @@ namespace Informatiktheater {
     }
 
     //% block="Back to first song in list %this"
-    //% block.loc.de="Zurück zur ersten Songnummer in Liste %this"
+    //% block.loc.de="zurück zur ersten Songnummer in Liste %this"
     //% this.defl=Songliste
     //% this.shadow=variables_get
     //% subcategory=MP3-Box
-    public gotoFirstTrack(): number {
+    public gotoFirstTrack() {
       this.TrackIndex = 0;
-      return this.currentTrack();
     }
   }
 
