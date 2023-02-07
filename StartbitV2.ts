@@ -1055,15 +1055,15 @@ namespace Informatiktheater {
   // }
 
   // MP3 Player stuff
-  //
 
   export class SongList {
     TrackIndex: number;
     list: Array<number>;
 
-    // init(): void {
-    //   this.TrackIndex = 0;
-    // }
+    constructor() {
+      this.TrackIndex = 0;
+      this.list = [0];
+    }
 
     //% block="setze $this auf $list "
     //% this.defl=Songliste
@@ -1122,5 +1122,14 @@ namespace Informatiktheater {
     }
   }
 
-  let Songliste: Informatiktheater.SongList = new Informatiktheater.SongList();
+  /**
+   * Creates a song list and automtically set it to a variable
+   */
+  //% block="create song list"
+  //% block.loc.de="erstelle Songliste"
+  //% jsdoc.loc.de="erstellt eine neue Songliste und setzt sie auf eine Variable. Muss im Startblock ausgeführt werden bevor MP3 Box gebraucht werden kann."
+  //% blockSetVariable=Songliste
+  export function createSongList(): SongList {
+    return undefined;
+  }
 }
