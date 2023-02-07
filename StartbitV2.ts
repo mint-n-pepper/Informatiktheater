@@ -1065,6 +1065,7 @@ namespace Informatiktheater {
       this.list = [0];
     }
 
+    //% weight=99
     //% block="setze $this auf $list "
     //% this.defl=Songliste
     //% this.shadow=variables_get
@@ -1074,6 +1075,7 @@ namespace Informatiktheater {
       this.TrackIndex = 0;
     }
 
+    //% weight=98
     //% block="Play next track in list $this"
     //% block.loc.de="nächste Songnummer in Liste $this"
     //% this.defl=Songliste
@@ -1087,6 +1089,7 @@ namespace Informatiktheater {
       }
     }
     //
+    //% weight=97
     //% block="Play previous track in list $this"
     //% block.loc.de="vorherige Songnummer in Liste $this"
     //% this.defl=Songliste
@@ -1100,6 +1103,7 @@ namespace Informatiktheater {
       }
     }
 
+    //% weight=95
     //% block="current song number in list %this"
     //% block.loc.de="Aktuelle Songnummer in liste %this"
     //% this.defl=Songliste
@@ -1109,6 +1113,7 @@ namespace Informatiktheater {
       return this.list[this.TrackIndex];
     }
 
+    //% weight=96
     //% block="Back to first song in list %this"
     //% block.loc.de="zurück zur ersten Songnummer in Liste %this"
     //% this.defl=Songliste
@@ -1122,6 +1127,7 @@ namespace Informatiktheater {
   /**
    * Creates a song list and automtically set it to a variable
    */
+  //% weight=100
   //% block="create song list"
   //% block.loc.de="erstelle Songliste"
   //% jsdoc.loc.de="erstellt eine neue Songliste und setzt sie auf eine Variable. Muss im Startblock ausgeführt werden bevor MP3 Box gebraucht werden kann."
