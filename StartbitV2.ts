@@ -1130,6 +1130,6 @@ namespace Informatiktheater {
   //% jsdoc.loc.de="erstellt eine neue Songliste und setzt sie auf eine Variable. Muss im Startblock ausgeführt werden bevor MP3 Box gebraucht werden kann."
   //% blockSetVariable=Songliste
   export function createSongList(): SongList {
-    return undefined;
+    return new SongList();
   }
 }
