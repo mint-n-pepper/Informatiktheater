@@ -1106,7 +1106,7 @@ namespace Informatiktheater {
     //% this.shadow=variables_get
     //% subcategory=MP3-Box
     public currentTrack(): number {
-      return this.TrackIndex;
+      return this.list[this.TrackIndex];
     }
 
     //% block="Back to first song in list %this"
@@ -1126,6 +1126,7 @@ namespace Informatiktheater {
   //% block.loc.de="erstelle Songliste"
   //% jsdoc.loc.de="erstellt eine neue Songliste und setzt sie auf eine Variable. Muss im Startblock ausgeführt werden bevor MP3 Box gebraucht werden kann."
   //% blockSetVariable=Songliste
+  //% subcategory=MP3-Box
   export function createSongList(): SongList {
     return new SongList();
   }
