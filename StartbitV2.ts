@@ -138,7 +138,7 @@ namespace Informatiktheater {
   //% weight=93
   //% blockId=lineFollow_iic_init
   //% block="initialize line follower iic|%port"
-  //% block.log.de="initialisiere Linienfolger iic|%port"
+  //% block.loc.de="initialisiere Linienfolger iic|%port"
   export function lineFollow_iic_init(port: startbit_iic) {
     switch (port) {
       case startbit_iic.port3:
