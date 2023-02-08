@@ -909,9 +909,9 @@ namespace Informatiktheater {
   //% block="Trittmatte pressed"
   //% block.loc.de="Trittmatte P2 gedrückt"
   //% subcategory=Trittmatte
-  export function control.onEvent(EventBusSource.MICROBIT_ID_IO_P2, EventBusValue.MICROBIT_PIN_EVT_RISE, function() {
+  export function control.onEvent(EventBusSource.MICROBIT_ID_IO_P2, EventBusValue.MICROBIT_PIN_EVT_RISE, handler: () => void ){
 
-  })
+  }
 
   // MP3 Player stuff
 
