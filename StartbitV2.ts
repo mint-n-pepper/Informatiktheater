@@ -876,11 +876,42 @@ namespace Informatiktheater {
     return status;
   }
 
-  // //% block="Trittmatte gedrückt"
-  // //
-  // export function trittmattePressed(handler: () => void) {
-  //   handler();
-  // }
+  // Trittmatte
+
+  export enum startbit_trittmattePort {
+    port1 = 0x01,
+    port2 = 0x02,
+    port3 = 0x03,
+  }
+  //% weight=100
+  //% blockId=trittmatte_init
+  //% block="initialize trittmatte |%port"
+  //% block.loc.de="initialisiere Trittmatte|%port"
+  //% subcategory=Trittmatte
+  export function trittmatte_init(port: startbit_trittmattePort) {
+    let pin: MicrobitPin;
+    switch (port) {
+      case startbit_trittmattePort.port1:
+        pin.id = 2;
+        break;
+      case startbit_trittmattePort.port2:
+        pin.id = 14;
+        break;
+      case startbit_trittmattePort.port3:
+        pin.id = 16;
+        break;
+    }
+    pin.setPull(inPullMode.PullUp);
+    pins.setEvents(pin.id, PinEventType.Touch);
+  }
+
+  //% weight=1
+  //% block="Trittmatte pressed"
+  //% block.loc.de="Trittmatte P2 gedrückt"
+  //% subcategory=Trittmatte
+  export function control.onEvent(EventBusSource.MICROBIT_ID_IO_P2, EventBusValue.MICROBIT_PIN_EVT_RISE, function() {
+
+  })
 
   // MP3 Player stuff
 
