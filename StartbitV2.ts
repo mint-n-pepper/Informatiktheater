@@ -150,13 +150,6 @@ namespace Informatiktheater {
     }
   }
 
-  export enum startbit_servorange {
-    //% block="180"
-    range1 = 180,
-    //% block="270"
-    range2 = 270,
-  }
-
   /**
    * Informatiktheater initialization, please execute at boot time
    */
@@ -347,9 +340,9 @@ namespace Informatiktheater {
 
   //% weight=100
   //% blockId=setServo
-  //% block="set servo motor %index| angle (°) %angle| duration (ms) %duration|range (°) %range"
-  //% block.loc.de="setze Servomotor %index| auf Winkel (°) %angle|für Dauer (ms) %duration|Bereich (°) %range"
-  //% angle.min=0 angle.max=270
+  //% block="set servo motor %index| angle (°) %angle| duration (ms) %duration"
+  //% block.loc.de="setze Servomotor %index| auf Winkel (°) %angle|für Dauer (ms) %duration"
+  //% angle.min=0 angle.max=180
   //% index.defl=1
   //% duration.shadow=timePicker
   //% inlineInputMode=inline
@@ -357,10 +350,9 @@ namespace Informatiktheater {
   export function setPwmServo(
     index: ServoIndex = 1,
     angle: number,
-    duration: number = 300,
-    range: startbit_servorange
+    duration: number = 300
   ) {
-    let position = mapValue(angle, 0, range, 500, 2500);
+    let position = mapValue(angle, 0, 180, 500, 2500);
 
     let buf = pins.createBuffer(10);
     buf[0] = 0x55;
