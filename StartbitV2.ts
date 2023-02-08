@@ -883,6 +883,8 @@ namespace Informatiktheater {
     port2 = 0x02,
     port3 = 0x03,
   }
+
+  let trittmatte_pin: number;
   //% weight=100
   //% blockId=trittmatte_init
   //% block="initialize trittmatte |%port"
@@ -896,7 +898,7 @@ namespace Informatiktheater {
         control.onEvent(
           EventBusSource.MICROBIT_ID_IO_P2,
           EventBusValue.MICROBIT_PIN_EVT_RISE,
-          trittmatte_pressed((fromPin = pin.id))
+          trittmatte_pressed()
         );
         break;
       case startbit_trittmattePort.port2:
@@ -912,16 +914,11 @@ namespace Informatiktheater {
 
   //% weight=1
   //% block="Trittmatte pressed"
-  //% block.loc.de="Trittmatte |%port gedrückt"
+  //% block.loc.de="Trittmatte gedrückt"
   //% subcategory=Trittmatte
-  export function trittmatte_pressed(
-    fromPin: number,
-    port: startbit_trittmattePort
-  ) {
-    if (port != fromPin) {
-      console.log("Received event from another port");
-      return;
-    }
+  export function trittmatte_pressed(handler: () => void) {
+    console.log("trittmatte gedrückt");
+    handler();
   }
 
   // MP3 Player stuff
