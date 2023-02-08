@@ -34,22 +34,22 @@ enum StartbitRGBColors {
 
 enum StartbitLights {
     //% block="Light 1"
-    //% block.loc.de="Licht 1"
+    //% block.loc.de="LED 1"
     Light1 = 0x00,
     //% block="Light 2"
-    //% block.loc.de="Licht 2"
+    //% block.loc.de="LED 2"
     Light2 = 0x01,
     //% block="Light 3"
-    //% block.loc.de="Licht 3"
+    //% block.loc.de="LED 3"
     Light3 = 0x02,
     //% block="Light 4"
-    //% block.loc.de="Licht 4"
+    //% block.loc.de="LED 4"
     Light4 = 0x03,
     //% block="Light 5"
-    //% block.loc.de="Licht 5"
+    //% block.loc.de="LED 5"
     Light5 = 0x04,
     //% block="Light 6"
-    //% block.loc.de="Licht 6"
+    //% block.loc.de="LED 6"
     Light6 = 0x05,
     //% block="All"
     //% block.loc.de="Alle"

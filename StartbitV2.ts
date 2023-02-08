@@ -176,17 +176,12 @@ namespace Informatiktheater {
   let lhRGBLight: StartbitRGBLight.LHstartbitRGBLight;
   let lhRGBLightBelt: StartbitRGBLight.LHstartbitRGBLight;
 
-  let P14_ad = 0;
-
   let MESSAGE_MAC = 0xff;
   let MESSAGE_ANGLE = 0x100;
 
   let servo1Angle: number = 0xfff;
   let servo2Angle: number = 0xfff;
 
-  let actiongroup_finished = true;
-
-  let Digitaltube: startbit_TM1640LEDs;
   let TM1640_CMD1 = 0x40;
   let TM1640_CMD2 = 0xc0;
   let TM1640_CMD3 = 0x80;
@@ -209,14 +204,11 @@ namespace Informatiktheater {
           let arg2Int: number = strToNumber(cmd.substr(3, 2));
           let arg3Int: number = strToNumber(cmd.substr(5, 2));
 
-          P14_ad = arg1Int;
-
           if (arg3Int != -1) {
             currentVoltage = arg3Int * 78.63;
             currentVoltage = Math.round(currentVoltage);
           }
         } else if (cmd.length == 5) {
-          actiongroup_finished = true;
         } else {
         }
       }
@@ -286,17 +278,6 @@ namespace Informatiktheater {
       let tmp: number = converOneChar(str.charAt(i));
       if (tmp == -1) return -1;
       if (i > 0) num *= 16;
-      num += tmp;
-    }
-    return num;
-  }
-
-  function decStrToNumber(str: string): number {
-    let num: number = 0;
-    for (let i = 0; i < str.length; i++) {
-      let tmp: number = converOneChar(str.charAt(i));
-      if (tmp == -1) return -1;
-      if (i > 0) num *= 10;
       num += tmp;
     }
     return num;
@@ -390,151 +371,6 @@ namespace Informatiktheater {
     buf[4] = speed1;
     buf[5] = speed2;
     serial.writeBuffer(buf);
-  }
-
-  /**
-   * TM1640 LED display
-   */
-  export class startbit_TM1640LEDs {
-    buf: Buffer;
-    clk: DigitalPin;
-    dio: DigitalPin;
-    _ON: number;
-    brightness: number;
-    count: number; // number of LEDs
-
-    /**
-     * initial TM1640
-     */
-    init(): void {
-      pins.digitalWritePin(this.clk, 0);
-      pins.digitalWritePin(this.dio, 0);
-      this._ON = 8;
-      this.buf = pins.createBuffer(this.count);
-      this.clear();
-    }
-
-    /**
-     * Start
-     */
-    _start() {
-      pins.digitalWritePin(this.dio, 0);
-      pins.digitalWritePin(this.clk, 0);
-    }
-
-    /**
-     * Stop
-     */
-    _stop() {
-      pins.digitalWritePin(this.dio, 0);
-      pins.digitalWritePin(this.clk, 1);
-      pins.digitalWritePin(this.dio, 1);
-    }
-
-    /**
-     * send command1
-     */
-    _write_data_cmd() {
-      this._start();
-      this._write_byte(TM1640_CMD1);
-      this._stop();
-    }
-
-    /**
-     * send command3
-     */
-    _write_dsp_ctrl() {
-      this._start();
-      this._write_byte(TM1640_CMD3 | this._ON | this.brightness);
-      this._stop();
-    }
-
-    /**
-     * send a byte to 2-wire interface
-     */
-    _write_byte(b: number) {
-      for (let i = 0; i < 8; i++) {
-        pins.digitalWritePin(this.clk, 0);
-        pins.digitalWritePin(this.dio, (b >> i) & 1);
-        pins.digitalWritePin(this.clk, 1);
-      }
-      pins.digitalWritePin(this.clk, 1);
-      pins.digitalWritePin(this.clk, 0);
-    }
-
-    intensity(val: number = 7) {
-      if (val < 1) {
-        this.off();
-        return;
-      }
-      if (val > 8) val = 8;
-      this._ON = 8;
-      this.brightness = val - 1;
-      this._write_data_cmd();
-      this._write_dsp_ctrl();
-    }
-
-    /**
-     * set data to TM1640, with given bit
-     */
-    _dat(bit: number, dat: number) {
-      this._write_data_cmd();
-      this._start();
-      this._write_byte(TM1640_CMD2 | bit % this.count);
-      this._write_byte(dat);
-      this._stop();
-      this._write_dsp_ctrl();
-    }
-
-    showbit(num: number = 5, bit: number = 0) {
-      this.buf[bit % this.count] = _SEGMENTS[num % 16];
-      this._dat(bit, _SEGMENTS[num % 16]);
-    }
-
-    showNumber(num: number) {
-      if (num < 0) {
-        this._dat(0, 0x40); // '-'
-        num = -num;
-      } else this.showbit(Math.idiv(num, 1000) % 10);
-      this.showbit(num % 10, 3);
-      this.showbit(Math.idiv(num, 10) % 10, 2);
-      this.showbit(Math.idiv(num, 100) % 10, 1);
-    }
-
-    showHex(num: number) {
-      if (num < 0) {
-        this._dat(0, 0x40); // '-'
-        num = -num;
-      } else this.showbit((num >> 12) % 16);
-      this.showbit(num % 16, 3);
-      this.showbit((num >> 4) % 16, 2);
-      this.showbit((num >> 8) % 16, 1);
-    }
-
-    showDP(bit: number = 1, show: boolean = true) {
-      bit = bit % this.count;
-      if (show) this._dat(bit, this.buf[bit] | 0x80);
-      else this._dat(bit, this.buf[bit] & 0x7f);
-    }
-
-    clear() {
-      for (let i = 0; i < this.count; i++) {
-        this._dat(i, 0);
-        this.buf[i] = 0;
-      }
-    }
-
-    on() {
-      this._ON = 8;
-      this._write_data_cmd();
-      this._write_dsp_ctrl();
-    }
-
-    off() {
-      this._ON = 0;
-      this._write_data_cmd();
-      this._write_dsp_ctrl();
-    }
   }
 
   const APDS9960_I2C_ADDR = 0x39;
