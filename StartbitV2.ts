@@ -895,13 +895,13 @@ namespace Informatiktheater {
     switch (port) {
       case startbit_trittmattePort.port1:
         pin.id = 2;
-        control.onEvent(
-          EventBusSource.MICROBIT_ID_IO_P2,
-          EventBusValue.MICROBIT_PIN_EVT_RISE,
-          () => {
-            console.log("pin event triggered from P2");
-          }
-        );
+        // control.onEvent(
+        //   EventBusSource.MICROBIT_ID_IO_P2,
+        //   EventBusValue.MICROBIT_PIN_EVT_RISE,
+        //   () => {
+        //     console.log("pin event triggered from P2");
+        //   }
+        // );
         break;
       case startbit_trittmattePort.port2:
         pin.id = 14;
@@ -921,6 +921,21 @@ namespace Informatiktheater {
   export function trittmatte_pressed(handler: () => void) {
     console.log("trittmatte gedrückt");
     handler();
+  }
+  /**
+   * Registers Trittmatte event handler.
+   */
+  //% weight=20 blockGap=8 blockId="control_on_event_trittmatte"
+  //%block="on event|from %src=control_event_source_id|with value %value=control_event_value_id"
+  //% blockExternalInputs=1
+  export function onEventTrittmatte(
+    src: number,
+    value: number,
+    handler: () => void,
+    flags: number = 0
+  ) {
+    if (!flags) flags = EventFlags.QueueIfBusy;
+    pxtcore.registerWithDal(src, value, handler, flags);
   }
 
   // MP3 Player stuff
