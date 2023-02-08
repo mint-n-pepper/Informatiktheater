@@ -898,7 +898,9 @@ namespace Informatiktheater {
         control.onEvent(
           EventBusSource.MICROBIT_ID_IO_P2,
           EventBusValue.MICROBIT_PIN_EVT_RISE,
-          trittmatte_pressed()
+          () => {
+            console.log("pin event triggered from P2");
+          }
         );
         break;
       case startbit_trittmattePort.port2:
@@ -908,8 +910,8 @@ namespace Informatiktheater {
         pin.id = 16;
         break;
     }
-    pin.setPull(inPullMode.PullUp);
-    pins.setEvents(pin.id, PinEventType.Touch);
+    pin.setPull(PinPullMode.PullUp);
+    pins.setEvents(pin.id, PinEventType.Edge);
   }
 
   //% weight=1
