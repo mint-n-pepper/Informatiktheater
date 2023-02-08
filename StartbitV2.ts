@@ -681,7 +681,7 @@ namespace Informatiktheater {
     if (!lhRGBLight) {
       lhRGBLight = StartbitRGBLight.create(
         DigitalPin.P15,
-        6,
+        6, // Silvan: Why 6 LEDS?!
         StartbitRGBPixelMode.RGB
       );
     }
