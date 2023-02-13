@@ -4,8 +4,7 @@
   "description": "Blocks for Informatiktheater",
   "license": "MIT",
   "dependencies": {
-    "core": "file:../core",
-    "pulse": "file:../pulse"
+    "core": "file:../core"
   },
   "files": [
     "README.md",
