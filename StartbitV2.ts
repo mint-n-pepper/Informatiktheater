@@ -884,7 +884,6 @@ namespace Informatiktheater {
     port3 = 0x03,
   }
 
-  let trittmatte_pin: number;
   //% weight=100
   //% blockId=trittmatte_init
   //% block="initialize trittmatte |%port"
@@ -894,23 +893,16 @@ namespace Informatiktheater {
     let pin: MicrobitPin;
     switch (port) {
       case startbit_trittmattePort.port1:
-        pin.id = 2;
-        // control.onEvent(
-        //   EventBusSource.MICROBIT_ID_IO_P2,
-        //   EventBusValue.MICROBIT_PIN_EVT_RISE,
-        //   () => {
-        //     console.log("pin event triggered from P2");
-        //   }
-        // );
+        pin = new MicrobitPin(2);
         break;
       case startbit_trittmattePort.port2:
-        pin.id = 14;
+        pin = new MicrobitPin(14);
         break;
       case startbit_trittmattePort.port3:
-        pin.id = 16;
+        pin = new MicrobitPin(16);
         break;
     }
-    pin.setPull(PinPullMode.PullUp);
+    pin.setPull(PinPullMode.PullDown);
     pins.setEvents(pin.id, PinEventType.Edge);
   }
 
