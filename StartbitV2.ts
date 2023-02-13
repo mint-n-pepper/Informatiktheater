@@ -902,8 +902,8 @@ namespace Informatiktheater {
         pin = new MicrobitPin(16);
         break;
     }
-    pin.setPull(PinPullMode.PullDown);
-    pins.setEvents(pin.id, PinEventType.Edge);
+    pin.setPull(PinPullMode.PullUp);
+    pins.setEvents(pin.id, PinEventType.Pulse);
   }
 
   //% weight=1
