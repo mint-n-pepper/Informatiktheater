@@ -890,20 +890,20 @@ namespace Informatiktheater {
   //% block.loc.de="initialisiere Trittmatte|%port"
   //% subcategory=Trittmatte
   export function trittmatte_init(port: startbit_trittmattePort) {
-    let pin: MicrobitPin;
+    let pin: DigitalPin;
     switch (port) {
       case startbit_trittmattePort.port1:
-        pin = new MicrobitPin(2);
+        pin = DigitalPin.P2;
         break;
       case startbit_trittmattePort.port2:
-        pin = new MicrobitPin(14);
+        pin = DigitalPin.P14;
         break;
       case startbit_trittmattePort.port3:
-        pin = new MicrobitPin(16);
+        pin = DigitalPin.P16;
         break;
     }
-    pin.setPull(PinPullMode.PullUp);
-    pins.setEvents(pin.id, PinEventType.Pulse);
+    pins.setEvents(pin, PinEventType.Pulse);
+    pins.setPull(pin, PinPullMode.PullUp);
   }
 
   //% weight=1
