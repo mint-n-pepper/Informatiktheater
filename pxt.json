@@ -4,14 +4,14 @@
   "description": "Blocks for Informatiktheater",
   "license": "MIT",
   "dependencies": {
-    "core": "*"
+    "core": "file:../core",
+    "pulse": "file:../pulse"
   },
   "files": [
     "README.md",
     "StartbitV2.ts",
     "StartbitRGBLight.ts",
-    "sendbuffer.asm",
-    "pxtcore.h"
+    "sendbuffer.asm"
   ],
   "testFiles": ["test.ts"],
   "public": true,

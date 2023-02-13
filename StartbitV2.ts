@@ -915,21 +915,22 @@ namespace Informatiktheater {
     handler();
   }
 
-  // /**
-  //  * Registers Trittmatte event handler.
-  //  */
-  // //% weight=20 blockGap=8 blockId="control_on_event_trittmatte"
-  // //%block="on event|from %src=control_event_source_id|with value %value=control_event_value_id"
-  // //% blockExternalInputs=1
-  // export function onEventTrittmatte(
-  //   src: number,
-  //   value: number,
-  //   handler: () => void,
-  //   flags: number = 0
-  // ) {
-  //   if (!flags) flags = EventFlags.QueueIfBusy;
-  //   pxtcore.registerWithDal(src, value, handler, flags);
-  // }
+  /**
+   * Registers Trittmatte event handler.
+   */
+  //% weight=20 blockGap=8 blockId="control_on_event_trittmatte"
+  //%block="on event|from %src=control_event_source_id|with value %value=control_event_value_id"
+  //% blockExternalInputs=1
+  //% subcategory=Trittmatte
+  export function onEventTrittmatte(
+    src: number,
+    value: number,
+    handler: () => void,
+    flags: number = 0
+  ) {
+    if (!flags) flags = EventFlags.QueueIfBusy;
+    pxtcore.registerWithDal(src, value, handler, flags);
+  }
 
   // MP3 Player stuff
 
