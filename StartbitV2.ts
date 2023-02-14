@@ -904,37 +904,63 @@ namespace Informatiktheater {
     }
     pins.setEvents(pin, PinEventType.Pulse);
     pins.setPull(pin, PinPullMode.PullUp);
-
-    pins.onPulsed(pin, PulseValue.High, function() {
-      if (pins.pulseDuration() > 150000) {
-        Informatiktheater.startbit_setPixelRGBArgs(
-          StartbitLights.Light2,
-          StartbitRGBColors.Orange
-        );
-        Informatiktheater.startbit_showLight();
-        music.playTone(165, music.beat(BeatFraction.Quarter));
-        trittmatte_pressed(() => { });
-      }
-    });
-
-    pins.onPulsed(pin, PulseValue.Low, function() {
-      if (pins.pulseDuration() > 150000) {
-        Informatiktheater.startbit_setPixelRGBArgs(
-          StartbitLights.Light2,
-          StartbitRGBColors.White
-        );
-        Informatiktheater.startbit_showLight();
-        music.playTone(440, music.beat(BeatFraction.Quarter));
-      }
-    });
+    //
+    // pins.onPulsed(pin, PulseValue.High, function() {
+    //   if (pins.pulseDuration() > 150000) {
+    //     Informatiktheater.startbit_setPixelRGBArgs(
+    //       StartbitLights.Light2,
+    //       StartbitRGBColors.Orange
+    //     );
+    //     Informatiktheater.startbit_showLight();
+    //     music.playTone(165, music.beat(BeatFraction.Quarter));
+    //     trittmatte_pressed(() => { });
+    //   }
+    // });
+    //
+    // pins.onPulsed(pin, PulseValue.Low, function() {
+    //   if (pins.pulseDuration() > 150000) {
+    //     Informatiktheater.startbit_setPixelRGBArgs(
+    //       StartbitLights.Light2,
+    //       StartbitRGBColors.White
+    //     );
+    //     Informatiktheater.startbit_showLight();
+    //     music.playTone(440, music.beat(BeatFraction.Quarter));
+    //   }
+    // });
   }
 
+  /**
+   * Binds code to be executed to onPulsed event
+   */
   //% weight=1
   //% block="Trittmatte pressed"
-  //% block.loc.de="Trittmatte gedrückt"
+  //% block.loc.de="Trittmatte gedrückt auf|%port"
   //% subcategory=Trittmatte
-  export function trittmatte_pressed(handler: () => void) {
+  export function trittmatte_pressed(
+    port: startbit_trittmattePort,
+    handler: () => void
+  ): void {
     // handler();
+    let pin: DigitalPin;
+    switch (port) {
+      case startbit_trittmattePort.port1:
+        pin = DigitalPin.P2;
+        break;
+      case startbit_trittmattePort.port2:
+        pin = DigitalPin.P14;
+        break;
+      case startbit_trittmattePort.port3:
+        pin = DigitalPin.P16;
+        break;
+    }
+    Informatiktheater.startbit_setPixelRGBArgs(
+      StartbitLights.Light2,
+      StartbitRGBColors.White
+    );
+    Informatiktheater.startbit_showLight();
+    music.playTone(440, music.beat(BeatFraction.Quarter));
+    const p = pins.pinByCfg(pin);
+    if (p) p.onPulsed(pulse, handler);
   }
 
   // MP3 Player stuff
