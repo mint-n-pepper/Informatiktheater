@@ -954,12 +954,6 @@ namespace Informatiktheater {
         pin = DigitalPin.P16;
         break;
     }
-    Informatiktheater.startbit_setPixelRGBArgs(
-      StartbitLights.Light2,
-      StartbitRGBColors.White
-    );
-    Informatiktheater.startbit_showLight();
-    music.playTone(440, music.beat(BeatFraction.Quarter));
     pins.onPulsed(pin, PulseValue.High, handler);
   }
 
