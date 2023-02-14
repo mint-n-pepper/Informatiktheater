@@ -933,8 +933,8 @@ namespace Informatiktheater {
    * Binds code to be executed to onPulsed event
    */
   //% weight=1
-  //% block="Trittmatte pressed"
-  //% block.loc.de="Trittmatte gedrückt auf|%port"
+  //% block="Trittmatte pressed|on %port"
+  //% block.loc.de="Trittmatte gedrückt|auf|%port"
   //% subcategory=Trittmatte
   export function trittmatte_pressed(
     port: startbit_trittmattePort,
