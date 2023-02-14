@@ -959,8 +959,7 @@ namespace Informatiktheater {
     );
     Informatiktheater.startbit_showLight();
     music.playTone(440, music.beat(BeatFraction.Quarter));
-    const p = pins.pinByCfg(pin);
-    if (p) p.onPulsed(pulse, handler);
+    pins.onPulsed(pin, PulseValue.High, handler);
   }
 
   // MP3 Player stuff
