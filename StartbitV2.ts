@@ -934,7 +934,7 @@ namespace Informatiktheater {
    */
   //% weight=1
   //% block="Trittmatte pressed|on %port"
-  // port.defl=1
+  //% port.defl=1
   //% block.loc.de="Trittmatte gedrückt|auf|%port"
   //% subcategory=Trittmatte
   export function trittmatte_pressed(
