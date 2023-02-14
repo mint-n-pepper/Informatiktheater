@@ -884,53 +884,8 @@ namespace Informatiktheater {
     port3 = 0x03,
   }
 
-  // //% weight=100
-  // //% blockId=trittmatte_init
-  // //% block="initialize trittmatte |%port"
-  // //% block.loc.de="initialisiere Trittmatte|%port"
-  // //% subcategory=Trittmatte
-  // export function trittmatte_init(port: startbit_trittmattePort) {
-  //   let pin: DigitalPin;
-  //   switch (port) {
-  //     case startbit_trittmattePort.port1:
-  //       pin = DigitalPin.P2;
-  //       break;
-  //     case startbit_trittmattePort.port2:
-  //       pin = DigitalPin.P14;
-  //       break;
-  //     case startbit_trittmattePort.port3:
-  //       pin = DigitalPin.P16;
-  //       break;
-  //   }
-  //   pins.setEvents(pin, PinEventType.Pulse);
-  //   pins.setPull(pin, PinPullMode.PullUp);
-  //
-  // pins.onPulsed(pin, PulseValue.High, function() {
-  //   if (pins.pulseDuration() > 150000) {
-  //     Informatiktheater.startbit_setPixelRGBArgs(
-  //       StartbitLights.Light2,
-  //       StartbitRGBColors.Orange
-  //     );
-  //     Informatiktheater.startbit_showLight();
-  //     music.playTone(165, music.beat(BeatFraction.Quarter));
-  //     trittmatte_pressed(() => { });
-  //   }
-  // });
-  //
-  // pins.onPulsed(pin, PulseValue.Low, function() {
-  //   if (pins.pulseDuration() > 150000) {
-  //     Informatiktheater.startbit_setPixelRGBArgs(
-  //       StartbitLights.Light2,
-  //       StartbitRGBColors.White
-  //     );
-  //     Informatiktheater.startbit_showLight();
-  //     music.playTone(440, music.beat(BeatFraction.Quarter));
-  //   }
-  // });
-  // }
-
   /**
-   * Binds code to be executed to onPulsed event
+   * Binds code to be executed to onPulsed event with value high
    */
   //% weight=1
   //% block="Trittmatte pressed|on %port"
@@ -940,7 +895,6 @@ namespace Informatiktheater {
     port: startbit_trittmattePort,
     handler: () => void
   ): void {
-    // handler();
     let pin: DigitalPin;
     switch (port) {
       case startbit_trittmattePort.port1:
@@ -953,17 +907,37 @@ namespace Informatiktheater {
         pin = DigitalPin.P16;
         break;
     }
-    console.log(
-      "Trittmatte event handler: set up pin configuration for pin " + pin
-    );
     pins.setEvents(pin, PinEventType.Pulse);
     pins.setPull(pin, PinPullMode.PullUp);
-    if (pin) {
-      console.log("Register handler: " + handler);
-      pins.onPulsed(pin, PulseValue.High, handler);
-    } else {
-      console.log("Error: pin not defined");
+    pins.onPulsed(pin, PulseValue.High, handler);
+  }
+
+  /**
+   * Binds code to be executed to onPulsed event with value low
+   */
+  //% weight=1
+  //% block="Trittmatte released|on %port"
+  //% block.loc.de="Trittmatte losgelassen|auf|%port"
+  //% subcategory=Trittmatte
+  export function trittmatte_released(
+    port: startbit_trittmattePort,
+    handler: () => void
+  ): void {
+    let pin: DigitalPin;
+    switch (port) {
+      case startbit_trittmattePort.port1:
+        pin = DigitalPin.P2;
+        break;
+      case startbit_trittmattePort.port2:
+        pin = DigitalPin.P14;
+        break;
+      case startbit_trittmattePort.port3:
+        pin = DigitalPin.P16;
+        break;
     }
+    pins.setEvents(pin, PinEventType.Pulse);
+    pins.setPull(pin, PinPullMode.PullUp);
+    pins.onPulsed(pin, PulseValue.Low, handler);
   }
 
   // MP3 Player stuff
