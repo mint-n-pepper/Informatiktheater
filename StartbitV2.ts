@@ -904,6 +904,28 @@ namespace Informatiktheater {
     }
     pins.setEvents(pin, PinEventType.Pulse);
     pins.setPull(pin, PinPullMode.PullUp);
+
+    pins.onPulsed(pin, PulseValue.High, function() {
+      if (pins.pulseDuration() > 150000) {
+        Informatiktheater.startbit_setPixelRGBArgs(
+          StartbitLights.Light2,
+          StartbitRGBColors.Orange
+        );
+        Informatiktheater.startbit_showLight();
+        music.playTone(165, music.beat(BeatFraction.Quarter));
+      }
+    });
+
+    pins.onPulsed(pin, PulseValue.Low, function() {
+      if (pins.pulseDuration() > 150000) {
+        Informatiktheater.startbit_setPixelRGBArgs(
+          StartbitLights.Light2,
+          StartbitRGBColors.White
+        );
+        Informatiktheater.startbit_showLight();
+        music.playTone(440, music.beat(BeatFraction.Quarter));
+      }
+    });
   }
 
   // //% weight=1
