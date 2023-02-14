@@ -884,158 +884,162 @@ namespace Informatiktheater {
     port3 = 0x03,
   }
 
-  //% weight=100
-  //% blockId=trittmatte_init
-  //% block="initialize trittmatte |%port"
-  //% block.loc.de="initialisiere Trittmatte|%port"
-  //% subcategory=Trittmatte
-  export function trittmatte_init(port: startbit_trittmattePort) {
-    let pin: DigitalPin;
-    switch (port) {
-      case startbit_trittmattePort.port1:
-        pin = DigitalPin.P2;
-        break;
-      case startbit_trittmattePort.port2:
-        pin = DigitalPin.P14;
-        break;
-      case startbit_trittmattePort.port3:
-        pin = DigitalPin.P16;
-        break;
-    }
-    pins.setEvents(pin, PinEventType.Pulse);
-    pins.setPull(pin, PinPullMode.PullUp);
-    //
-    // pins.onPulsed(pin, PulseValue.High, function() {
-    //   if (pins.pulseDuration() > 150000) {
-    //     Informatiktheater.startbit_setPixelRGBArgs(
-    //       StartbitLights.Light2,
-    //       StartbitRGBColors.Orange
-    //     );
-    //     Informatiktheater.startbit_showLight();
-    //     music.playTone(165, music.beat(BeatFraction.Quarter));
-    //     trittmatte_pressed(() => { });
-    //   }
-    // });
-    //
-    // pins.onPulsed(pin, PulseValue.Low, function() {
-    //   if (pins.pulseDuration() > 150000) {
-    //     Informatiktheater.startbit_setPixelRGBArgs(
-    //       StartbitLights.Light2,
-    //       StartbitRGBColors.White
-    //     );
-    //     Informatiktheater.startbit_showLight();
-    //     music.playTone(440, music.beat(BeatFraction.Quarter));
-    //   }
-    // });
-  }
+  // //% weight=100
+  // //% blockId=trittmatte_init
+  // //% block="initialize trittmatte |%port"
+  // //% block.loc.de="initialisiere Trittmatte|%port"
+  // //% subcategory=Trittmatte
+  // export function trittmatte_init(port: startbit_trittmattePort) {
+  //   let pin: DigitalPin;
+  //   switch (port) {
+  //     case startbit_trittmattePort.port1:
+  //       pin = DigitalPin.P2;
+  //       break;
+  //     case startbit_trittmattePort.port2:
+  //       pin = DigitalPin.P14;
+  //       break;
+  //     case startbit_trittmattePort.port3:
+  //       pin = DigitalPin.P16;
+  //       break;
+  //   }
+  //   pins.setEvents(pin, PinEventType.Pulse);
+  //   pins.setPull(pin, PinPullMode.PullUp);
+  //
+  // pins.onPulsed(pin, PulseValue.High, function() {
+  //   if (pins.pulseDuration() > 150000) {
+  //     Informatiktheater.startbit_setPixelRGBArgs(
+  //       StartbitLights.Light2,
+  //       StartbitRGBColors.Orange
+  //     );
+  //     Informatiktheater.startbit_showLight();
+  //     music.playTone(165, music.beat(BeatFraction.Quarter));
+  //     trittmatte_pressed(() => { });
+  //   }
+  // });
+  //
+  // pins.onPulsed(pin, PulseValue.Low, function() {
+  //   if (pins.pulseDuration() > 150000) {
+  //     Informatiktheater.startbit_setPixelRGBArgs(
+  //       StartbitLights.Light2,
+  //       StartbitRGBColors.White
+  //     );
+  //     Informatiktheater.startbit_showLight();
+  //     music.playTone(440, music.beat(BeatFraction.Quarter));
+  //   }
+  // });
+}
 
-  /**
-   * Binds code to be executed to onPulsed event
-   */
-  //% weight=1
-  //% block="Trittmatte pressed|on %port"
-  //% block.loc.de="Trittmatte gedrückt|auf|%port"
-  //% subcategory=Trittmatte
-  export function trittmatte_pressed(
-    port: startbit_trittmattePort,
-    handler: () => void
-  ): void {
-    // handler();
-    let pin: DigitalPin;
-    switch (port) {
-      case startbit_trittmattePort.port1:
-        pin = DigitalPin.P2;
-        break;
-      case startbit_trittmattePort.port2:
-        pin = DigitalPin.P14;
-        break;
-      case startbit_trittmattePort.port3:
-        pin = DigitalPin.P16;
-        break;
-    }
+/**
+ * Binds code to be executed to onPulsed event
+ */
+//% weight=1
+//% block="Trittmatte pressed|on %port"
+//% block.loc.de="Trittmatte gedrückt|auf|%port"
+//% subcategory=Trittmatte
+export function trittmatte_pressed(
+  port: startbit_trittmattePort,
+  handler: () => void
+): void {
+  // handler();
+  let pin: DigitalPin;
+  switch (port) {
+    case startbit_trittmattePort.port1:
+      pin = DigitalPin.P2;
+      break;
+    case startbit_trittmattePort.port2:
+      pin = DigitalPin.P14;
+      break;
+    case startbit_trittmattePort.port3:
+      pin = DigitalPin.P16;
+      break;
+  }
+  pins.setEvents(pin, PinEventType.Pulse);
+  pins.setPull(pin, PinPullMode.PullUp);
+  if (pin) {
     pins.onPulsed(pin, PulseValue.High, handler);
   }
+}
 
-  // MP3 Player stuff
+// MP3 Player stuff
 
-  export class SongList {
-    TrackIndex: number;
-    list: Array<number>;
+export class SongList {
+  TrackIndex: number;
+  list: Array<number>;
 
-    constructor() {
-      this.TrackIndex = 0;
-      this.list = [0];
-    }
-
-    //% weight=99
-    //% block="setze $this auf $list "
-    //% this.defl=Songliste
-    //% this.shadow=variables_get
-    //% subcategory=MP3-Box
-    public createSongListArray(list: number[]) {
-      this.list = list;
-      this.TrackIndex = 0;
-    }
-
-    //% weight=98
-    //% block="Play next track in list $this"
-    //% block.loc.de="nächste Songnummer in Liste $this"
-    //% this.defl=Songliste
-    //% this.shadow=variables_get
-    //% subcategory=MP3-Box
-    public playNextTrack() {
-      if (this.TrackIndex < this.list.length) {
-        this.TrackIndex += 1;
-      } else {
-        this.TrackIndex = 0;
-      }
-    }
-    //
-    //% weight=97
-    //% block="Play previous track in list $this"
-    //% block.loc.de="vorherige Songnummer in Liste $this"
-    //% this.defl=Songliste
-    //% this.shadow=variables_get
-    //% subcategory=MP3-Box
-    public playPreviousTrack() {
-      if (this.TrackIndex <= 0) {
-        this.TrackIndex == 0;
-      } else {
-        this.TrackIndex--;
-      }
-    }
-
-    //% weight=95
-    //% block="current song number in list %this"
-    //% block.loc.de="Aktuelle Songnummer in liste %this"
-    //% this.defl=Songliste
-    //% this.shadow=variables_get
-    //% subcategory=MP3-Box
-    public currentTrack(): number {
-      return this.list[this.TrackIndex];
-    }
-
-    //% weight=96
-    //% block="Back to first song in list %this"
-    //% block.loc.de="zurück zur ersten Songnummer in Liste %this"
-    //% this.defl=Songliste
-    //% this.shadow=variables_get
-    //% subcategory=MP3-Box
-    public gotoFirstTrack() {
-      this.TrackIndex = 0;
-    }
+  constructor() {
+    this.TrackIndex = 0;
+    this.list = [0];
   }
 
-  /**
-   * Creates a song list and automtically set it to a variable
-   */
-  //% weight=100
-  //% block="create song list"
-  //% block.loc.de="erstelle Songliste"
-  //% jsdoc.loc.de="erstellt eine neue Songliste und setzt sie auf eine Variable. Muss im Startblock ausgeführt werden bevor MP3 Box gebraucht werden kann."
-  //% blockSetVariable=Songliste
+  //% weight=99
+  //% block="setze $this auf $list "
+  //% this.defl=Songliste
+  //% this.shadow=variables_get
   //% subcategory=MP3-Box
-  export function createSongList(): SongList {
-    return new SongList();
+  public createSongListArray(list: number[]) {
+    this.list = list;
+    this.TrackIndex = 0;
   }
+
+  //% weight=98
+  //% block="Play next track in list $this"
+  //% block.loc.de="nächste Songnummer in Liste $this"
+  //% this.defl=Songliste
+  //% this.shadow=variables_get
+  //% subcategory=MP3-Box
+  public playNextTrack() {
+    if (this.TrackIndex < this.list.length) {
+      this.TrackIndex += 1;
+    } else {
+      this.TrackIndex = 0;
+    }
+  }
+  //
+  //% weight=97
+  //% block="Play previous track in list $this"
+  //% block.loc.de="vorherige Songnummer in Liste $this"
+  //% this.defl=Songliste
+  //% this.shadow=variables_get
+  //% subcategory=MP3-Box
+  public playPreviousTrack() {
+    if (this.TrackIndex <= 0) {
+      this.TrackIndex == 0;
+    } else {
+      this.TrackIndex--;
+    }
+  }
+
+  //% weight=95
+  //% block="current song number in list %this"
+  //% block.loc.de="Aktuelle Songnummer in liste %this"
+  //% this.defl=Songliste
+  //% this.shadow=variables_get
+  //% subcategory=MP3-Box
+  public currentTrack(): number {
+    return this.list[this.TrackIndex];
+  }
+
+  //% weight=96
+  //% block="Back to first song in list %this"
+  //% block.loc.de="zurück zur ersten Songnummer in Liste %this"
+  //% this.defl=Songliste
+  //% this.shadow=variables_get
+  //% subcategory=MP3-Box
+  public gotoFirstTrack() {
+    this.TrackIndex = 0;
+  }
+}
+
+/**
+ * Creates a song list and automtically set it to a variable
+ */
+//% weight=100
+//% block="create song list"
+//% block.loc.de="erstelle Songliste"
+//% jsdoc.loc.de="erstellt eine neue Songliste und setzt sie auf eine Variable. Muss im Startblock ausgeführt werden bevor MP3 Box gebraucht werden kann."
+//% blockSetVariable=Songliste
+//% subcategory=MP3-Box
+export function createSongList(): SongList {
+  return new SongList();
+}
 }
