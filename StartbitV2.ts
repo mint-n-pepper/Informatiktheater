@@ -934,7 +934,7 @@ namespace Informatiktheater {
   //% block.loc.de="Trittmatte gedrückt"
   //% subcategory=Trittmatte
   export function trittmatte_pressed(handler: () => void) {
-    handler();
+    // handler();
   }
 
   // MP3 Player stuff
