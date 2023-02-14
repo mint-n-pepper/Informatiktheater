@@ -913,6 +913,7 @@ namespace Informatiktheater {
         );
         Informatiktheater.startbit_showLight();
         music.playTone(165, music.beat(BeatFraction.Quarter));
+        trittmatte_pressed(() => { });
       }
     });
 
@@ -928,32 +929,14 @@ namespace Informatiktheater {
     });
   }
 
-  // //% weight=1
-  // //% block="Trittmatte pressed"
-  // //% block.loc.de="Trittmatte gedrückt"
-  // //% subcategory=Trittmatte
-  // export function trittmatte_pressed(handler: () => void) {
-  //   console.log("trittmatte gedrückt");
-  //   handler();
-  // }
-  //
-  // /**
-  //  * Registers Trittmatte event handler.
-  //  */
-  // //% weight=20 blockGap=8 blockId="control_on_event_trittmatte"
-  // //%block="on event|from %src=control_event_source_id|with value %value=control_event_value_id"
-  // //% blockExternalInputs=1
-  // //% subcategory=Trittmatte
-  // export function onEventTrittmatte(
-  //   src: number,
-  //   value: number,
-  //   handler: () => void,
-  //   flags: number = 0
-  // ) {
-  //   if (!flags) flags = EventFlags.QueueIfBusy;
-  //   pxtcore.registerWithDal(src, value, handler, flags);
-  // }
-  //
+  //% weight=1
+  //% block="Trittmatte pressed"
+  //% block.loc.de="Trittmatte gedrückt"
+  //% subcategory=Trittmatte
+  export function trittmatte_pressed(handler: () => void) {
+    handler();
+  }
+
   // MP3 Player stuff
 
   export class SongList {
