@@ -953,10 +953,16 @@ namespace Informatiktheater {
         pin = DigitalPin.P16;
         break;
     }
+    console.log(
+      "Trittmatte event handler: set up pin configuration for pin " + pin
+    );
     pins.setEvents(pin, PinEventType.Pulse);
     pins.setPull(pin, PinPullMode.PullUp);
     if (pin) {
+      console.log("Register handler: " + handler);
       pins.onPulsed(pin, PulseValue.High, handler);
+    } else {
+      console.log("Error: pin not defined");
     }
   }
 
