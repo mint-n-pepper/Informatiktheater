@@ -920,6 +920,7 @@ namespace Informatiktheater {
   //% subcategory=Trittmatte
   export function trittmatte_released(
     port: startbit_trittmattePort,
+    debounce: number,
     handler: () => void
   ): void {
     let pin: DigitalPin;
