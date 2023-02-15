@@ -964,7 +964,7 @@ namespace Informatiktheater {
   export function trittmatte_einschalten(
     port: startbit_trittmattePort,
     debounce: number,
-    handler: (zustand: boolean) => void
+    handler: (trittmatte_ein: boolean) => void
   ): void {
     let pin: DigitalPin;
     switch (port) {
