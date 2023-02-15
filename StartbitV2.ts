@@ -888,7 +888,7 @@ namespace Informatiktheater {
   //% weight=1
   //% block="Trittmatte pressed|on %port |debounce time (ms) %debounce"
   //% block.loc.de="Trittmatte gedrückt|auf|%port |mit Entprellzeit (ms) %debounce"
-  //% debounce.min=0 debounce.max=500 debounce.defl= 150
+  //% debounce.min=0 debounce.max=500 debounce.defl=150
   //% subcategory=Trittmatte
   export function trittmatte_pressed(
     port: startbit_trittmattePort,
@@ -923,7 +923,7 @@ namespace Informatiktheater {
   //% weight=1
   //% block="Trittmatte released|on %port |debounce time (ms) %debounce"
   //% block.loc.de="Trittmatte losgelassen|auf|%port |mit Entprellzeit (ms) %debounce"
-  //% debounce.min=0 debounce.max=500 debounce.defl= 150
+  //% debounce.min=0 debounce.max=500 debounce.defl=150
   //% subcategory=Trittmatte
   export function trittmatte_released(
     port: startbit_trittmattePort,
