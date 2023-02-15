@@ -208,8 +208,6 @@ namespace Informatiktheater {
             currentVoltage = arg3Int * 78.63;
             currentVoltage = Math.round(currentVoltage);
           }
-        } else if (cmd.length == 5) {
-        } else {
         }
       }
       if (cmd.charAt(0).compare("C") == 0 && cmd.length == 11) {
@@ -916,8 +914,9 @@ namespace Informatiktheater {
    * Binds code to be executed to onPulsed event with value low
    */
   //% weight=1
-  //% block="Trittmatte released|on %port"
-  //% block.loc.de="Trittmatte losgelassen|auf|%port"
+  //% block="Trittmatte released|on %port |debounce time (ms) %debounce"
+  //% block.loc.de="Trittmatte losgelassen|auf|%port |mit Entprellzeit (ms) %debounce"
+  //% debounce.defl= 150
   //% subcategory=Trittmatte
   export function trittmatte_released(
     port: startbit_trittmattePort,
@@ -937,7 +936,12 @@ namespace Informatiktheater {
     }
     pins.setEvents(pin, PinEventType.Pulse);
     pins.setPull(pin, PinPullMode.PullUp);
-    pins.onPulsed(pin, PulseValue.Low, handler);
+    let debounce_wrapper = function() {
+      if (pins.pulseDuration() > 1000 * debounce) {
+        handler();
+      }
+    };
+    pins.onPulsed(pin, PulseValue.Low, debounce_wrapper);
   }
 
   // MP3 Player stuff
