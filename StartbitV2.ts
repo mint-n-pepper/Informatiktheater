@@ -883,7 +883,7 @@ namespace Informatiktheater {
   /**
    * Binds code to be executed to onPulsed event with value high
    */
-  //% weight=1
+  //% weight=9
   //% block="Trittmatte pressed|on %port | debounce time (ms) %debounce"
   //% block.loc.de="Trittmatte gedrückt|auf|%port | mit Entprellzeit (ms) %debounce"
   //% debounce.min=0 debounce.max=500 debounce.defl=150
@@ -918,7 +918,7 @@ namespace Informatiktheater {
   /**
    * Binds code to be executed to onPulsed event with value low
    */
-  //% weight=1
+  //% weight=8
   //% block="Trittmatte released|on %port | debounce time (ms) %debounce"
   //% block.loc.de="Trittmatte losgelassen|auf|%port | mit Entprellzeit (ms) %debounce"
   //% debounce.min=0 debounce.max=500 debounce.defl=150
@@ -948,6 +948,46 @@ namespace Informatiktheater {
       }
     };
     pins.onPulsed(pin, PulseValue.Low, debounce_wrapper);
+  }
+
+  /**
+   * Binds code to be executed to onPulsed event with value high on event handler.
+   * The initial state will always be set to zero and the variable has local scope only!
+   */
+  //% weight=7
+  //% block="Trittmatte on/off|on %port | debounce time (ms) %debounce |state "
+  //% block.loc.de="Trittmatte ein/aus|auf %port | mit Entprellzeit (ms) %debounce|Status"
+  //% debounce.min=0 debounce.max=500 debounce.defl=150
+  //% subcategory=Trittmatte
+  //% draggableParameters
+  //% jsdoc.loc.de="Bindet auszuführenden Code bei einem PulsEvent mit Wert 'hoch' an Event Handler. Der Anfangszustand wird immer auf Null sein. Die Zustandsvariabel hat nur lokalen Scope!"
+  export function trittmatte_einschalten(
+    port: startbit_trittmattePort,
+    debounce: number,
+    handler: (zustand: boolean) => void
+  ): void {
+    let pin: DigitalPin;
+    switch (port) {
+      case startbit_trittmattePort.port1:
+        pin = DigitalPin.P2;
+        break;
+      case startbit_trittmattePort.port2:
+        pin = DigitalPin.P14;
+        break;
+      case startbit_trittmattePort.port3:
+        pin = DigitalPin.P16;
+        break;
+    }
+    pins.setEvents(pin, PinEventType.Pulse);
+    pins.setPull(pin, PinPullMode.PullUp);
+    let state = false;
+    let debounce_wrapper = function() {
+      if (pins.pulseDuration() > 1000 * debounce) {
+        state = !state;
+        handler(state);
+      }
+    };
+    pins.onPulsed(pin, PulseValue.High, debounce_wrapper);
   }
 
   // MP3 Player stuff
