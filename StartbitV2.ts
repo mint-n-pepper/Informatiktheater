@@ -700,6 +700,7 @@ namespace Informatiktheater {
   //% subcategory=LED
   export function startbit_setBrightness(brightness: number): void {
     lhRGBLight.setBrightness(brightness);
+    lhRGBLight.show();
   }
 
   //% weight=99 blockId=startbit_setPixelRGBArgs
@@ -711,12 +712,9 @@ namespace Informatiktheater {
     rgb: StartbitRGBColors
   ) {
     lhRGBLight.setPixelColor(lightoffset, rgb);
+    lhRGBLight.show();
   }
 
-  /**
-   * Display the colored lights, and set the color of the colored lights to match the use.
-   * After setting the color of the colored lights, the color of the lights must be displayed.
-   */
   //% weight=97 blockId=startbit_showLight
   //% block="Light on"
   //% block.loc.de="Licht an"
