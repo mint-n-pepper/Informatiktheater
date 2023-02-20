@@ -964,7 +964,7 @@ namespace Informatiktheater {
   //% subcategory=Trittmatte
   //% draggableParameters
   //% jsdoc.loc.de="Bindet auszuführenden Code bei einem PulsEvent mit Wert 'hoch' an Event Handler."
-  export function trittmatte_einschalten(
+  export function trittmatte_on(
     port: startbit_trittmattePort,
     debounce: number,
     handler: (trittmatte_ein: boolean) => void
@@ -1008,7 +1008,7 @@ namespace Informatiktheater {
   //% subcategory=Trittmatte
   //% draggableParameters
   //% jsdoc.loc.de="Bindet auszuführenden Code bei einem PulsEvent mit Wert 'hoch' an Event Handler."
-  export function trittmatte_einschalten(
+  export function trittmatte_off(
     port: startbit_trittmattePort,
     debounce: number,
     handler: (trittmatte_ein: boolean) => void
