@@ -950,93 +950,41 @@ namespace Informatiktheater {
     pins.onPulsed(pin, PulseValue.Low, debounce_wrapper);
   }
 
-  let trittmattePort1StateOn = false;
-  let trittmattePort2StateOn = false;
-  let trittmattePort3StateOn = false;
-
   /**
    * Binds code to be executed to onPulsed event with value high on event handler.
+   * The initial state will always be set to zero and the variable has local scope only!
    */
   //% weight=7
-  //% block="Trittmatte switched on|on %port | debounce time (ms) %debounce"
-  //% block.loc.de="Trittmatte eingeschalten|auf %port | mit Entprellzeit (ms) %debounce"
+  //% block="Trittmatte on/off|on %port | debounce time (ms) %debounce |state "
+  //% block.loc.de="Trittmatte ein/aus|auf %port | mit Entprellzeit (ms) %debounce|Status"
   //% debounce.min=0 debounce.max=500 debounce.defl=150
   //% subcategory=Trittmatte
   //% draggableParameters
-  //% jsdoc.loc.de="Bindet auszuführenden Code bei einem PulsEvent mit Wert 'hoch' an Event Handler."
-  export function trittmatte_on(
+  //% jsdoc.loc.de="Bindet auszuführenden Code bei einem PulsEvent mit Wert 'hoch' an Event Handler. Der Anfangszustand wird immer auf Null sein. Die Zustandsvariabel hat nur lokalen Scope!"
+  export function trittmatte_einschalten(
     port: startbit_trittmattePort,
     debounce: number,
     handler: (trittmatte_ein: boolean) => void
   ): void {
     let pin: DigitalPin;
-    let globalState: boolean;
     switch (port) {
       case startbit_trittmattePort.port1:
         pin = DigitalPin.P2;
-        globalState = trittmattePort1StateOn;
         break;
       case startbit_trittmattePort.port2:
         pin = DigitalPin.P14;
-        globalState = trittmattePort2StateOn;
         break;
       case startbit_trittmattePort.port3:
         pin = DigitalPin.P16;
-        globalState = trittmattePort3StateOn;
         break;
     }
     pins.setEvents(pin, PinEventType.Pulse);
     pins.setPull(pin, PinPullMode.PullUp);
+    let state = false;
     let debounce_wrapper = function() {
       if (pins.pulseDuration() > 1000 * debounce) {
-        if (!globalState) {
-          globalState = true;
-          handler(globalState);
-        }
-      }
-    };
-    pins.onPulsed(pin, PulseValue.High, debounce_wrapper);
-  }
-
-  /**
-   * Binds code to be executed to onPulsed event with value high on event handler.
-   */
-  //% weight=8
-  //% block="Trittmatte swithced off %port | debounce time (ms) %debounce"
-  //% block.loc.de="Trittmatte ausgeschalten|auf %port | mit Entprellzeit (ms) %debounce"
-  //% debounce.min=0 debounce.max=500 debounce.defl=150
-  //% subcategory=Trittmatte
-  //% draggableParameters
-  //% jsdoc.loc.de="Bindet auszuführenden Code bei einem PulsEvent mit Wert 'hoch' an Event Handler."
-  export function trittmatte_off(
-    port: startbit_trittmattePort,
-    debounce: number,
-    handler: (trittmatte_ein: boolean) => void
-  ): void {
-    let pin: DigitalPin;
-    let globalState: boolean;
-    switch (port) {
-      case startbit_trittmattePort.port1:
-        pin = DigitalPin.P2;
-        globalState = trittmattePort1StateOn;
-        break;
-      case startbit_trittmattePort.port2:
-        pin = DigitalPin.P14;
-        globalState = trittmattePort2StateOn;
-        break;
-      case startbit_trittmattePort.port3:
-        pin = DigitalPin.P16;
-        globalState = trittmattePort3StateOn;
-        break;
-    }
-    pins.setEvents(pin, PinEventType.Pulse);
-    pins.setPull(pin, PinPullMode.PullUp);
-    let debounce_wrapper = function() {
-      if (pins.pulseDuration() > 1000 * debounce) {
-        if (globalState) {
-          globalState = false;
-          handler(globalState);
-        }
+        state = !state;
+        handler(state);
       }
     };
     pins.onPulsed(pin, PulseValue.High, debounce_wrapper);
