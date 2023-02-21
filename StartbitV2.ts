@@ -880,17 +880,16 @@ namespace Informatiktheater {
     port3 = 0x03,
   }
 
+  let debounce_time = 150; // debounce for pin input events in [ms]
   /**
    * Binds code to be executed to onPulsed event with value high
    */
   //% weight=9
-  //% block="Trittmatte pressed|on %port | debounce time (ms) %debounce"
-  //% block.loc.de="Trittmatte gedrückt|auf|%port | mit Entprellzeit (ms) %debounce"
-  //% debounce.min=0 debounce.max=500 debounce.defl=150
+  //% block="Trittmatte pressed|on %port"
+  //% block.loc.de="Trittmatte gedrückt|auf|%port"
   //% subcategory=Trittmatte
   export function trittmatte_pressed(
     port: startbit_trittmattePort,
-    debounce: number,
     handler: () => void
   ): void {
     let pin: DigitalPin;
@@ -908,7 +907,7 @@ namespace Informatiktheater {
     pins.setEvents(pin, PinEventType.Pulse);
     pins.setPull(pin, PinPullMode.PullUp);
     let debounce_wrapper = function() {
-      if (pins.pulseDuration() > 1000 * debounce) {
+      if (pins.pulseDuration() > 1000 * debounce_time) {
         handler();
       }
     };
@@ -919,13 +918,11 @@ namespace Informatiktheater {
    * Binds code to be executed to onPulsed event with value low
    */
   //% weight=8
-  //% block="Trittmatte released|on %port | debounce time (ms) %debounce"
-  //% block.loc.de="Trittmatte losgelassen|auf|%port | mit Entprellzeit (ms) %debounce"
-  //% debounce.min=0 debounce.max=500 debounce.defl=150
+  //% block="Trittmatte released|on %port"
+  //% block.loc.de="Trittmatte losgelassen|auf|%port"
   //% subcategory=Trittmatte
   export function trittmatte_released(
     port: startbit_trittmattePort,
-    debounce: number,
     handler: () => void
   ): void {
     let pin: DigitalPin;
@@ -943,7 +940,7 @@ namespace Informatiktheater {
     pins.setEvents(pin, PinEventType.Pulse);
     pins.setPull(pin, PinPullMode.PullUp);
     let debounce_wrapper = function() {
-      if (pins.pulseDuration() > 1000 * debounce) {
+      if (pins.pulseDuration() > 1000 * debounce_time) {
         handler();
       }
     };
@@ -955,15 +952,13 @@ namespace Informatiktheater {
    * The initial state will always be set to zero and the variable has local scope only!
    */
   //% weight=7
-  //% block="Trittmatte on/off|on %port | debounce time (ms) %debounce |state "
-  //% block.loc.de="Trittmatte ein/aus|auf %port | mit Entprellzeit (ms) %debounce|Status"
-  //% debounce.min=0 debounce.max=500 debounce.defl=150
+  //% block="Trittmatte on/off|on %port |state "
+  //% block.loc.de="Trittmatte ein/aus|auf %port |Status"
   //% subcategory=Trittmatte
   //% draggableParameters
   //% jsdoc.loc.de="Bindet auszuführenden Code bei einem PulsEvent mit Wert 'hoch' an Event Handler. Der Anfangszustand wird immer auf Null sein. Die Zustandsvariabel hat nur lokalen Scope!"
   export function trittmatte_einschalten(
     port: startbit_trittmattePort,
-    debounce: number,
     handler: (trittmatte_ein: boolean) => void
   ): void {
     let pin: DigitalPin;
@@ -982,7 +977,7 @@ namespace Informatiktheater {
     pins.setPull(pin, PinPullMode.PullUp);
     let state = false;
     let debounce_wrapper = function() {
-      if (pins.pulseDuration() > 1000 * debounce) {
+      if (pins.pulseDuration() > 1000 * debounce_time) {
         state = !state;
         handler(state);
       }
