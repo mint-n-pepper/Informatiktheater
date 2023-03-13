@@ -1,18 +1,32 @@
 {
   "name": "Informatiktheater",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "Blocks for Informatiktheater",
   "license": "MIT",
   "dependencies": {
-    "core": "file:../core"
+    "core": "file:../core",
+    "ws2812b": "github:microsoft/pxt-ws2812b#v0.1.1"
   },
   "files": [
     "README.md",
     "StartbitV2.ts",
     "StartbitRGBLight.ts",
-    "sendbuffer.asm"
+    "sendbuffer.asm",
+    "neopixel.ts",
+    "_locales/de/neopixel-strings.json",
+    "_locales/de/neopixel-jsdoc-strings.json"
   ],
-  "testFiles": ["test.ts"],
+  "testFiles": ["test.ts", "neotest.ts"],
   "public": true,
-  "preferredEditor": "tsprj"
+  "supportedTargets": ["microbit"],
+  "preferredEditor": "tsprj",
+  "yotta": {
+    "config": {
+      "microbit-dal": {
+        "bluetooth": {
+          "enabled": 0
+        }
+      }
+    }
+  }
 }
