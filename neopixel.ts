@@ -3,25 +3,25 @@
  */
 enum NeoPixelColors {
     //% block=red
-    Red = 0xFF0000,
+    Red = 0xff0000,
     //% block=orange
-    Orange = 0xFFA500,
+    Orange = 0xffa500,
     //% block=yellow
-    Yellow = 0xFFFF00,
+    Yellow = 0xffff00,
     //% block=green
-    Green = 0x00FF00,
+    Green = 0x00ff00,
     //% block=blue
-    Blue = 0x0000FF,
+    Blue = 0x0000ff,
     //% block=indigo
     Indigo = 0x4b0082,
     //% block=violet
     Violet = 0x8a2be2,
     //% block=purple
-    Purple = 0xFF00FF,
+    Purple = 0xff00ff,
     //% block=white
-    White = 0xFFFFFF,
+    White = 0xffffff,
     //% block=black
-    Black = 0x000000
+    Black = 0x000000,
 }
 
 /**
@@ -33,7 +33,7 @@ enum NeoPixelMode {
     //% block="RGB+W"
     RGBW = 2,
     //% block="RGB (RGB format)"
-    RGB_RGB = 3
+    RGB_RGB = 3,
 }
 
 /**
@@ -75,6 +75,8 @@ namespace neopixel {
          */
         //% blockId="neopixel_set_strip_rainbow" block="%strip|show rainbow from %startHue|to %endHue"
         //% strip.defl=strip
+        //% startHue.shadow="colorWheelPicker"
+        //% endHue.shadow="colorWheelPicker"
         //% weight=85 blockGap=8
         //% parts="neopixel"
         showRainbow(startHue: number = 1, endHue: number = 360) {
@@ -90,9 +92,9 @@ namespace neopixel {
             //hue
             const h1 = startHue;
             const h2 = endHue;
-            const hDistCW = ((h2 + 360) - h1) % 360;
-            const hStepCW = Math.idiv((hDistCW * 100), steps);
-            const hDistCCW = ((h1 + 360) - h2) % 360;
+            const hDistCW = (h2 + 360 - h1) % 360;
+            const hStepCW = Math.idiv(hDistCW * 100, steps);
+            const hDistCCW = (h1 + 360 - h2) % 360;
             const hStepCCW = Math.idiv(-(hDistCCW * 100), steps);
             let hStep: number;
             if (direction === HueInterpolationDirection.Clockwise) {
@@ -116,17 +118,17 @@ namespace neopixel {
             const l2 = luminance;
             const lDist = l2 - l1;
             const lStep = Math.idiv(lDist, steps);
-            const l1_100 = l1 * 100
+            const l1_100 = l1 * 100;
 
             //interpolate
             if (steps === 1) {
-                this.setPixelColor(0, hsl(h1 + hStep, s1 + sStep, l1 + lStep))
+                this.setPixelColor(0, hsl(h1 + hStep, s1 + sStep, l1 + lStep));
             } else {
                 this.setPixelColor(0, hsl(startHue, saturation, luminance));
                 for (let i = 1; i < steps - 1; i++) {
-                    const h = Math.idiv((h1_100 + i * hStep), 100) + 360;
-                    const s = Math.idiv((s1_100 + i * sStep), 100);
-                    const l = Math.idiv((l1_100 + i * lStep), 100);
+                    const h = Math.idiv(h1_100 + i * hStep, 100) + 360;
+                    const s = Math.idiv(s1_100 + i * sStep, 100);
+                    const l = Math.idiv(l1_100 + i * lStep, 100);
                     this.setPixelColor(i, hsl(h, s, l));
                 }
                 this.setPixelColor(steps - 1, hsl(endHue, saturation, luminance));
@@ -156,18 +158,16 @@ namespace neopixel {
             value = Math.abs(value);
             const n = this._length;
             const n1 = n - 1;
-            let v = Math.idiv((value * n), high);
+            let v = Math.idiv(value * n, high);
             if (v == 0) {
                 this.setPixelColor(0, 0x666600);
-                for (let i = 1; i < n; ++i)
-                    this.setPixelColor(i, 0);
+                for (let i = 1; i < n; ++i) this.setPixelColor(i, 0);
             } else {
                 for (let i = 0; i < n; ++i) {
                     if (i <= v) {
                         const b = Math.idiv(i * 255, n1);
                         this.setPixelColor(i, neopixel.rgb(b, 0, 255 - b));
-                    }
-                    else this.setPixelColor(i, 0);
+                    } else this.setPixelColor(i, 0);
                 }
             }
             this.show();
@@ -177,13 +177,22 @@ namespace neopixel {
          * Set LED to a given color (range 0-255 for r, g, b).
          * You need to call ``show`` to make the changes visible.
          * @param pixeloffset position of the NeoPixel in the strip
+         * @param range how many pixels starting at position
          * @param rgb RGB color of the LED
          */
-        //% blockId="neopixel_set_pixel_color" block="%strip|set pixel color at %pixeloffset|to %rgb=neopixel_colors"
+        //% blockId="neopixel_set_pixel_color" block="%strip|set %number pixel color(s)| at %pixeloffset|to %rgb=neopixel_colors"
         //% strip.defl=strip
+        //% number.defl=1
+        //% number.min=1
         //% blockGap=8
         //% weight=80
         //% parts="neopixel" advanced=true
+        setPixelColorRange(number: number, pixeloffset: number, rgb: number): void {
+            for (let i = 0; i < number; i++) {
+                this.setPixelRGB((pixeloffset + i) >> 0, rgb >> 0);
+            }
+        }
+
         setPixelColor(pixeloffset: number, rgb: number): void {
             this.setPixelRGB(pixeloffset >> 0, rgb >> 0);
         }
@@ -221,22 +230,6 @@ namespace neopixel {
             if (x < 0 || x >= this._matrixWidth || y < 0 || y >= cols) return;
             let i = x + y * this._matrixWidth;
             this.setPixelColor(i, rgb);
-        }
-
-        /**
-         * For NeoPixels with RGB+W LEDs, set the white LED brightness. This only works for RGB+W NeoPixels.
-         * @param pixeloffset position of the LED in the strip
-         * @param white brightness of the white LED
-         */
-        //% blockId="neopixel_set_pixel_white" block="%strip|set pixel white LED at %pixeloffset|to %white"
-        //% strip.defl=strip
-        //% blockGap=8
-        //% weight=80
-        //% parts="neopixel" advanced=true
-        setPixelWhiteLED(pixeloffset: number, white: number): void {
-            if (this._mode === NeoPixelMode.RGBW) {
-                this.setPixelW(pixeloffset >> 0, white >> 0);
-            }
         }
 
         /**
@@ -303,40 +296,24 @@ namespace neopixel {
             for (let i = this.start; i < end; ++i) {
                 const k = i - this.start;
                 const ledoffset = i * stride;
-                const br = k > mid
-                    ? Math.idiv(255 * (this._length - 1 - k) * (this._length - 1 - k), (mid * mid))
-                    : Math.idiv(255 * k * k, (mid * mid));
-                const r = (buf[ledoffset + 0] * br) >> 8; buf[ledoffset + 0] = r;
-                const g = (buf[ledoffset + 1] * br) >> 8; buf[ledoffset + 1] = g;
-                const b = (buf[ledoffset + 2] * br) >> 8; buf[ledoffset + 2] = b;
+                const br =
+                    k > mid
+                        ? Math.idiv(
+                            255 * (this._length - 1 - k) * (this._length - 1 - k),
+                            mid * mid
+                        )
+                        : Math.idiv(255 * k * k, mid * mid);
+                const r = (buf[ledoffset + 0] * br) >> 8;
+                buf[ledoffset + 0] = r;
+                const g = (buf[ledoffset + 1] * br) >> 8;
+                buf[ledoffset + 1] = g;
+                const b = (buf[ledoffset + 2] * br) >> 8;
+                buf[ledoffset + 2] = b;
                 if (stride == 4) {
-                    const w = (buf[ledoffset + 3] * br) >> 8; buf[ledoffset + 3] = w;
+                    const w = (buf[ledoffset + 3] * br) >> 8;
+                    buf[ledoffset + 3] = w;
                 }
             }
-        }
-
-        /**
-         * Create a range of LEDs.
-         * @param start offset in the LED strip to start the range
-         * @param length number of LEDs in the range. eg: 4
-         */
-        //% weight=89
-        //% blockId="neopixel_range" block="%strip|range from %start|with %length|leds"
-        //% strip.defl=strip
-        //% parts="neopixel"
-        //% blockSetVariable=range
-        range(start: number, length: number): Strip {
-            start = start >> 0;
-            length = length >> 0;
-            let strip = new Strip();
-            strip.buf = this.buf;
-            strip.pin = this.pin;
-            strip.brightness = this.brightness;
-            strip.start = this.start + Math.clamp(0, this._length - 1, start);
-            strip._length = Math.clamp(0, this._length - (strip.start - this.start), length);
-            strip._matrixWidth = 0;
-            strip._mode = this._mode;
-            return strip;
         }
 
         /**
@@ -351,7 +328,11 @@ namespace neopixel {
         shift(offset: number = 1): void {
             offset = offset >> 0;
             const stride = this._mode === NeoPixelMode.RGBW ? 4 : 3;
-            this.buf.shift(-offset * stride, this.start * stride, this._length * stride)
+            this.buf.shift(
+                -offset * stride,
+                this.start * stride,
+                this._length * stride
+            );
         }
 
         /**
@@ -366,7 +347,11 @@ namespace neopixel {
         rotate(offset: number = 1): void {
             offset = offset >> 0;
             const stride = this._mode === NeoPixelMode.RGBW ? 4 : 3;
-            this.buf.rotate(-offset * stride, this.start * stride, this._length * stride)
+            this.buf.rotate(
+                -offset * stride,
+                this.start * stride,
+                this._length * stride
+            );
         }
 
         /**
@@ -396,11 +381,18 @@ namespace neopixel {
                     p += this.buf[i + j];
                 }
             }
-            return Math.idiv(this.length() * 7, 10) /* 0.7mA per neopixel */
-                + Math.idiv(p * 480, 10000); /* rought approximation */
+            return (
+                Math.idiv(this.length() * 7, 10) /* 0.7mA per neopixel */ +
+                Math.idiv(p * 480, 10000)
+            ); /* rought approximation */
         }
 
-        private setBufferRGB(offset: number, red: number, green: number, blue: number): void {
+        private setBufferRGB(
+            offset: number,
+            red: number,
+            green: number,
+            blue: number
+        ): void {
             if (this._mode === NeoPixelMode.RGB_RGB) {
                 this.buf[offset + 0] = red;
                 this.buf[offset + 1] = green;
@@ -425,12 +417,11 @@ namespace neopixel {
             const end = this.start + this._length;
             const stride = this._mode === NeoPixelMode.RGBW ? 4 : 3;
             for (let i = this.start; i < end; ++i) {
-                this.setBufferRGB(i * stride, red, green, blue)
+                this.setBufferRGB(i * stride, red, green, blue);
             }
         }
         private setAllW(white: number) {
-            if (this._mode !== NeoPixelMode.RGBW)
-                return;
+            if (this._mode !== NeoPixelMode.RGBW) return;
 
             let br = this.brightness;
             if (br < 255) {
@@ -444,9 +435,7 @@ namespace neopixel {
             }
         }
         private setPixelRGB(pixeloffset: number, rgb: number): void {
-            if (pixeloffset < 0
-                || pixeloffset >= this._length)
-                return;
+            if (pixeloffset < 0 || pixeloffset >= this._length) return;
 
             let stride = this._mode === NeoPixelMode.RGBW ? 4 : 3;
             pixeloffset = (pixeloffset + this.start) * stride;
@@ -461,15 +450,12 @@ namespace neopixel {
                 green = (green * br) >> 8;
                 blue = (blue * br) >> 8;
             }
-            this.setBufferRGB(pixeloffset, red, green, blue)
+            this.setBufferRGB(pixeloffset, red, green, blue);
         }
         private setPixelW(pixeloffset: number, white: number): void {
-            if (this._mode !== NeoPixelMode.RGBW)
-                return;
+            if (this._mode !== NeoPixelMode.RGBW) return;
 
-            if (pixeloffset < 0
-                || pixeloffset >= this._length)
-                return;
+            if (pixeloffset < 0 || pixeloffset >= this._length) return;
 
             pixeloffset = (pixeloffset + this.start) * 4;
 
@@ -492,7 +478,11 @@ namespace neopixel {
     //% parts="neopixel"
     //% trackArgs=0,2
     //% blockSetVariable=strip
-    export function create(pin: DigitalPin, numleds: number, mode: NeoPixelMode): Strip {
+    export function create(
+        pin: DigitalPin,
+        numleds: number,
+        mode: NeoPixelMode
+    ): Strip {
         let strip = new Strip();
         let stride = mode === NeoPixelMode.RGBW ? 4 : 3;
         strip.buf = pins.createBuffer(numleds * stride);
@@ -500,8 +490,8 @@ namespace neopixel {
         strip._length = numleds;
         strip._mode = mode || NeoPixelMode.RGB;
         strip._matrixWidth = 0;
-        strip.setBrightness(128)
-        strip.setPin(pin)
+        strip.setBrightness(128);
+        strip.setPin(pin);
         return strip;
     }
 
@@ -520,7 +510,7 @@ namespace neopixel {
 
     /**
      * Gets the RGB value of a known color
-    */
+     */
     //% weight=2 blockGap=8
     //% blockId="neopixel_colors" block="%color"
     //% advanced=true
@@ -529,18 +519,18 @@ namespace neopixel {
     }
 
     function packRGB(a: number, b: number, c: number): number {
-        return ((a & 0xFF) << 16) | ((b & 0xFF) << 8) | (c & 0xFF);
+        return ((a & 0xff) << 16) | ((b & 0xff) << 8) | (c & 0xff);
     }
     function unpackR(rgb: number): number {
-        let r = (rgb >> 16) & 0xFF;
+        let r = (rgb >> 16) & 0xff;
         return r;
     }
     function unpackG(rgb: number): number {
-        let g = (rgb >> 8) & 0xFF;
+        let g = (rgb >> 8) & 0xff;
         return g;
     }
     function unpackB(rgb: number): number {
-        let b = (rgb) & 0xFF;
+        let b = rgb & 0xff;
         return b;
     }
 
@@ -550,7 +540,6 @@ namespace neopixel {
      * @param s saturation from 0 to 99
      * @param l luminosity from 0 to 99
      */
-    //% blockId=neopixelHSL block="hue %h|saturation %s|luminosity %l"
     export function hsl(h: number, s: number, l: number): number {
         h = Math.round(h);
         s = Math.round(s);
@@ -559,28 +548,40 @@ namespace neopixel {
         h = h % 360;
         s = Math.clamp(0, 99, s);
         l = Math.clamp(0, 99, l);
-        let c = Math.idiv((((100 - Math.abs(2 * l - 100)) * s) << 8), 10000); //chroma, [0,255]
-        let h1 = Math.idiv(h, 60);//[0,6]
-        let h2 = Math.idiv((h - h1 * 60) * 256, 60);//[0,255]
-        let temp = Math.abs((((h1 % 2) << 8) + h2) - 256);
-        let x = (c * (256 - (temp))) >> 8;//[0,255], second largest component of this color
+        let c = Math.idiv(((100 - Math.abs(2 * l - 100)) * s) << 8, 10000); //chroma, [0,255]
+        let h1 = Math.idiv(h, 60); //[0,6]
+        let h2 = Math.idiv((h - h1 * 60) * 256, 60); //[0,255]
+        let temp = Math.abs((h1 % 2 << 8) + h2 - 256);
+        let x = (c * (256 - temp)) >> 8; //[0,255], second largest component of this color
         let r$: number;
         let g$: number;
         let b$: number;
         if (h1 == 0) {
-            r$ = c; g$ = x; b$ = 0;
+            r$ = c;
+            g$ = x;
+            b$ = 0;
         } else if (h1 == 1) {
-            r$ = x; g$ = c; b$ = 0;
+            r$ = x;
+            g$ = c;
+            b$ = 0;
         } else if (h1 == 2) {
-            r$ = 0; g$ = c; b$ = x;
+            r$ = 0;
+            g$ = c;
+            b$ = x;
         } else if (h1 == 3) {
-            r$ = 0; g$ = x; b$ = c;
+            r$ = 0;
+            g$ = x;
+            b$ = c;
         } else if (h1 == 4) {
-            r$ = x; g$ = 0; b$ = c;
+            r$ = x;
+            g$ = 0;
+            b$ = c;
         } else if (h1 == 5) {
-            r$ = c; g$ = 0; b$ = x;
+            r$ = c;
+            g$ = 0;
+            b$ = x;
         }
-        let m = Math.idiv((Math.idiv((l * 2 << 8), 100) - c), 2);
+        let m = Math.idiv(Math.idiv((l * 2) << 8, 100) - c, 2);
         let r = r$ + m;
         let g = g$ + m;
         let b = b$ + m;
@@ -590,6 +591,6 @@ namespace neopixel {
     export enum HueInterpolationDirection {
         Clockwise,
         CounterClockwise,
-        Shortest
+        Shortest,
     }
 }
