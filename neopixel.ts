@@ -101,11 +101,23 @@ namespace neopixel {
             //hue
             const h1 = startHue;
             const h2 = endHue;
-            const hDistCW = (h2 + 360 - h1) % 360;
-            const hStepCW = Math.idiv(hDistCW * 100, steps);
-            const hDistCCW = (h1 + 360 - h2) % 360;
-            const hStepCCW = Math.idiv(-(hDistCCW * 100), steps);
+            let hDistCW;
+            let hDistCCW;
+            let hStepCW;
+            let hStepCCW;
+
+            // In case we have a full rainbow
+            if (h2 !== h1 && (h2 + 360 - h1) % 360 == 0) {
+                hDistCW = 360;
+                hDistCCW = 360;
+            } else {
+                hDistCW = (h2 + 360 - h1) % 360;
+                hDistCCW = (h1 + 360 - h2) % 360;
+            }
+            hStepCW = Math.idiv(hDistCW * 100, steps);
+            hStepCCW = Math.idiv(-(hDistCCW * 100), steps);
             let hStep: number;
+
             if (direction === HueInterpolationDirection.Clockwise) {
                 hStep = hStepCW;
             } else if (direction === HueInterpolationDirection.CounterClockwise) {
@@ -113,7 +125,7 @@ namespace neopixel {
             } else {
                 hStep = hDistCW < hDistCCW ? hStepCW : hStepCCW;
             }
-            console.log("hstep= " + hStep);
+
             const h1_100 = h1 * 100; //we multiply by 100 so we keep more accurate results while doing interpolation
 
             //sat
