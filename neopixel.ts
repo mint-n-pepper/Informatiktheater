@@ -88,6 +88,11 @@ namespace neopixel {
             startHue = startHue >> 0;
             endHue = (endHue * 360) / 255;
             endHue = endHue >> 0;
+
+            // compensate for difference of start color in HSV color wheel picker
+            startHue -= 120;
+            endHue -= 120;
+
             const saturation = 100;
             const luminance = 50;
             const steps = this._length;
