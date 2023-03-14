@@ -91,7 +91,12 @@ namespace neopixel {
             const saturation = 100;
             const luminance = 50;
             const steps = this._length;
-            const direction = HueInterpolationDirection.Clockwise;
+            let direction;
+            if (endHue > startHue) {
+                direction = HueInterpolationDirection.Clockwise;
+            } else if (endHue < startHue) {
+                direction = HueInterpolationDirection.CounterClockwise;
+            }
 
             //hue
             const h1 = startHue;
