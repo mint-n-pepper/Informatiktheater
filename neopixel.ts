@@ -84,11 +84,11 @@ namespace neopixel {
         showRainbow(startHue: number = 1, endHue: number = 255) {
             if (this._length <= 0) return;
 
-            console.log("startHue:" + startHue + "\nEndHue:" + endHue);
             startHue = (startHue * 360) / 255;
             startHue = startHue >> 0;
             endHue = (endHue * 360) / 255;
             endHue = endHue >> 0;
+            console.log("startHue:" + startHue + "\nEndHue:" + endHue);
             const saturation = 100;
             const luminance = 50;
             const steps = this._length;
