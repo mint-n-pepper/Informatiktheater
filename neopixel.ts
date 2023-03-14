@@ -88,7 +88,6 @@ namespace neopixel {
             startHue = startHue >> 0;
             endHue = (endHue * 360) / 255;
             endHue = endHue >> 0;
-            console.log("startHue:" + startHue + "\nEndHue:" + endHue);
             const saturation = 100;
             const luminance = 50;
             const steps = this._length;
@@ -109,6 +108,7 @@ namespace neopixel {
             } else {
                 hStep = hDistCW < hDistCCW ? hStepCW : hStepCCW;
             }
+            console.log("hstep= " + hStep);
             const h1_100 = h1 * 100; //we multiply by 100 so we keep more accurate results while doing interpolation
 
             //sat
