@@ -12,8 +12,6 @@
   "NeoPixelMode.RGBW|block": "RGB+W",
   "NeoPixelMode.RGB_RGB|block": "RGB (RGB Format)",
   "NeoPixelMode.RGB|block": "RGB (GRB Format)",
-  "neopixel.HSL.rotateHue|block": "HSL-Farbe: rotiere Farbwert von %hsl| um %offset",
-  "neopixel.HSL.toRGB|block": "%hsl|nach RGB",
   "neopixel.Strip.clear|block": "%strip|ausschalten",
   "neopixel.Strip.easeBrightness|block": "%strip|abdunkeln",
   "neopixel.Strip.length|block": "%strip|Länge",

@@ -1,9 +1,7 @@
 {
   "neopixel.create": "Erzeuge einen neuen Treiber für die gegebene Anzahl NeoPixels, die am angegebenen Port angeschlossen sind. Der Modus bestimmt die genaue Bauart der NeoPixel.",
   "neopixel.Strip.showColor": "Setze alle Pixel auf die angegebene Farbe und rufe ``anzeigen`` auf.",
-  "neopixel.Strip.setBrigthness": "Setze die Helligkeit der NeoPixel (0-255). Die Änderung betrifft nur zukünftige Operationen.",
-  "neopixel.HSL.rotateHue": "Rotiert den Farbwert einer HSL-Farbe",
-  "neopixel.HSL.toRGB": "Konvertiert eine HSL-Farbe in eine RGB-Farbe.",
+  "neopixel.Strip.setBrightness": "Setze die Helligkeit der NeoPixel (0-255). Die Änderung betrifft nur zukünftige Operationen.",
   "neopixel.Strip.clear": "Schalte alle NeoPixel aus. Damit die Änderung sichtbar wird, muss anschließend ``anzeigen`` aufgerufen werden.",
   "neopixel.Strip.easeBrightness": "Aktuelle Farben der NeoPixel je nach Pixelnr. abdunkeln.",
   "neopixel.Strip.length": "Die Anzahl der NeoPixel, die der Treiber verwaltet.",
