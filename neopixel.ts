@@ -526,7 +526,7 @@ namespace neopixel {
         // TODO: How can we solve this more elegant? When trying to cast,
         // we can't use string literals here and can't change DigitalPin to non constant enum
         let p;
-        switch (e) {
+        switch (pin) {
             case HiwonderPins.P1:
                 p = DigitalPin.P1;
                 break;
