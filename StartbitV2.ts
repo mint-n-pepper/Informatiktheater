@@ -697,7 +697,7 @@ namespace Informatiktheater {
   //% jsdoc.loc.de="Setze die Hellighkeit des LED Streifens. Dies gilt nur zukünftige Operationen."
   //% brightness.loc.de="LED Helligkeit zwischen 0 bis 255"
   //% weight=100
-  //% subcategory=Hiwonder LED
+  //% subcategory=Onboard-LED
   export function startbit_setBrightness(brightness: number): void {
     lhRGBLight.setBrightness(brightness);
     lhRGBLight.show();
@@ -706,7 +706,7 @@ namespace Informatiktheater {
   //% weight=99 blockId=startbit_setPixelRGBArgs
   //% block="set|%lightoffset|color to %rgb"
   //% block.loc.de="setze Farbe von|%lightoffset|auf %rgb"
-  //% subcategory=Hiwonder LED
+  //% subcategory=Onboard-LED
   export function startbit_setPixelRGBArgs(
     lightoffset: StartbitLights,
     rgb: StartbitRGBColors
@@ -719,7 +719,7 @@ namespace Informatiktheater {
   //% block="Light on"
   //% block.loc.de="Licht an"
   //% jsdoc.loc.de="Zeige die gefärbten Lichter. Muss ausgeführt werden nachdem eine Lichtfarbe gesetzt wurde!"
-  //% subcategory=Hiwonder LED
+  //% subcategory=Onboard-LED
   export function startbit_showLight() {
     lhRGBLight.show();
   }
@@ -731,7 +731,7 @@ namespace Informatiktheater {
   //% block="Light off"
   //% block.loc.de="Licht aus"
   //% jsdoc.loc.de="Setze Farbe zurück und schalte LED aus"
-  //% subcategory=Hiwonder LED
+  //% subcategory=Onboard-LED
   export function startbit_clearLight() {
     lhRGBLight.clear();
   }
