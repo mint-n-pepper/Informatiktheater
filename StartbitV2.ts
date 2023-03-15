@@ -1,3 +1,5 @@
+Informatiktheater.startbit_Init();
+
 /*
  Informatiktheater package
 */
@@ -150,7 +152,7 @@ namespace Informatiktheater {
     }
   }
 
-  function startbit_Init() {
+  export function startbit_Init() {
     startbit_initRGBLight();
     serial.redirect(SerialPin.P12, SerialPin.P8, BaudRate.BaudRate115200);
 
@@ -161,7 +163,6 @@ namespace Informatiktheater {
       }
     });
     basic.pause(2000);
-    console.log("Informatiktheater initialized");
   }
 
   let handleCmd: string = "";
@@ -171,17 +172,6 @@ namespace Informatiktheater {
 
   let MESSAGE_MAC = 0xff;
   let MESSAGE_ANGLE = 0x100;
-
-  let servo1Angle: number = 0xfff;
-  let servo2Angle: number = 0xfff;
-
-  let TM1640_CMD1 = 0x40;
-  let TM1640_CMD2 = 0xc0;
-  let TM1640_CMD3 = 0x80;
-  let _SEGMENTS = [
-    0x3f, 0x06, 0x5b, 0x4f, 0x66, 0x6d, 0x7d, 0x07, 0x7f, 0x6f, 0x77, 0x7c,
-    0x39, 0x5e, 0x79, 0x71,
-  ];
 
   function getHandleCmd() {
     let charStr: string = serial.readString();
@@ -194,7 +184,6 @@ namespace Informatiktheater {
       if (cmd.charAt(0).compare("A") == 0) {
         if (cmd.length == 7) {
           let arg1Int: number = strToNumber(cmd.substr(1, 2));
-          let arg2Int: number = strToNumber(cmd.substr(3, 2));
           let arg3Int: number = strToNumber(cmd.substr(5, 2));
 
           if (arg3Int != -1) {
@@ -227,12 +216,8 @@ namespace Informatiktheater {
         }
         if (arg2Int > 1000) arg2Int = 1000;
         if (arg1Int == 1) {
-          servo1Angle = mapValue(arg2Int, 0, 1000, 0, 240);
-          servo1Angle -= 120;
           control.raiseEvent(MESSAGE_ANGLE, 1);
         } else if (arg1Int == 2) {
-          servo2Angle = mapValue(arg2Int, 0, 1000, 0, 240);
-          servo2Angle -= 120;
           control.raiseEvent(MESSAGE_ANGLE, 2);
         }
       }
@@ -1060,6 +1045,4 @@ namespace Informatiktheater {
   export function createSongList(): SongList {
     return new SongList();
   }
-
-  startbit_Init();
 }
