@@ -71,7 +71,7 @@ namespace neopixel {
 
         /**
          * Shows a rainbow pattern on all LEDs.
-         * @param startHue the start hue value for the rainbow
+         * @param startHue the start hue value for the rainbow, e.g. 0 is red, 120 green, 240 blue, 360 red
          * @param endHue the end hue value for the rainbow
          */
         //% blockId="neopixel_set_strip_rainbow" block="%strip|show rainbow from %startHue|to %endHue"
@@ -88,10 +88,6 @@ namespace neopixel {
             startHue = startHue >> 0;
             endHue = (endHue * 360) / 255;
             endHue = endHue >> 0;
-
-            // compensate for difference of start color in HSV color wheel picker
-            startHue -= 120;
-            endHue -= 120;
 
             const saturation = 100;
             const luminance = 50;
