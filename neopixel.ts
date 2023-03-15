@@ -659,10 +659,4 @@ namespace neopixel {
         Shortest,
     }
 
-    export function hsl(h: any, mapped_hue: number, s: any): number {
-        throw new Error("Function not implemented.");
-    }
-}
-function hsl(h: any, mapped_hue: number, s: any): number {
-    throw new Error("Function not implemented.");
 }
