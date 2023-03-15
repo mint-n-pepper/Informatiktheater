@@ -1,5 +1,3 @@
-Informatiktheater.startbit_Init();
-
 /*
  Informatiktheater package
 */
@@ -152,6 +150,14 @@ namespace Informatiktheater {
     }
   }
 
+  /**
+   * Informatiktheater initialization, please execute at boot time
+   */
+  //% weight=100
+  //% blockId=startbit_Init
+  //% block="initialize Informatiktheater"
+  //% block.loc.de="initialisiere Informatiktheater"
+  //% jsdoc.loc.de="Informatiktheater Initialisation, bitte beim Start ausführen."
   export function startbit_Init() {
     startbit_initRGBLight();
     serial.redirect(SerialPin.P12, SerialPin.P8, BaudRate.BaudRate115200);
