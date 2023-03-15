@@ -523,7 +523,26 @@ namespace neopixel {
         strip._mode = mode || NeoPixelMode.RGB_GRB;
         strip._matrixWidth = 0;
         strip.setBrightness(128);
-        let p = DigitalPin[HiwonderPins[pin]];
+        // TODO: How can we solve this more elegant? When trying to cast,
+        // we can't use string literals here and can't change DigitalPin to non constant enum
+        let p;
+        switch (e) {
+            case HiwonderPins.P1:
+                p = DigitalPin.P1;
+                break;
+            case HiwonderPins.P2:
+                p = DigitalPin.P2;
+                break;
+            case HiwonderPins.P13:
+                p = DigitalPin.P13;
+                break;
+            case HiwonderPins.P14:
+                p = DigitalPin.P14;
+                break;
+            case HiwonderPins.P16:
+                p = DigitalPin.P16;
+                break;
+        }
         strip.setPin(p);
         return strip;
     }
