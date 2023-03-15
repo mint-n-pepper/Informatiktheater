@@ -169,18 +169,18 @@ namespace neopixel {
             this.show();
         }
 
-        /**
-         * Displays a vertical bar graph based on the `value` and `high` value.
-         * If `high` is 0, the chart gets adjusted automatically.
-         * @param value current value to plot
-         * @param high maximum value, eg: 255
-         */
-        //% weight=84
-        //% blockId=neopixel_show_bar_graph block="%strip|show bar graph of %value|up to %high"
-        //% strip.defl=strip
-        //% icon="\uf080"
-        //% parts="neopixel"
-        //% subcategory=Stripe
+        // /**
+        //  * Displays a vertical bar graph based on the `value` and `high` value.
+        //  * If `high` is 0, the chart gets adjusted automatically.
+        //  * @param value current value to plot
+        //  * @param high maximum value, eg: 255
+        //  */
+        // //% weight=84
+        // //% blockId=neopixel_show_bar_graph block="%strip|show bar graph of %value|up to %high"
+        // //% strip.defl=strip
+        // //% icon="\uf080"
+        // //% parts="neopixel"
+        // //% subcategory=Stripe
         showBarGraph(value: number, high: number): void {
             if (high <= 0) {
                 this.clear();
