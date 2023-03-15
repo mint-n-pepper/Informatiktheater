@@ -548,8 +548,10 @@ namespace neopixel {
     }
 
     /**
-     * Selects a color from color picker
-     * @param
+     * creates a color from rgb numbers
+     * @param r red channel
+     * @param g green channel
+     * @param b blue channel
      */
     //% weight=85 blockGap=8
     //% blockId="neopixel_rgb" block="red %red|green %green|blue %blue"
@@ -558,6 +560,18 @@ namespace neopixel {
     //% green.defl=255 green.min=0 green.max=255
     export function rgb(red: number, green: number, blue: number): number {
         return packRGB(red, green, blue);
+    }
+
+    /**
+     * creates a color from hsv color picker
+     * @param hue color
+     */
+    //% weight=85 blockGap=8
+    //% blockId="neopixel_hsv" block="hue %hue"
+    //% hue.shadow="colorWheelHsvPicker"
+    export function hsv_picker(hue: number): number {
+        let mapped_hue = (hue * 360) / 255;
+        return hsl(mapped_hue, 100, 50);
     }
 
     /**
@@ -644,4 +658,11 @@ namespace neopixel {
         CounterClockwise,
         Shortest,
     }
+
+    export function hsl(h: any, mapped_hue: number, s: any): number {
+        throw new Error("Function not implemented.");
+    }
+}
+function hsl(h: any, mapped_hue: number, s: any): number {
+    throw new Error("Function not implemented.");
 }

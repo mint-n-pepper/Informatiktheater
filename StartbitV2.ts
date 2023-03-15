@@ -1,4 +1,6 @@
+// Auto init hiwonder board when extension is added
 Informatiktheater.startbit_Init();
+
 /*
  Informatiktheater package
 */
@@ -58,8 +60,9 @@ namespace Informatiktheater {
   let trigPin: DigitalPin;
   //% weight=91
   //% blockId=ultrasonic_init
-  //% block="initialize ultrasonic |%port"
+  //% block="initialize ultrasonic |%pin"
   //% block.loc.de="initialisiere Ultraschall|%port"
+  //Silvan: I don't think we should switch from port to pins here (one would have to define two pins instead of a single port)
   export function ultrasonic_init(port: startbit_ultrasonicPort) {
     switch (port) {
       case startbit_ultrasonicPort.port1:
@@ -83,6 +86,8 @@ namespace Informatiktheater {
   //% blockId=lineFollowSensor_init
   //% block="initialize line follower sensor|%port"
   //% block.loc.de="initialisiere Linienfolger-Sensor|%port"
+  //Silvan: I don't think we should switch from port to pins here (one would have to define two pins instead of a single port)
+  // Only P1 and P2 are analog inputs
   export function lineFollowSensor_init(port: startbit_lineFollowPort) {
     switch (port) {
       case startbit_lineFollowPort.port1:

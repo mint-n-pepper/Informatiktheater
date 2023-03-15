@@ -12,5 +12,6 @@
   "neopixel.Strip.showRainbow": "Zeigt ein Regenbogenmuster auf allen NeoPixeln an.",
   "neopixel.Strip.show": "Sendet alle Änderungen an die NeoPixel.",
   "neopixel.rgb": "Erstellt eine RGB-Farbe",
+  "neopixel.hsv_picker": "Erstellt eine Farbe",
   "neopixel.colors": "bekannte RGB-Farben"
 }
