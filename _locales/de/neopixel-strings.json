@@ -13,7 +13,7 @@
   "NeoPixelMode.RGB_RGB|block": "RGB",
   "NeoPixelMode.RGB_GRB|block": "GRB",
   "neopixel.Strip.clear|block": "%strip|ausschalten",
-  "neopixel.Strip.easeBrightness|block": "%strip|abdunkeln",
+  "neopixel.Strip.easeBrightness|block": "%strip|Anfang und Ende mit Verlauf abdunkeln",
   "neopixel.Strip.length|block": "%strip|Länge",
   "neopixel.Strip.rotate|block": "%strip|rotiere NeoPixel um %offset",
   "neopixel.Strip.setBrightness|block": "%strip|setze Helligkeit %brightness",
