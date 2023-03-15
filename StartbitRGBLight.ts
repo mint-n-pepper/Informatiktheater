@@ -60,10 +60,6 @@ enum StartbitRGBPixelMode {
  * QbitRGBLight Functions
  */
 namespace StartbitRGBLight {
-    // //% shim=sendBufferAsm
-    // //% parts="QbitRGBLight"
-    // function sendBuffer(buf: Buffer, pin: DigitalPin) { }
-
     /**
      * A LHQbitRGBLight class
      */
@@ -182,7 +178,6 @@ namespace StartbitRGBLight {
         }
 
         show() {
-            // sendBuffer(this.buf, this.pin);
             ws2812b.sendBuffer(this.buf, this.pin);
         }
 
