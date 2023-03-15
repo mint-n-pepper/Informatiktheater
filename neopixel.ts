@@ -37,6 +37,16 @@ enum NeoPixelMode {
 }
 
 /**
+ * Available pins on ports (connectors)
+ */
+enum HiwonderPins {
+    P1 = DigitalPin.P1,
+    P2 = DigitalPin.P2,
+    P13 = DigitalPin.P13,
+    P14 = DigitalPin.P14,
+    P16 = DigitalPin.P16,
+}
+/**
  * Functions to operate NeoPixel strips.
  */
 //% weight=5 color=#2699BF icon="\uf110"
@@ -494,7 +504,7 @@ namespace neopixel {
 
     /**
      * Create a new NeoPixel driver for `numleds` LEDs.
-     * @param pin the pin where the neopixel is connected.
+     * @param pin the pin where the neopixel is connected on the Hiwonder board
      * @param numleds number of leds in the strip, eg: 24,30,60,64
      */
     //% blockId="neopixel_create" block="NeoPixel at pin %pin| with %numleds leds"
@@ -503,7 +513,7 @@ namespace neopixel {
     //% subcategory=Stripe
     //% trackArgs=0,2
     //% blockSetVariable=strip
-    export function create(pin: DigitalPin, numleds: number): Strip {
+    export function create(pin: HiwonderPins, numleds: number): Strip {
         let strip = new Strip();
         const mode = NeoPixelMode.RGB_GRB;
         let stride = (mode as NeoPixelMode) === NeoPixelMode.RGBW ? 4 : 3;
