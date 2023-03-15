@@ -506,7 +506,7 @@ namespace neopixel {
     export function create(pin: DigitalPin, numleds: number): Strip {
         let strip = new Strip();
         const mode = NeoPixelMode.RGB_GRB;
-        let stride = Number(mode) === Number(NeoPixelMode.RGBW) ? 4 : 3;
+        let stride = (mode as NeoPixelMode) === NeoPixelMode.RGBW ? 4 : 3;
         strip.buf = pins.createBuffer(numleds * stride);
         strip.start = 0;
         strip._length = numleds;
