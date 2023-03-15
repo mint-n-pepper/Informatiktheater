@@ -523,7 +523,8 @@ namespace neopixel {
         strip._mode = mode || NeoPixelMode.RGB_GRB;
         strip._matrixWidth = 0;
         strip.setBrightness(128);
-        strip.setPin(pin);
+        let p = DigitalPin[HiwonderPins[pin]];
+        strip.setPin(p);
         return strip;
     }
 
