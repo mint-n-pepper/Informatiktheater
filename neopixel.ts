@@ -29,7 +29,7 @@ enum NeoPixelColors {
  */
 enum NeoPixelMode {
     //% block="RGB (GRB format)"
-    RGB = 1,
+    RGB_GRB = 1,
     //% block="RGB+W"
     RGBW = 2,
     //% block="RGB (RGB format)"
@@ -479,6 +479,7 @@ namespace neopixel {
             }
             this.setBufferRGB(pixeloffset, red, green, blue);
         }
+
         private setPixelW(pixeloffset: number, white: number): void {
             if (this._mode !== NeoPixelMode.RGBW) return;
 
@@ -500,23 +501,20 @@ namespace neopixel {
      * @param pin the pin where the neopixel is connected.
      * @param numleds number of leds in the strip, eg: 24,30,60,64
      */
-    //% blockId="neopixel_create" block="NeoPixel at pin %pin|with %numleds|leds as %mode"
+    //% blockId="neopixel_create" block="NeoPixel at pin %pin| with %numleds leds"
     //% weight=90 blockGap=8
     //% parts="neopixel"
     //% subcategory=Stripe
     //% trackArgs=0,2
     //% blockSetVariable=strip
-    export function create(
-        pin: DigitalPin,
-        numleds: number,
-        mode: NeoPixelMode
-    ): Strip {
+    export function create(pin: DigitalPin, numleds: number): Strip {
         let strip = new Strip();
+        let mode: NeoPixelMode = NeoPixelMode.RGB_GRB;
         let stride = mode === NeoPixelMode.RGBW ? 4 : 3;
         strip.buf = pins.createBuffer(numleds * stride);
         strip.start = 0;
         strip._length = numleds;
-        strip._mode = mode || NeoPixelMode.RGB;
+        strip._mode = mode || NeoPixelMode.RGB_GRB;
         strip._matrixWidth = 0;
         strip.setBrightness(128);
         strip.setPin(pin);
