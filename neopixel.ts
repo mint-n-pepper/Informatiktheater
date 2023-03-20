@@ -894,7 +894,7 @@ namespace Matrix {
     //%matrixWidth.defl=32 matrixheight.defl=8
     //%blockSetVariable=matrix
     export function create(
-        pin: DigitalPin,
+        pin: HiwonderPins,
         matrixWidth: number,
         matrixHeight: number
     ): Matrix {
