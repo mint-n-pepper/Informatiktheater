@@ -65,6 +65,7 @@ enum HiwonderPins {
 //% weight=5 color=#2699BF icon="\uf110"
 //% block.loc.de="NeoPixel"
 namespace neopixel {
+    let leds_total = 0;
     /**
      * A NeoPixel strip
      */
@@ -342,12 +343,14 @@ namespace neopixel {
 
         /**
          * Set the brightness of the strip. This flag only applies to future operation.
-         * @param brightness a measure of LED brightness in 0-255. eg: 255
+         * The highest possible brightness level depends on the number of individual LED's set at ``create``.
+         * The brightness will be capped at this threshold.
+         * @param brightness a measure of LED brightness in 0-128. eg: 100
          */
         //% blockId="neopixel_set_brightness" block="%strip|set brightness %brightness" blockGap=8
         //% block.loc.de="%strip|setze Helligkeit %brightness"
-        //% jsdoc.loc.de="Setze die Helligkeit der NeoPixel (0-255). Die Änderung betrifft nur zukünftige Operationen."
-        //% brightness.defl=255 brightness.min=0 brightness.max=255
+        //% jsdoc.loc.de="Setze die Helligkeit der NeoPixel (0-128). Die Änderung betrifft nur zukünftige Operationen! Die höchst möglichste Helligkeit hängt von der Anzahl LED's ab. Die Helligkeit wird bei diesem Schwellwert begrenzt."
+        //% brightness.defl=255 brightness.min=0 brightness.max=128
         //% strip.defl=strip
         //% weight=59
         //% parts="neopixel"
@@ -493,7 +496,10 @@ namespace neopixel {
             let green = unpackG(rgb);
             let blue = unpackB(rgb);
 
-            const br = this.brightness;
+            const br =
+                this.brightness < total_brightness_limit()
+                    ? this.brightness
+                    : total_brightness_limit();
             if (br < 255) {
                 red = (red * br) >> 8;
                 green = (green * br) >> 8;
@@ -515,7 +521,10 @@ namespace neopixel {
             let green = unpackG(rgb);
             let blue = unpackB(rgb);
 
-            let br = this.brightness;
+            const br =
+                this.brightness < total_brightness_limit()
+                    ? this.brightness
+                    : total_brightness_limit();
             if (br < 255) {
                 red = (red * br) >> 8;
                 green = (green * br) >> 8;
@@ -523,6 +532,14 @@ namespace neopixel {
             }
             this.setBufferRGB(pixeloffset, red, green, blue);
         }
+    }
+
+    function total_brightness_limit(): number {
+        // a WS2812B LED has a current of about 60mA at full brightness with white color
+        // The TP5400 voltage regulator on the Hiwonder board can deliver around 740mA. To have a little margin we choose a max current of 700mA.
+        const br = Math.idiv(700 * 255, leds_total * 60) & 0xff;
+        console.log("Max brightness: " + br);
+        return br;
     }
 
     /**
@@ -540,6 +557,7 @@ namespace neopixel {
     // trackArgs=0, 2
     //% blockSetVariable=strip
     export function create(pin: HiwonderPins, numleds: number): Strip {
+        leds_total += numleds;
         let strip = new Strip();
         const mode = NeoPixelMode.RGB_GRB;
         let stride = (mode as NeoPixelMode) === NeoPixelMode.RGBW ? 4 : 3;
