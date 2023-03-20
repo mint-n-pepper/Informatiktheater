@@ -314,7 +314,7 @@ namespace neopixel {
          * You need to call ``show`` to make the changes visible.
          */
         //% blockId="neopixel_clear" block="%strip|clear"
-        //% block.loc.de="strip|ausschalten"
+        //% block.loc.de="%strip|ausschalten"
         //% jsdoc.loc.de="Schalte alle NeoPixel aus. Damit die Änderung sichtbar wird, muss anschließend ``anzeigen`` aufgerufen werden."
         //% strip.defl=strip
         //% weight=76
