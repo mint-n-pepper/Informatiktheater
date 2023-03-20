@@ -523,21 +523,6 @@ namespace neopixel {
             }
             this.setBufferRGB(pixeloffset, red, green, blue);
         }
-
-        private setPixelW(pixeloffset: number, white: number): void {
-            if (this._mode !== NeoPixelMode.RGBW) return;
-
-            if (pixeloffset < 0 || pixeloffset >= this._length) return;
-
-            pixeloffset = (pixeloffset + this.start) * 4;
-
-            let br = this.brightness;
-            if (br < 255) {
-                white = (white * br) >> 8;
-            }
-            let buf = this.buf;
-            buf[pixeloffset + 3] = white;
-        }
     }
 
     /**
@@ -551,6 +536,7 @@ namespace neopixel {
     //% weight=90 blockGap=8
     //% parts="neopixel"
     //% subcategory=Stripe
+    // TODO: How is trackArgs supposed to work? Without this, the simulator will work again, but without neopixel simulation enabled
     // trackArgs=0, 2
     //% blockSetVariable=strip
     export function create(pin: HiwonderPins, numleds: number): Strip {
