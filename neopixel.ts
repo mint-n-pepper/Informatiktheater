@@ -296,7 +296,7 @@ namespace neopixel {
          * Send all the changes to the strip.
          */
         //% blockId="neopixel_show" block="%strip|show" blockGap=8
-        //% block.loc.de="strip|anzeigen"
+        //% block.loc.de="%strip|anzeigen"
         //% jsdoc.loc.de="Sendet alle Änderungen an die NeoPixel."
         //% strip.defl=strip
         //% weight=79
