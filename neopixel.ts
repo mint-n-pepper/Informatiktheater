@@ -455,11 +455,6 @@ namespace neopixel {
         /**
          * Estimates the electrical current (mA) consumed by the current light configuration.
          */
-        //% weight=9 blockId=neopixel_power block="%strip|power (mA)"
-        //% block.loc.de="%strip|Stromverbrauch (mA)"
-        //% jsdoc.loc.de="Schätzt den elektrischen Strom in mA der gewählten NeoPixel Konfiguration"
-        //% strip.defl=strip
-        //% subcategory=Stripe
         power(): number {
             const stride = this._mode === NeoPixelMode.RGBW ? 4 : 3;
             const end = this.start + this._length;
