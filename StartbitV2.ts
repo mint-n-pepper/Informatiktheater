@@ -1,5 +1,5 @@
 // Auto init hiwonder board when extension is added
-// Informatiktheater.startbit_Init();
+Informatiktheater.startbit_Init();
 
 /*
  Informatiktheater package
@@ -163,7 +163,7 @@ namespace Informatiktheater {
     basic.forever(() => {
       getHandleCmd();
       if (0 < currentVoltage && currentVoltage < 6800) {
-        music.playTone(988, music.beat(BeatFraction.Whole));
+        // music.playTone(988, music.beat(BeatFraction.Whole));
       }
     });
     basic.pause(2000);
