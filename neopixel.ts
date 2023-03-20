@@ -551,7 +551,7 @@ namespace neopixel {
     //% weight=90 blockGap=8
     //% parts="neopixel"
     //% subcategory=Stripe
-    //% trackArgs=0,2
+    // trackArgs=0, 2
     //% blockSetVariable=strip
     export function create(pin: HiwonderPins, numleds: number): Strip {
         let strip = new Strip();
