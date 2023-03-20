@@ -764,10 +764,10 @@ namespace Matrix {
         /**
          * scroll text on the matrix
          */
-        //%blockId="Matrix_scrollText" block="%matrix Text: %text| Geschwindigkeit (0 - 1024) %speed| Farbe %colour"
+        //%blockId="Matrix_scrollText" block="%matrix Text: %text| Geschwindigkeit (0 - 100) %speed| Farbe %colour"
         //%weight=75 group="PixelControl"
         //%colour.shadow=neopixel_colors
-        //%speed.min=0 speed.max=1024 speed.defl=512
+        //%speed.min=0 speed.max=100 speed.defl=50
         scrollText(text: string, speed: number, colour: number): void {
             this.strip.clear();
             for (let Xpos = this.Width; Xpos > -6 * text.length; Xpos--) {
