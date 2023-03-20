@@ -1,5 +1,5 @@
 // Auto init hiwonder board when extension is added
-Informatiktheater.startbit_Init();
+// Informatiktheater.startbit_Init();
 
 /*
  Informatiktheater package
