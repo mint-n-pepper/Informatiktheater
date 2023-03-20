@@ -259,6 +259,7 @@ namespace neopixel {
          */
         //% blockId=neopixel_set_matrix_width block="%strip|set matrix width %width"
         //% block.loc.de="%strip|setze Matrix Breite %width"
+        //% jsdoc.loc.de="Setzt die Anzahl Pixel ein einer LED Matrize"
         //% strip.defl=strip
         //% blockGap=8
         //% weight=5
@@ -277,6 +278,7 @@ namespace neopixel {
          */
         //% blockId="neopixel_set_matrix_color" block="%strip|set matrix color at x %x|y %y|to %rgb=neopixel_colors"
         //% block.loc.de="%strip|setze Matrix Farbe an Position x %x|y %y|auf %rgb=neopixel_colors"
+        //% jsdoc.loc.de="Setzt die Farbe in einer LED Matrize im Bereich 0-255. Es muss anschliessend ``anzeigen`` ausgeführt werden, um die Änderung anzuzeigen."
         //% strip.defl=strip
         //% weight=4
         //% parts="neopixel"
@@ -452,6 +454,7 @@ namespace neopixel {
          */
         //% weight=9 blockId=neopixel_power block="%strip|power (mA)"
         //% block.loc.de="%strip|Stromverbrauch (mA)"
+        //% jsdoc.loc.de="Schätzt den elektrischen Strom in mA der gewählten NeoPixel Konfiguration"
         //% strip.defl=strip
         //% subcategory=Stripe
         power(): number {
