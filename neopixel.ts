@@ -3,24 +3,34 @@
  */
 enum NeoPixelColors {
     //% block=red
+    //% block.loc.de="rot"
     Red = 0xff0000,
     //% block=orange
+    //% block.loc.de="orange"
     Orange = 0xffa500,
     //% block=yellow
+    //% block.loc.de="gelb"
     Yellow = 0xffff00,
     //% block=green
+    //% block.loc.de="grün"
     Green = 0x00ff00,
     //% block=blue
+    //% block.loc.de="blau"
     Blue = 0x0000ff,
     //% block=indigo
+    //% block.loc.de="indigo"
     Indigo = 0x4b0082,
     //% block=violet
+    //% block.loc.de="violett"
     Violet = 0x8a2be2,
     //% block=purple
+    //% block.loc.de="magenta"
     Purple = 0xff00ff,
     //% block=white
+    //% block.loc.de="weiss"
     White = 0xffffff,
     //% block=black
+    //% block.loc.de="schwarz"
     Black = 0x000000,
 }
 
@@ -29,10 +39,13 @@ enum NeoPixelColors {
  */
 enum NeoPixelMode {
     //% block="RGB (GRB format)"
+    //% block.loc.de="GRB"
     RGB_GRB = 1,
     //% block="RGB+W"
+    //% block.loc.de="RGB+W"
     RGBW = 2,
     //% block="RGB (RGB format)"
+    //% block.loc.de="RGB"
     RGB_RGB = 3,
 }
 
@@ -50,6 +63,7 @@ enum HiwonderPins {
  * Functions to operate NeoPixel strips.
  */
 //% weight=5 color=#2699BF icon="\uf110"
+//% block.loc.de="NeoPixel"
 namespace neopixel {
     /**
      * A NeoPixel strip
@@ -69,6 +83,8 @@ namespace neopixel {
          * @param rgb RGB color of the LED
          */
         //% blockId="neopixel_set_strip_color" block="%strip|show color %rgb=neopixel_colors"
+        //% block.loc.de="%strip|zeige Farbe %rgb=neopixel_colors"
+        //% jsdoc.loc.de="Setze alle Pixel auf die angegebene Farbe und rufe ``anzeigen`` auf."
         //% strip.defl=strip
         //% weight=85 blockGap=8
         //% parts="neopixel"
@@ -85,6 +101,8 @@ namespace neopixel {
          * @param endHue the end hue value for the rainbow
          */
         //% blockId="neopixel_set_strip_rainbow" block="%strip|show rainbow from %startHue|to %endHue"
+        //% block.loc.de="%strip|zeige Regenbogen von Farbton %startHue|bis %endHue"
+        //% jsdoc.loc.de="Zeigt ein Regenbogenmuster auf allen NeoPixeln an."
         //% strip.defl=strip
         //% startHue.shadow="colorWheelHsvPicker"
         //% endHue.shadow="colorWheelHsvPicker"
@@ -215,6 +233,8 @@ namespace neopixel {
          * @param rgb RGB color of the LED
          */
         //% blockId="neopixel_set_pixel_color" block="%strip|set %number pixel color(s)| at %pixeloffset|to %rgb=neopixel_colors"
+        //% block.loc.de="%strip|setze Farbe(n) von %number NeoPixel(n) |an Position %pixeloffset|auf %rgb=neopixel_colors"
+        //% jsdoc.loc.de="Setzt die NeoPixel im Interval mit der angegebenen Startnummer auf die angegebene Farbe. Damit die Änderung sichtbar wird, muss anschließend ``anzeigen`` aufgerufen werden."
         //% strip.defl=strip
         //% number.defl=1
         //% number.min=1
@@ -238,6 +258,7 @@ namespace neopixel {
          * @param width number of pixels in a row
          */
         //% blockId=neopixel_set_matrix_width block="%strip|set matrix width %width"
+        //% block.loc.de="%strip|setze Matrix Breite %width"
         //% strip.defl=strip
         //% blockGap=8
         //% weight=5
@@ -255,6 +276,7 @@ namespace neopixel {
          * @param rgb RGB color of the LED
          */
         //% blockId="neopixel_set_matrix_color" block="%strip|set matrix color at x %x|y %y|to %rgb=neopixel_colors"
+        //% block.loc.de="%strip|setze Matrix Farbe an Position x %x|y %y|auf %rgb=neopixel_colors"
         //% strip.defl=strip
         //% weight=4
         //% parts="neopixel"
@@ -274,6 +296,8 @@ namespace neopixel {
          * Send all the changes to the strip.
          */
         //% blockId="neopixel_show" block="%strip|show" blockGap=8
+        //% block.loc.de="strip|anzeigen"
+        //% jsdoc.loc.de="Sendet alle Änderungen an die NeoPixel."
         //% strip.defl=strip
         //% weight=79
         //% parts="neopixel"
@@ -290,6 +314,8 @@ namespace neopixel {
          * You need to call ``show`` to make the changes visible.
          */
         //% blockId="neopixel_clear" block="%strip|clear"
+        //% block.loc.de="strip|ausschalten"
+        //% jsdoc.loc.de="Schalte alle NeoPixel aus. Damit die Änderung sichtbar wird, muss anschließend ``anzeigen`` aufgerufen werden."
         //% strip.defl=strip
         //% weight=76
         //% parts="neopixel"
@@ -303,6 +329,8 @@ namespace neopixel {
          * Gets the number of pixels declared on the strip
          */
         //% blockId="neopixel_length" block="%strip|length" blockGap=8
+        //% block.loc.de="%strip|Länge"
+        //% jsdoc.loc.de="Die Anzahl der NeoPixel, die der Treiber verwaltet."
         //% strip.defl=strip
         //% weight=60
         //% subcategory=Stripe
@@ -315,6 +343,8 @@ namespace neopixel {
          * @param brightness a measure of LED brightness in 0-255. eg: 255
          */
         //% blockId="neopixel_set_brightness" block="%strip|set brightness %brightness" blockGap=8
+        //% block.loc.de="%strip|setze Helligkeit %brightness"
+        //% jsdoc.loc.de="Setze die Helligkeit der NeoPixel (0-255). Die Änderung betrifft nur zukünftige Operationen."
         //% brightness.defl=255 brightness.min=0 brightness.max=255
         //% strip.defl=strip
         //% weight=59
@@ -328,11 +358,11 @@ namespace neopixel {
          * Apply brightness to current colors using a quadratic easing function.
          **/
         //% blockId="neopixel_each_brightness" block="%strip|ease brightness" blockGap=8
+        //% block.loc.de="%strip|Anfang und Ende mit Verlauf abdunkeln"
         //% strip.defl=strip
         //% weight=58
         //% parts="neopixel"
         //% subcategory=Stripe
-        // TODO: Silvan: This function eases the brightness at start and end ! Not exactly what we need, is it? Shall we remove this?
         easeBrightness(): void {
             const stride = this._mode === NeoPixelMode.RGBW ? 4 : 3;
             const buf = this.buf;
@@ -367,6 +397,8 @@ namespace neopixel {
          * @param offset number of pixels to shift forward, eg: 1
          */
         //% blockId="neopixel_shift" block="%strip|shift pixels by %offset" blockGap=8
+        //% block.loc.de="%strip|verschiebe NeoPixel um %offset"
+        //% jsdoc.loc.de="Verschiebt die Farben der NeoPixel. Damit die Änderung sichtbar wird, muss anschließend ``anzeigen`` aufgerufen werden."
         //% strip.defl=strip
         //% weight=40
         //% parts="neopixel"
@@ -387,6 +419,8 @@ namespace neopixel {
          * @param offset number of pixels to rotate forward, eg: 1
          */
         //% blockId="neopixel_rotate" block="%strip|rotate pixels by %offset" blockGap=8
+        //% block.loc.de="%strip|rotiere NeoPixel um %offset"
+        //% jsdoc.loc.de="Rotiert die Farben der NeoPixel. Damit die Änderung sichtbar wird, muss anschließend ``anzeigen`` aufgerufen werden."
         //% strip.defl=strip
         //% weight=39
         //% parts="neopixel"
@@ -417,6 +451,7 @@ namespace neopixel {
          * Estimates the electrical current (mA) consumed by the current light configuration.
          */
         //% weight=9 blockId=neopixel_power block="%strip|power (mA)"
+        //% block.loc.de="%strip|Stromverbrauch (mA)"
         //% strip.defl=strip
         //% subcategory=Stripe
         power(): number {
@@ -508,6 +543,8 @@ namespace neopixel {
      * @param numleds number of leds in the strip, eg: 24,30,60,64
      */
     //% blockId="neopixel_create" block="NeoPixel at pin %pin| with %numleds leds"
+    //% block.loc.de="NeoPixels an Pin %pin|mit %numleds Pixeln"
+    //% jsdoc.loc.de="Erzeuge einen neuen Treiber für die gegebene Anzahl NeoPixels, die am angegebenen Port angeschlossen sind. Der Modus bestimmt die genaue Bauart der NeoPixel."
     //% weight=90 blockGap=8
     //% parts="neopixel"
     //% subcategory=Stripe
@@ -555,6 +592,8 @@ namespace neopixel {
      */
     //% weight=85 blockGap=8
     //% blockId="neopixel_rgb" block="red %red|green %green|blue %blue"
+    //% block.loc.de="rot %red|grün %green|blau %blue"
+    //% jsdoc.loc.de="Erstellt eine RGB-Farbe"
     //% red.defl=255 red.min=0 red.max=255
     //% blue.defl=255 blue.min=0 blue.max=255
     //% green.defl=255 green.min=0 green.max=255
@@ -568,6 +607,8 @@ namespace neopixel {
      */
     //% weight=85 blockGap=8
     //% blockId="neopixel_hsv" block="hue %hue"
+    //% block.loc.de="Farbe %hue"
+    //% jsdoc.loc.de="Erstellt eine Farbe"
     //% hue.shadow="colorWheelHsvPicker"
     export function hsv_picker(hue: number): number {
         let mapped_hue = (hue * 360) / 255;
@@ -579,6 +620,8 @@ namespace neopixel {
      */
     //% weight=85 blockGap=8
     //% blockId="neopixel_colors" block="%color"
+    //% block.loc.de="%color"
+    //% jsdoc.loc.de="bekannte RGB-Farben"
     export function colors(color: NeoPixelColors): number {
         return color;
     }
@@ -658,5 +701,4 @@ namespace neopixel {
         CounterClockwise,
         Shortest,
     }
-
 }
