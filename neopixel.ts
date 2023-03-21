@@ -738,7 +738,7 @@ namespace neopixel {
         /**
          * Zeige Bitmap auf Matrix. Der Text ist vertikal mittig-zentriert.
          */
-        //%blockId="Matrix_drawBitmap" block="%matrix draw bitmap %bitmap at x %x y %y| with width %width height %height in colour %colour"
+        //%blockId="Matrix_drawBitmap" block="%matrix zeichne bitmap %bitmap bei x: %x|mit Breite %width|Höhe %height|Farbe %colour"
         //%weight=70
         //% subcategory=Matrix
         //%colour.shadow=neopixel_colors
@@ -768,71 +768,6 @@ namespace neopixel {
                         if (bitmap[7 - Ypos] & (0x80 >> bitmask)) {
                             this.strip.setPixelColor(
                                 (x + bitmask) * this.Height + Ypos + (this.Height - 8) / 2,
-                                colour
-                            );
-                        }
-                    }
-                }
-            }
-        }
-
-        //%blockId="Matrix_drawBitmap2" block="%matrix zeichne bitmap %bitmap bei  x %xoffset| y %yoffset| mit Breite %width| Höhe %height in der Farbe %colour"
-        //%weight=70
-        //% subcategory=Matrix
-        //%colour.shadow=neopixel_colors
-        //% group="Features"
-        drawBitmap2(
-            bitmap: number[],
-            xoffset: number,
-            yoffset: number,
-            width: number,
-            height: number,
-            colour: number,
-            doMirror: boolean = false
-        ): void {
-            let mirrored = 0;
-            if (doMirror) {
-                mirrored = 1;
-            }
-            if (width % 2) {
-                //To properly enable mirror, width has to be even, so if uneven width gets added to by 1
-                width++;
-            }
-            //Setting end value of k to equal the width of the image to shift the bitmask to the correct position. for drawing the x-axis
-            for (let k = 0; k < width; k++) {
-                //Due to the zig-zag pattern of the matrix every odd value on the matrix has to be drawn from bottom to top, and the others top to bottom.
-                if (!((xoffset + k + mirrored) % 2)) {
-                    //Value of j to select the values in the array to draw on the y-axis
-                    for (let j = 0; j < height; j++) {
-                        //only draw a pixel when there is a '1' in the bitmap, without drawing a "black" pixel when there is a '0', allowing layering of bitmaps.
-                        if (
-                            bitmap[j] & (0b1 << (width - k - 1)) &&
-                            j + yoffset < this.Height &&
-                            yoffset + j >= 0
-                        ) {
-                            //Draw the actual pixel at the position determined by the k, j , xoffset and yoffset values.
-                            this.strip.setPixelColor(
-                                ((mirrored - 1) * -k + xoffset + (width - k - 1) * mirrored) *
-                                this.Height +
-                                j +
-                                yoffset,
-                                colour
-                            );
-                        }
-                    }
-                }
-                //Drawing the odd lines top to bottom.
-                else {
-                    for (let j = 0; j < height; j++) {
-                        if (
-                            bitmap[j] & (0b1 << (width - k - 1)) &&
-                            yoffset + j < this.Height &&
-                            yoffset + j >= 0
-                        ) {
-                            this.strip.setPixelColor(
-                                ((mirrored - 1) * -k + xoffset + (width - k - 1) * mirrored) *
-                                this.Height +
-                                (this.Height - j - yoffset - 1),
                                 colour
                             );
                         }
