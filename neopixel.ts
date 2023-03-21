@@ -850,20 +850,20 @@ namespace neopixel {
 
         return matrix;
     }
+    //Take in a string-character and return a bitmap to draw on the display
+    export function getLettermap(char: string): number[] {
+        let letterMap: number[] = [0, 0, 0, 0, 0, 0, 0, 0];
+        let offset = char.charCodeAt(0) - 32; //Convert the ASCII-Character to it's code to generate the offset in the font-array
+        if (offset >= 0) {
+            for (let i = 0; i < 8; i++) {
+                //Every character has 8 arguments in the array, so multiply the offset by 8, and then take ne next 8 arguments as the value for the correct bitmap.
+                letterMap[i] = font8x3.getNumber(NumberFormat.UInt8BE, offset * 8 + i);
+            }
+        }
+        return letterMap;
+    }
 }
 
-//Take in a string-character and return a bitmap to draw on the display
-export function getLettermap(char: string): number[] {
-    let letterMap: number[] = [0, 0, 0, 0, 0, 0, 0, 0];
-    let offset = char.charCodeAt(0) - 32; //Convert the ASCII-Character to it's code to generate the offset in the font-array
-    if (offset >= 0) {
-        for (let i = 0; i < 8; i++) {
-            //Every character has 8 arguments in the array, so multiply the offset by 8, and then take ne next 8 arguments as the value for the correct bitmap.
-            letterMap[i] = font8x3.getNumber(NumberFormat.UInt8BE, offset * 8 + i);
-        }
-    }
-    return letterMap;
-}
 
 const font8x3 = hex`
     0000000000000000 1038381010001000 6C6C480000000000 00287C28287C2800
