@@ -641,6 +641,7 @@ namespace neopixel {
         show(): void {
             this.strip.show();
         }
+
         //%blockId="Matrix_Brighness" block="%matrix setze Helligkeit auf (0-128) %setpoint"
         //%weight=80
         //%setpoint.defl=32
@@ -690,14 +691,15 @@ namespace neopixel {
                 this.strip.setPixelColor(this.Height - 1 - y + x * this.Height, colour);
             }
         }
+
         /**
-         * scroll text on the matrix
+         * Scrolle Text über Matrix mit fixer 6x8 Pixel Schrift
          */
-        //%blockId="Matrix_scrollText" block="%matrix Text: %text| Geschwindigkeit (0 - 100) %speed| Farbe %colour"
-        //%weight=75
+        //% blockId="Matrix_scrollText" block="%matrix Text: %text| Geschwindigkeit (1 - 100): %speed| Farbe: %colour"
+        //% weight=75
         //% subcategory=Matrix
-        //%colour.shadow=neopixel_colors
-        //%speed.min=0 speed.max=100 speed.defl=50
+        //% colour.shadow=neopixel_colors
+        //% speed.min=1 speed.max=100 speed.defl=50
         //% group="Features"
         scrollText(text: string, speed: number, colour: number): void {
             this.strip.clear();
@@ -709,10 +711,34 @@ namespace neopixel {
                     this.drawBitmap(bitmap, Xpos + 6 * letter, 0, 6, 8, colour);
                 }
                 this.strip.show();
-                basic.pause(2000 / speed);
+                basic.pause(1000 / speed);
                 this.strip.clear();
             }
         }
+
+        /**
+         * Zeige Text auf Matrix mit fixer 6x8 Pixel Schrift
+         */
+        //%blockId="Matrix_text" block="%matrix Text: %text| X-Offset: %x_offset|Y-Offset: %y_offset|Farbe: %colour"
+        //%weight=74
+        //% subcategory=Matrix
+        //%colour.shadow=neopixel_colors
+        //% group="Features"
+        showText(
+            text: string,
+            x_offset: number,
+            y_offset: number,
+            colour: number
+        ): void {
+            this.strip.clear();
+            for (let letter = 0; letter < text.length; letter++) {
+                //for loop to retrieve all the letters from te text
+                let bitmap = getLettermap(text.charAt(letter));
+                this.drawBitmap(bitmap, x_offset + 6 * letter, y_offset, 6, 8, colour);
+            }
+            this.strip.show();
+        }
+
         //%blockId="Matrix_drawBitmap" block="%matrix draw bitmap %bitmap at x %x y %y| with width %width height %height in colour %colour"
         //%weight=70
         //% subcategory=Matrix
@@ -842,6 +868,7 @@ namespace neopixel {
 
         return matrix;
     }
+
     //Take in a string-character and return a bitmap to draw on the display
     function getLettermap(char: string): number[] {
         let letterMap: number[] = [0, 0, 0, 0, 0, 0, 0, 0];
