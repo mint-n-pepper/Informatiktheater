@@ -62,7 +62,7 @@ enum HiwonderPins {
 /**
  * Functions to operate NeoPixel strips.
  */
-//% weight=5 icon="\uf110"
+//% weight=5 color=#2896ff icon="\uf110"
 //% block.loc.de="NeoPixel"
 //groups=['Kontrolle', 'Features', 'Setup']
 namespace neopixel {
@@ -641,14 +641,17 @@ namespace neopixel {
         show(): void {
             this.strip.show();
         }
-        //%blockId="Matrix_Brighness" block="%matrix setze Helligkeit auf (0-255) %setpoint"
+        //%blockId="Matrix_Brighness" block="%matrix setze Helligkeit auf (0-128) %setpoint"
         //%weight=80
         //%setpoint.defl=32
+        //%setpoint.min=0
+        //%setpoint.max=128
         //% subcategory=Matrix
         //% group="Kontrolle"
         Brightness(setpoint: number): void {
             this.strip.setBrightness(setpoint);
         }
+
         //%blockId="Matrix_clear" block="%matrix| löschen"
         //%weight=8
         //% subcategory=Matrix
@@ -657,21 +660,35 @@ namespace neopixel {
             this.strip.clear();
         }
 
-        //%blockId="Matrix_setPixel" block="%matrix| setze das Pixel x %x| y %y| auf die Farbe %colour"
+        /**
+         * Setzt eine Farbe auf einem bestimmten Pixel in einer LED Matrize.
+         * Das Koordinaten System für eine oben links Anfangende Matrize ist wie folgt:
+         * ----> X
+         * |
+         * |
+         * |
+         * v
+         * Y
+         * Die Anordnung für alle ungeraden Spalten ist von unten nach oben (Zig-Zag)
+         * Die Pixel gehen von Index 0 bis Breite/Länge - 1
+         */
+        //%blockId="Matrix_setPixel" block="%matrix| setze Pixel x %x| y %y| auf Farbe %colour"
         //%weight=70
         //%colour.shadow=neopixel_colors
         //% subcategory=Matrix
         //% group="Kontrolle"
         setPixel(x: number, y: number, colour: number): void {
             if (x < 0 || x > this.Width || y < 0 || y > this.Height) {
+                //If the pixel does not fit on screen, do not draw it
                 return;
-            } //If the pixel does not fit on screen, do not draw it (to avoid aliasing)
-            if (!(x % 2)) {
+            }
+            if (x % 2 == 0) {
+                //Because of the zig-zag formation of the panel all even rows (including 0) are drawn top to bottom
                 this.strip.setPixelColor(y + x * this.Height, colour);
-            } //Because of the zig-zag formation of the panel all even rows (including 0) are drawn top to bottom
-            else {
-                this.strip.setPixelColor(this.Height - y + x * this.Height, colour);
-            } //While all odd rows are drawn bottom to top
+            } else {
+                //While all odd rows are drawn bottom to top
+                this.strip.setPixelColor(this.Height - 1 - y + x * this.Height, colour);
+            }
         }
         /**
          * scroll text on the matrix
@@ -806,7 +823,7 @@ namespace neopixel {
      * @param matrixWidth the amount of leds horizontally
      * @param matrixheight the amount of leds vertically
      */
-    //%blockId="Matrix_Create" block="Matrix at pin %pin|with a width of %matrixWidth|height of %matrixheight"
+    //%blockId="Matrix_Create" block="matrix auf pin %pin|mit einer Breite von %matrixWidth|und Höhe von %matrixheight"
     //%weight=100
     //% subcategory=Matrix
     //%parts="neopixel"
