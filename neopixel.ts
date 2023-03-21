@@ -62,9 +62,9 @@ enum HiwonderPins {
 /**
  * Functions to operate NeoPixel strips.
  */
-//% weight=5 color=#2699BF icon="\uf110"
+//% weight=5 icon="\uf110"
 //% block.loc.de="NeoPixel"
-//groups=['Setup', 'Features', 'Kontrolle']
+//groups=['Kontrolle', 'Features', 'Setup']
 namespace neopixel {
     let leds_total = 0;
     /**
@@ -87,7 +87,7 @@ namespace neopixel {
         //% block.loc.de="%strip|zeige Farbe %rgb=neopixel_colors"
         //% jsdoc.loc.de="Setze alle Pixel auf die angegebene Farbe und rufe ``anzeigen`` auf."
         //% strip.defl=strip
-        //% weight=85 blockGap=8
+        //% weight=98
         //% parts="neopixel"
         //% group="Kontrolle"
         //% subcategory=Stripe
@@ -108,7 +108,7 @@ namespace neopixel {
         //% strip.defl=strip
         //% startHue.shadow="colorWheelHsvPicker"
         //% endHue.shadow="colorWheelHsvPicker"
-        //% weight=85 blockGap=8
+        //% weight=97
         //% parts="neopixel"
         //% subcategory=Stripe
         //% group="Features"
@@ -204,7 +204,6 @@ namespace neopixel {
         //% number.defl=1
         //% number.min=1
         //% number.min=255
-        //% blockGap=8
         //% weight=80
         //% parts="neopixel"
         //% subcategory=Stripe
@@ -222,11 +221,11 @@ namespace neopixel {
         /**
          * Send all the changes to the strip.
          */
-        //% blockId="neopixel_show" block="%strip|show" blockGap=8
+        //% blockId="neopixel_show" block="%strip|show"
         //% block.loc.de="%strip|anzeigen"
         //% jsdoc.loc.de="Sendet alle Änderungen an die NeoPixel."
         //% strip.defl=strip
-        //% weight=79
+        //% weight=10
         //% parts="neopixel"
         //% subcategory=Stripe
         //% group="Kontrolle"
@@ -245,7 +244,7 @@ namespace neopixel {
         //% block.loc.de="%strip|ausschalten"
         //% jsdoc.loc.de="Schalte alle NeoPixel aus. Damit die Änderung sichtbar wird, muss anschließend ``anzeigen`` aufgerufen werden."
         //% strip.defl=strip
-        //% weight=76
+        //% weight=9
         //% parts="neopixel"
         //% subcategory=Stripe
         //% group="Kontrolle"
@@ -257,7 +256,7 @@ namespace neopixel {
         /**
          * Gets the number of pixels declared on the strip
          */
-        //% blockId="neopixel_length" block="%strip|length" blockGap=8
+        //% blockId="neopixel_length" block="%strip|length"
         //% block.loc.de="%strip|Länge"
         //% jsdoc.loc.de="Die Anzahl der NeoPixel, die der Treiber verwaltet."
         //% strip.defl=strip
@@ -274,12 +273,12 @@ namespace neopixel {
          * The brightness will be capped at this threshold.
          * @param brightness a measure of LED brightness in 0-128. eg: 100
          */
-        //% blockId="neopixel_set_brightness" block="%strip|set brightness %brightness" blockGap=8
+        //% blockId="neopixel_set_brightness" block="%strip|set brightness %brightness"
         //% block.loc.de="%strip|setze Helligkeit %brightness"
         //% jsdoc.loc.de="Setze die Helligkeit der NeoPixel (0-128). Die Änderung betrifft nur zukünftige Operationen! Die höchst möglichste Helligkeit hängt von der Anzahl LED's ab. Die Helligkeit wird bei diesem Schwellwert begrenzt."
         //% brightness.defl=255 brightness.min=0 brightness.max=128
         //% strip.defl=strip
-        //% weight=59
+        //% weight=99
         //% parts="neopixel"
         //% subcategory=Stripe
         //% group="Kontrolle"
@@ -290,7 +289,7 @@ namespace neopixel {
         /**
          * Apply brightness to current colors using a quadratic easing function.
          **/
-        //% blockId="neopixel_each_brightness" block="%strip|ease brightness" blockGap=8
+        //% blockId="neopixel_each_brightness" block="%strip|ease brightness"
         //% block.loc.de="%strip|Anfang und Ende mit Verlauf abdunkeln"
         //% strip.defl=strip
         //% weight=58
@@ -330,7 +329,7 @@ namespace neopixel {
          * You need to call ``show`` to make the changes visible.
          * @param offset number of pixels to shift forward, eg: 1
          */
-        //% blockId="neopixel_shift" block="%strip|shift pixels by %offset" blockGap=8
+        //% blockId="neopixel_shift" block="%strip|shift pixels by %offset"
         //% block.loc.de="%strip|verschiebe NeoPixel um %offset"
         //% jsdoc.loc.de="Verschiebt die Farben der NeoPixel. Damit die Änderung sichtbar wird, muss anschließend ``anzeigen`` aufgerufen werden."
         //% strip.defl=strip
@@ -353,7 +352,7 @@ namespace neopixel {
          * You need to call ``show`` to make the changes visible.
          * @param offset number of pixels to rotate forward, eg: 1
          */
-        //% blockId="neopixel_rotate" block="%strip|rotate pixels by %offset" blockGap=8
+        //% blockId="neopixel_rotate" block="%strip|rotate pixels by %offset"
         //% block.loc.de="%strip|rotiere NeoPixel um %offset"
         //% jsdoc.loc.de="Rotiert die Farben der NeoPixel. Damit die Änderung sichtbar wird, muss anschließend ``anzeigen`` aufgerufen werden."
         //% strip.defl=strip
@@ -471,7 +470,7 @@ namespace neopixel {
     //% blockId="neopixel_create" block="NeoPixel at pin %pin| with %numleds leds"
     //% block.loc.de="NeoPixels an Pin %pin|mit %numleds Pixeln"
     //% jsdoc.loc.de="Erzeuge einen neuen Treiber für die gegebene Anzahl NeoPixels, die am angegebenen Port angeschlossen sind. Der Modus bestimmt die genaue Bauart der NeoPixel."
-    //% weight=90 blockGap=8
+    //% weight=90
     //% parts="neopixel"
     //% subcategory=Stripe
     // TODO: How is trackArgs supposed to work? Without this, the simulator will work again, but without neopixel simulation enabled
@@ -518,7 +517,7 @@ namespace neopixel {
      * @param g green channel
      * @param b blue channel
      */
-    //% weight=85 blockGap=8
+    //% weight=85
     //% blockId="neopixel_rgb" block="red %red|green %green|blue %blue"
     //% block.loc.de="rot %red|grün %green|blau %blue"
     //% jsdoc.loc.de="Erstellt eine RGB-Farbe"
@@ -533,7 +532,7 @@ namespace neopixel {
      * creates a color from hsv color picker
      * @param hue color
      */
-    //% weight=85 blockGap=8
+    //% weight=85
     //% blockId="neopixel_hsv" block="hue %hue"
     //% block.loc.de="Farbe %hue"
     //% jsdoc.loc.de="Erstellt eine Farbe"
@@ -546,7 +545,7 @@ namespace neopixel {
     /**
      * Gets the RGB value of a known color
      */
-    //% weight=85 blockGap=8
+    //% weight=85
     //% blockId="neopixel_colors" block="%color"
     //% block.loc.de="%color"
     //% jsdoc.loc.de="bekannte RGB-Farben"
@@ -636,7 +635,7 @@ namespace neopixel {
         Height: number;
 
         //%blockId="Matrix_show" block="%matrix| anzeigen"
-        //%weight=90
+        //%weight=10
         //% subcategory=Matrix
         //% group="Kontrolle"
         show(): void {
@@ -651,7 +650,7 @@ namespace neopixel {
             this.strip.setBrightness(setpoint);
         }
         //%blockId="Matrix_clear" block="%matrix| löschen"
-        //%weight=80
+        //%weight=8
         //% subcategory=Matrix
         //% group="Kontrolle"
         clear(): void {
@@ -659,7 +658,7 @@ namespace neopixel {
         }
 
         //%blockId="Matrix_setPixel" block="%matrix| setze das Pixel x %x| y %y| auf die Farbe %colour"
-        //%weight=80
+        //%weight=70
         //%colour.shadow=neopixel_colors
         //% subcategory=Matrix
         //% group="Kontrolle"
@@ -808,7 +807,7 @@ namespace neopixel {
      * @param matrixheight the amount of leds vertically
      */
     //%blockId="Matrix_Create" block="Matrix at pin %pin|with a width of %matrixWidth|height of %matrixheight"
-    //%weight=100 blockGap=8
+    //%weight=100
     //% subcategory=Matrix
     //%parts="neopixel"
     //%matrixWidth.defl=32 matrixheight.defl=8
