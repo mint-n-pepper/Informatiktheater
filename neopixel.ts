@@ -50,6 +50,20 @@ enum NeoPixelMode {
 }
 
 /**
+ * NeoPixel matrix size definiitons
+ */
+enum matrixSizes {
+    //% block="8x8"
+    small_8x8,
+    //% block="32x8"
+    medium_32x8,
+    //% block="64x8"
+    large_64_8,
+    //% block="16x16"
+    medium_16x16,
+}
+
+/**
  * Available pins on ports (connectors)
  */
 enum HiwonderPins {
@@ -629,6 +643,45 @@ namespace neopixel {
         Shortest,
     }
 
+    /**
+     * Erstelle ein neues Matrix Objekt
+     * @param pin Pin an welchem die Matrize angeschlossen ist
+     * @param size Dimension des Panels in Breite x Höhe
+     */
+    //% blockId="Matrix_Create" block="matrix auf Pin %pin|mit einer Grösse von %size"
+    //% weight=100
+    //% subcategory=Matrix
+    //% parts="neopixel"
+    //% blockSetVariable=matrix
+    //% group="Setup"
+    export function create_matrix(pin: HiwonderPins, size: matrixSizes): Matrix {
+        let matrix = new Matrix();
+        let w, h;
+        switch (size) {
+            case matrixSizes.small_8x8:
+                w = 8;
+                h = 8;
+                break;
+            case matrixSizes.medium_32x8:
+                w = 32;
+                h = 8;
+                break;
+            case matrixSizes.large_64_8:
+                w = 64;
+                h = 8;
+                break;
+            case matrixSizes.medium_16x16:
+                w = 16;
+                h = 16;
+                break;
+        }
+        matrix.strip = neopixel.create(pin, h * w);
+        matrix.Width = w;
+        matrix.Height = h;
+
+        return matrix;
+    }
+
     export class Matrix {
         strip: neopixel.Strip;
         Width: number;
@@ -737,11 +790,16 @@ namespace neopixel {
 
         /**
          * Zeige Bitmap auf Matrix. Der Text ist vertikal mittig-zentriert.
+         * @param bitmap Array mit bitmap. Jeder Eintrag entspricht einer Reihe im angezeigten Character. Nullposition ist oben rechts.
+         * @param x Horizontales Offset
+         * @param width Breite des Characters
+         * @param height Höhe des Characters
+         * @param color Farbe in welcher der Character angezeigt werden soll
          */
-        //%blockId="Matrix_drawBitmap" block="%matrix zeichne bitmap %bitmap bei x: %x|mit Breite %width|Höhe %height|Farbe %colour"
-        //%weight=70
+        //% blockId="Matrix_drawBitmap" block="%matrix zeichne bitmap %bitmap bei x: %x|mit Breite %width|Höhe %height|Farbe %colour"
+        //% weight=70
         //% subcategory=Matrix
-        //%colour.shadow=neopixel_colors
+        //% colour.shadow=neopixel_colors
         //% group="Features"
         drawBitmapVcentered(
             bitmap: number[],
@@ -776,32 +834,6 @@ namespace neopixel {
                 }
             }
         }
-    }
-
-    /**
-     * Create a new matrix object
-     * @param pin the pin to which the matrix is connected
-     * @param matrixWidth the amount of leds horizontally
-     * @param matrixheight the amount of leds vertically
-     */
-    //%blockId="Matrix_Create" block="matrix auf pin %pin|mit einer Breite von %matrixWidth|und Höhe von %matrixheight"
-    //%weight=100
-    //% subcategory=Matrix
-    //%parts="neopixel"
-    //%matrixWidth.defl=32 matrixheight.defl=8
-    //%blockSetVariable=matrix
-    //% group="Setup"
-    export function create_matrix(
-        pin: HiwonderPins,
-        matrixWidth: number,
-        matrixHeight: number
-    ): Matrix {
-        let matrix = new Matrix();
-        matrix.strip = neopixel.create(pin, matrixHeight * matrixWidth);
-        matrix.Width = matrixWidth;
-        matrix.Height = matrixHeight;
-
-        return matrix;
     }
 
     //Take in a string-character and return a bitmap to draw on the display
