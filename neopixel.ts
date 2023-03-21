@@ -81,6 +81,56 @@ enum HiwonderPins {
 //% groups=['Setup', 'Features', 'Kontrolle']
 namespace neopixel {
     let leds_total = 0;
+
+    /**
+     * Create a new NeoPixel driver for `numleds` LEDs.
+     * @param pin the pin where the neopixel is connected on the Hiwonder board
+     * @param numleds number of leds in the strip, eg: 24,30,60,64
+     */
+    //% blockId="neopixel_create" block="NeoPixel at pin %pin| with %numleds leds"
+    //% block.loc.de="NeoPixels an Pin %pin|mit %numleds Pixeln"
+    //% jsdoc.loc.de="Erzeuge einen neuen Treiber für die gegebene Anzahl NeoPixels, die am angegebenen Port angeschlossen sind. Der Modus bestimmt die genaue Bauart der NeoPixel."
+    //% weight=90
+    //% parts="neopixel"
+    //% subcategory=Stripe
+    // TODO: How is trackArgs supposed to work? Without this, the simulator will work again, but without neopixel simulation enabled
+    // trackArgs=0, 2
+    //% blockSetVariable=strip
+    //% group="Setup"
+    export function create(pin: HiwonderPins, numleds: number): Strip {
+        leds_total += numleds;
+        let strip = new Strip();
+        const mode = NeoPixelMode.RGB_GRB;
+        let stride = (mode as NeoPixelMode) === NeoPixelMode.RGBW ? 4 : 3;
+        strip.buf = pins.createBuffer(numleds * stride);
+        strip.start = 0;
+        strip._length = numleds;
+        strip._mode = mode || NeoPixelMode.RGB_GRB;
+        strip.setBrightness(128);
+        // TODO: How can we solve this more elegant? When trying to cast,
+        // we can't use string literals here and can't change DigitalPin to non constant enum
+        let p;
+        switch (pin) {
+            case HiwonderPins.P1:
+                p = DigitalPin.P1;
+                break;
+            case HiwonderPins.P2:
+                p = DigitalPin.P2;
+                break;
+            case HiwonderPins.P13:
+                p = DigitalPin.P13;
+                break;
+            case HiwonderPins.P14:
+                p = DigitalPin.P14;
+                break;
+            case HiwonderPins.P16:
+                p = DigitalPin.P16;
+                break;
+        }
+        strip.setPin(p);
+        return strip;
+    }
+
     /**
      * A NeoPixel strip
      */
@@ -474,55 +524,6 @@ namespace neopixel {
         const br = Math.idiv(700 * 255, leds_total * 60) & 0xff;
         console.log("Max brightness: " + br);
         return br;
-    }
-
-    /**
-     * Create a new NeoPixel driver for `numleds` LEDs.
-     * @param pin the pin where the neopixel is connected on the Hiwonder board
-     * @param numleds number of leds in the strip, eg: 24,30,60,64
-     */
-    //% blockId="neopixel_create" block="NeoPixel at pin %pin| with %numleds leds"
-    //% block.loc.de="NeoPixels an Pin %pin|mit %numleds Pixeln"
-    //% jsdoc.loc.de="Erzeuge einen neuen Treiber für die gegebene Anzahl NeoPixels, die am angegebenen Port angeschlossen sind. Der Modus bestimmt die genaue Bauart der NeoPixel."
-    //% weight=90
-    //% parts="neopixel"
-    //% subcategory=Stripe
-    // TODO: How is trackArgs supposed to work? Without this, the simulator will work again, but without neopixel simulation enabled
-    // trackArgs=0, 2
-    //% blockSetVariable=strip
-    //% group="Setup"
-    export function create(pin: HiwonderPins, numleds: number): Strip {
-        leds_total += numleds;
-        let strip = new Strip();
-        const mode = NeoPixelMode.RGB_GRB;
-        let stride = (mode as NeoPixelMode) === NeoPixelMode.RGBW ? 4 : 3;
-        strip.buf = pins.createBuffer(numleds * stride);
-        strip.start = 0;
-        strip._length = numleds;
-        strip._mode = mode || NeoPixelMode.RGB_GRB;
-        strip.setBrightness(128);
-        // TODO: How can we solve this more elegant? When trying to cast,
-        // we can't use string literals here and can't change DigitalPin to non constant enum
-        let p;
-        switch (pin) {
-            case HiwonderPins.P1:
-                p = DigitalPin.P1;
-                break;
-            case HiwonderPins.P2:
-                p = DigitalPin.P2;
-                break;
-            case HiwonderPins.P13:
-                p = DigitalPin.P13;
-                break;
-            case HiwonderPins.P14:
-                p = DigitalPin.P14;
-                break;
-            case HiwonderPins.P16:
-                p = DigitalPin.P16;
-                break;
-        }
-        strip.setPin(p);
-        return strip;
     }
 
     /**
