@@ -719,18 +719,24 @@ namespace neopixel {
         /**
          * Zeige Text auf Matrix mit fixer 6x8 Pixel Schrift
          */
-        //%blockId="Matrix_text" block="%matrix Text: %text|X-Offset: %x_offset|Farbe: %colour"
+        //%blockId="Matrix_text" block="%matrix Text: %text|X-Offset: %x_offset|Y-Offset %y_offset|Farbe: %colour"
         //%weight=74
         //% subcategory=Matrix
         //%colour.shadow=neopixel_colors
-        // x_offset.defl=0
+        //% x_offset.defl=0
+        //% y_offset.defl=0
         //% group="Features"
-        showText(text: string, x_offset: number, colour: number): void {
+        showText(
+            text: string,
+            x_offset: number,
+            y_offset: number,
+            colour: number
+        ): void {
             this.strip.clear();
             for (let letter = 0; letter < text.length; letter++) {
                 //for loop to retrieve all the letters from te text
                 let bitmap = getLettermap(text.charAt(letter));
-                this.drawBitmap(bitmap, x_offset + 6 * letter, 0, 6, 8, colour);
+                this.drawBitmap(bitmap, x_offset + 6 * letter, y_offset, 6, 8, colour);
             }
             this.strip.show();
         }
@@ -752,10 +758,14 @@ namespace neopixel {
                 if (!((x + bitmask) % 2)) {
                     //Zigzag pixel string: if the row that's being drawn to (Xpos+bitmask) is odd, then draw from bottom to top
                     for (let Ypos = height; Ypos >= 0; Ypos--) {
-                        if (bitmap[Ypos] & (0x80 >> bitmask)) {
+                        if (
+                            bitmap[Ypos] & (0x80 >> bitmask) &&
+                            Ypos + y < this.Height &&
+                            y + Ypos >= 0
+                        ) {
                             //draw the pixel when there is a "1" in the bitmap
                             this.strip.setPixelColor(
-                                (x + bitmask) * this.Height + Ypos + (this.Height - 8) / 2,
+                                (x + bitmask) * this.Height + Ypos + y + (this.Height - 8) / 2,
                                 colour
                             );
                         }
@@ -763,9 +773,13 @@ namespace neopixel {
                 } else {
                     //else draw from top to bottom
                     for (let Ypos = 0; Ypos < this.Height; Ypos++) {
-                        if (bitmap[7 - Ypos] & (0x80 >> bitmask)) {
+                        if (
+                            bitmap[7 - Ypos] & (0x80 >> bitmask) &&
+                            Ypos + y < this.Height &&
+                            y + Ypos >= 0
+                        ) {
                             this.strip.setPixelColor(
-                                (x + bitmask) * this.Height + Ypos + (this.Height - 8) / 2,
+                                (x + bitmask) * this.Height + Ypos + y + (this.Height - 8) / 2,
                                 colour
                             );
                         }
