@@ -64,6 +64,7 @@ enum HiwonderPins {
  */
 //% weight=5 color=#2699BF icon="\uf110"
 //% block.loc.de="NeoPixel"
+//groups=['Setup', 'Features', 'Kontrolle']
 namespace neopixel {
     let leds_total = 0;
     /**
@@ -88,6 +89,7 @@ namespace neopixel {
         //% strip.defl=strip
         //% weight=85 blockGap=8
         //% parts="neopixel"
+        //% group="Kontrolle"
         //% subcategory=Stripe
         showColor(rgb: number) {
             rgb = rgb >> 0;
@@ -109,6 +111,7 @@ namespace neopixel {
         //% weight=85 blockGap=8
         //% parts="neopixel"
         //% subcategory=Stripe
+        //% group="Features"
         showRainbow(startHue: number = 1, endHue: number = 255) {
             if (this._length <= 0) return;
 
@@ -187,44 +190,6 @@ namespace neopixel {
             this.show();
         }
 
-        // /**
-        //  * Displays a vertical bar graph based on the `value` and `high` value.
-        //  * If `high` is 0, the chart gets adjusted automatically.
-        //  * @param value current value to plot
-        //  * @param high maximum value, eg: 255
-        //  */
-        // //% weight=84
-        // //% blockId=neopixel_show_bar_graph block="%strip|show bar graph of %value|up to %high"
-        // //% strip.defl=strip
-        // //% icon="\uf080"
-        // //% parts="neopixel"
-        // //% subcategory=Stripe
-        showBarGraph(value: number, high: number): void {
-            if (high <= 0) {
-                this.clear();
-                this.setPixelColor(0, NeoPixelColors.Yellow);
-                this.show();
-                return;
-            }
-
-            value = Math.abs(value);
-            const n = this._length;
-            const n1 = n - 1;
-            let v = Math.idiv(value * n, high);
-            if (v == 0) {
-                this.setPixelColor(0, 0x666600);
-                for (let i = 1; i < n; ++i) this.setPixelColor(i, 0);
-            } else {
-                for (let i = 0; i < n; ++i) {
-                    if (i <= v) {
-                        const b = Math.idiv(i * 255, n1);
-                        this.setPixelColor(i, neopixel.rgb(b, 0, 255 - b));
-                    } else this.setPixelColor(i, 0);
-                }
-            }
-            this.show();
-        }
-
         /**
          * Set LED to a given color (range 0-255 for r, g, b).
          * You need to call ``show`` to make the changes visible.
@@ -243,6 +208,7 @@ namespace neopixel {
         //% weight=80
         //% parts="neopixel"
         //% subcategory=Stripe
+        //% group="Kontrolle"
         setPixelColorRange(number: number, pixeloffset: number, rgb: number): void {
             for (let i = 0; i < number; i++) {
                 this.setPixelRGB((pixeloffset + i) >> 0, rgb >> 0);
@@ -263,6 +229,7 @@ namespace neopixel {
         //% weight=79
         //% parts="neopixel"
         //% subcategory=Stripe
+        //% group="Kontrolle"
         show() {
             // only supported in beta
             // ws2812b.setBufferMode(this.pin, this._mode);
@@ -281,6 +248,7 @@ namespace neopixel {
         //% weight=76
         //% parts="neopixel"
         //% subcategory=Stripe
+        //% group="Kontrolle"
         clear(): void {
             const stride = this._mode === NeoPixelMode.RGBW ? 4 : 3;
             this.buf.fill(0, this.start * stride, this._length * stride);
@@ -295,6 +263,7 @@ namespace neopixel {
         //% strip.defl=strip
         //% weight=60
         //% subcategory=Stripe
+        //% group="Setup"
         length() {
             return this._length;
         }
@@ -313,6 +282,7 @@ namespace neopixel {
         //% weight=59
         //% parts="neopixel"
         //% subcategory=Stripe
+        //% group="Kontrolle"
         setBrightness(brightness: number): void {
             this.brightness = brightness & 0xff;
         }
@@ -326,6 +296,7 @@ namespace neopixel {
         //% weight=58
         //% parts="neopixel"
         //% subcategory=Stripe
+        //% group="Features"
         easeBrightness(): void {
             const stride = this._mode === NeoPixelMode.RGBW ? 4 : 3;
             const buf = this.buf;
@@ -366,6 +337,7 @@ namespace neopixel {
         //% weight=40
         //% parts="neopixel"
         //% subcategory=Stripe
+        //% group="Kontrolle"
         shift(offset: number = 1): void {
             offset = offset >> 0;
             const stride = this._mode === NeoPixelMode.RGBW ? 4 : 3;
@@ -388,6 +360,7 @@ namespace neopixel {
         //% weight=39
         //% parts="neopixel"
         //% subcategory=Stripe
+        //% group="Kontrolle"
         rotate(offset: number = 1): void {
             offset = offset >> 0;
             const stride = this._mode === NeoPixelMode.RGBW ? 4 : 3;
@@ -398,12 +371,6 @@ namespace neopixel {
             );
         }
 
-        /**
-         * Set the pin where the neopixel is connected, defaults to P0.
-         */
-        //% weight=10
-        //% parts="neopixel"
-        //% subcategory=Stripe
         setPin(pin: DigitalPin): void {
             this.pin = pin;
             pins.digitalWritePin(this.pin, 0);
@@ -510,6 +477,7 @@ namespace neopixel {
     // TODO: How is trackArgs supposed to work? Without this, the simulator will work again, but without neopixel simulation enabled
     // trackArgs=0, 2
     //% blockSetVariable=strip
+    //% group="Setup"
     export function create(pin: HiwonderPins, numleds: number): Strip {
         leds_total += numleds;
         let strip = new Strip();
@@ -670,6 +638,7 @@ namespace neopixel {
         //%blockId="Matrix_show" block="%matrix| anzeigen"
         //%weight=90
         //% subcategory=Matrix
+        //% group="Kontrolle"
         show(): void {
             this.strip.show();
         }
@@ -677,12 +646,14 @@ namespace neopixel {
         //%weight=80
         //%setpoint.defl=32
         //% subcategory=Matrix
+        //% group="Kontrolle"
         Brightness(setpoint: number): void {
             this.strip.setBrightness(setpoint);
         }
         //%blockId="Matrix_clear" block="%matrix| löschen"
         //%weight=80
         //% subcategory=Matrix
+        //% group="Kontrolle"
         clear(): void {
             this.strip.clear();
         }
@@ -691,6 +662,7 @@ namespace neopixel {
         //%weight=80
         //%colour.shadow=neopixel_colors
         //% subcategory=Matrix
+        //% group="Kontrolle"
         setPixel(x: number, y: number, colour: number): void {
             if (x < 0 || x > this.Width || y < 0 || y > this.Height) {
                 return;
@@ -710,6 +682,7 @@ namespace neopixel {
         //% subcategory=Matrix
         //%colour.shadow=neopixel_colors
         //%speed.min=0 speed.max=100 speed.defl=50
+        //% group="Features"
         scrollText(text: string, speed: number, colour: number): void {
             this.strip.clear();
             for (let Xpos = this.Width; Xpos > -6 * text.length; Xpos--) {
@@ -728,6 +701,7 @@ namespace neopixel {
         //%weight=70
         //% subcategory=Matrix
         //%colour.shadow=neopixel_colors
+        //% group="Features"
         drawBitmap(
             bitmap: number[],
             x: number,
@@ -765,6 +739,7 @@ namespace neopixel {
         //%weight=70
         //% subcategory=Matrix
         //%colour.shadow=neopixel_colors
+        //% group="Features"
         drawBitmap2(
             bitmap: number[],
             xoffset: number,
@@ -838,6 +813,7 @@ namespace neopixel {
     //%parts="neopixel"
     //%matrixWidth.defl=32 matrixheight.defl=8
     //%blockSetVariable=matrix
+    //% group="Setup"
     export function create_matrix(
         pin: HiwonderPins,
         matrixWidth: number,
@@ -851,7 +827,7 @@ namespace neopixel {
         return matrix;
     }
     //Take in a string-character and return a bitmap to draw on the display
-    export function getLettermap(char: string): number[] {
+    function getLettermap(char: string): number[] {
         let letterMap: number[] = [0, 0, 0, 0, 0, 0, 0, 0];
         let offset = char.charCodeAt(0) - 32; //Convert the ASCII-Character to it's code to generate the offset in the font-array
         if (offset >= 0) {
@@ -863,7 +839,6 @@ namespace neopixel {
         return letterMap;
     }
 }
-
 
 const font8x3 = hex`
     0000000000000000 1038381010001000 6C6C480000000000 00287C28287C2800
