@@ -708,7 +708,7 @@ namespace neopixel {
                 for (let letter = 0; letter < text.length; letter++) {
                     //for loop to retrieve all the letters from te text
                     let bitmap = getLettermap(text.charAt(letter));
-                    this.drawBitmap(bitmap, Xpos + 6 * letter, 0, 6, 8, colour);
+                    this.drawBitmapVcentered(bitmap, Xpos + 6 * letter, 6, 8, colour);
                 }
                 this.strip.show();
                 basic.pause(1000 / speed);
@@ -717,39 +717,35 @@ namespace neopixel {
         }
 
         /**
-         * Zeige Text auf Matrix mit fixer 6x8 Pixel Schrift
+         * Zeige Text auf Matrix mit fixer 6x8 Pixel Schrift. Der Text ist vertikal mittig-zentriert.
          */
-        //%blockId="Matrix_text" block="%matrix Text: %text|X-Offset: %x_offset|Y-Offset %y_offset|Farbe: %colour"
-        //%weight=74
+        //% blockId="Matrix_text" block="%matrix Text: %text|X-Offset: %x_offset|Farbe: %colour"
+        //% weight=74
         //% subcategory=Matrix
-        //%colour.shadow=neopixel_colors
-        //% x_offset.defl=0
-        //% y_offset.defl=0
+        //% colour.shadow=neopixel_colors
+        //% x_offset.defl=0 x_offset.min=0 x_offset.max=32
         //% group="Features"
-        showText(
-            text: string,
-            x_offset: number,
-            y_offset: number,
-            colour: number
-        ): void {
+        showText(text: string, x_offset: number, colour: number): void {
             this.strip.clear();
             for (let letter = 0; letter < text.length; letter++) {
                 //for loop to retrieve all the letters from te text
                 let bitmap = getLettermap(text.charAt(letter));
-                this.drawBitmap(bitmap, x_offset + 6 * letter, y_offset, 6, 8, colour);
+                this.drawBitmapVcentered(bitmap, x_offset + 6 * letter, 6, 8, colour);
             }
             this.strip.show();
         }
 
+        /**
+         * Zeige Bitmap auf Matrix. Der Text ist vertikal mittig-zentriert.
+         */
         //%blockId="Matrix_drawBitmap" block="%matrix draw bitmap %bitmap at x %x y %y| with width %width height %height in colour %colour"
         //%weight=70
         //% subcategory=Matrix
         //%colour.shadow=neopixel_colors
         //% group="Features"
-        drawBitmap(
+        drawBitmapVcentered(
             bitmap: number[],
             x: number,
-            y: number,
             width: number,
             height: number,
             colour: number
@@ -758,14 +754,10 @@ namespace neopixel {
                 if (!((x + bitmask) % 2)) {
                     //Zigzag pixel string: if the row that's being drawn to (Xpos+bitmask) is odd, then draw from bottom to top
                     for (let Ypos = height; Ypos >= 0; Ypos--) {
-                        if (
-                            bitmap[Ypos] & (0x80 >> bitmask) &&
-                            Ypos + y < this.Height &&
-                            y + Ypos >= 0
-                        ) {
+                        if (bitmap[Ypos] & (0x80 >> bitmask)) {
                             //draw the pixel when there is a "1" in the bitmap
                             this.strip.setPixelColor(
-                                (x + bitmask) * this.Height + Ypos + y + (this.Height - 8) / 2,
+                                (x + bitmask) * this.Height + Ypos + (this.Height - 8) / 2,
                                 colour
                             );
                         }
@@ -773,13 +765,9 @@ namespace neopixel {
                 } else {
                     //else draw from top to bottom
                     for (let Ypos = 0; Ypos < this.Height; Ypos++) {
-                        if (
-                            bitmap[7 - Ypos] & (0x80 >> bitmask) &&
-                            Ypos + y < this.Height &&
-                            y + Ypos >= 0
-                        ) {
+                        if (bitmap[7 - Ypos] & (0x80 >> bitmask)) {
                             this.strip.setPixelColor(
-                                (x + bitmask) * this.Height + Ypos + y + (this.Height - 8) / 2,
+                                (x + bitmask) * this.Height + Ypos + (this.Height - 8) / 2,
                                 colour
                             );
                         }
