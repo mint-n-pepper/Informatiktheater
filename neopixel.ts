@@ -661,53 +661,36 @@ namespace neopixel {
         CounterClockwise,
         Shortest,
     }
-}
 
-/**
- * Micro:Bit makeCode extension for neopixel.was2812b matrices
- *
- *
- */
-
-//**********************************************//
-// library for NeoPixel Displays/Matrices       //
-//                                              //
-//Written by Sjors Smit                         //
-//June 2020                                     //
-//                                              //
-//**********************************************//
-
-//% weight=6 color=#00CC60 icon="\uf110"
-//% groups=["Setup", "Tools", "PixelControl"]
-namespace Matrix {
-    /**
-     * A Matrix made of ws2812b LEDs
-     */
     export class Matrix {
         strip: neopixel.Strip;
         Width: number;
         Height: number;
 
         //%blockId="Matrix_show" block="%matrix| anzeigen"
-        //%weight=90 group="Tools"
+        //%weight=90
+        //% subcategory=Matrix
         show(): void {
             this.strip.show();
         }
         //%blockId="Matrix_Brighness" block="%matrix setze Helligkeit auf (0-255) %setpoint"
-        //%weight=80 group="Setup"
+        //%weight=80
         //%setpoint.defl=32
+        //% subcategory=Matrix
         Brightness(setpoint: number): void {
             this.strip.setBrightness(setpoint);
         }
         //%blockId="Matrix_clear" block="%matrix| löschen"
-        //%weight=80 group="Tools"
+        //%weight=80
+        //% subcategory=Matrix
         clear(): void {
             this.strip.clear();
         }
 
         //%blockId="Matrix_setPixel" block="%matrix| setze das Pixel x %x| y %y| auf die Farbe %colour"
-        //%weight=80 group="PixelControl"
+        //%weight=80
         //%colour.shadow=neopixel_colors
+        //% subcategory=Matrix
         setPixel(x: number, y: number, colour: number): void {
             if (x < 0 || x > this.Width || y < 0 || y > this.Height) {
                 return;
@@ -723,7 +706,8 @@ namespace Matrix {
          * scroll text on the matrix
          */
         //%blockId="Matrix_scrollText" block="%matrix Text: %text| Geschwindigkeit (0 - 100) %speed| Farbe %colour"
-        //%weight=75 group="PixelControl"
+        //%weight=75
+        //% subcategory=Matrix
         //%colour.shadow=neopixel_colors
         //%speed.min=0 speed.max=100 speed.defl=50
         scrollText(text: string, speed: number, colour: number): void {
@@ -741,7 +725,8 @@ namespace Matrix {
             }
         }
         //%blockId="Matrix_drawBitmap" block="%matrix draw bitmap %bitmap at x %x y %y| with width %width height %height in colour %colour"
-        //%weight=70 group="PixelControl"
+        //%weight=70
+        //% subcategory=Matrix
         //%colour.shadow=neopixel_colors
         drawBitmap(
             bitmap: number[],
@@ -777,7 +762,8 @@ namespace Matrix {
             }
         }
         //%blockId="Matrix_drawBitmap2" block="%matrix zeichne bitmap %bitmap bei  x %xoffset| y %yoffset| mit Breite %width| Höhe %height in der Farbe %colour"
-        //%weight=70 group="PixelControl"
+        //%weight=70
+        //% subcategory=Matrix
         //%colour.shadow=neopixel_colors
         drawBitmap2(
             bitmap: number[],
@@ -847,11 +833,12 @@ namespace Matrix {
      * @param matrixheight the amount of leds vertically
      */
     //%blockId="Matrix_Create" block="Matrix at pin %pin|with a width of %matrixWidth|height of %matrixheight"
-    //%weight=100 blockGap=8 group="Setup"
-    //%parts="SmartMatrix"
+    //%weight=100 blockGap=8
+    //% subcategory=Matrix
+    //%parts="neopixel"
     //%matrixWidth.defl=32 matrixheight.defl=8
     //%blockSetVariable=matrix
-    export function create(
+    export function create_matrix(
         pin: HiwonderPins,
         matrixWidth: number,
         matrixHeight: number
@@ -863,19 +850,21 @@ namespace Matrix {
 
         return matrix;
     }
-    //Take in a string-character and return a bitmap to draw on the display
-    export function getLettermap(char: string): number[] {
-        let letterMap: number[] = [0, 0, 0, 0, 0, 0, 0, 0];
-        let offset = char.charCodeAt(0) - 32; //Convert the ASCII-Character to it's code to generate the offset in the font-array
-        if (offset >= 0) {
-            for (let i = 0; i < 8; i++) {
-                //Every character has 8 arguments in the array, so multiply the offset by 8, and then take ne next 8 arguments as the value for the correct bitmap.
-                letterMap[i] = font8x3.getNumber(NumberFormat.UInt8BE, offset * 8 + i);
-            }
-        }
-        return letterMap;
-    }
 }
+
+//Take in a string-character and return a bitmap to draw on the display
+export function getLettermap(char: string): number[] {
+    let letterMap: number[] = [0, 0, 0, 0, 0, 0, 0, 0];
+    let offset = char.charCodeAt(0) - 32; //Convert the ASCII-Character to it's code to generate the offset in the font-array
+    if (offset >= 0) {
+        for (let i = 0; i < 8; i++) {
+            //Every character has 8 arguments in the array, so multiply the offset by 8, and then take ne next 8 arguments as the value for the correct bitmap.
+            letterMap[i] = font8x3.getNumber(NumberFormat.UInt8BE, offset * 8 + i);
+        }
+    }
+    return letterMap;
+}
+
 const font8x3 = hex`
     0000000000000000 1038381010001000 6C6C480000000000 00287C28287C2800
     2038403008701000 64640810204C4C00 2050502054483400 3030200000000000
