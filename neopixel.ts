@@ -750,6 +750,7 @@ namespace neopixel {
             height: number,
             colour: number
         ): void {
+            console.log("draw bitmap[]= " + bitmap);
             for (let bitmask = 0; bitmask < width; bitmask++) {
                 if (!((x + bitmask) % 2)) {
                     //Zigzag pixel string: if the row that's being drawn to (Xpos+bitmask) is odd, then draw from bottom to top
