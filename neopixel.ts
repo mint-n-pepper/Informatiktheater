@@ -77,7 +77,6 @@ namespace neopixel {
         start: number; // start offset in LED strip
         _length: number; // number of LEDs
         _mode: NeoPixelMode;
-        _matrixWidth: number; // number of leds in a matrix - if any
 
         /**
          * Shows all LEDs to a given color (range 0-255 for r, g, b).
@@ -252,47 +251,6 @@ namespace neopixel {
 
         setPixelColor(pixeloffset: number, rgb: number): void {
             this.setPixelRGB(pixeloffset >> 0, rgb >> 0);
-        }
-
-        /**
-         * Sets the number of pixels in a matrix shaped strip
-         * @param width number of pixels in a row
-         */
-        //% blockId=neopixel_set_matrix_width block="%strip|set matrix width %width"
-        //% block.loc.de="%strip|setze Matrix Breite %width"
-        //% jsdoc.loc.de="Setzt die Anzahl Pixel ein einer LED Matrize"
-        //% strip.defl=strip
-        //% blockGap=8
-        //% weight=5
-        //% parts="neopixel"
-        //% subcategory=Matrix
-        setMatrixWidth(width: number) {
-            this._matrixWidth = Math.min(this._length, width >> 0);
-        }
-
-        /**
-         * Set LED to a given color (range 0-255 for r, g, b) in a matrix shaped strip
-         * You need to call ``show`` to make the changes visible.
-         * @param x horizontal position
-         * @param y horizontal position
-         * @param rgb RGB color of the LED
-         */
-        //% blockId="neopixel_set_matrix_color" block="%strip|set matrix color at x %x|y %y|to %rgb=neopixel_colors"
-        //% block.loc.de="%strip|setze Matrix Farbe an Position x %x|y %y|auf %rgb=neopixel_colors"
-        //% jsdoc.loc.de="Setzt die Farbe in einer LED Matrize im Bereich 0-255. Es muss anschliessend ``anzeigen`` ausgeführt werden, um die Änderung anzuzeigen."
-        //% strip.defl=strip
-        //% weight=4
-        //% parts="neopixel"
-        //% subcategory=Matrix
-        setMatrixColor(x: number, y: number, rgb: number) {
-            if (this._matrixWidth <= 0) return; // not a matrix, ignore
-            x = x >> 0;
-            y = y >> 0;
-            rgb = rgb >> 0;
-            const cols = Math.idiv(this._length, this._matrixWidth);
-            if (x < 0 || x >= this._matrixWidth || y < 0 || y >= cols) return;
-            let i = x + y * this._matrixWidth;
-            this.setPixelColor(i, rgb);
         }
 
         /**
@@ -506,6 +464,7 @@ namespace neopixel {
                 this.setBufferRGB(i * stride, red, green, blue);
             }
         }
+
         private setPixelRGB(pixeloffset: number, rgb: number): void {
             if (pixeloffset < 0 || pixeloffset >= this._length) return;
 
@@ -560,7 +519,6 @@ namespace neopixel {
         strip.start = 0;
         strip._length = numleds;
         strip._mode = mode || NeoPixelMode.RGB_GRB;
-        strip._matrixWidth = 0;
         strip.setBrightness(128);
         // TODO: How can we solve this more elegant? When trying to cast,
         // we can't use string literals here and can't change DigitalPin to non constant enum
