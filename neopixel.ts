@@ -64,7 +64,7 @@ enum HiwonderPins {
  */
 //% weight=5 color=#2896ff icon="\uf110"
 //% block.loc.de="NeoPixel"
-//groups=['Kontrolle', 'Features', 'Setup']
+//% groups=['Setup', 'Features', 'Kontrolle']
 namespace neopixel {
     let leds_total = 0;
     /**
@@ -695,7 +695,7 @@ namespace neopixel {
         /**
          * Scrolle Text über Matrix mit fixer 6x8 Pixel Schrift
          */
-        //% blockId="Matrix_scrollText" block="%matrix Text: %text| Geschwindigkeit (1 - 100): %speed| Farbe: %colour"
+        //% blockId="Matrix_scrollText" block="%matrix Text: %text|Geschwindigkeit (1 - 100): %speed|Farbe: %colour"
         //% weight=75
         //% subcategory=Matrix
         //% colour.shadow=neopixel_colors
@@ -719,22 +719,18 @@ namespace neopixel {
         /**
          * Zeige Text auf Matrix mit fixer 6x8 Pixel Schrift
          */
-        //%blockId="Matrix_text" block="%matrix Text: %text| X-Offset: %x_offset|Y-Offset: %y_offset|Farbe: %colour"
+        //%blockId="Matrix_text" block="%matrix Text: %text|X-Offset: %x_offset|Farbe: %colour"
         //%weight=74
         //% subcategory=Matrix
         //%colour.shadow=neopixel_colors
+        // x_offset.defl=0
         //% group="Features"
-        showText(
-            text: string,
-            x_offset: number,
-            y_offset: number,
-            colour: number
-        ): void {
+        showText(text: string, x_offset: number, colour: number): void {
             this.strip.clear();
             for (let letter = 0; letter < text.length; letter++) {
                 //for loop to retrieve all the letters from te text
                 let bitmap = getLettermap(text.charAt(letter));
-                this.drawBitmap(bitmap, x_offset + 6 * letter, y_offset, 6, 8, colour);
+                this.drawBitmap(bitmap, x_offset + 6 * letter, 0, 6, 8, colour);
             }
             this.strip.show();
         }
@@ -777,6 +773,7 @@ namespace neopixel {
                 }
             }
         }
+
         //%blockId="Matrix_drawBitmap2" block="%matrix zeichne bitmap %bitmap bei  x %xoffset| y %yoffset| mit Breite %width| Höhe %height in der Farbe %colour"
         //%weight=70
         //% subcategory=Matrix
