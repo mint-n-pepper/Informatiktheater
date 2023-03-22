@@ -296,6 +296,7 @@ namespace neopixel {
         show() {
             // only supported in beta
             // ws2812b.setBufferMode(this.pin, this._mode);
+            console.log("buffer to display= " + this.buf);
             ws2812b.sendBuffer(this.buf, this.pin);
             console.log("Estimated current for neopixels = " + this.power());
         }
@@ -810,7 +811,15 @@ namespace neopixel {
             colour: number
         ): void {
             console.log("draw bitmap[]= " + JSON.stringify(bitmap));
-            console.log("x = " + x + " width = " + width + " height = " + height + " colour = " + colour
+            console.log(
+                "x = " +
+                x +
+                " width = " +
+                width +
+                " height = " +
+                height +
+                " colour = " +
+                colour
             );
             for (let bitmask = 0; bitmask < width; bitmask++) {
                 if (!((x + bitmask) % 2)) {
