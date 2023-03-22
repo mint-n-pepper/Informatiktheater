@@ -296,7 +296,7 @@ namespace neopixel {
         show() {
             // only supported in beta
             // ws2812b.setBufferMode(this.pin, this._mode);
-            console.log("buffer to display= " + this.buf);
+            console.log("buffer to display= " + JSON.stringify(this.buf));
             ws2812b.sendBuffer(this.buf, this.pin);
             console.log("Estimated current for neopixels = " + this.power());
         }
