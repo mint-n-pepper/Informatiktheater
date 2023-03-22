@@ -792,6 +792,32 @@ namespace neopixel {
         }
 
         /**
+         * Zeichne Muster für Anzeige auf LED Matrix.
+         * WICHTIG: Dieser Code läuft im Simulator, aber auf der Hardware werden nachfolgende Blöcke NICHT mehr ausgeführt.
+         * TODO: Debug this
+         * @param i string pattern to convert into an image object
+         */
+        //% block="zeichne Muster (NON WORKING)"
+        //% imageLiteral=1
+        //% imageLiteralColumns=8
+        //% imageLiteralRows=8
+        draw_pattern(i: string): number[] {
+            // this is not pretty but basically, i is an Image
+            let im = <Image>(<any>i);
+            let arr: number[] = [];
+            let rowValue = 0;
+            for (let i = 0; i < im.height(); i++) {
+                rowValue = 0;
+                for (let j = im.width() - 1; j >= 0; j--) {
+                    let bit: number = im.pixel(j, i) ? 1 : 0;
+                    rowValue = rowValue | (bit << (im.width() - 1 - j));
+                }
+                arr.push(rowValue);
+            }
+            return arr;
+        }
+
+        /**
          * Zeige Bitmap auf Matrix. Der Text ist vertikal mittig-zentriert.
          * @param bitmap Array mit bitmap. Jeder Eintrag entspricht einer Reihe im angezeigten Character. Nullposition ist oben rechts.
          * @param x Horizontales Offset
