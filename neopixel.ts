@@ -810,6 +810,10 @@ namespace neopixel {
             colour: number
         ): void {
             console.log("draw bitmap[]= " + JSON.stringify(bitmap));
+            console.log(
+                "x = " + x,
+                +" width = " + width + " height = " + height + " colour = " + colour
+            );
             for (let bitmask = 0; bitmask < width; bitmask++) {
                 if (!((x + bitmask) % 2)) {
                     //Zigzag pixel string: if the row that's being drawn to (Xpos+bitmask) is odd, then draw from bottom to top
