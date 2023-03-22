@@ -296,6 +296,10 @@ namespace neopixel {
         show() {
             // only supported in beta
             // ws2812b.setBufferMode(this.pin, this._mode);
+            console.log("send buffer to pin " + this.pin + " with content: ");
+            for (let i = 0; i <= 3 * 8 * 8; i++) {
+                console.log(this.buf[i]);
+            }
             ws2812b.sendBuffer(this.buf, this.pin);
             console.log("Estimated current for neopixels = " + this.power());
         }
