@@ -747,7 +747,8 @@ namespace neopixel {
         }
 
         /**
-         * Scrolle Text über Matrix mit fixer 6x8 Pixel Schrift
+         * Scrolle Text über Matrix mit fixer 6x8 Pixel Schrift.
+         * Der Bildschirminhalt wird gelöscht und ``anzeigen`` muss nicht aufgerufen werden
          */
         //% blockId="Matrix_scrollText" block="%matrix Text: %text|Geschwindigkeit (1 - 100): %speed|Farbe: %colour"
         //% weight=75
@@ -772,6 +773,7 @@ namespace neopixel {
 
         /**
          * Zeige Text auf Matrix mit fixer 6x8 Pixel Schrift. Der Text ist vertikal mittig-zentriert.
+         * Es muss anschliessend ``anzeigen`` aufgerufen werden.
          */
         //% blockId="Matrix_text" block="%matrix Text: %text|X-Offset: %x_offset|Farbe: %colour"
         //% weight=74
@@ -780,13 +782,11 @@ namespace neopixel {
         //% x_offset.defl=0 x_offset.min=0 x_offset.max=32
         //% group="Features"
         showText(text: string, x_offset: number, colour: number): void {
-            this.strip.clear();
             for (let letter = 0; letter < text.length; letter++) {
                 //for loop to retrieve all the letters from te text
                 let bitmap = getLettermap(text.charAt(letter));
                 this.drawBitmapVcentered(bitmap, x_offset + 6 * letter, 6, 8, colour);
             }
-            this.strip.show();
         }
 
         /**
