@@ -296,7 +296,6 @@ namespace neopixel {
         show() {
             // only supported in beta
             // ws2812b.setBufferMode(this.pin, this._mode);
-            console.log("buffer to display= " + JSON.stringify(this.buf));
             ws2812b.sendBuffer(this.buf, this.pin);
             console.log("Estimated current for neopixels = " + this.power());
         }
@@ -522,9 +521,7 @@ namespace neopixel {
     function total_brightness_limit(): number {
         // a WS2812B LED has a current of about 60mA at full brightness with white color
         // The TP5400 voltage regulator on the Hiwonder board can deliver around 740mA. To have a little margin we choose a max current of 700mA.
-        const br = Math.idiv(700 * 255, leds_total * 60) & 0xff;
-        console.log("Max brightness: " + br);
-        return br;
+        return Math.idiv(700 * 255, leds_total * 60) & 0xff;
     }
 
     /**
@@ -811,22 +808,13 @@ namespace neopixel {
             colour: number
         ): void {
             console.log("draw bitmap[]= " + JSON.stringify(bitmap));
-            console.log(
-                "x = " +
-                x +
-                " width = " +
-                width +
-                " height = " +
-                height +
-                " colour = " +
-                colour
-            );
             for (let bitmask = 0; bitmask < width; bitmask++) {
                 if (!((x + bitmask) % 2)) {
                     //Zigzag pixel string: if the row that's being drawn to (Xpos+bitmask) is odd, then draw from bottom to top
                     for (let Ypos = height; Ypos >= 0; Ypos--) {
                         if (bitmap[Ypos] & (0x80 >> bitmask)) {
                             //draw the pixel when there is a "1" in the bitmap
+                            console.log("draw pixel at " + Ypos + " x = " + bitmask);
                             this.strip.setPixelColor(
                                 (x + bitmask) * this.Height + Ypos + (this.Height - 8) / 2,
                                 colour
