@@ -797,7 +797,7 @@ namespace neopixel {
          * TODO: Debug this
          * @param i string pattern to convert into an image object
          */
-        //% block="zeichne Muster (NON WORKING)"
+        //% blockId="Matrix_freedraw" block="zeichne Muster (NON WORKING)"
         //% imageLiteral=1
         //% imageLiteralColumns=8
         //% imageLiteralRows=8
