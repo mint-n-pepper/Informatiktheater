@@ -801,6 +801,8 @@ namespace neopixel {
         //% imageLiteral=1
         //% imageLiteralColumns=8
         //% imageLiteralRows=8
+        //% subcategory=Matrix
+        //% group="Features"
         draw_pattern(i: string): number[] {
             // this is not pretty but basically, i is an Image
             let im = <Image>(<any>i);
