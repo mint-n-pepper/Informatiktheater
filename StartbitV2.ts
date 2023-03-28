@@ -315,6 +315,8 @@ namespace Informatiktheater {
     duration: number = 300
   ) {
     let position = mapValue(angle, 0, 180, 500, 2500);
+    console.log("servo index= " + index);
+    console.log("duration" + duration);
 
     let buf = pins.createBuffer(10);
     buf[0] = 0x55;
