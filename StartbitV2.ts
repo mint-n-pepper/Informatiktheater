@@ -287,7 +287,7 @@ namespace Informatiktheater {
 
   export enum ServoIndex {
     //% block="S1"
-    S1,
+    S1 = 1,
     //% block="S2"
     S2,
     //% block="S3"
@@ -316,7 +316,6 @@ namespace Informatiktheater {
   ) {
     let position = mapValue(angle, 0, 180, 500, 2500);
     console.log("servo index= " + index);
-    console.log("duration" + duration);
 
     let buf = pins.createBuffer(10);
     buf[0] = 0x55;
