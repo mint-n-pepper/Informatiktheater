@@ -772,7 +772,7 @@ namespace Informatiktheater {
 
   export enum startbit_LineFollowerSensors {
     //% block="S1"
-    S1,
+    S1 = 1,
     //% block="S2"
     S2,
     //% block="S3"
