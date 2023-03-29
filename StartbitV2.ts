@@ -261,29 +261,6 @@ namespace Informatiktheater {
     basic.pause(1);
   }
 
-  //% weight=96
-  //% blockId=startbit_setMotorSpeed
-  //% block="set velocity for |motor 1 %speed1|and motor 2 %speed2"
-  //% block.loc.de="setze Geschwindigkeit für |Motor 1 %speed1|und Motor 2 %speed2"
-  //% speed1.min=-100 speed1.max=100
-  //% speed2.min=-100 speed2.max=100
-  //% subcategory=Servo/Motor
-  export function startbit_setMotorSpeed(speed1: number, speed2: number) {
-    if (speed1 > 100 || speed1 < -100 || speed2 > 100 || speed2 < -100) {
-      return;
-    }
-    speed1 = speed1 * -1;
-    speed2 = speed2 * -1;
-    let buf = pins.createBuffer(6);
-    buf[0] = 0x55;
-    buf[1] = 0x55;
-    buf[2] = 0x04;
-    buf[3] = 0x32; //cmd type
-    buf[4] = speed1;
-    buf[5] = speed2;
-    serial.writeBuffer(buf);
-  }
-
   const APDS9960_I2C_ADDR = 0x39;
   const APDS9960_ID_1 = 0xa8;
   const APDS9960_ID_2 = 0x9c;
