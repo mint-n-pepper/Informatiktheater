@@ -541,7 +541,7 @@ namespace Informatiktheater {
   }
 
   //% weight=97 blockId=startbit_showLight
-  //% block="Light on"
+  //% block="show board-LED"
   //% block.loc.de="Board-LED anzeigen"
   //% jsdoc.loc.de="Zeige die gefärbten Lichter. Muss ausgeführt werden nachdem eine Lichtfarbe gesetzt wurde!"
   //% subcategory=Board-LED
@@ -553,7 +553,7 @@ namespace Informatiktheater {
    * Clear the color of the colored lights and turn off the lights.
    */
   //% weight=96 blockGap=50 blockId=startbit_clearLight
-  //% block="Light off"
+  //% block="clear board-LED"
   //% block.loc.de="Board-LED ausschalten"
   //% jsdoc.loc.de="Setze Farbe zurück und schalte LED aus"
   //% subcategory=Board-LED
