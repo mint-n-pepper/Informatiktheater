@@ -73,6 +73,13 @@ enum HiwonderPins {
     P14 = DigitalPin.P14,
     P16 = DigitalPin.P16,
 }
+
+enum PowerSource {
+    //% block="intern"
+    Intern,
+    //% block="extern"
+    Extern,
+}
 /**
  * Functions to operate NeoPixel strips.
  */
@@ -86,19 +93,25 @@ namespace neopixel {
      * Create a new NeoPixel driver for `numleds` LEDs.
      * @param pin the pin where the neopixel is connected on the Hiwonder board
      * @param numleds number of leds in the strip, eg: 24,30,60,64
+     * @param power_source whether the board is powered from an external battery pack or with the onboard battery
      */
-    //% blockId="neopixel_create" block="NeoPixel at pin %pin| with %numleds leds"
-    //% block.loc.de="NeoPixels an Pin %pin|mit %numleds Pixeln"
+    //% blockId="neopixel_create"
+    //% block="NeoPixel at pin %pin| with %numleds leds| power source %power_source"
+    //% block.loc.de="NeoPixels an Pin %pin|mit %numleds Pixeln| Spannungsquelle %power_source"
     //% jsdoc.loc.de="Erzeuge einen neuen Treiber für die gegebene Anzahl NeoPixels, die am angegebenen Port angeschlossen sind. Der Modus bestimmt die genaue Bauart der NeoPixel."
     //% weight=90
     //% parts="neopixel"
+    //% power_source.defl=PowerSource.Intern
     //% subcategory=Stripe
     // TODO: How is trackArgs supposed to work? Without this, the simulator will work again, but without neopixel simulation enabled
     // trackArgs=0, 2
     //% blockSetVariable=strip
     //% group="Setup"
-    export function create(pin: HiwonderPins, numleds: number): Strip {
-        leds_total += numleds;
+    export function create(
+        pin: HiwonderPins,
+        numleds: number,
+        power_source: PowerSource
+    ): Strip {
         let strip = new Strip();
         const mode = NeoPixelMode.RGB_GRB;
         let stride = (mode as NeoPixelMode) === NeoPixelMode.RGBW ? 4 : 3;
@@ -107,6 +120,10 @@ namespace neopixel {
         strip._length = numleds;
         strip._mode = mode || NeoPixelMode.RGB_GRB;
         strip.setBrightness(128);
+        strip._power = power_source;
+        if (strip._power == PowerSource.Intern) {
+            leds_total += numleds;
+        }
         // TODO: How can we solve this more elegant? When trying to cast,
         // we can't use string literals here and can't change DigitalPin to non constant enum
         let p;
@@ -142,6 +159,7 @@ namespace neopixel {
         start: number; // start offset in LED strip
         _length: number; // number of LEDs
         _mode: NeoPixelMode;
+        _power: PowerSource;
 
         /**
          * Shows all LEDs to a given color (range 0-255 for r, g, b).
@@ -485,10 +503,15 @@ namespace neopixel {
             let green = unpackG(rgb);
             let blue = unpackB(rgb);
 
-            const br =
-                this.brightness < total_brightness_limit()
-                    ? this.brightness
-                    : total_brightness_limit();
+            let br: number;
+            if (this._power == PowerSource.Intern) {
+                br =
+                    this.brightness < total_brightness_limit()
+                        ? this.brightness
+                        : total_brightness_limit();
+            } else if (this._power == PowerSource.Extern) {
+                br = this.brightness;
+            }
             if (br < 255) {
                 red = (red * br) >> 8;
                 green = (green * br) >> 8;
@@ -511,10 +534,15 @@ namespace neopixel {
             let green = unpackG(rgb);
             let blue = unpackB(rgb);
 
-            const br =
-                this.brightness < total_brightness_limit()
-                    ? this.brightness
-                    : total_brightness_limit();
+            let br: number;
+            if (this._power == PowerSource.Intern) {
+                br =
+                    this.brightness < total_brightness_limit()
+                        ? this.brightness
+                        : total_brightness_limit();
+            } else if (this._power == PowerSource.Extern) {
+                br = this.brightness;
+            }
             if (br < 255) {
                 red = (red * br) >> 8;
                 green = (green * br) >> 8;
@@ -652,14 +680,21 @@ namespace neopixel {
      * Erstelle ein neues Matrix Objekt
      * @param pin Pin an welchem die Matrize angeschlossen ist
      * @param size Dimension des Panels in Breite x Höhe
+     * @param power_source Spannungsquelle welche die LED's versorgt (intern/extern)
      */
-    //% blockId="Matrix_Create" block="matrix auf Pin %pin|mit einer Grösse von %size"
+    //% blockId="Matrix_Create"
+    //% block="matrix auf Pin %pin|mit einer Grösse von %size| Spannungsquelle %power_source"
     //% weight=100
+    //% power_source.defl=PowerSource.Intern
     //% subcategory=Matrix
     //% parts="neopixel"
     //% blockSetVariable=matrix
     //% group="Setup"
-    export function create_matrix(pin: HiwonderPins, size: matrixSizes): Matrix {
+    export function create_matrix(
+        pin: HiwonderPins,
+        size: matrixSizes,
+        power_source: PowerSource
+    ): Matrix {
         let matrix = new Matrix();
         let w, h;
         switch (size) {
@@ -680,7 +715,7 @@ namespace neopixel {
                 h = 16;
                 break;
         }
-        matrix.strip = neopixel.create(pin, h * w);
+        matrix.strip = neopixel.create(pin, h * w, power_source);
         matrix.Width = w;
         matrix.Height = h;
 
