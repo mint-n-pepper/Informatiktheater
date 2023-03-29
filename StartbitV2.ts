@@ -490,34 +490,6 @@ namespace Informatiktheater {
     return val;
   }
 
-  //% weight=96
-  //% blockId=startbit_readLineFollowerStatus
-  //% block="Line follower status $status"
-  //% block.loc.de="Linienfolger $status ?"
-  //% subcategory=Sensor
-  export function startbit_readLineFollowerStatus(
-    status: startbit_lineFollower
-  ): boolean {
-    let s1 = 0;
-    let s2 = 0;
-
-    s1 = pins.analogReadPin(lineFollowPin1);
-    s2 = pins.analogReadPin(lineFollowPin2);
-    s1 = (s1 * 255) / 1023;
-    s2 = (s2 * 255) / 1023;
-    if (s1 < 200) s1 = 0;
-    else s1 = 1;
-    if (s2 < 200) s2 = 0;
-    else s2 = 1;
-
-    let s = ((1 & s1) << 1) | s2;
-    if (s == status) {
-      return true;
-    } else {
-      return false;
-    }
-  }
-
   let distanceBak = 0;
   /**
    * Get the distance of ultrasonic detection to the obstacle
@@ -682,74 +654,7 @@ namespace Informatiktheater {
     White,
   }
 
-  const LINE_FOLLOWER_I2C_ADDR = 0x78;
-
-  //% weight=95 blockId=startbit_line_followers blockGap=50
-  //% block="Line follower %lineFollowerSensor in %LineColor ?"
-  //% block.loc.de="Linienfolger %lineFollowerSensor auf %LineColor ?"
-  //% inlineInputMode=inline
-  //% subcategory=Sensor
-  export function startbit_line_followers(
-    lineFollowerSensor: startbit_LineFollowerSensors,
-    LineColor: startbit_LineColor
-  ): boolean {
-    pins.i2cWriteNumber(LINE_FOLLOWER_I2C_ADDR, 1, NumberFormat.UInt8BE);
-    let data = pins.i2cReadNumber(LINE_FOLLOWER_I2C_ADDR, NumberFormat.UInt8BE);
-    let status = false;
-    switch (lineFollowerSensor) {
-      case startbit_LineFollowerSensors.S1:
-        if (data & 0x01) {
-          if (LineColor == startbit_LineColor.Black) {
-            status = true;
-          }
-        } else {
-          if (LineColor == startbit_LineColor.White) {
-            status = true;
-          }
-        }
-        break;
-
-      case startbit_LineFollowerSensors.S2:
-        if (data & 0x02) {
-          if (LineColor == startbit_LineColor.Black) {
-            status = true;
-          }
-        } else {
-          if (LineColor == startbit_LineColor.White) {
-            status = true;
-          }
-        }
-        break;
-
-      case startbit_LineFollowerSensors.S3:
-        if (data & 0x04) {
-          if (LineColor == startbit_LineColor.Black) {
-            status = true;
-          }
-        } else {
-          if (LineColor == startbit_LineColor.White) {
-            status = true;
-          }
-        }
-        break;
-
-      case startbit_LineFollowerSensors.S4:
-        if (data & 0x08) {
-          if (LineColor == startbit_LineColor.Black) {
-            status = true;
-          }
-        } else {
-          if (LineColor == startbit_LineColor.White) {
-            status = true;
-          }
-        }
-        break;
-    }
-    return status;
-  }
-
   // Trittmatte
-
   export enum startbit_trittmattePort {
     port1 = 0x01,
     port2 = 0x02,
