@@ -82,20 +82,20 @@ namespace Informatiktheater {
 
   let lineFollowPin1: AnalogPin;
   let lineFollowPin2: AnalogPin;
-  //% weight=92
-  //% blockId=lineFollowSensor_init
-  //% block="initialize line follower sensor|%port"
-  //% block.loc.de="initialisiere Linienfolger-Sensor|%port"
-  //Silvan: I don't think we should switch from port to pins here (one would have to define two pins instead of a single port)
-  // Only P1 and P2 are analog inputs
-  export function lineFollowSensor_init(port: startbit_lineFollowPort) {
-    switch (port) {
-      case startbit_lineFollowPort.port1:
-        lineFollowPin1 = AnalogPin.P1;
-        lineFollowPin2 = AnalogPin.P2;
-        break;
-    }
-  }
+  // //% weight=92
+  // //% blockId=lineFollowSensor_init
+  // //% block="initialize line follower sensor|%port"
+  // //% block.loc.de="initialisiere Linienfolger-Sensor|%port"
+  // //Silvan: I don't think we should switch from port to pins here (one would have to define two pins instead of a single port)
+  // // Only P1 and P2 are analog inputs
+  // export function lineFollowSensor_init(port: startbit_lineFollowPort) {
+  //   switch (port) {
+  //     case startbit_lineFollowPort.port1:
+  //       lineFollowPin1 = AnalogPin.P1;
+  //       lineFollowPin2 = AnalogPin.P2;
+  //       break;
+  //   }
+  // }
 
   export enum startbit_PinIOStatus {
     //% block="Off"
@@ -123,17 +123,17 @@ namespace Informatiktheater {
   }
 
   let knobPin: AnalogPin;
-  //% weight=99
-  //% blockId=knobSensor_init
-  //% block="initialize rotating knob|%port"
-  //% block.loc.de="initialisiere Drehknopf|%port"
-  export function knobSensor_init(port: startbit_knobPort) {
-    switch (port) {
-      case startbit_knobPort.port1:
-        knobPin = AnalogPin.P1;
-        break;
-    }
-  }
+  // //% weight=99
+  // //% blockId=knobSensor_init
+  // //% block="initialize rotating knob|%port"
+  // //% block.loc.de="initialisiere Drehknopf|%port"
+  // export function knobSensor_init(port: startbit_knobPort) {
+  //   switch (port) {
+  //     case startbit_knobPort.port1:
+  //       knobPin = AnalogPin.P1;
+  //       break;
+  //   }
+  // }
 
   export enum startbit_iic {
     port3 = 0x03,
@@ -141,20 +141,20 @@ namespace Informatiktheater {
     port6 = 0x06,
   }
 
-  //% weight=93
-  //% blockId=lineFollow_iic_init
-  //% block="initialize line follower iic|%port"
-  //% block.loc.de="initialisiere Linienfolger iic|%port"
-  export function lineFollow_iic_init(port: startbit_iic) {
-    switch (port) {
-      case startbit_iic.port3:
-        break;
-      case startbit_iic.port4:
-        break;
-      case startbit_iic.port6:
-        break;
-    }
-  }
+  // //% weight=93
+  // //% blockId=lineFollow_iic_init
+  // //% block="initialize line follower iic|%port"
+  // //% block.loc.de="initialisiere Linienfolger iic|%port"
+  // export function lineFollow_iic_init(port: startbit_iic) {
+  //   switch (port) {
+  //     case startbit_iic.port3:
+  //       break;
+  //     case startbit_iic.port4:
+  //       break;
+  //     case startbit_iic.port6:
+  //       break;
+  //   }
+  // }
 
   export function startbit_Init() {
     startbit_initRGBLight();

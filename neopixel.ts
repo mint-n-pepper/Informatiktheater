@@ -709,7 +709,12 @@ namespace neopixel {
             this.strip.setBrightness(setpoint);
         }
 
+        /**
+         * Clear all LED's
+         * You have to call ``show`` afterwards
+         */
         //%blockId="Matrix_clear" block="%matrix| ausschalten"
+        //% jsdoc.loc.de="Schalte alle NeoPixel aus. Damit die Änderung sichtbar wird, muss anschließend ``anzeigen`` aufgerufen werden."
         //%weight=8
         //% subcategory=Matrix
         //% group="Kontrolle"
