@@ -263,7 +263,7 @@ namespace neopixel {
          * @param range how many pixels starting at position
          * @param rgb RGB color of the LED
          */
-        //% blockId="neopixel_set_pixel_color" block="%strip|set %number pixel color(s)| at %pixeloffset|to %rgb=neopixel_colors"
+        //% blockId="neopixel_set_pixel_color" block="%strip|set color of Neopixel %pixeloffset|to %rgb=neopixel_colors|amount %number"
         //% block.loc.de="%strip|setze Farbe von Neopixel %pixeloffset|auf %rgb=neopixel_colors|Anzahl %number"
         //% jsdoc.loc.de="Setzt die NeoPixel im Interval mit der angegebenen Startnummer auf die angegebene Farbe. Damit die Änderung sichtbar wird, muss anschließend ``anzeigen`` aufgerufen werden."
         //% strip.defl=strip
