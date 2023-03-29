@@ -76,27 +76,6 @@ namespace Informatiktheater {
     }
   }
 
-  export enum startbit_lineFollowPort {
-    port1 = 0x01,
-  }
-
-  let lineFollowPin1: AnalogPin;
-  let lineFollowPin2: AnalogPin;
-  // //% weight=92
-  // //% blockId=lineFollowSensor_init
-  // //% block="initialize line follower sensor|%port"
-  // //% block.loc.de="initialisiere Linienfolger-Sensor|%port"
-  // //Silvan: I don't think we should switch from port to pins here (one would have to define two pins instead of a single port)
-  // // Only P1 and P2 are analog inputs
-  // export function lineFollowSensor_init(port: startbit_lineFollowPort) {
-  //   switch (port) {
-  //     case startbit_lineFollowPort.port1:
-  //       lineFollowPin1 = AnalogPin.P1;
-  //       lineFollowPin2 = AnalogPin.P2;
-  //       break;
-  //   }
-  // }
-
   export enum startbit_PinIOStatus {
     //% block="Off"
     //% block.loc.de="Aus"
@@ -105,56 +84,6 @@ namespace Informatiktheater {
     //% block.loc.de="Ein"
     Hight = 0x01,
   }
-
-  export enum startbit_LineFollowerSensor {
-    //% block="Sensor 1"
-    LFSensor_1 = 0x00,
-    //% block="Sensor 2"
-    LFSensor_2 = 0x01,
-  }
-
-  export enum startbit_busServoPort {
-    //% block="Port 6"
-    port6 = 0x06,
-  }
-
-  export enum startbit_knobPort {
-    port1 = 0x01,
-  }
-
-  let knobPin: AnalogPin;
-  // //% weight=99
-  // //% blockId=knobSensor_init
-  // //% block="initialize rotating knob|%port"
-  // //% block.loc.de="initialisiere Drehknopf|%port"
-  // export function knobSensor_init(port: startbit_knobPort) {
-  //   switch (port) {
-  //     case startbit_knobPort.port1:
-  //       knobPin = AnalogPin.P1;
-  //       break;
-  //   }
-  // }
-
-  export enum startbit_iic {
-    port3 = 0x03,
-    port4 = 0x04,
-    port6 = 0x06,
-  }
-
-  // //% weight=93
-  // //% blockId=lineFollow_iic_init
-  // //% block="initialize line follower iic|%port"
-  // //% block.loc.de="initialisiere Linienfolger iic|%port"
-  // export function lineFollow_iic_init(port: startbit_iic) {
-  //   switch (port) {
-  //     case startbit_iic.port3:
-  //       break;
-  //     case startbit_iic.port4:
-  //       break;
-  //     case startbit_iic.port6:
-  //       break;
-  //   }
-  // }
 
   export function startbit_Init() {
     startbit_initRGBLight();
@@ -589,29 +518,6 @@ namespace Informatiktheater {
     }
   }
 
-  //% weight=89
-  //% blockId=startbit_lineSensorValue blockGap=50
-  //% block="get line follower sensor|%sensor|ad value"
-  //% block.loc.de="Linienfolger |%sensor|ad Wert"
-  //% subcategory=Sensor
-  export function startbit_lineSensorValue(
-    sensor: startbit_LineFollowerSensor
-  ): number {
-    let s1 = 0;
-    let s2 = 0;
-
-    s1 = pins.analogReadPin(lineFollowPin1);
-    s2 = pins.analogReadPin(lineFollowPin2);
-    s1 = (s1 * 255) / 1023;
-    s2 = (s2 * 255) / 1023;
-
-    if (sensor == startbit_LineFollowerSensor.LFSensor_1) {
-      return 255 - s1;
-    } else {
-      return 255 - s2;
-    }
-  }
-
   let distanceBak = 0;
   /**
    * Get the distance of ultrasonic detection to the obstacle
@@ -640,20 +546,6 @@ namespace Informatiktheater {
     distanceBak = d;
 
     return Math.round((distance * 10) / 6 / 58 / 1.6);
-  }
-
-  /**
-   * Get the ad value of the knob moudule
-   */
-  //% weight=92
-  //% blockId=startbit_getKnobValue
-  //% block="get rotating knob|value (0~255)"
-  //% block.loc.de="Drehknopf|Wert (0~255)"
-  //% subcategory=Sensor
-  export function startbit_getKnobValue(): number {
-    let adValue = pins.analogReadPin(knobPin);
-    adValue = (adValue * 255) / 1023;
-    return adValue;
   }
 
   /**
