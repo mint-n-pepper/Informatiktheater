@@ -171,6 +171,8 @@ namespace neopixel {
         //% jsdoc.loc.de="Zeigt ein Regenbogenmuster auf allen NeoPixeln an."
         //% strip.defl=strip
         //% startHue.shadow="colorWheelHsvPicker"
+        //% startHue.defl=1
+        //% endHue.defl=255
         //% endHue.shadow="colorWheelHsvPicker"
         //% weight=97
         //% parts="neopixel"
@@ -262,7 +264,7 @@ namespace neopixel {
          * @param rgb RGB color of the LED
          */
         //% blockId="neopixel_set_pixel_color" block="%strip|set %number pixel color(s)| at %pixeloffset|to %rgb=neopixel_colors"
-        //% block.loc.de="%strip|setze Farbe(n) von %number NeoPixel(n) |an Position %pixeloffset|auf %rgb=neopixel_colors"
+        //% block.loc.de="%strip|setze Farbe von Neopixel %pixeloffset|auf %rgb=neopixel_colors|Anzahl %number"
         //% jsdoc.loc.de="Setzt die NeoPixel im Interval mit der angegebenen Startnummer auf die angegebene Farbe. Damit die Änderung sichtbar wird, muss anschließend ``anzeigen`` aufgerufen werden."
         //% strip.defl=strip
         //% number.defl=1
@@ -782,7 +784,7 @@ namespace neopixel {
          * Zeige Text auf Matrix mit fixer 6x8 Pixel Schrift. Der Text ist vertikal mittig-zentriert.
          * Es muss anschliessend ``anzeigen`` aufgerufen werden.
          */
-        //% blockId="Matrix_text" block="%matrix Text: %text|X-Offset: %x_offset|Farbe: %colour"
+        //% blockId="Matrix_text" block="%matrix Text: %text|Position: %x_offset|Farbe: %colour"
         //% weight=74
         //% subcategory=Matrix
         //% colour.shadow=neopixel_colors
