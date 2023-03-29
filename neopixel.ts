@@ -709,7 +709,7 @@ namespace neopixel {
             this.strip.setBrightness(setpoint);
         }
 
-        //%blockId="Matrix_clear" block="%matrix| löschen"
+        //%blockId="Matrix_clear" block="%matrix| ausschalten"
         //%weight=8
         //% subcategory=Matrix
         //% group="Kontrolle"
@@ -789,6 +789,7 @@ namespace neopixel {
                 let bitmap = getLettermap(text.charAt(letter));
                 this.drawBitmapVcentered(bitmap, x_offset + 6 * letter, 6, 8, colour);
             }
+            this.strip.show();
         }
 
         /**
