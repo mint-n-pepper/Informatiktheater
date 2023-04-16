@@ -4,7 +4,7 @@ informatiktheater.startbit_Init();
 /*
  Informatiktheater package
 */
-//% weight=10  color=#2896ff icon="\f630"
+//% weight=10  color=#2896ff 
 namespace informatiktheater {
   export enum startbit_Colors {
     //% block="Red"
