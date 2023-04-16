@@ -1,11 +1,11 @@
 // Auto init hiwonder board when extension is added
-Informatiktheater.startbit_Init();
+informatiktheater.startbit_Init();
 
 /*
  Informatiktheater package
 */
-//% weight=10  color=#2896ff
-namespace Informatiktheater {
+//% weight=10  color=#2896ff 
+namespace informatiktheater {
   export enum startbit_Colors {
     //% block="Red"
     //% block.loc.de="Rot"
