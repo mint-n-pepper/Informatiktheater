@@ -296,7 +296,7 @@ namespace neopixel {
         //% parts="neopixel"
         //% subcategory=Stripe
         //% group="Kontrolle"
-        setPixelColorRange(number: number, pixeloffset: number, rgb: number): void {
+        setPixelColorRange(pixeloffset: number, rgb: number, number: number): void {
             console.log("strip: show color : " + rgb);
             for (let i = 0; i < number; i++) {
                 this.setPixelRGB((pixeloffset + i) >> 0, rgb >> 0);
