@@ -293,6 +293,7 @@ namespace neopixel {
         //% subcategory=Stripe
         //% group="Kontrolle"
         setPixelColorRange(number: number, pixeloffset: number, rgb: number): void {
+            console.log("strip: show color : " + rgb);
             for (let i = 0; i < number; i++) {
                 this.setPixelRGB((pixeloffset + i) >> 0, rgb >> 0);
             }
@@ -777,6 +778,7 @@ namespace neopixel {
         //% subcategory=Matrix
         //% group="Kontrolle"
         setPixel(x: number, y: number, colour: number): void {
+            console.log("matrix: show color : " + colour);
             if (x < 0 || x > this.Width || y < 0 || y > this.Height) {
                 //If the pixel does not fit on screen, do not draw it
                 return;
