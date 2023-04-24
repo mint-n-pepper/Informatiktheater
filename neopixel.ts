@@ -289,6 +289,7 @@ namespace neopixel {
         //% number.min=1
         //% number.min=255
         //% weight=80
+        //% rgb.shadow=neopixel_colors
         //% parts="neopixel"
         //% subcategory=Stripe
         //% group="Kontrolle"
