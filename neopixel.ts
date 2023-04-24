@@ -288,6 +288,9 @@ namespace neopixel {
         //% number.defl=1
         //% number.min=1
         //% number.max=255
+        //% pixeloffset.defl=0
+        //% pixeloffset.min=0
+        //% pixeloffset.max=255
         //% weight=80
         //% rgb.shadow=neopixel_colors
         //% parts="neopixel"
