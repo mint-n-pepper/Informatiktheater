@@ -287,7 +287,7 @@ namespace neopixel {
         //% strip.defl=strip
         //% number.defl=1
         //% number.min=1
-        //% number.min=255
+        //% number.max=255
         //% weight=80
         //% rgb.shadow=neopixel_colors
         //% parts="neopixel"
