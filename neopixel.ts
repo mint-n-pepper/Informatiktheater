@@ -297,7 +297,6 @@ namespace neopixel {
         //% subcategory=Stripe
         //% group="Kontrolle"
         setPixelColorRange(pixeloffset: number, rgb: number, number: number): void {
-            console.log("strip: show color : " + rgb);
             for (let i = 0; i < number; i++) {
                 this.setPixelRGB((pixeloffset + i) >> 0, rgb >> 0);
             }
@@ -321,10 +320,6 @@ namespace neopixel {
         show() {
             // only supported in beta
             // ws2812b.setBufferMode(this.pin, this._mode);
-            console.log("send buffer to pin " + this.pin + " with content: ");
-            for (let i = 0; i <= 3 * 8 * 8; i++) {
-                console.log(this.buf[i]);
-            }
             ws2812b.sendBuffer(this.buf, this.pin);
             console.log("Estimated current for neopixels = " + this.power());
         }
@@ -848,8 +843,8 @@ namespace neopixel {
          */
         //% blockId="Matrix_freedraw" block="zeichne Muster (NON WORKING)"
         //% imageLiteral=1
-        //% imageLiteralColumns=8
-        //% imageLiteralRows=8
+        //% imageLiteralColumns=16
+        //% imageLiteralRows=16
         //% subcategory=Matrix
         //% group="Features"
         draw_pattern(i: string): number[] {
