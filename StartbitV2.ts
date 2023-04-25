@@ -4,7 +4,7 @@ informatiktheater.startbit_Init();
 /*
  Informatiktheater package
 */
-//% weight=10  color=#2896ff 
+//% weight=10  color=#2896ff
 namespace informatiktheater {
   export enum startbit_Colors {
     //% block="Red"
@@ -757,7 +757,7 @@ namespace informatiktheater {
     //% block="setze $this auf $list "
     //% this.defl=Songliste
     //% this.shadow=variables_get
-    //% subcategory=MP3-Box
+    //% subcategory=Soundbox
     public createSongListArray(list: number[]) {
       this.list = list;
       this.TrackIndex = 0;
@@ -768,7 +768,7 @@ namespace informatiktheater {
     //% block.loc.de="nächste Songnummer in Liste $this"
     //% this.defl=Songliste
     //% this.shadow=variables_get
-    //% subcategory=MP3-Box
+    //% subcategory=Soundbox
     public playNextTrack() {
       if (this.TrackIndex < this.list.length) {
         this.TrackIndex += 1;
@@ -782,7 +782,7 @@ namespace informatiktheater {
     //% block.loc.de="vorherige Songnummer in Liste $this"
     //% this.defl=Songliste
     //% this.shadow=variables_get
-    //% subcategory=MP3-Box
+    //% subcategory=Soundbox
     public playPreviousTrack() {
       if (this.TrackIndex <= 0) {
         this.TrackIndex == 0;
@@ -796,7 +796,7 @@ namespace informatiktheater {
     //% block.loc.de="Aktuelle Songnummer in liste %this"
     //% this.defl=Songliste
     //% this.shadow=variables_get
-    //% subcategory=MP3-Box
+    //% subcategory=Soundbox
     public currentTrack(): number {
       return this.list[this.TrackIndex];
     }
@@ -806,7 +806,7 @@ namespace informatiktheater {
     //% block.loc.de="zurück zur ersten Songnummer in Liste %this"
     //% this.defl=Songliste
     //% this.shadow=variables_get
-    //% subcategory=MP3-Box
+    //% subcategory=Soundbox
     public gotoFirstTrack() {
       this.TrackIndex = 0;
     }
@@ -820,7 +820,7 @@ namespace informatiktheater {
   //% block.loc.de="erstelle Songliste"
   //% jsdoc.loc.de="erstellt eine neue Songliste und setzt sie auf eine Variable. Muss im Startblock ausgeführt werden bevor MP3 Box gebraucht werden kann."
   //% blockSetVariable=Songliste
-  //% subcategory=MP3-Box
+  //% subcategory=Soundbox
   export function createSongList(): SongList {
     return new SongList();
   }
