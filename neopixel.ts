@@ -835,7 +835,6 @@ namespace neopixel {
             this.strip.show();
         }
 
-
         /**
          * Zeige Bitmap auf Matrix. Der Text ist vertikal mittig-zentriert.
          * @param bitmap Array mit bitmap. Jeder Eintrag entspricht einer Reihe im angezeigten Character. Nullposition ist oben rechts.
@@ -897,7 +896,6 @@ namespace neopixel {
         return letterMap;
     }
 
-
     /**
      * Zeichne Muster für Anzeige auf LED Matrix.
      * WICHTIG: Dieser Code läuft im Simulator, aber auf der Hardware werden nachfolgende Blöcke NICHT mehr ausgeführt.
@@ -910,7 +908,7 @@ namespace neopixel {
     //% imageLiteralRows=16
     //% subcategory=Matrix
     //% group="Features"
-    draw_pattern(i: string): number[] {
+    function draw_pattern(i: string): number[] {
         // this is not pretty but basically, i is an Image
         let im = <Image>(<any>i);
         let arr: number[] = [];
