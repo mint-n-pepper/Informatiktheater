@@ -554,8 +554,9 @@ namespace neopixel {
 
     function total_brightness_limit(): number {
         // a WS2812B LED has a current of about 60mA at full brightness with white color
-        // The TP5400 voltage regulator on the Hiwonder board can deliver around 740mA. To have a little margin we choose a max current of 700mA. !!!exceptional double current!!!!
-        return Math.idiv(700 * 2 * 255, leds_total * 60) & 0xff;
+        // The TP5400 voltage regulator on the Hiwonder board can deliver around 740mA. To have a little margin we choose a max current of 700mA.
+        // NOTE sja: Removed !!!exceptional double current!!!! for testing the library on hardware. Having this enabled is not useful. Please set to "external" power supply if you don't want to have power limitation enabled.
+        return Math.idiv(700 * 255, leds_total * 60) & 0xff;
     }
 
     /**
