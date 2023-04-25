@@ -908,7 +908,7 @@ namespace neopixel {
     //% imageLiteralRows=16
     //% subcategory=Matrix
     //% group="Features"
-    function draw_pattern(i: string): number[] {
+    export function draw_pattern(i: string): number[] {
         // this is not pretty but basically, i is an Image
         let im = <Image>(<any>i);
         let arr: number[] = [];
