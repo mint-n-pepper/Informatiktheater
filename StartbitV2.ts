@@ -56,26 +56,6 @@ namespace informatiktheater {
     port2 = 0x02,
   }
 
-  let echoPin: DigitalPin;
-  let trigPin: DigitalPin;
-  //% weight=91
-  //% blockId=ultrasonic_init
-  //% block="initialize ultrasonic |%pin"
-  //% block.loc.de="initialisiere Ultraschall|%port"
-  //Silvan: I don't think we should switch from port to pins here (one would have to define two pins instead of a single port)
-  export function ultrasonic_init(port: startbit_ultrasonicPort) {
-    switch (port) {
-      case startbit_ultrasonicPort.port1:
-        echoPin = DigitalPin.P2;
-        trigPin = DigitalPin.P1;
-        break;
-      case startbit_ultrasonicPort.port2:
-        echoPin = DigitalPin.P14;
-        trigPin = DigitalPin.P13;
-        break;
-    }
-  }
-
   export enum startbit_PinIOStatus {
     //% block="Off"
     //% block.loc.de="Aus"
@@ -467,6 +447,27 @@ namespace informatiktheater {
     return val;
   }
 
+  let echoPin: DigitalPin;
+  let trigPin: DigitalPin;
+  //% weight=1
+  //% blockId=ultrasonic_init
+  //% block="initialize ultrasonic |%pin"
+  //% block.loc.de="initialisiere Ultraschall|%port"
+  //% subcategory=Ultraschall
+  //Silvan: I don't think we should switch from port to pins here (one would have to define two pins instead of a single port)
+  export function ultrasonic_init(port: startbit_ultrasonicPort) {
+    switch (port) {
+      case startbit_ultrasonicPort.port1:
+        echoPin = DigitalPin.P2;
+        trigPin = DigitalPin.P1;
+        break;
+      case startbit_ultrasonicPort.port2:
+        echoPin = DigitalPin.P14;
+        trigPin = DigitalPin.P13;
+        break;
+    }
+  }
+
   let distanceBak = 0;
   /**
    * Get the distance of ultrasonic detection to the obstacle
@@ -475,7 +476,7 @@ namespace informatiktheater {
   //% blockId=startbit_ultrasonic
   //% block="get ultrasonic |distancse (cm)"
   //% block.loc.de="Ultraschall|Distanz (cm)"
-  //% subcategory=Sensor
+  //% subcategory=Ultraschall
   export function startbit_ultrasonic(): number {
     pins.setPull(echoPin, PinPullMode.PullNone);
     pins.setPull(trigPin, PinPullMode.PullNone);
