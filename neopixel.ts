@@ -968,7 +968,7 @@ namespace neopixel {
                         if (bitmap[Ypos] & (0x8000 >> bitmask)) {
                             //draw the pixel when there is a "1" in the bitmap
                             this.strip.setPixelColor(
-                                bitmask * this.Height + Ypos + (this.Height - 8) / 2,
+                                bitmask * this.Height + Ypos + (this.Height - 16) / 2,
                                 colour
                             );
                         }
@@ -976,9 +976,9 @@ namespace neopixel {
                 } else {
                     //else draw from top to bottom
                     for (let Ypos = 0; Ypos < this.Height; Ypos++) {
-                        if (bitmap[7 - Ypos] & (0x8000 >> bitmask)) {
+                        if (bitmap[15 - Ypos] & (0x8000 >> bitmask)) {
                             this.strip.setPixelColor(
-                                bitmask * this.Height + Ypos + (this.Height - 8) / 2,
+                                bitmask * this.Height + Ypos + (this.Height - 16) / 2,
                                 colour
                             );
                         }
