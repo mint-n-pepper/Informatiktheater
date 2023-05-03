@@ -940,7 +940,7 @@ namespace neopixel {
 
         /**
          * Zeige vordefinierte Icons auf 16x16 grosser Matrixe an.
-         * Es muss anschliessend ``anzeigen`` aufgerufen werden.
+         * Hat die Matrix eine andere Grösse, wird nichts angezeigt.
          */
         //% blockId="Matrix_icons" block="%matrix Icon: %icon|Farbe: %colour"
         //% weight=76
@@ -948,10 +948,12 @@ namespace neopixel {
         //% colour.shadow=neopixel_colors
         //% group="Features"
         draw_icon(icon: IconIndex, colour: number): void {
+            if (this.Height != 16 || this.Width != 16) {
+                return;
+            }
             let icon_data = Icons[icon];
-            console.log("Icon data to draw:" + icon_data);
             this.drawBitmapIcon16x16(icon_data, 16, 16, colour);
-            //            this.strip.show();
+            this.strip.show();
         }
 
         drawBitmapIcon16x16(
