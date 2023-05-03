@@ -989,20 +989,6 @@ namespace neopixel {
             }
         }
 
-        /**
-         * Zeige Bitmap auf Matrix. Der Text ist vertikal mittig-zentriert.
-         * Dies funktioniert nur mit 8x8 grossen Zeichen (bitmasking)
-         * @param bitmap Array mit bitmap. Jeder Eintrag entspricht einer Reihe im angezeigten Character. Nullposition ist oben rechts.
-         * @param x Horizontales Offset
-         * @param width Breite des Characters
-         * @param height Höhe des Characters
-         * @param color Farbe in welcher der Character angezeigt werden soll
-         */
-        //% blockId="Matrix_drawBitmap" block="%matrix zeichne bitmap %bitmap bei x: %x|mit Breite %width|Höhe %height|Farbe %colour"
-        //% weight=70
-        //% subcategory=Matrix
-        //% colour.shadow=neopixel_colors
-        //% group="Features"
         drawBitmapVcentered(
             bitmap: number[],
             x: number,
@@ -1051,33 +1037,34 @@ namespace neopixel {
         return letterMap;
     }
 
-    /**
-     * Zeichne Muster für Anzeige auf LED Matrix.
-     * WICHTIG: Dieser Code läuft im Simulator, aber auf der Hardware werden nachfolgende Blöcke NICHT mehr ausgeführt.
-     * TODO: Debug this
-     * @param i string pattern to convert into an image object
-     */
-    //% blockId="Matrix_freedraw" block="zeichne Muster (NON WORKING)"
-    //% imageLiteral=1
-    //% imageLiteralColumns=16
-    //% imageLiteralRows=16
-    //% subcategory=Matrix
-    //% group="Features"
-    export function draw_pattern(i: string): number[] {
-        // this is not pretty but basically, i is an Image
-        let im = <Image>(<any>i);
-        let arr: number[] = [];
-        let rowValue = 0;
-        for (let i = 0; i < im.height(); i++) {
-            rowValue = 0;
-            for (let j = im.width() - 1; j >= 0; j--) {
-                let bit: number = im.pixel(j, i) ? 1 : 0;
-                rowValue = rowValue | (bit << (im.width() - 1 - j));
-            }
-            arr.push(rowValue);
-        }
-        return arr;
-    }
+    //  Uncomment when creating new icons
+    // /**
+    //  * Zeichne Muster für Anzeige auf LED Matrix.
+    //  * WICHTIG: Dieser Code läuft im Simulator, aber auf der Hardware werden nachfolgende Blöcke NICHT mehr ausgeführt.
+    //  * TODO: Debug this
+    //  * @param i string pattern to convert into an image object
+    //  */
+    // //% blockId="Matrix_freedraw" block="zeichne Muster (NON WORKING)"
+    // //% imageLiteral=1
+    // //% imageLiteralColumns=16
+    // //% imageLiteralRows=16
+    // //% subcategory=Matrix
+    // //% group="Features"
+    // export function draw_pattern(i: string): number[] {
+    //     // this is not pretty but basically, i is an Image
+    //     let im = <Image>(<any>i);
+    //     let arr: number[] = [];
+    //     let rowValue = 0;
+    //     for (let i = 0; i < im.height(); i++) {
+    //         rowValue = 0;
+    //         for (let j = im.width() - 1; j >= 0; j--) {
+    //             let bit: number = im.pixel(j, i) ? 1 : 0;
+    //             rowValue = rowValue | (bit << (im.width() - 1 - j));
+    //         }
+    //         arr.push(rowValue);
+    //     }
+    //     return arr;
+    // }
 }
 
 const font8x3 = hex`
