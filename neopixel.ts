@@ -35,6 +35,108 @@ enum NeoPixelColors {
 }
 
 /**
+ * Named indexes for pre-defined icons below
+ */
+enum IconIndex {
+    //% block="Smiley hoch"
+    smiley_high,
+    //% block="Smiley biz hoch"
+    smiley_b_high,
+    //% block="Smiley Strich"
+    smiley_underscore,
+    //% block="Smiley biz runter"
+    smiley_b_down,
+    //% block="Smiley runter"
+    smiley_down,
+    //% block="Herz gross"
+    heart_big,
+    //% block="Herz mittel"
+    heart_medium,
+    //% block="Herz klein"
+    heart_small,
+    //% block="Totenkopf 1"
+    skull_1,
+    //% block="Totenkopf 2"
+    skull_2,
+    //% block="Pfeil rechts"
+    arrow_right,
+    //% block="Pfeil links"
+    arrow_left,
+    //% block="Sonne"
+    sun,
+    //% block="X"
+    X,
+    //% block="Tanz rechts"
+    dance_r,
+    //% block="Tanz mitte"
+    dance_c,
+    //% block="Tanz links"
+    dance_l,
+    //% block="Musiknote"
+    note,
+    //% block="Verboten"
+    forbidden,
+}
+
+/**
+ * Array of arrays with pre-defined icons with a size of 16x16 pixels.
+ */
+const Icons: number[][] = [
+    [0, 0, 0, 7224, 7224, 7224, 0, 384, 8580, 12300, 6168, 4080, 2016, 0, 0, 0],
+    [0, 0, 0, 7224, 7224, 7224, 0, 384, 384, 0, 6168, 4080, 2016, 0, 0, 0],
+    [0, 0, 0, 7224, 7224, 7224, 0, 384, 384, 0, 0, 4080, 4080, 0, 0, 0],
+    [0, 0, 0, 7224, 7224, 7224, 0, 384, 384, 0, 0, 2016, 4080, 4104, 0, 0],
+    [0, 0, 0, 7224, 7224, 7224, 0, 384, 384, 0, 0, 2016, 4080, 6168, 12300, 0],
+    [
+        0, 14364, 31806, 65151, 65535, 65535, 65535, 32766, 16380, 8184, 4080, 2016,
+        960, 384, 0, 0,
+    ],
+    [0, 0, 0, 6168, 15420, 15996, 16380, 8184, 4080, 2016, 960, 384, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 1056, 3696, 2016, 960, 384, 0, 0, 0, 0, 0, 0],
+    [
+        0, 2032, 2056, 4100, 8194, 8194, 8194, 9058, 4964, 2184, 5140, 3048, 1040,
+        992, 0, 0,
+    ],
+    [
+        0, 256, 1984, 8176, 16376, 8176, 13208, 5008, 4064, 1728, 2976, 1088, 896,
+        256, 0, 0,
+    ],
+    [0, 0, 0, 16, 24, 28, 32766, 32767, 32766, 32764, 24, 16, 0, 0, 0, 0],
+    [
+        0, 0, 0, 2048, 6144, 14336, 32767, 65535, 32767, 16383, 6144, 2048, 0, 0, 0,
+        0,
+    ],
+    [
+        128, 128, 4228, 2056, 1488, 992, 2032, 30711, 2032, 992, 2512, 4104, 8324,
+        128, 128, 0,
+    ],
+    [
+        32769, 16386, 8196, 4104, 2064, 1056, 576, 384, 384, 576, 1056, 2064, 4104,
+        8196, 16386, 32769,
+    ],
+    [
+        1984, 448, 456, 264, 8184, 4480, 4480, 384, 768, 768, 768, 992, 544, 544,
+        7712, 4144,
+    ],
+    [
+        1984, 896, 256, 256, 8184, 5000, 5000, 896, 256, 896, 896, 4064, 2080, 2080,
+        2080, 6192,
+    ],
+    [
+        896, 768, 4864, 4352, 8160, 800, 800, 768, 384, 384, 1920, 1152, 1152, 1152,
+        1216, 3136,
+    ],
+    [
+        0, 0, 0, 512, 768, 640, 576, 576, 576, 512, 512, 7680, 15872, 15872, 7168,
+        0,
+    ],
+    [
+        4080, 12300, 24582, 20482, 34817, 33793, 33281, 33025, 32897, 32833, 32801,
+        32785, 16394, 24582, 12300, 4080,
+    ],
+];
+
+/**
  * Different modes for RGB or RGB+W NeoPixel strips
  */
 enum NeoPixelMode {
@@ -834,6 +936,22 @@ namespace neopixel {
                 this.drawBitmapVcentered(bitmap, x_offset + 6 * letter, 6, 8, colour);
             }
             this.strip.show();
+        }
+
+        /**
+         * Zeige vordefinierte Icons auf 16x16 grosser Matrixe an.
+         * Es muss anschliessend ``anzeigen`` aufgerufen werden.
+         */
+        //% blockId="Matrix_icons" block="%matrix Icon: %icon|Farbe: %colour"
+        //% weight=76
+        //% subcategory=Matrix
+        //% colour.shadow=neopixel_colors
+        //% group="Features"
+        draw_icon(icon: IconIndex, colour: number): void {
+            let icon_data = Icons[icon];
+            console.log("Icon data to draw:" + icon_data);
+            this.drawBitmapVcentered(icon_data, 0, 16, 16, colour);
+            //            this.strip.show();
         }
 
         /**
