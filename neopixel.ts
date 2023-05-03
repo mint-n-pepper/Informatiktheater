@@ -950,12 +950,46 @@ namespace neopixel {
         draw_icon(icon: IconIndex, colour: number): void {
             let icon_data = Icons[icon];
             console.log("Icon data to draw:" + icon_data);
-            this.drawBitmapVcentered(icon_data, 0, 16, 16, colour);
+            this.drawBitmapIcon16x16(icon_data, 16, 16, colour);
             //            this.strip.show();
+        }
+
+        drawBitmapIcon16x16(
+            bitmap: number[],
+            width: number,
+            height: number,
+            colour: number
+        ): void {
+            console.log("draw bitmap[]= " + JSON.stringify(bitmap));
+            for (let bitmask = 0; bitmask < width; bitmask++) {
+                if (!(bitmask % 2)) {
+                    //Zigzag pixel string: if the row that's being drawn to (Xpos+bitmask) is odd, then draw from bottom to top
+                    for (let Ypos = height; Ypos >= 0; Ypos--) {
+                        if (bitmap[Ypos] & (0x8000 >> bitmask)) {
+                            //draw the pixel when there is a "1" in the bitmap
+                            this.strip.setPixelColor(
+                                bitmask * this.Height + Ypos + (this.Height - 8) / 2,
+                                colour
+                            );
+                        }
+                    }
+                } else {
+                    //else draw from top to bottom
+                    for (let Ypos = 0; Ypos < this.Height; Ypos++) {
+                        if (bitmap[7 - Ypos] & (0x8000 >> bitmask)) {
+                            this.strip.setPixelColor(
+                                bitmask * this.Height + Ypos + (this.Height - 8) / 2,
+                                colour
+                            );
+                        }
+                    }
+                }
+            }
         }
 
         /**
          * Zeige Bitmap auf Matrix. Der Text ist vertikal mittig-zentriert.
+         * Dies funktioniert nur mit 8x8 grossen Zeichen (bitmasking)
          * @param bitmap Array mit bitmap. Jeder Eintrag entspricht einer Reihe im angezeigten Character. Nullposition ist oben rechts.
          * @param x Horizontales Offset
          * @param width Breite des Characters
