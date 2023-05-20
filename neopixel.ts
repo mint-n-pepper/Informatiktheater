@@ -185,7 +185,7 @@ enum PowerSource {
 /**
  * Functions to operate NeoPixel strips.
  */
-//% weight=5 color=#2896ff icon="\uf110"
+//% weight=5 color=#3a4cf7 icon="\uf110"
 //% block.loc.de="NeoPixel"
 //% groups=['Setup', 'Features', 'Kontrolle']
 namespace neopixel {
