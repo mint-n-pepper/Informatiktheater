@@ -185,14 +185,15 @@ enum NeoPixelMode {
  * NeoPixel matrix size definiitons
  */
 enum matrixSizes {
-    //% block="8x8"
-    small_8x8,
+    //% block="16x16"
+    medium_16x16,
     //% block="32x8"
     medium_32x8,
     //% block="64x8"
     large_64_8,
-    //% block="16x16"
-    medium_16x16,
+    //% block="8x8"
+    small_8x8,
+
 }
 
 /**
@@ -750,7 +751,7 @@ namespace informatiktheater {
      */
     //% weight=85
     //% blockId="neopixel_hsv" block="hue %hue"
-    //% block.loc.de="Farbe %hue"
+    //% block.loc.de="Farbe (0-255) %hue"
     //% jsdoc.loc.de="Erstellt eine Farbe"
     //% hue.shadow="colorWheelHsvPicker"
     //% group="colors"
@@ -1867,9 +1868,9 @@ namespace informatiktheater {
   }
 
   export enum startbit_trittmattePort {
-    port1 = 0x01,
-    port2 = 0x02,
-    port3 = 0x03,
+    P2,P1 = 0x01,
+    P14,P13 = 0x02,
+    P16 = 0x03,
   }
 
   let debounce_time = 150; // debounce for pin input events in [ms]
