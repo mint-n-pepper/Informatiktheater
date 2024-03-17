@@ -200,22 +200,22 @@ enum matrixSizes {
  * Available pins on ports (connectors)
  */
 enum HiwonderPins {
-    P1 = DigitalPin.P1,
     P2 = DigitalPin.P2,
-    P13 = DigitalPin.P13,
+    P1 = DigitalPin.P1,
     P14 = DigitalPin.P14,
-    Onboard= DigitalPin.P15,
+    P13 = DigitalPin.P13,
     P16 = DigitalPin.P16,
+    OnBoard= DigitalPin.P15,
 }
 
 /**
  * Available pins on ports (connectors)
  */
 enum HiwonderMatrixPins {
-    P1 = DigitalPin.P1,
     P2 = DigitalPin.P2,
-    P13 = DigitalPin.P13,
+    P1 = DigitalPin.P1,
     P14 = DigitalPin.P14,
+    P13 = DigitalPin.P13,
     P16 = DigitalPin.P16,
 }
 
@@ -372,7 +372,7 @@ namespace informatiktheater {
          * @param rgb RGB color of the LED
          */
         //% blockId="neopixel_set_strip_color" block="%strip|show color %rgb=neopixel_colors"
-        //% block.loc.de="%strip|zeige Farbe %rgb=neopixel_colors"
+        //% block.loc.de="%strip|zeige alles Farbe %rgb=neopixel_colors"
         //% jsdoc.loc.de="Setze alle Pixel auf die angegebene Farbe und rufe ``anzeigen`` auf."
         //% strip.defl=strip
         //% weight=98
