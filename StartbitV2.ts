@@ -68,15 +68,15 @@ enum MotorDirections {
  * Named indexes for pre-defined icons below
  */
 enum IconIndex {
-    //% block="Smiley hoch"
+    //% block="Smiley lacht"
     smiley_high,
-    //% block="Smiley biz hoch"
+    //% block="Smiley schmunzelt"
     smiley_b_high,
-    //% block="Smiley Strich"
+    //% block="Smiley gerade"
     smiley_underscore,
-    //% block="Smiley biz runter"
+    //% block="Smiley traurig"
     smiley_b_down,
-    //% block="Smiley runter"
+    //% block="Smiley enttäuscht"
     smiley_down,
     //% block="Herz gross"
     heart_big,
@@ -96,11 +96,11 @@ enum IconIndex {
     sun,
     //% block="X"
     X,
-    //% block="Tanz rechts"
+    //% block="Tanz nach rechts"
     dance_r,
-    //% block="Tanz mitte"
+    //% block="Tanz nach mitte"
     dance_c,
-    //% block="Tanz links"
+    //% block="Tanz nach links"
     dance_l,
     //% block="Musiknote"
     note,
@@ -1753,7 +1753,7 @@ namespace informatiktheater {
   //% block="initialize ultrasonic |%pin"
   //% block.loc.de="initialisiere Ultraschall|%pin"
   //% group="Ultraschall"
-  //Silvan: I don't think we should switch from port to pins here (one would have to define two pins instead of a single port)
+
   export function ultrasonic_init(port: startbit_ultrasonicPort) {
     switch (port) {
       case startbit_ultrasonicPort.port1:
