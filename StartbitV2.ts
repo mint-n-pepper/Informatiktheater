@@ -193,7 +193,6 @@ enum matrixSizes {
     large_64_8,
     //% block="8x8"
     small_8x8,
-
 }
 
 /**
