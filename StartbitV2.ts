@@ -19,7 +19,7 @@ enum NeoPixelColors {
     Green = 0x00ff00,
     //% block=blue
     //% block.loc.de="blau"
-    Blue = 0x0000ff,
+    Blue = 000000ff,
     //% block=indigo
     //% block.loc.de="indigo"
     Indigo = 0x4b0082,
