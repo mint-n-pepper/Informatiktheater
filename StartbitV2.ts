@@ -185,14 +185,14 @@ enum NeoPixelMode {
  * NeoPixel matrix size definiitons
  */
 enum matrixSizes {
-    //% block="8x8"
-    small_8x8,
+    //% block="16x16"
+    medium_16x16,
     //% block="32x8"
     medium_32x8,
     //% block="64x8"
     large_64_8,
-    //% block="16x16"
-    medium_16x16,
+    //% block="8x8"
+    small_8x8,
 }
 
 /**
