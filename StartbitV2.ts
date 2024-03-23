@@ -68,15 +68,15 @@ enum MotorDirections {
  * Named indexes for pre-defined icons below
  */
 enum IconIndex {
-    //% block="Smiley hoch"
+    //% block="Smiley lachen"
     smiley_high,
-    //% block="Smiley biz hoch"
+    //% block="Smiley schmunzeln"
     smiley_b_high,
     //% block="Smiley Strich"
     smiley_underscore,
-    //% block="Smiley biz runter"
+    //% block="Smiley betrübt"
     smiley_b_down,
-    //% block="Smiley runter"
+    //% block="Smiley traurig"
     smiley_down,
     //% block="Herz gross"
     heart_big,
