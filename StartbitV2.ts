@@ -341,7 +341,7 @@ namespace informatiktheater {
             case HiwonderPins.P14:
                 p = DigitalPin.P14;
                 break;
-            case HiwonderPins.Onboard:
+            case HiwonderPins.Board:
                 p = DigitalPin.P15;
                 break;
             case HiwonderPins.P16:
