@@ -870,9 +870,9 @@ namespace informatiktheater {
         let matrix = new Matrix();
         let w, h;
         switch (size) {
-            case matrixSizes.small_8x8:
-                w = 8;
-                h = 8;
+            case matrixSizes.medium_16x16:
+                w = 16;
+                h = 16;
                 break;
             case matrixSizes.medium_32x8:
                 w = 32;
@@ -882,9 +882,9 @@ namespace informatiktheater {
                 w = 64;
                 h = 8;
                 break;
-            case matrixSizes.medium_16x16:
-                w = 16;
-                h = 16;
+            case matrixSizes.small_8x8:
+                w = 8;
+                h = 8;
                 break;
         }
 
