@@ -567,7 +567,7 @@ namespace informatiktheater {
          * @param brightness a measure of LED brightness in 0-255. eg: 100
          */
         //% blockId="neopixel_set_brightness" block="%strip|set brightness %brightness"
-        //% block.loc.de="%strip|setze Helligkeit %brightness"
+        //% block.loc.de="%strip|setze Helligkeit auf (0-255) %brightness"
         //% jsdoc.loc.de="Setze die Helligkeit der NeoPixel (0-255). Die Änderung betrifft nur zukünftige Operationen! Die höchst möglichste Helligkeit hängt von der Anzahl LED's ab. Die Helligkeit wird bei diesem Schwellwert begrenzt."
         //% brightness.defl=255 brightness.min=0 brightness.max=255
         //% strip.defl=strip
