@@ -864,7 +864,7 @@ namespace informatiktheater {
      */
     //% blockId="Matrix_Create"
     //% block="matrix auf Pin %pin|mit einer Grösse von %size| Spannungsquelle %power_source"
-    //% weight=100
+    //% weight=30
     //% power_source.defl=PowerSource.Intern
     //% subcategory=Matrix
     //% parts="neopixel"
@@ -971,10 +971,10 @@ namespace informatiktheater {
          * Die Pixel gehen von Index 0 bis Breite/Länge - 1
          */
         //%blockId="Matrix_setPixel" block="%matrix| setze Pixel x %x| y %y| auf Farbe %colour"
-        //%weight=70
+        //%weight=39
         //%colour.shadow=neopixel_colors
         //% subcategory=Matrix
-        //% group="Kontrolle"
+        //% group="Features"
         setPixel(x: number, y: number, colour: number): void {
             console.log("matrix: show color : " + colour);
             if (x < 0 || x > this.Width || y < 0 || y > this.Height) {
@@ -995,7 +995,7 @@ namespace informatiktheater {
          * Der Bildschirminhalt wird gelöscht und ``anzeigen`` muss nicht aufgerufen werden
          */
         //% blockId="Matrix_scrollText" block="%matrix Text: %text|Geschwindigkeit (0-200): %speed|Farbe: %colour"
-        //% weight=75
+        //% weight=33
         //% subcategory=Matrix
         //% colour.shadow=neopixel_colors
         //% speed.min=1 speed.max=200 speed.defl=50
@@ -1023,7 +1023,7 @@ namespace informatiktheater {
          * Es muss anschliessend ``anzeigen`` aufgerufen werden.
          */
         //% blockId="Matrix_text" block="%matrix Text: %text|Position: %x_offset|Farbe: %colour"
-        //% weight=74
+        //% weight=35
         //% subcategory=Matrix
         //% colour.shadow=neopixel_colors
         //% x_offset.defl=0 x_offset.min=0 x_offset.max=32
@@ -1042,7 +1042,7 @@ namespace informatiktheater {
          * Hat die Matrix eine andere Grösse, wird nichts angezeigt.
          */
         //% blockId="Matrix_icons" block="%matrix Icon: %icon|Farbe: %colour"
-        //% weight=76
+        //% weight=36
         //% subcategory=Matrix
         //% colour.shadow=neopixel_colors
         //% group="Features"
@@ -1124,7 +1124,7 @@ namespace informatiktheater {
 
         //% blockId="neopixel_set_matrix_16" block="Matrix %matrix %c_0|%c_1|%c_2|%c_3|%c_4|%c_5|%c_6|%c_7|%c_8|%c_9|%c_10|%c_11|%c_12|%c_13|%c_14|%c_15" weight=100
         //% subcategory=Matrix
-        //% group="Features" weight=50
+        //% group="Features" weight=37
         //% c_0.shadow=color_for_led_16
         //% c_1.shadow=color_for_led_16
         //% c_2.shadow=color_for_led_16
@@ -1152,7 +1152,7 @@ namespace informatiktheater {
             this.show();
         }
 
-        //% blockId="neopixel_set_matrix_32x8" block="Matrix %matrix %c_0|%c_1|%c_2|%c_3|%c_4|%c_5|%c_6|%c_7|%c_8|%c_9|%c_10|%c_11|%c_12|%c_13|%c_14|%c_15" weight=99
+        //% blockId="neopixel_set_matrix_32x8" block="Matrix %matrix %c_0|%c_1|%c_2|%c_3|%c_4|%c_5|%c_6|%c_7|%c_8|%c_9|%c_10|%c_11|%c_12|%c_13|%c_14|%c_15"
         //% subcategory=Matrix
         //% group="Features" weight=49
         //% c_0.shadow=color_for_led_32
@@ -1192,7 +1192,9 @@ namespace informatiktheater {
      * Returns list of 16 color choices for the LEDs
      */
     //% blockId="color_for_led_16" block="$c_1|$c_2|$c_3|$c_4|$c_5|$c_6|$c_7|$c_8$c_9$c_10$c_11$c_12$c_13$c_14$c_15$c_16"
-    //% weight=80 group="colors"
+    //% subcategory=Matrix
+    //% group="colors" weight=49
+    //% group.loc.de="Farben"
     //% c_1.shadow="brightColorNumberPicker"
     //% c_2.shadow="brightColorNumberPicker"
     //% c_3.shadow="brightColorNumberPicker"
@@ -1235,7 +1237,9 @@ namespace informatiktheater {
      * Returns list of 32 color choices for the LEDs
      */
     //% blockId="color_for_led_32" block="$c_1|$c_2|$c_3|$c_4|$c_5|$c_6|$c_7|$c_8|$c_9|$c_10|$c_11|$c_12|$c_13|$c_14|$c_15|$c_16|$c_17|$c_18|$c_19|$c_20|$c_21|$c_22|$c_23|$c_24|$c_25|$c_26|$c_27|$c_28|$c_29|$c_30|$c_31|$c_32|"
-    //% weight=70 group="colors"
+    //% subcategory=Matrix
+    //% group="colors" weight=47
+    //% group.loc.de="Farben"
     //% c_1.shadow="brightColorNumberPicker"
     //% c_2.shadow="brightColorNumberPicker"
     //% c_3.shadow="brightColorNumberPicker"
