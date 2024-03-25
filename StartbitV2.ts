@@ -329,23 +329,23 @@ namespace informatiktheater {
         // we can't use string literals here and can't change DigitalPin to non constant enum
         let p;
         switch (pin) {
+             case HiwonderPins.P2:
+                p = DigitalPin.P2;
+                break;   
             case HiwonderPins.P1:
                 p = DigitalPin.P1;
-                break;
-            case HiwonderPins.P2:
-                p = DigitalPin.P2;
-                break;
-            case HiwonderPins.P13:
-                p = DigitalPin.P13;
                 break;
             case HiwonderPins.P14:
                 p = DigitalPin.P14;
                 break;
-            case HiwonderPins.Board:
-                p = DigitalPin.P15;
+            case HiwonderPins.P13:
+                p = DigitalPin.P13;
                 break;
             case HiwonderPins.P16:
                 p = DigitalPin.P16;
+                break;
+            case HiwonderPins.Board:
+                p = DigitalPin.P15;
                 break;
         }
         strip.setPin(p);
@@ -1879,6 +1879,7 @@ namespace informatiktheater {
   //% weight=9
   //% block="Push-button pressed|on %port"
   //% block.loc.de="Taster gedrückt|auf|%port"
+  //% subcategory="Sensoren"
   //% group="Taster"
   export function trittmatte_pressed(
     port: startbit_trittmattePort,
