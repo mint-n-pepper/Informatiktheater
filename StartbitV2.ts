@@ -1997,68 +1997,68 @@ namespace informatiktheater {
       this.list = [0];
     }
 
-    //% weight=99
-    //% block="setze $this auf $list "
-    //% this.defl=Songliste
-    //% this.shadow=variables_get
-    //% subcategory=Soundbox
-    public createSongListArray(list: number[]) {
-      this.list = list;
-      this.TrackIndex = 0;
-    }
+//    //% weight=99
+//    //% block="setze $this auf $list "
+//    //% this.defl=Songliste
+//    //% this.shadow=variables_get
+//    //% subcategory=Soundbox
+//    public createSongListArray(list: number[]) {
+//      this.list = list;
+//      this.TrackIndex = 0;
+//    }
 
-    //% weight=98
-    //% block="Play next track in list $this"
-    //% block.loc.de="nächste Songnummer in Liste $this"
-    //% this.defl=Songliste
-    //% this.shadow=variables_get
-    //% subcategory=Soundbox
-    public playNextTrack() {
-      if (this.TrackIndex < this.list.length) {
-        this.TrackIndex += 1;
-      } else {
-        this.TrackIndex = 0;
-      }
-    }
-    //
-    //% weight=97
-    //% block="Play previous track in list $this"
-    //% block.loc.de="vorherige Songnummer in Liste $this"
-    //% this.defl=Songliste
-    //% this.shadow=variables_get
-    //% subcategory=Soundbox
-    public playPreviousTrack() {
-      if (this.TrackIndex <= 0) {
-        this.TrackIndex == 0;
-      } else {
-        this.TrackIndex--;
-      }
-    }
+//    //% weight=98
+//    //% block="Play next track in list $this"
+//    //% block.loc.de="nächste Songnummer in Liste $this"
+//    //% this.defl=Songliste
+//    //% this.shadow=variables_get
+//    //% subcategory=Soundbox
+//    public playNextTrack() {
+//      if (this.TrackIndex < this.list.length) {
+//        this.TrackIndex += 1;
+//      } else {
+//        this.TrackIndex = 0;
+//      }
+//    }
+//    //
+//    //% weight=97
+//    //% block="Play previous track in list $this"
+//    //% block.loc.de="vorherige Songnummer in Liste $this"
+//    //% this.defl=Songliste
+//    //% this.shadow=variables_get
+//    //% subcategory=Soundbox
+//    public playPreviousTrack() {
+//      if (this.TrackIndex <= 0) {
+//        this.TrackIndex == 0;
+//      } else {
+//        this.TrackIndex--;
+//      }
+//    }
 
-    //% weight=95
-    //% block="current song number in list %this"
-    //% block.loc.de="Aktuelle Songnummer in liste %this"
-    //% this.defl=Songliste
-    //% this.shadow=variables_get
-    //% subcategory=Soundbox
-    public currentTrack(): number {
-      return this.list[this.TrackIndex];
-    }
+//    //% weight=95
+//    //% block="current song number in list %this"
+//    //% block.loc.de="Aktuelle Songnummer in liste %this"
+//    //% this.defl=Songliste
+//    //% this.shadow=variables_get
+//    //% subcategory=Soundbox
+//    public currentTrack(): number {
+//      return this.list[this.TrackIndex];
+//    }
 
-    //% weight=96
-    //% block="Back to first song in list %this"
-    //% block.loc.de="zurück zur ersten Songnummer in Liste %this"
-    //% this.defl=Songliste
-    //% this.shadow=variables_get
-    //% subcategory=Soundbox
-    public gotoFirstTrack() {
-      this.TrackIndex = 0;
-    }
-  }
+//    //% weight=96
+//    //% block="Back to first song in list %this"
+//    //% block.loc.de="zurück zur ersten Songnummer in Liste %this"
+//    //% this.defl=Songliste
+//    //% this.shadow=variables_get
+//    //% subcategory=Soundbox
+//    public gotoFirstTrack() {
+//      this.TrackIndex = 0;
+//    }
+//  }
 
   /**
    * Creates a song list and automtically set it to a variable
-   */
+ 
   //% weight=100
   //% block="create song list"
   //% block.loc.de="erstelle Songliste"
@@ -2069,3 +2069,4 @@ namespace informatiktheater {
     return new SongList();
   }
 }
+  */
