@@ -572,7 +572,7 @@ namespace informatiktheater {
         //% jsdoc.loc.de="Setze die Helligkeit der NeoPixel (0-255). Die Änderung betrifft nur zukünftige Operationen! Die höchst möglichste Helligkeit hängt von der Anzahl LED's ab. Die Helligkeit wird bei diesem Schwellwert begrenzt."
         //% brightness.defl=150 brightness.min=0 brightness.max=255
         //% strip.defl=strip
-        //% weight=99
+        //% weight=41
         //% parts="neopixel"
         //% subcategory=Stripe
         //% group="Setup"
@@ -770,8 +770,8 @@ namespace informatiktheater {
     //% blockId="neopixel_colors" block="%color"
     //% block.loc.de="%color"
     //% jsdoc.loc.de="Bekannte RGB-Farben"
-    //% subcategory="Sensoren"
-    //% group="Stripe"
+    //% subcategory="Stripe"
+    //% group="colors"
     export function colors(color: NeoPixelColors): number {
         return color;
     }
