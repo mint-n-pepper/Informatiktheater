@@ -1988,14 +1988,14 @@ namespace informatiktheater {
 
   // MP3 Player stuff
 
-  export class SongList {
-    TrackIndex: number;
-    list: Array<number>;
+//  export class SongList {
+//    TrackIndex: number;
+//    list: Array<number>;
 
-    constructor() {
-      this.TrackIndex = 0;
-      this.list = [0];
-    }
+//    constructor() {
+//      this.TrackIndex = 0;
+//      this.list = [0];
+//    }
 
 //    //% weight=99
 //    //% block="setze $this auf $list "
