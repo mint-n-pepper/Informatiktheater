@@ -1951,7 +1951,7 @@ namespace informatiktheater {
    * Binds code to be executed to onPulsed event with value high on event handler.
    * The initial state will always be set to zero and the variable has local scope only!
    */
-  //% weight=7
+  //% weight=3
   //% block="Push-button on/off|on %port |state "
   //% block.loc.de="Taster ein/aus|auf %port |Status"
   //% subcategory="Sensoren"
@@ -2065,9 +2065,9 @@ namespace informatiktheater {
 //  //% jsdoc.loc.de="erstellt eine neue Songliste und setzt sie auf eine Variable. Muss im Startblock ausgeführt werden bevor MP3 Box gebraucht werden kann."
 //  //% blockSetVariable=Songliste
 //  //% subcategory=Soundbox
-  export function createSongList(): SongList {
-    return new SongList();
-  }
+//  export function createSongList(): SongList {
+//    return new SongList();
+//  }
    
-}
+// }
 
