@@ -398,10 +398,10 @@ namespace informatiktheater {
         //% startHue.defl=1
         //% endHue.defl=255
         //% endHue.shadow="colorWheelHsvPicker"
-        //% weight=97
+        //% weight=20
         //% parts="neopixel"
-        //% subcategory=Stripe
-        //% group="Features"
+        //% subcategory="Stripe"
+        //% group="Kontrolle"
         showRainbow(startHue: number = 1, endHue: number = 255) {
             if (this._length <= 0) return;
 
@@ -556,7 +556,7 @@ namespace informatiktheater {
         //% strip.defl=strip
         //% weight=60
         //% subcategory=Stripe
-        //% group="Setup"
+        //% group="Features"
         length() {
             return this._length;
         }
@@ -570,12 +570,12 @@ namespace informatiktheater {
         //% blockId="neopixel_set_brightness" block="%strip|set brightness %brightness"
         //% block.loc.de="%strip|setze Helligkeit auf (0-255) %brightness"
         //% jsdoc.loc.de="Setze die Helligkeit der NeoPixel (0-255). Die Änderung betrifft nur zukünftige Operationen! Die höchst möglichste Helligkeit hängt von der Anzahl LED's ab. Die Helligkeit wird bei diesem Schwellwert begrenzt."
-        //% brightness.defl=255 brightness.min=0 brightness.max=255
+        //% brightness.defl=150 brightness.min=0 brightness.max=255
         //% strip.defl=strip
         //% weight=99
         //% parts="neopixel"
         //% subcategory=Stripe
-        //% group="Kontrolle"
+        //% group="Setup"
         setBrightness(brightness: number): void {
             this.brightness = brightness & 0xff;
         }
