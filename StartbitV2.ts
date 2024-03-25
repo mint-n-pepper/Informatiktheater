@@ -271,6 +271,7 @@ namespace informatiktheater {
     //% value.defl='#ff0000'  weight=81
     //% value.fieldOptions.colours='["#000000","#ff0000","#ffa500","#ffff00","#00ff00","#0000ff","#00ffff","#ff00ff","#8a2be2","#ffffff"]'
     //% value.fieldOptions.columns=5 value.fieldOptions.className='rgbColorPicker' 
+    //% subcategory="Stripe"
     //% group="colors"
     export function __colorNumberPicker(value: number) {
         return value;
@@ -739,6 +740,7 @@ namespace informatiktheater {
     //% red.defl=255 red.min=0 red.max=255
     //% blue.defl=255 blue.min=0 blue.max=255
     //% green.defl=255 green.min=0 green.max=255
+    //% subcategory="Stripe"
     //% group="colors"
     export function rgb(red: number, green: number, blue: number): number {
         return packRGB(red, green, blue);
@@ -753,6 +755,7 @@ namespace informatiktheater {
     //% block.loc.de="Farbe %hue"
     //% jsdoc.loc.de="Erstellt eine Farbe"
     //% hue.shadow="colorWheelHsvPicker"
+    //% subcategory="Stripe"
     //% group="colors"
 
     export function hsv_picker(hue: number): number {
@@ -767,7 +770,8 @@ namespace informatiktheater {
     //% blockId="neopixel_colors" block="%color"
     //% block.loc.de="%color"
     //% jsdoc.loc.de="Bekannte RGB-Farben"
-    //% group="colors"
+    //% subcategory="Sensoren"
+    //% group="Stripe"
     export function colors(color: NeoPixelColors): number {
         return color;
     }
@@ -986,11 +990,11 @@ namespace informatiktheater {
          * Scrolle Text über Matrix mit fixer 6x8 Pixel Schrift.
          * Der Bildschirminhalt wird gelöscht und ``anzeigen`` muss nicht aufgerufen werden
          */
-        //% blockId="Matrix_scrollText" block="%matrix Text: %text|Geschwindigkeit: %speed|Farbe: %colour"
+        //% blockId="Matrix_scrollText" block="%matrix Text: %text|Geschwindigkeit (0-200): %speed|Farbe: %colour"
         //% weight=75
         //% subcategory=Matrix
         //% colour.shadow=neopixel_colors
-        //% speed.min=1 speed.max=200 speed.defl=20
+        //% speed.min=1 speed.max=200 speed.defl=50
         //% group="Features"
         scrollText(text: string, speed: number, colour: number): void {
             this.strip.clear();
