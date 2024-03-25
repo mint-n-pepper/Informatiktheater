@@ -2068,5 +2068,6 @@ namespace informatiktheater {
   export function createSongList(): SongList {
     return new SongList();
   }
+    */
 }
-  */
+
