@@ -1747,10 +1747,11 @@ namespace informatiktheater {
 
   let echoPin: DigitalPin;
   let trigPin: DigitalPin;
-  //% weight=1
+  //% weight=5
   //% blockId=ultrasonic_init
   //% block="initialize ultrasonic |%pin"
   //% block.loc.de="initialisiere Ultraschall|%pin"
+  //% subcategory="Sensoren"
   //% group="Ultraschall"
   //Silvan: I don't think we should switch from port to pins here (one would have to define two pins instead of a single port)
   export function ultrasonic_init(port: startbit_ultrasonicPort) {
@@ -1770,10 +1771,11 @@ namespace informatiktheater {
   /**
    * Get the distance of ultrasonic detection to the obstacle
    */
-  //% weight=90
+  //% weight=1
   //% blockId=startbit_ultrasonic
   //% block="get ultrasonic |distancse (cm)"
   //% block.loc.de="Ultraschall|Distanz (cm)"
+  //% subcategory="Sensoren"
   //% group="Ultraschall"
   export function startbit_ultrasonic(): number {
     pins.setPull(echoPin, PinPullMode.PullNone);
