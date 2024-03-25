@@ -1913,6 +1913,7 @@ namespace informatiktheater {
   //% weight=8
   //% block="Push-button released|on %port"
   //% block.loc.de="Taster losgelassen|auf|%port"
+  //% subcategory="Sensoren"
   //% group="Taster"
   export function trittmatte_released(
     port: startbit_trittmattePort,
@@ -1947,6 +1948,7 @@ namespace informatiktheater {
   //% weight=7
   //% block="Push-button on/off|on %port |state "
   //% block.loc.de="Taster ein/aus|auf %port |Status"
+  //% subcategory="Sensoren"
   //% group="Taster"
   //% draggableParameters
   //% jsdoc.loc.de="Bindet auszuführenden Code bei einem PulsEvent mit Wert 'hoch' an Event Handler. Der Anfangszustand wird immer auf Null sein. Die Zustandsvariabel hat nur lokalen Scope!"
