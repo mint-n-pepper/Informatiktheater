@@ -2058,16 +2058,16 @@ namespace informatiktheater {
 
   /**
    * Creates a song list and automtically set it to a variable
- 
-  //% weight=100
-  //% block="create song list"
-  //% block.loc.de="erstelle Songliste"
-  //% jsdoc.loc.de="erstellt eine neue Songliste und setzt sie auf eine Variable. Muss im Startblock ausgeführt werden bevor MP3 Box gebraucht werden kann."
-  //% blockSetVariable=Songliste
-  //% subcategory=Soundbox
+  */
+//  //% weight=100
+//  //% block="create song list"
+//  //% block.loc.de="erstelle Songliste"
+//  //% jsdoc.loc.de="erstellt eine neue Songliste und setzt sie auf eine Variable. Muss im Startblock ausgeführt werden bevor MP3 Box gebraucht werden kann."
+//  //% blockSetVariable=Songliste
+//  //% subcategory=Soundbox
   export function createSongList(): SongList {
     return new SongList();
   }
-    */
+   
 }
 
