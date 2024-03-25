@@ -254,7 +254,7 @@ const font8x3 = hex`
 /*
  Informatiktheater package
 */
-//% weight=10  color=#3a4cf7
+//% weight=1  color=#3a4cf7
 namespace informatiktheater {
 
     let leds_total = 0;
@@ -268,7 +268,7 @@ namespace informatiktheater {
     //% blockId=brightColorNumberPicker block="%value"
     //% shim=TD_ID colorSecondary="#FFFFFF"
     //% value.fieldEditor="colornumber" value.fieldOptions.decompileLiterals=true
-    //% value.defl='#ff0000'  weight=81
+    //% value.defl='#ff0000'  weight=100
     //% value.fieldOptions.colours='["#000000","#ff0000","#ffa500","#ffff00","#00ff00","#0000ff","#00ffff","#ff00ff","#8a2be2","#ffffff"]'
     //% value.fieldOptions.columns=5 value.fieldOptions.className='rgbColorPicker' 
     //% subcategory="Stripe"
@@ -301,7 +301,7 @@ namespace informatiktheater {
     //% block="NeoPixel at pin %pin| with %numleds leds| power source %power_source"
     //% block.loc.de="NeoPixels an Pin %pin|mit %numleds Pixeln| Spannungsquelle %power_source"
     //% jsdoc.loc.de="Erzeuge einen neuen Treiber für die gegebene Anzahl NeoPixels, die am angegebenen Port angeschlossen sind. Der Modus bestimmt die genaue Bauart der NeoPixel."
-    //% weight=90
+    //% weight=110
     //% parts="neopixel"
     //% power_source.defl=PowerSource.Intern
     //% subcategory=Stripe
@@ -377,8 +377,8 @@ namespace informatiktheater {
         //% strip.defl=strip
         //% weight=98
         //% parts="neopixel"
-        //% group="Kontrolle"
         //% subcategory=Stripe
+        //% group="Kontrolle"
         showColor(rgb: number) {
             rgb = rgb >> 0;
             this.setAllRGB(rgb);
