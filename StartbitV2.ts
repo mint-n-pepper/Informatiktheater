@@ -927,7 +927,7 @@ namespace informatiktheater {
         Height: number;
 
         //%blockId="Matrix_show" block="%matrix| anzeigen"
-        //%weight=10
+        //%weight=32
         //% subcategory=Matrix
         //% group="Kontrolle"
         show(): void {
@@ -935,7 +935,7 @@ namespace informatiktheater {
         }
 
         //%blockId="Matrix_Brighness" block="%matrix setze Helligkeit auf (0-255) %setpoint"
-        //%weight=80
+        //%weight=31
         //%setpoint.defl=32
         //%setpoint.min=0
         //%setpoint.max=255
@@ -951,7 +951,7 @@ namespace informatiktheater {
          */
         //%blockId="Matrix_clear" block="%matrix| ausschalten"
         //% jsdoc.loc.de="Schalte alle NeoPixel aus. Damit die Änderung sichtbar wird, muss anschließend ``anzeigen`` aufgerufen werden."
-        //%weight=8
+        //% weight=33
         //% subcategory=Matrix
         //% group="Kontrolle"
         clear(): void {
@@ -971,7 +971,7 @@ namespace informatiktheater {
          * Die Pixel gehen von Index 0 bis Breite/Länge - 1
          */
         //%blockId="Matrix_setPixel" block="%matrix| setze Pixel x %x| y %y| auf Farbe %colour"
-        //%weight=39
+        //%weight=40
         //%colour.shadow=neopixel_colors
         //% subcategory=Matrix
         //% group="Features"
@@ -995,11 +995,11 @@ namespace informatiktheater {
          * Der Bildschirminhalt wird gelöscht und ``anzeigen`` muss nicht aufgerufen werden
          */
         //% blockId="Matrix_scrollText" block="%matrix Text: %text|Geschwindigkeit (0-200): %speed|Farbe: %colour"
-        //% weight=33
+        //% weight=35
         //% subcategory=Matrix
         //% colour.shadow=neopixel_colors
         //% speed.min=1 speed.max=200 speed.defl=50
-        //% group="Features"
+        //% group="Features" weight=1
         scrollText(text: string, speed: number, colour: number): void {
             this.strip.clear();
             for (let Xpos = this.Width; Xpos > -6 * text.length; Xpos--) {
@@ -1027,7 +1027,7 @@ namespace informatiktheater {
         //% subcategory=Matrix
         //% colour.shadow=neopixel_colors
         //% x_offset.defl=0 x_offset.min=0 x_offset.max=32
-        //% group="Features"
+        //% group="Features" weight=2
         showText(text: string, x_offset: number, colour: number): void {
             for (let letter = 0; letter < text.length; letter++) {
                 //for loop to retrieve all the letters from te text
