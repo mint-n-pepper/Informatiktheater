@@ -375,7 +375,7 @@ namespace informatiktheater {
         //% block.loc.de="%strip|zeige Farbe %rgb=neopixel_colors"
         //% jsdoc.loc.de="Setze alle Pixel auf die angegebene Farbe und rufe ``anzeigen`` auf."
         //% strip.defl=strip
-        //% weight=98
+        //% weight=50
         //% parts="neopixel"
         //% subcategory=Stripe
         //% group="Kontrolle"
@@ -497,7 +497,7 @@ namespace informatiktheater {
         //% pixeloffset.defl=0
         //% pixeloffset.min=0
         //% pixeloffset.max=255
-        //% weight=80
+        //% weight=44
         //% rgb.shadow=neopixel_colors
         //% parts="neopixel"
         //% subcategory=Stripe
@@ -742,6 +742,7 @@ namespace informatiktheater {
     //% green.defl=255 green.min=0 green.max=255
     //% subcategory="Stripe"
     //% group="colors"
+    //% group.loc.de=" Farben"
     export function rgb(red: number, green: number, blue: number): number {
         return packRGB(red, green, blue);
     }
@@ -757,6 +758,7 @@ namespace informatiktheater {
     //% hue.shadow="colorWheelHsvPicker"
     //% subcategory="Stripe"
     //% group="colors"
+    //% group.loc.de=" Farben"
 
     export function hsv_picker(hue: number): number {
         let mapped_hue = (hue * 360) / 255;
@@ -772,6 +774,7 @@ namespace informatiktheater {
     //% jsdoc.loc.de="Bekannte RGB-Farben"
     //% subcategory="Stripe"
     //% group="colors"
+    //% group.loc.de=" Farben"
     export function colors(color: NeoPixelColors): number {
         return color;
     }
@@ -1751,7 +1754,7 @@ namespace informatiktheater {
 
   let echoPin: DigitalPin;
   let trigPin: DigitalPin;
-  //% weight=5
+  //% weight=16
   //% blockId=ultrasonic_init
   //% block="initialize ultrasonic |%pin"
   //% block.loc.de="initialisiere Ultraschall|%pin"
@@ -1775,7 +1778,7 @@ namespace informatiktheater {
   /**
    * Get the distance of ultrasonic detection to the obstacle
    */
-  //% weight=1
+  //% weight=17
   //% blockId=startbit_ultrasonic
   //% block="get ultrasonic |distancse (cm)"
   //% block.loc.de="Ultraschall|Distanz (cm)"
@@ -1882,7 +1885,7 @@ namespace informatiktheater {
   /**
    * Binds code to be executed to onPulsed event with value high
    */
-  //% weight=9
+  //% weight=11
   //% block="Push-button pressed|on %port"
   //% block.loc.de="Taster gedrückt|auf|%port"
   //% subcategory="Sensoren"
@@ -1916,7 +1919,7 @@ namespace informatiktheater {
   /**
    * Binds code to be executed to onPulsed event with value low
    */
-  //% weight=8
+  //% weight=12
   //% block="Push-button released|on %port"
   //% block.loc.de="Taster losgelassen|auf|%port"
   //% subcategory="Sensoren"
@@ -1951,7 +1954,7 @@ namespace informatiktheater {
    * Binds code to be executed to onPulsed event with value high on event handler.
    * The initial state will always be set to zero and the variable has local scope only!
    */
-  //% weight=3
+  //% weight=13
   //% block="Push-button on/off|on %port |state "
   //% block.loc.de="Taster ein/aus|auf %port |Status"
   //% subcategory="Sensoren"
