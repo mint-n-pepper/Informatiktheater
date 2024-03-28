@@ -1315,7 +1315,7 @@ namespace informatiktheater {
     }
 
   export enum startbit_ultrasonicPort {
-    port1 = 0x01,
+    P2/P1 = 0x01,
     port2 = 0x02,
   }
 
@@ -1771,7 +1771,7 @@ namespace informatiktheater {
   //Silvan: I don't think we should switch from port to pins here (one would have to define two pins instead of a single port)
   export function ultrasonic_init(port: startbit_ultrasonicPort) {
     switch (port) {
-      case startbit_ultrasonicPort.port1:
+      case startbit_ultrasonicPort.P2/P1:
         echoPin = DigitalPin.P2;
         trigPin = DigitalPin.P1;
         break;
@@ -1884,7 +1884,7 @@ namespace informatiktheater {
   }
 
   export enum startbit_trittmattePort {
-    port1 = 0x01,
+    P2/P1 = 0x01,
     port2 = 0x02,
     port3 = 0x03,
   }
@@ -1904,7 +1904,7 @@ namespace informatiktheater {
   ): void {
     let pin: DigitalPin;
     switch (port) {
-      case startbit_trittmattePort.port1:
+      case startbit_trittmattePort.P2/P1:
         pin = DigitalPin.P2;
         break;
       case startbit_trittmattePort.port2:
@@ -1938,7 +1938,7 @@ namespace informatiktheater {
   ): void {
     let pin: DigitalPin;
     switch (port) {
-      case startbit_trittmattePort.port1:
+      case startbit_trittmattePort.P2/P1:
         pin = DigitalPin.P2;
         break;
       case startbit_trittmattePort.port2:
@@ -1975,7 +1975,7 @@ namespace informatiktheater {
   ): void {
     let pin: DigitalPin;
     switch (port) {
-      case startbit_trittmattePort.port1:
+      case startbit_trittmattePort.P2/P1:
         pin = DigitalPin.P2;
         break;
       case startbit_trittmattePort.port2:
