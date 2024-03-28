@@ -1315,8 +1315,8 @@ namespace informatiktheater {
     }
 
   export enum startbit_ultrasonicPort {
-    P2P1 = 0x01,
-    P14P13 = 0x02,
+    port1 = 0x01,
+    port2 = 0x02,
   }
 
   export function startbit_Init() {
@@ -1771,11 +1771,11 @@ namespace informatiktheater {
   //Silvan: I don't think we should switch from port to pins here (one would have to define two pins instead of a single port)
   export function ultrasonic_init(port: startbit_ultrasonicPort) {
     switch (port) {
-      case startbit_ultrasonicPort.P2P1:
+      case startbit_ultrasonicPort.port1:
         echoPin = DigitalPin.P2;
         trigPin = DigitalPin.P1;
         break;
-      case startbit_ultrasonicPort.P14P13:
+      case startbit_ultrasonicPort.port2:
         echoPin = DigitalPin.P14;
         trigPin = DigitalPin.P13;
         break;
@@ -1884,9 +1884,9 @@ namespace informatiktheater {
   }
 
   export enum startbit_trittmattePort {
-    P2P1 = 0x01,
-    P14P13 = 0x02,
-    P16 = 0x03,
+    port1 = 0x01,
+    port2 = 0x02,
+    port3 = 0x03,
   }
 
   let debounce_time = 150; // debounce for pin input events in [ms]
@@ -1904,13 +1904,13 @@ namespace informatiktheater {
   ): void {
     let pin: DigitalPin;
     switch (port) {
-      case startbit_trittmattePort.P2P1:
+      case startbit_trittmattePort.port1:
         pin = DigitalPin.P2;
         break;
-      case startbit_trittmattePort.P14P13:
+      case startbit_trittmattePort.port2:
         pin = DigitalPin.P14;
         break;
-      case startbit_trittmattePort.P16:
+      case startbit_trittmattePort.port3:
         pin = DigitalPin.P16;
         break;
     }
@@ -1938,7 +1938,7 @@ namespace informatiktheater {
   ): void {
     let pin: DigitalPin;
     switch (port) {
-      case startbit_trittmattePort.P2P1:
+      case startbit_trittmattePort.port1:
         pin = DigitalPin.P2;
         break;
       case startbit_trittmattePort.P14P13:
@@ -1975,13 +1975,13 @@ namespace informatiktheater {
   ): void {
     let pin: DigitalPin;
     switch (port) {
-      case startbit_trittmattePort.P2P1:
+      case startbit_trittmattePort.port1:
         pin = DigitalPin.P2;
         break;
-      case startbit_trittmattePort.P14P13:
+      case startbit_trittmattePort.port2:
         pin = DigitalPin.P14;
         break;
-      case startbit_trittmattePort.P16:
+      case startbit_trittmattePort.port3:
         pin = DigitalPin.P16;
         break;
     }
