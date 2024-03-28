@@ -996,7 +996,7 @@ namespace informatiktheater {
          * Der Bildschirminhalt wird gelöscht und ``anzeigen`` muss nicht aufgerufen werden
          */
         //% blockId="Matrix_scrollText" block="%matrix Text: %text|Geschwindigkeit (0-200): %speed|Farbe: %colour"
-        //% weight=35
+        //% weight=20
         //% subcategory=Matrix
         //% colour.shadow=neopixel_colors
         //% speed.min=1 speed.max=200 speed.defl=50
@@ -1024,8 +1024,8 @@ namespace informatiktheater {
          * Es muss anschliessend ``anzeigen`` aufgerufen werden.
          */
         //% blockId="Matrix_text" block="%matrix Text: %text|Position: %x_offset|Farbe: %colour"
-        //% weight=35
-        //% subcategory=Matrix
+        //% 
+        //% subcategory=Matrix weight=21
         //% colour.shadow=neopixel_colors
         //% x_offset.defl=0 x_offset.min=0 x_offset.max=32
         //% group="Features" weight=2
