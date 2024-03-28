@@ -741,9 +741,10 @@ namespace informatiktheater {
     //% red.defl=255 red.min=0 red.max=255
     //% blue.defl=255 blue.min=0 blue.max=255
     //% green.defl=255 green.min=0 green.max=255
+    //% weight=84
     //% subcategory="Stripe"
-    //% group="colors" weight=84
-    //% group.loc.de=" Farben"
+    //% group="Farben" 
+    //% group.loc.de="Farben"
     export function rgb(red: number, green: number, blue: number): number {
         return packRGB(red, green, blue);
     }
@@ -758,7 +759,8 @@ namespace informatiktheater {
     //% jsdoc.loc.de="Erstellt eine Farbe"
     //% hue.shadow="colorWheelHsvPicker"
     //% subcategory="Stripe"
-    //% group="colors" weight=85
+    //% weight=85
+    //% group="Farben" 
     //% group.loc.de="Farben"
 
     export function hsv_picker(hue: number): number {
