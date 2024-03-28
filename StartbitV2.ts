@@ -1941,10 +1941,10 @@ namespace informatiktheater {
       case startbit_trittmattePort.port1:
         pin = DigitalPin.P2;
         break;
-      case startbit_trittmattePort.P14P13:
+      case startbit_trittmattePort.port2:
         pin = DigitalPin.P14;
         break;
-      case startbit_trittmattePort.P16:
+      case startbit_trittmattePort.port3:
         pin = DigitalPin.P16;
         break;
     }
