@@ -777,7 +777,7 @@ namespace informatiktheater {
     //% jsdoc.loc.de="Bekannte RGB-Farben"
     //% subcategory="Stripe"
     //% weight=84
-    //% group="colors"
+    //% group="Farben"
     //% group.loc.de="Farben"
     export function colors(color: NeoPixelColors): number {
         return color;
