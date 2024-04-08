@@ -268,7 +268,8 @@ namespace informatiktheater {
     //% blockId=brightColorNumberPicker block="%value"
     //% shim=TD_ID colorSecondary="#FFFFFF"
     //% value.fieldEditor="colornumber" value.fieldOptions.decompileLiterals=true
-    //% value.defl='#ff0000'  weight=29
+    //% value.defl='#ff0000'  
+    //% weight=100
     //% value.fieldOptions.colours='["#000000","#ff0000","#ffa500","#ffff00","#00ff00","#0000ff","#00ffff","#ff00ff","#8a2be2","#ffffff"]'
     //% value.fieldOptions.columns=5 value.fieldOptions.className='rgbColorPicker' 
     //% subcategory="Stripe"
