@@ -269,12 +269,10 @@ namespace informatiktheater {
     //% shim=TD_ID colorSecondary="#FFFFFF"
     //% value.fieldEditor="colornumber" value.fieldOptions.decompileLiterals=true
     //% value.defl='#ff0000'  
-    //% weight=8
     //% value.fieldOptions.colours='["#000000","#ff0000","#ffa500","#ffff00","#00ff00","#0000ff","#00ffff","#ff00ff","#8a2be2","#ffffff"]'
     //% value.fieldOptions.columns=5 value.fieldOptions.className='rgbColorPicker' 
     //% subcategory="Stripe"
-    //% group="colors"
-    //% group.loc.de="Farben"
+    //% group="Farben"
     export function __colorNumberPicker(value: number) {
         return value;
     }
@@ -593,7 +591,7 @@ namespace informatiktheater {
         //% strip.defl=strip
         //% weight=40
         //% parts="neopixel"
-        //% subcategory=Stripe
+        //% subcategory="Stripe"
         //% group="Kontrolle"
         shift(offset: number = 1): void {
             offset = offset >> 0;
@@ -616,7 +614,7 @@ namespace informatiktheater {
         //% strip.defl=strip
         //% weight=39
         //% parts="neopixel"
-        //% subcategory=Stripe
+        //% subcategory="Stripe"
         //% group="Kontrolle"
         rotate(offset: number = 1): void {
             offset = offset >> 0;
@@ -743,8 +741,7 @@ namespace informatiktheater {
     //% blue.defl=255 blue.min=0 blue.max=255
     //% green.defl=255 green.min=0 green.max=255
     //% subcategory="Stripe"
-    //% group="colors" 
-    //% group.loc.de="Farben"
+    //% group="Farben" 
     export function rgb(red: number, green: number, blue: number): number {
         return packRGB(red, green, blue);
     }
@@ -760,8 +757,7 @@ namespace informatiktheater {
     //% hue.shadow="colorWheelHsvPicker"
     //% subcategory="Stripe"
     //% weight=5
-    //% group="colors" 
-    //% group.loc.de="Farben"
+    //% group="Farben" 
 
     export function hsv_picker(hue: number): number {
         let mapped_hue = (hue * 360) / 255;
@@ -777,8 +773,7 @@ namespace informatiktheater {
     //% jsdoc.loc.de="Bekannte RGB-Farben"
     //% subcategory="Stripe"
     //% weight=3
-    //% group="colors"
-    //% group.loc.de="Farben"
+    //% group="Farben"
     export function colors(color: NeoPixelColors): number {
         return color;
     }
@@ -1196,8 +1191,8 @@ namespace informatiktheater {
      */
     //% blockId="color_for_led_16" block="$c_1|$c_2|$c_3|$c_4|$c_5|$c_6|$c_7|$c_8$c_9$c_10$c_11$c_12$c_13$c_14$c_15$c_16"
     //% subcategory=Matrix
-    //% group="colors" weight=49
-    //% group.loc.de="Farben"
+    //% group="Farben" 
+    //% weight=49
     //% c_1.shadow="brightColorNumberPicker"
     //% c_2.shadow="brightColorNumberPicker"
     //% c_3.shadow="brightColorNumberPicker"
@@ -1241,8 +1236,8 @@ namespace informatiktheater {
      */
     //% blockId="color_for_led_32" block="$c_1|$c_2|$c_3|$c_4|$c_5|$c_6|$c_7|$c_8|$c_9|$c_10|$c_11|$c_12|$c_13|$c_14|$c_15|$c_16|$c_17|$c_18|$c_19|$c_20|$c_21|$c_22|$c_23|$c_24|$c_25|$c_26|$c_27|$c_28|$c_29|$c_30|$c_31|$c_32|"
     //% subcategory=Matrix
-    //% group="colors" weight=47
-    //% group.loc.de="Farben"
+    //% group="Farben" 
+    //% weight=47
     //% c_1.shadow="brightColorNumberPicker"
     //% c_2.shadow="brightColorNumberPicker"
     //% c_3.shadow="brightColorNumberPicker"
