@@ -273,7 +273,7 @@ namespace informatiktheater {
     //% value.fieldOptions.colours='["#000000","#ff0000","#ffa500","#ffff00","#00ff00","#0000ff","#00ffff","#ff00ff","#8a2be2","#ffffff"]'
     //% value.fieldOptions.columns=5 value.fieldOptions.className='rgbColorPicker' 
     //% subcategory="Stripe"
-    //% group="Farben"
+    //% group="colors"
     //% group.loc.de="Farben"
     export function __colorNumberPicker(value: number) {
         return value;
@@ -743,7 +743,7 @@ namespace informatiktheater {
     //% blue.defl=255 blue.min=0 blue.max=255
     //% green.defl=255 green.min=0 green.max=255
     //% subcategory="Stripe"
-    //% group="Farben" 
+    //% group="colors" 
     //% group.loc.de="Farben"
     export function rgb(red: number, green: number, blue: number): number {
         return packRGB(red, green, blue);
@@ -759,8 +759,8 @@ namespace informatiktheater {
     //% jsdoc.loc.de="Erstellt eine Farbe"
     //% hue.shadow="colorWheelHsvPicker"
     //% subcategory="Stripe"
-    //% weight=3
-    //% group="Farben" 
+    //% weight=5
+    //% group="colors" 
     //% group.loc.de="Farben"
 
     export function hsv_picker(hue: number): number {
@@ -776,8 +776,8 @@ namespace informatiktheater {
     //% block.loc.de="%color"
     //% jsdoc.loc.de="Bekannte RGB-Farben"
     //% subcategory="Stripe"
-    //% weight=2
-    //% group="Farben"
+    //% weight=3
+    //% group="colors"
     //% group.loc.de="Farben"
     export function colors(color: NeoPixelColors): number {
         return color;
