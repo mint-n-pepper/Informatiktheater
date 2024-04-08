@@ -1762,7 +1762,7 @@ namespace informatiktheater {
 
   let echoPin: DigitalPin;
   let trigPin: DigitalPin;
-  //% weight=16
+  //% weight=17
   //% blockId=ultrasonic_init
   //% block="initialize ultrasonic |%pin"
   //% block.loc.de="initialisiere Ultraschall|%pin"
@@ -1786,7 +1786,7 @@ namespace informatiktheater {
   /**
    * Get the distance of ultrasonic detection to the obstacle
    */
-  //% weight=17
+  //% weight=16
   //% blockId=startbit_ultrasonic
   //% block="get ultrasonic |distancse (cm)"
   //% block.loc.de="Ultraschall|Distanz (cm)"
