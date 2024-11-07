@@ -1882,7 +1882,7 @@ namespace informatiktheater {
   }
 
   export enum startbit_trittmattePort {
-    port1 = 0x01,
+    P2 = 0x01,
     port2 = 0x02,
     port3 = 0x03,
   }
@@ -1902,7 +1902,7 @@ namespace informatiktheater {
   ): void {
     let pin: DigitalPin;
     switch (port) {
-      case startbit_trittmattePort.port1:
+      case startbit_trittmattePort.P1_P2:
         pin = DigitalPin.P2;
         break;
       case startbit_trittmattePort.port2:
@@ -1936,7 +1936,7 @@ namespace informatiktheater {
   ): void {
     let pin: DigitalPin;
     switch (port) {
-      case startbit_trittmattePort.port1:
+      case startbit_trittmattePort.P2:
         pin = DigitalPin.P2;
         break;
       case startbit_trittmattePort.port2:
@@ -1973,7 +1973,7 @@ namespace informatiktheater {
   ): void {
     let pin: DigitalPin;
     switch (port) {
-      case startbit_trittmattePort.port1:
+      case startbit_trittmattePort.P2:
         pin = DigitalPin.P2;
         break;
       case startbit_trittmattePort.port2:
