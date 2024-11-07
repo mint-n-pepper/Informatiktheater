@@ -1766,14 +1766,14 @@ namespace informatiktheater {
   //% block.loc.de="initialisiere Ultraschall|%pin"
   //% subcategory="Sensoren"
   //% group="Ultraschall"
-  //Silvan: I don't think we should switch from port to pins here (one would have to define two pins instead of a single port)
+ 
   export function ultrasonic_init(port: startbit_ultrasonicPort) {
     switch (port) {
-      case startbit_ultrasonicPort.port1:
+      case startbit_ultrasonicPort.P2_P1:
         echoPin = DigitalPin.P2;
         trigPin = DigitalPin.P1;
         break;
-      case startbit_ultrasonicPort.port2:
+      case startbit_ultrasonicPort.P14_P13:
         echoPin = DigitalPin.P14;
         trigPin = DigitalPin.P13;
         break;
