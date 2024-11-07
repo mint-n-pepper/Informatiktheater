@@ -1882,9 +1882,9 @@ namespace informatiktheater {
   }
 
   export enum startbit_trittmattePort {
-    port1 = 0x01,
-    port2 = 0x02,
-    port3 = 0x03,
+    P2 = 0x01,
+    P14 = 0x02,
+    P16 = 0x03,
   }
 
   let debounce_time = 150; // debounce for pin input events in [ms]
@@ -1902,13 +1902,13 @@ namespace informatiktheater {
   ): void {
     let pin: DigitalPin;
     switch (port) {
-      case startbit_trittmattePort.port1:
+      case startbit_trittmattePort.P2:
         pin = DigitalPin.P2;
         break;
-      case startbit_trittmattePort.port2:
+      case startbit_trittmattePort.P14:
         pin = DigitalPin.P14;
         break;
-      case startbit_trittmattePort.port3:
+      case startbit_trittmattePort.P16:
         pin = DigitalPin.P16;
         break;
     }
@@ -1936,13 +1936,13 @@ namespace informatiktheater {
   ): void {
     let pin: DigitalPin;
     switch (port) {
-      case startbit_trittmattePort.port1:
+      case startbit_trittmattePort.P2:
         pin = DigitalPin.P2;
         break;
-      case startbit_trittmattePort.port2:
+      case startbit_trittmattePort.P14:
         pin = DigitalPin.P14;
         break;
-      case startbit_trittmattePort.port3:
+      case startbit_trittmattePort.P16:
         pin = DigitalPin.P16;
         break;
     }
