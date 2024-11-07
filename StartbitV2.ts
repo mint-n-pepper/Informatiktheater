@@ -1311,8 +1311,8 @@ namespace informatiktheater {
     }
 
   export enum startbit_ultrasonicPort {
-    port1 = 0x01,
-    port2 = 0x02,
+    P2_P1 = 0x01,
+    P14_P13 = 0x02,
   }
 
   export function startbit_Init() {
