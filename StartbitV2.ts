@@ -1973,13 +1973,13 @@ namespace informatiktheater {
   ): void {
     let pin: DigitalPin;
     switch (port) {
-      case startbit_trittmattePort.port1:
+      case startbit_trittmattePort.P2:
         pin = DigitalPin.P2;
         break;
-      case startbit_trittmattePort.port2:
+      case startbit_trittmattePort.P14:
         pin = DigitalPin.P14;
         break;
-      case startbit_trittmattePort.port3:
+      case startbit_trittmattePort.P16:
         pin = DigitalPin.P16;
         break;
     }
