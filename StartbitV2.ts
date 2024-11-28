@@ -191,8 +191,8 @@ enum matrixSizes {
     medium_32x8,
     //% block="64x8"
     large_64_8,
-    //% block="8x8"
-    small_8x8,
+    //% block="Netz 20 x 20"
+    netz_20x20,
 }
 
 /**
@@ -734,7 +734,7 @@ namespace informatiktheater {
      * @param g green channel
      * @param b blue channel
      */
-    //% weight=70
+    
     //% blockId="neopixel_rgb" block="red %red|green %green|blue %blue"
     //% block.loc.de="rot %red|grün %green|blau %blue"
     //% jsdoc.loc.de="Erstellt eine RGB-Farbe"
@@ -742,6 +742,7 @@ namespace informatiktheater {
     //% blue.defl=255 blue.min=0 blue.max=255
     //% green.defl=255 green.min=0 green.max=255
     //% subcategory="Stripe"
+    //% weight=70
     //% group="Farben" 
     export function rgb(red: number, green: number, blue: number): number {
         return packRGB(red, green, blue);
@@ -889,7 +890,7 @@ namespace informatiktheater {
                 w = 64;
                 h = 8;
                 break;
-            case matrixSizes.small_8x8:
+            case matrixSizes.netz_20x20:
                 w = 8;
                 h = 8;
                 break;
@@ -996,9 +997,10 @@ namespace informatiktheater {
         //% blockId="Matrix_scrollText" block="%matrix Text: %text|Geschwindigkeit (0-200): %speed|Farbe: %colour"
         //% weight=20
         //% subcategory=Matrix
+        //% group="Features" 
         //% colour.shadow=neopixel_colors
         //% speed.min=1 speed.max=200 speed.defl=50
-        //% group="Features" weight=1
+       
         scrollText(text: string, speed: number, colour: number): void {
             this.strip.clear();
             for (let Xpos = this.Width; Xpos > -6 * text.length; Xpos--) {
@@ -1023,10 +1025,11 @@ namespace informatiktheater {
          */
         //% blockId="Matrix_text" block="%matrix Text: %text|Position: %x_offset|Farbe: %colour"
         //% 
-        //% subcategory=Matrix weight=21
+        //% subcategory=Matrix 
+        //% group="Features"
         //% colour.shadow=neopixel_colors
         //% x_offset.defl=0 x_offset.min=0 x_offset.max=32
-        //% group="Features" weight=2
+        
         showText(text: string, x_offset: number, colour: number): void {
             for (let letter = 0; letter < text.length; letter++) {
                 //for loop to retrieve all the letters from te text
@@ -1041,10 +1044,10 @@ namespace informatiktheater {
          * Hat die Matrix eine andere Grösse, wird nichts angezeigt.
          */
         //% blockId="Matrix_icons" block="%matrix Icon: %icon|Farbe: %colour"
-        //% weight=36
         //% subcategory=Matrix
-        //% colour.shadow=neopixel_colors
         //% group="Features"
+        //% colour.shadow=neopixel_colors
+       
         draw_icon(icon: IconIndex, colour: number): void {
             if (this.Height != 16 || this.Width != 16) {
                 return;
@@ -1123,7 +1126,7 @@ namespace informatiktheater {
 
         //% blockId="neopixel_set_matrix_16" block="Matrix %matrix %c_0|%c_1|%c_2|%c_3|%c_4|%c_5|%c_6|%c_7|%c_8|%c_9|%c_10|%c_11|%c_12|%c_13|%c_14|%c_15" weight=100
         //% subcategory=Matrix
-        //% group="Features" weight=37
+        //% group="Features"
         //% c_0.shadow=color_for_led_16
         //% c_1.shadow=color_for_led_16
         //% c_2.shadow=color_for_led_16
@@ -1193,7 +1196,7 @@ namespace informatiktheater {
     //% blockId="color_for_led_16" block="$c_1|$c_2|$c_3|$c_4|$c_5|$c_6|$c_7|$c_8$c_9$c_10$c_11$c_12$c_13$c_14$c_15$c_16"
     //% subcategory=Matrix
     //% group="Farben" 
-    //% weight=49
+
     //% c_1.shadow="brightColorNumberPicker"
     //% c_2.shadow="brightColorNumberPicker"
     //% c_3.shadow="brightColorNumberPicker"
@@ -1238,7 +1241,7 @@ namespace informatiktheater {
     //% blockId="color_for_led_32" block="$c_1|$c_2|$c_3|$c_4|$c_5|$c_6|$c_7|$c_8|$c_9|$c_10|$c_11|$c_12|$c_13|$c_14|$c_15|$c_16|$c_17|$c_18|$c_19|$c_20|$c_21|$c_22|$c_23|$c_24|$c_25|$c_26|$c_27|$c_28|$c_29|$c_30|$c_31|$c_32|"
     //% subcategory=Matrix
     //% group="Farben" 
-    //% weight=47
+
     //% c_1.shadow="brightColorNumberPicker"
     //% c_2.shadow="brightColorNumberPicker"
     //% c_3.shadow="brightColorNumberPicker"
