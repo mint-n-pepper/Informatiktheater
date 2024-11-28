@@ -927,9 +927,8 @@ namespace informatiktheater {
         Height: number;
 
         //%blockId="Matrix_show" block="%matrix| anzeigen"
-
         //% subcategory=Matrix
-        //% group="Kontrolle"
+        //% group="Setup"
         show(): void {
             this.strip.show();
         }
@@ -953,7 +952,7 @@ namespace informatiktheater {
         //% jsdoc.loc.de="Schalte alle NeoPixel aus. Damit die Änderung sichtbar wird, muss anschließend ``anzeigen`` aufgerufen werden."
         //% weight=33
         //% subcategory=Matrix
-        //% group="Kontrolle"
+        //% group="Setup"
         clear(): void {
             this.strip.clear();
         }
@@ -1128,7 +1127,7 @@ namespace informatiktheater {
 
         //% blockId="neopixel_set_matrix_16" block="Matrix %matrix %c_0|%c_1|%c_2|%c_3|%c_4|%c_5|%c_6|%c_7|%c_8|%c_9|%c_10|%c_11|%c_12|%c_13|%c_14|%c_15" weight=100
         //% subcategory=Matrix
-        //% group="Features" weight=70
+        //% group="Features" weight=10
         //% c_0.shadow=color_for_led_16
         //% c_1.shadow=color_for_led_16
         //% c_2.shadow=color_for_led_16
@@ -1158,7 +1157,7 @@ namespace informatiktheater {
 
         //% blockId="neopixel_set_matrix_32x8" block="Matrix %matrix %c_0|%c_1|%c_2|%c_3|%c_4|%c_5|%c_6|%c_7|%c_8|%c_9|%c_10|%c_11|%c_12|%c_13|%c_14|%c_15" weight=99
         //% subcategory="Matrix"
-        //% group="Features" weight=71
+        //% group="Features" weight=9
         //% c_0.shadow=color_for_led_32
         //% c_1.shadow=color_for_led_32
         //% c_2.shadow=color_for_led_32
