@@ -891,8 +891,8 @@ namespace informatiktheater {
                 h = 8;
                 break;
             case matrixSizes.netz_20x20:
-                w = 8;
-                h = 8;
+                w = 20;
+                h = 20;
                 break;
         }
 
@@ -1128,7 +1128,7 @@ namespace informatiktheater {
 
         //% blockId="neopixel_set_matrix_16" block="Matrix %matrix %c_0|%c_1|%c_2|%c_3|%c_4|%c_5|%c_6|%c_7|%c_8|%c_9|%c_10|%c_11|%c_12|%c_13|%c_14|%c_15" weight=100
         //% subcategory=Matrix
-        //% group="Features" weight=48
+        //% group="Features" 
         //% c_0.shadow=color_for_led_16
         //% c_1.shadow=color_for_led_16
         //% c_2.shadow=color_for_led_16
@@ -1157,8 +1157,8 @@ namespace informatiktheater {
         }
 
         //% blockId="neopixel_set_matrix_32x8" block="Matrix %matrix %c_0|%c_1|%c_2|%c_3|%c_4|%c_5|%c_6|%c_7|%c_8|%c_9|%c_10|%c_11|%c_12|%c_13|%c_14|%c_15" weight=99
-        //% subcategory=Matrix
-        //% group="Features" weight=49
+        //% subcategory="Matrix"
+        //% group="Features" 
         //% c_0.shadow=color_for_led_32
         //% c_1.shadow=color_for_led_32
         //% c_2.shadow=color_for_led_32
@@ -1186,7 +1186,7 @@ namespace informatiktheater {
         let offset = char.charCodeAt(0) - 32; //Convert the ASCII-Character to it's code to generate the offset in the font-array
         if (offset >= 0) {
             for (let i = 0; i < 8; i++) {
-                //Every character has 8 arguments in the array, so multiply the offset by 8, and then take ne next 8 arguments as the value for the correct bitmap.
+                //Every character has 8 arguments in the array, so multiply the offset by 8, and then take the next 8 arguments as the value for the correct bitmap.
                 letterMap[i] = font8x3.getNumber(NumberFormat.UInt8BE, offset * 8 + i);
             }
         }
@@ -1243,7 +1243,7 @@ namespace informatiktheater {
      */
     //% blockId="color_for_led_32" block="$c_1|$c_2|$c_3|$c_4|$c_5|$c_6|$c_7|$c_8|$c_9|$c_10|$c_11|$c_12|$c_13|$c_14|$c_15|$c_16|$c_17|$c_18|$c_19|$c_20|$c_21|$c_22|$c_23|$c_24|$c_25|$c_26|$c_27|$c_28|$c_29|$c_30|$c_31|$c_32|"
     //% subcategory=Matrix
-    //% group="Farben" 
+    //% group="Farben" weight=110 
 
     //% c_1.shadow="brightColorNumberPicker"
     //% c_2.shadow="brightColorNumberPicker"
