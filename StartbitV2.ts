@@ -191,7 +191,7 @@ enum matrixSizes {
     medium_32x8,
     //% block="64x8"
     large_64_8,
-    //% block="Netz 20 x 20"
+    //% block="Netz 20x20"
     netz_20x20,
 }
 
@@ -272,7 +272,7 @@ namespace informatiktheater {
     //% value.fieldOptions.colours='["#000000","#ff0000","#ffa500","#ffff00","#00ff00","#0000ff","#00ffff","#ff00ff","#8a2be2","#ffffff"]'
     //% value.fieldOptions.columns=5 value.fieldOptions.className='rgbColorPicker' 
     //% subcategory="Matrix"
-    //% weight=77
+
     //% group="Farben"
     export function __colorNumberPicker(value: number) {
         return value;
@@ -864,12 +864,12 @@ namespace informatiktheater {
      */
     //% blockId="Matrix_Create"
     //% block="matrix auf Pin %pin|mit einer Grösse von %size| Spannungsquelle %power_source"
-    //% weight=30
+
     //% power_source.defl=PowerSource.Intern
-    //% subcategory=Matrix
+    //% subcategory="Matrix"
     //% parts="neopixel"
     //% blockSetVariable=matrix
-    //% group="Setup"
+    //% group="Kontrolle"
     export function create_matrix(
         pin: HiwonderMatrixPins,
         size: matrixSizes,
@@ -927,7 +927,7 @@ namespace informatiktheater {
         Height: number;
 
         //%blockId="Matrix_show" block="%matrix| anzeigen"
-        //%weight=32
+
         //% subcategory=Matrix
         //% group="Kontrolle"
         show(): void {
@@ -935,7 +935,7 @@ namespace informatiktheater {
         }
 
         //%blockId="Matrix_Brighness" block="%matrix setze Helligkeit auf (0-255) %setpoint"
-        //%weight=31
+
         //%setpoint.defl=32
         //%setpoint.min=0
         //%setpoint.max=255
@@ -1128,7 +1128,7 @@ namespace informatiktheater {
 
         //% blockId="neopixel_set_matrix_16" block="Matrix %matrix %c_0|%c_1|%c_2|%c_3|%c_4|%c_5|%c_6|%c_7|%c_8|%c_9|%c_10|%c_11|%c_12|%c_13|%c_14|%c_15" weight=100
         //% subcategory=Matrix
-        //% group="Features"
+        //% group="Features" weight=48
         //% c_0.shadow=color_for_led_16
         //% c_1.shadow=color_for_led_16
         //% c_2.shadow=color_for_led_16
@@ -1156,7 +1156,7 @@ namespace informatiktheater {
             this.show();
         }
 
-        //% blockId="neopixel_set_matrix_32x8" block="Matrix %matrix %c_0|%c_1|%c_2|%c_3|%c_4|%c_5|%c_6|%c_7|%c_8|%c_9|%c_10|%c_11|%c_12|%c_13|%c_14|%c_15"
+        //% blockId="neopixel_set_matrix_32x8" block="Matrix %matrix %c_0|%c_1|%c_2|%c_3|%c_4|%c_5|%c_6|%c_7|%c_8|%c_9|%c_10|%c_11|%c_12|%c_13|%c_14|%c_15" weight=99
         //% subcategory=Matrix
         //% group="Features" weight=49
         //% c_0.shadow=color_for_led_32
@@ -1177,6 +1177,7 @@ namespace informatiktheater {
             }
             this.show();
         }
+        
     } // end matrix class
 
     //Take in a string-character and return a bitmap to draw on the display
