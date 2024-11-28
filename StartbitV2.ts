@@ -498,10 +498,10 @@ namespace informatiktheater {
         //% pixeloffset.defl=0
         //% pixeloffset.min=0
         //% pixeloffset.max=255
-        //% weight=44
+
         //% rgb.shadow=neopixel_colors
         //% parts="neopixel"
-        //% subcategory=Stripe
+        //% subcategory="Stripe"
         //% group="Kontrolle"
         setPixelColorRange(pixeloffset: number, rgb: number, number: number): void {
             for (let i = 0; i < number; i++) {
@@ -939,8 +939,8 @@ namespace informatiktheater {
         //%setpoint.defl=32
         //%setpoint.min=0
         //%setpoint.max=255
-        //% subcategory=Matrix
-        //% group="Kontrolle"
+        //% subcategory="Matrix"
+        //% group="Setup"
         setBrightness(setpoint: number): void {
             this.strip.setBrightness(setpoint);
         }
@@ -973,7 +973,7 @@ namespace informatiktheater {
         //%blockId="Matrix_setPixel" block="%matrix| setze Pixel x %x| y %y| auf Farbe %colour"
         //%weight=40
         //%colour.shadow=neopixel_colors
-        //% subcategory=Matrix
+        //% subcategory="Matrix"
         //% group="Features"
         setPixel(x: number, y: number, colour: number): void {
             console.log("matrix: show color : " + colour);
@@ -990,13 +990,35 @@ namespace informatiktheater {
             }
         }
 
+
+
+        /**
+         * Zeige Text auf Matrix mit fixer 6x8 Pixel Schrift. Der Text ist vertikal mittig-zentriert.
+         * Es muss anschliessend ``anzeigen`` aufgerufen werden.
+         */
+        //% blockId="Matrix_text" block="%matrix Text: %text|Position: %x_offset|Farbe: %colour"
+        //% 
+        //% subcategory="Matrix" 
+        //% group="Features"
+        //% colour.shadow=neopixel_colors
+        //% x_offset.defl=0 x_offset.min=0 x_offset.max=32
+        
+        showText(text: string, x_offset: number, colour: number): void {
+            for (let letter = 0; letter < text.length; letter++) {
+                //for loop to retrieve all the letters from te text
+                let bitmap = getLettermap(text.charAt(letter));
+                this.drawBitmapVcentered(bitmap, x_offset + 6 * letter, 6, 8, colour);
+            }
+            this.strip.show();
+        }
+
         /**
          * Scrolle Text über Matrix mit fixer 6x8 Pixel Schrift.
          * Der Bildschirminhalt wird gelöscht und ``anzeigen`` muss nicht aufgerufen werden
          */
         //% blockId="Matrix_scrollText" block="%matrix Text: %text|Geschwindigkeit (0-200): %speed|Farbe: %colour"
-        //% weight=20
-        //% subcategory=Matrix
+
+        //% subcategory="Matrix"
         //% group="Features" 
         //% colour.shadow=neopixel_colors
         //% speed.min=1 speed.max=200 speed.defl=50
@@ -1017,26 +1039,6 @@ namespace informatiktheater {
                 basic.pause(1000 / speed);
                 this.strip.clear();
             }
-        }
-
-        /**
-         * Zeige Text auf Matrix mit fixer 6x8 Pixel Schrift. Der Text ist vertikal mittig-zentriert.
-         * Es muss anschliessend ``anzeigen`` aufgerufen werden.
-         */
-        //% blockId="Matrix_text" block="%matrix Text: %text|Position: %x_offset|Farbe: %colour"
-        //% 
-        //% subcategory=Matrix 
-        //% group="Features"
-        //% colour.shadow=neopixel_colors
-        //% x_offset.defl=0 x_offset.min=0 x_offset.max=32
-        
-        showText(text: string, x_offset: number, colour: number): void {
-            for (let letter = 0; letter < text.length; letter++) {
-                //for loop to retrieve all the letters from te text
-                let bitmap = getLettermap(text.charAt(letter));
-                this.drawBitmapVcentered(bitmap, x_offset + 6 * letter, 6, 8, colour);
-            }
-            this.strip.show();
         }
 
         /**
