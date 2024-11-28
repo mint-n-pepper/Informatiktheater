@@ -1128,7 +1128,7 @@ namespace informatiktheater {
 
         //% blockId="neopixel_set_matrix_16" block="Matrix %matrix %c_0|%c_1|%c_2|%c_3|%c_4|%c_5|%c_6|%c_7|%c_8|%c_9|%c_10|%c_11|%c_12|%c_13|%c_14|%c_15" weight=100
         //% subcategory=Matrix
-        //% group="Features" 
+        //% group="Features" weight=70
         //% c_0.shadow=color_for_led_16
         //% c_1.shadow=color_for_led_16
         //% c_2.shadow=color_for_led_16
@@ -1158,7 +1158,7 @@ namespace informatiktheater {
 
         //% blockId="neopixel_set_matrix_32x8" block="Matrix %matrix %c_0|%c_1|%c_2|%c_3|%c_4|%c_5|%c_6|%c_7|%c_8|%c_9|%c_10|%c_11|%c_12|%c_13|%c_14|%c_15" weight=99
         //% subcategory="Matrix"
-        //% group="Features" 
+        //% group="Features" weight=71
         //% c_0.shadow=color_for_led_32
         //% c_1.shadow=color_for_led_32
         //% c_2.shadow=color_for_led_32
@@ -1198,7 +1198,7 @@ namespace informatiktheater {
      */
     //% blockId="color_for_led_16" block="$c_1|$c_2|$c_3|$c_4|$c_5|$c_6|$c_7|$c_8$c_9$c_10$c_11$c_12$c_13$c_14$c_15$c_16"
     //% subcategory=Matrix
-    //% group="Farben" 
+    //% group="Farben" weight=200
 
     //% c_1.shadow="brightColorNumberPicker"
     //% c_2.shadow="brightColorNumberPicker"
