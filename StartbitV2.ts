@@ -995,7 +995,7 @@ namespace informatiktheater {
          * Zeige Text auf Matrix mit fixer 6x8 Pixel Schrift. Der Text ist vertikal mittig-zentriert.
          * Es muss anschliessend ``anzeigen`` aufgerufen werden.
          */
-        //% blockId="Matrix_text" block="%matrix Text: %text|Position: %x_offset|Farbe: %colour"
+        //% blockId="Matrix_text" block="%matrix Text 32x8: %text|Position: %x_offset|Farbe: %colour"
         //% 
         //% subcategory="Matrix" 
         //% group="Features"
@@ -1015,7 +1015,7 @@ namespace informatiktheater {
          * Scrolle Text über Matrix mit fixer 6x8 Pixel Schrift.
          * Der Bildschirminhalt wird gelöscht und ``anzeigen`` muss nicht aufgerufen werden
          */
-        //% blockId="Matrix_scrollText" block="%matrix Text: %text|Geschwindigkeit (0-200): %speed|Farbe: %colour"
+        //% blockId="Matrix_scrollText" block="%matrix Text 32x8: %text|Geschwindigkeit (0-200): %speed|Farbe: %colour"
 
         //% subcategory="Matrix"
         //% group="Features" 
@@ -1044,7 +1044,7 @@ namespace informatiktheater {
          * Zeige vordefinierte Icons auf 16x16 grosser Matrixe an.
          * Hat die Matrix eine andere Grösse, wird nichts angezeigt.
          */
-        //% blockId="Matrix_icons" block="%matrix Icon: %icon|Farbe: %colour"
+        //% blockId="Matrix_icons" block="%matrix Icon 16x16: %icon|Farbe: %colour"
         //% subcategory=Matrix
         //% group="Features"
         //% colour.shadow=neopixel_colors
