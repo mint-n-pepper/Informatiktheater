@@ -1458,7 +1458,7 @@ namespace informatiktheater {
   //% block="set servo motor %index| angle (°) %angle| duration (ms) %duration"
   //% angle.shadow="protractorPicker"
   //% block.loc.de="setze Servomotor %index| auf Winkel (0 - 180°) %angle|für Dauer (ms) %duration"
-  //% angle.min=0 angle.max=180
+  
   //% index.defl=1
   //% duration.shadow=timePicker
   //% inlineInputMode=inline
