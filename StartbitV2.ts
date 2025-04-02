@@ -1974,7 +1974,7 @@ namespace informatiktheater {
   //% jsdoc.loc.de="Bindet auszuführenden Code bei einem PulsEvent mit Wert 'hoch' an Event Handler. Der Anfangszustand wird immer auf Null sein. Die Zustandsvariabel hat nur lokalen Scope!"
   export function trittmatte_einschalten(
     port: startbit_trittmattePort,
-    handler: (trittmatte_ein: boolean) => void
+    handler: (Schalter_ein: boolean) => void
   ): void {
     let pin: DigitalPin;
     switch (port) {
