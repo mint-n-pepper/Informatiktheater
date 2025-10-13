@@ -1320,6 +1320,16 @@ namespace informatiktheater {
     P14_P13 = 0x02,
   }
 
+    function isSimulator(): boolean {
+    // Try-catch: serial might be undefined in simulator
+    try {
+        serial.writeString(""); // harmless
+        return false; // no error → real hardware
+    } catch (e) {
+        return true; // simulator: serial not available
+    }
+}
+    
   export function startbit_Init() {
     serial.redirect(SerialPin.P12, SerialPin.P8, BaudRate.BaudRate115200);
 
@@ -1341,11 +1351,10 @@ namespace informatiktheater {
 
   function getHandleCmd() {
     // Skip serial in simulator (since it’s undefined there)
-    if (control.deviceDalVersion() == "") {
-        console.log("Info: Running in simulator, skipping serial read");
+      if (isSimulator()) {
         return;
-    }
-
+      } 
+      
     let charStr: string = serial.readString();
      if (!charStr) return; // avoid undefined
       
