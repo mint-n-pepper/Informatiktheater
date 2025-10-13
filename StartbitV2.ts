@@ -1,4 +1,4 @@
-// Auto init hiwonder board when extension is added
+/*  */// Auto init hiwonder board when extension is added
 informatiktheater.startbit_Init();
 
 /**
@@ -558,7 +558,7 @@ namespace informatiktheater {
         //% weight=60
         //% subcategory=Stripe
         //% group="Features"
-        length() {
+        length() {/*  */
             return this._length;
         }
 
@@ -1320,6 +1320,16 @@ namespace informatiktheater {
     P14_P13 = 0x02,
   }
 
+    function isSimulator(): boolean {
+    // Try-catch: serial might be undefined in simulator
+    try {
+        serial.writeString(""); // harmless
+        return false; // no error → real hardware
+    } catch (e) {
+        return true; // simulator: serial not available
+    }
+}
+    
   export function startbit_Init() {
     serial.redirect(SerialPin.P12, SerialPin.P8, BaudRate.BaudRate115200);
 
@@ -1340,10 +1350,18 @@ namespace informatiktheater {
   let MESSAGE_ANGLE = 0x100;
 
   function getHandleCmd() {
+    // Skip serial in simulator (since it’s undefined there)
+      if (isSimulator()) {
+        return;
+      } 
+      
     let charStr: string = serial.readString();
+     if (!charStr) return; // avoid undefined
+      
     handleCmd = handleCmd.concat(charStr);
     let cnt: number = countChar(handleCmd, "$");
     if (cnt == 0) return;
+      
     let index = findIndexof(handleCmd, "$", 0);
     if (index != -1) {
       let cmd: string = handleCmd.substr(0, index);
