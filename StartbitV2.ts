@@ -1,4 +1,4 @@
-// Auto init hiwonder board when extension is added
+/*  */// Auto init hiwonder board when extension is added
 informatiktheater.startbit_Init();
 
 /**
@@ -558,7 +558,7 @@ namespace informatiktheater {
         //% weight=60
         //% subcategory=Stripe
         //% group="Features"
-        length() {
+        length() {/*  */
             return this._length;
         }
 
@@ -1340,10 +1340,19 @@ namespace informatiktheater {
   let MESSAGE_ANGLE = 0x100;
 
   function getHandleCmd() {
+    // Skip serial in simulator (since it’s undefined there)
+    if (control.deviceDalVersion() == "") {
+        console.log("Info: Running in simulator, skipping serial read");
+        return;
+    }
+
     let charStr: string = serial.readString();
+     if (!charStr) return; // avoid undefined
+      
     handleCmd = handleCmd.concat(charStr);
     let cnt: number = countChar(handleCmd, "$");
     if (cnt == 0) return;
+      
     let index = findIndexof(handleCmd, "$", 0);
     if (index != -1) {
       let cmd: string = handleCmd.substr(0, index);
