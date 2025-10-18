@@ -190,7 +190,9 @@ enum matrixSizes {
     //% block="32x8"
     medium_32x8,
     //% block="64x8"
-    large_64_8,
+    large_64x8,
+    //% block="8x8"
+    small_8x8,
     //% block="Netz 20x20"
     netz_20x20,
 }
@@ -272,7 +274,6 @@ namespace informatiktheater {
     //% value.fieldOptions.colours='["#000000","#ff0000","#ffa500","#ffff00","#00ff00","#0000ff","#00ffff","#ff00ff","#8a2be2","#ffffff"]'
     //% value.fieldOptions.columns=5 value.fieldOptions.className='rgbColorPicker' 
     //% subcategory="Matrix"
-
     //% group="Farben"
     export function __colorNumberPicker(value: number) {
         return value;
@@ -886,8 +887,12 @@ namespace informatiktheater {
                 w = 32;
                 h = 8;
                 break;
-            case matrixSizes.large_64_8:
+            case matrixSizes.large_64x8:
                 w = 64;
+                h = 8;
+                break;
+            case matrixSizes.small_8x8:
+                w = 8;
                 h = 8;
                 break;
             case matrixSizes.netz_20x20:
@@ -955,6 +960,7 @@ namespace informatiktheater {
         //% group="Setup"
         clear(): void {
             this.strip.clear();
+            this.strip.show();
         }
 
         /**
