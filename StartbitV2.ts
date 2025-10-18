@@ -1916,7 +1916,7 @@ namespace informatiktheater {
     P2 = 0x01,
     P14 = 0x02,
     P16 = 0x03, 
-    P2 = 0x04,
+    P1 = 0x04,
     P13 = 0x05,
   }
 
