@@ -1900,7 +1900,9 @@ namespace informatiktheater {
     //% block="S4"
     S4,
   }
-
+ /**
+   * old from origin
+   */
   export enum startbit_LineColor {
     //% block="Black"
     //% block.loc.de="Schwarz"
@@ -1934,8 +1936,14 @@ namespace informatiktheater {
       case startbit_trittmattePort.P2:
         pin = DigitalPin.P2;
         break;
+    case startbit_trittmattePort.P1:
+        pin = DigitalPin.P1;
+        break;
       case startbit_trittmattePort.P14:
         pin = DigitalPin.P14;
+        break;
+      case startbit_trittmattePort.P13:
+        pin = DigitalPin.P13;
         break;
       case startbit_trittmattePort.P16:
         pin = DigitalPin.P16;
@@ -1968,8 +1976,14 @@ namespace informatiktheater {
       case startbit_trittmattePort.P2:
         pin = DigitalPin.P2;
         break;
+      case startbit_trittmattePort.P1:
+        pin = DigitalPin.P1;
+        break;
       case startbit_trittmattePort.P14:
         pin = DigitalPin.P14;
+        break;
+       case startbit_trittmattePort.P13:
+        pin = DigitalPin.P13;
         break;
       case startbit_trittmattePort.P16:
         pin = DigitalPin.P16;
@@ -2005,8 +2019,14 @@ namespace informatiktheater {
       case startbit_trittmattePort.P2:
         pin = DigitalPin.P2;
         break;
+      case startbit_trittmattePort.P1:
+        pin = DigitalPin.P1;
+        break;
       case startbit_trittmattePort.P14:
         pin = DigitalPin.P14;
+        break;
+      case startbit_trittmattePort.P13:
+        pin = DigitalPin.P13;
         break;
       case startbit_trittmattePort.P16:
         pin = DigitalPin.P16;
@@ -2024,7 +2044,7 @@ namespace informatiktheater {
     pins.onPulsed(pin, PulseValue.High, debounce_wrapper);
   }
 
-  // MP3 Player stuff
+// MP3 Player stuff
 
 //  export class SongList {
 //    TrackIndex: number;
