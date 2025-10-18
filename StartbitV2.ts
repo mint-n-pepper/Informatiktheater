@@ -1914,9 +1914,9 @@ namespace informatiktheater {
 
   export enum startbit_trittmattePort {
     P2 = 0x01,
-      P2 = 0x04
+      P2 = 0x04,
     P14 = 0x02,
-      P13 = 0x05
+      P13 = 0x05,
     P16 = 0x03,
   }
 
