@@ -1914,10 +1914,10 @@ namespace informatiktheater {
 
   export enum startbit_trittmattePort {
     P2 = 0x01,
-      P2 = 0x04,
     P14 = 0x02,
-      P13 = 0x05,
-    P16 = 0x03,
+    P16 = 0x03, 
+    P2 = 0x04,
+    P13 = 0x05,
   }
 
   let debounce_time = 150; // debounce for pin input events in [ms]
