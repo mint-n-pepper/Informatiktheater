@@ -376,7 +376,7 @@ namespace informatiktheater {
          */
         //% blockId="neopixel_set_strip_color" block="%strip|show color %rgb=neopixel_colors"
         //% block.loc.de="%strip|zeige Farbe %rgb=neopixel_colors"
-        //% jsdoc.loc.de="Setze alle Pixel auf die angegebene Farbe und rufe ``anzeigen`` auf."
+        //% jsdoc.loc.de="Setze alle Pixel auf die angegebene Farbe und rufe ```` auf."
         //% strip.defl=strip
         //% weight=50
         //% parts="neopixel"
@@ -868,10 +868,11 @@ namespace informatiktheater {
     //% block="matrix auf Pin %pin|mit einer Grösse von %size| Spannungsquelle %power_source"
 
     //% power_source.defl=PowerSource.Intern
-    //% subcategory="Matrix"
+    //% subcategory="Matrix"    
+    //% group="Setup"
     //% parts="neopixel"
     //% blockSetVariable=matrix
-    //% group="Setup"
+
     export function create_matrix(
         pin: HiwonderMatrixPins,
         size: matrixSizes,
@@ -934,13 +935,12 @@ namespace informatiktheater {
 
         //%blockId="Matrix_show" block="%matrix| anzeigen"
         //% subcategory=Matrix
-        //% group="Setup"
+        //% group="Features"
         show(): void {
             this.strip.show();
         }
 
         //%blockId="Matrix_Brighness" block="%matrix setze Helligkeit auf (0-255) %setpoint"
-
         //%setpoint.defl=32
         //%setpoint.min=0
         //%setpoint.max=255
@@ -958,7 +958,7 @@ namespace informatiktheater {
         //% jsdoc.loc.de="Schalte alle NeoPixel aus. Damit die Änderung sichtbar wird, muss anschließend ``anzeigen`` aufgerufen werden."
         //% weight=33
         //% subcategory=Matrix
-        //% group="Setup"
+        //% group="Features"
         clear(): void {
             this.strip.clear();
             this.strip.show();
@@ -1003,7 +1003,6 @@ namespace informatiktheater {
          * Es muss anschliessend ``anzeigen`` aufgerufen werden.
          */
         //% blockId="Matrix_text" block="%matrix Text 32x8: %text|Position: %x_offset|Farbe: %colour"
-        //% 
         //% subcategory="Matrix" 
         //% group="Features"
         //% colour.shadow=neopixel_colors
