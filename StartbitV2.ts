@@ -274,7 +274,7 @@ namespace informatiktheater {
     //% value.fieldOptions.colours='["#000000","#ff0000","#ffa500","#ffff00","#00ff00","#0000ff","#00ffff","#ff00ff","#8a2be2","#ffffff"]'
     //% value.fieldOptions.columns=5 value.fieldOptions.className='rgbColorPicker' 
     //% subcategory="Matrix"
-    //% weight=200
+    // weight=200
     //% group="Farben"
     export function __colorNumberPicker(value: number) {
         return value;
@@ -525,7 +525,7 @@ namespace informatiktheater {
         //% weight=10
         //% parts="neopixel"
         //% subcategory=Stripe
-        //% group="Setup"
+        //% group="Kontrolle"
         show() {
             // only supported in beta
             // ws2812b.setBufferMode(this.pin, this._mode);
