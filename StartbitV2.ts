@@ -256,7 +256,7 @@ const font8x3 = hex`
 /*
  Informatiktheater package
 */
-//% weight=1  color=#3a4cf7
+//% weight=110  color=#3a4cf7
 namespace informatiktheater {
 
     let leds_total = 0;
@@ -273,7 +273,7 @@ namespace informatiktheater {
     //% value.defl='#ff0000'  
     //% value.fieldOptions.colours='["#000000","#ff0000","#ffa500","#ffff00","#00ff00","#0000ff","#00ffff","#ff00ff","#8a2be2","#ffffff"]'
     //% value.fieldOptions.columns=5 value.fieldOptions.className='rgbColorPicker' 
-    //% subcategory="Matrix"
+    //% subcategory="Stripes"
     // weight=200
     //% group="Farben"
     export function __colorNumberPicker(value: number) {
