@@ -274,6 +274,7 @@ namespace informatiktheater {
     //% value.fieldOptions.colours='["#000000","#ff0000","#ffa500","#ffff00","#00ff00","#0000ff","#00ffff","#ff00ff","#8a2be2","#ffffff"]'
     //% value.fieldOptions.columns=5 value.fieldOptions.className='rgbColorPicker' 
     //% subcategory="Matrix"
+    //% weight=200
     //% group="Farben"
     export function __colorNumberPicker(value: number) {
         return value;
@@ -524,12 +525,12 @@ namespace informatiktheater {
         //% weight=10
         //% parts="neopixel"
         //% subcategory=Stripe
-        //% group="Kontrolle"
+        //% group="Setup"
         show() {
             // only supported in beta
             // ws2812b.setBufferMode(this.pin, this._mode);
             ws2812b.sendBuffer(this.buf, this.pin);
-            console.log("Estimated current for neopixels = " + this.power());
+        //   console.log("Estimated current for neopixels = " + this.power());
         }
 
         /**
@@ -743,7 +744,7 @@ namespace informatiktheater {
     //% blue.defl=255 blue.min=0 blue.max=255
     //% green.defl=255 green.min=0 green.max=255
     //% subcategory="Stripe"
-    //% weight=70
+    //% weight=21
     //% group="Farben" 
     export function rgb(red: number, green: number, blue: number): number {
         return packRGB(red, green, blue);
@@ -870,7 +871,7 @@ namespace informatiktheater {
     //% subcategory="Matrix"
     //% parts="neopixel"
     //% blockSetVariable=matrix
-    //% group="Kontrolle"
+    //% group="Setup"
     export function create_matrix(
         pin: HiwonderMatrixPins,
         size: matrixSizes,
@@ -1131,7 +1132,8 @@ namespace informatiktheater {
             }
         }
 
-        //% blockId="neopixel_set_matrix_16" block="Matrix %matrix %c_0|%c_1|%c_2|%c_3|%c_4|%c_5|%c_6|%c_7|%c_8|%c_9|%c_10|%c_11|%c_12|%c_13|%c_14|%c_15" weight=100
+        //% blockId="neopixel_set_matrix_16" block="Matrix %matrix %c_0|%c_1|%c_2|%c_3|%c_4|%c_5|%c_6|%c_7|%c_8|%c_9|%c_10|%c_11|%c_12|%c_13|%c_14|%c_15" 
+        //% weight=100
         //% subcategory=Matrix
         //% group="Features" weight=10
         //% c_0.shadow=color_for_led_16
