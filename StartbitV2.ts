@@ -273,7 +273,7 @@ namespace informatiktheater {
     //% value.defl='#ff0000'  
     //% value.fieldOptions.colours='["#000000","#ff0000","#ffa500","#ffff00","#00ff00","#0000ff","#00ffff","#ff00ff","#8a2be2","#ffffff"]'
     //% value.fieldOptions.columns=5 value.fieldOptions.className='rgbColorPicker' 
-    //% subcategory="Stripe"
+    //% 
     // weight=200
     //% group="Farben"
     export function __colorNumberPicker(value: number) {
@@ -304,10 +304,11 @@ namespace informatiktheater {
     //% block="NeoPixel at pin %pin| with %numleds leds| power source %power_source"
     //% block.loc.de="NeoPixels an Pin %pin|mit %numleds Pixeln| Spannungsquelle %power_source"
     //% jsdoc.loc.de="Erzeuge einen neuen Treiber für die gegebene Anzahl NeoPixels, die am angegebenen Port angeschlossen sind. Der Modus bestimmt die genaue Bauart der NeoPixel."
-    //% weight=110
+   
     //% parts="neopixel"
     //% power_source.defl=PowerSource.Intern
-    //% subcategory=Stripe
+    //% subcategory="Stripe"
+    //% weight=110
     // TODO: How is trackArgs supposed to work? Without this, the simulator will work again, but without neopixel simulation enabled
     // trackArgs=0, 2
     //% blockSetVariable=strip
