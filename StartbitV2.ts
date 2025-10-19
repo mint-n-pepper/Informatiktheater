@@ -273,7 +273,7 @@ namespace informatiktheater {
     //% value.defl='#ff0000'  
     //% value.fieldOptions.colours='["#000000","#ff0000","#ffa500","#ffff00","#00ff00","#0000ff","#00ffff","#ff00ff","#8a2be2","#ffffff"]'
     //% value.fieldOptions.columns=5 value.fieldOptions.className='rgbColorPicker' 
-    //% subcategory="Stripes"
+    //% subcategory="Stripe"
     // weight=200
     //% group="Farben"
     export function __colorNumberPicker(value: number) {
