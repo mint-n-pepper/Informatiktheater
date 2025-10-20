@@ -871,7 +871,6 @@ namespace informatiktheater {
     //% power_source.defl=PowerSource.Intern
     //% subcategory="Matrix"    
     //% group="Setup"
-    //% weight=20
     //% parts="neopixel"
     //% blockSetVariable=matrix
 
@@ -947,7 +946,7 @@ namespace informatiktheater {
         //%setpoint.min=0
         //%setpoint.max=255
         //% subcategory="Matrix"
-        //% weight=30
+        //% weight=41
         //% group="Setup"
         setBrightness(setpoint: number): void {
             this.strip.setBrightness(setpoint);
