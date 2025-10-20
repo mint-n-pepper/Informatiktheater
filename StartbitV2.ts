@@ -274,7 +274,7 @@ namespace informatiktheater {
     //% value.fieldOptions.colours='["#000000","#ff0000","#ffa500","#ffff00","#00ff00","#0000ff","#00ffff","#ff00ff","#8a2be2","#ffffff"]'
     //% value.fieldOptions.columns=5 value.fieldOptions.className='rgbColorPicker' 
     //% 
-    // weight=200
+    //% weight=10
     //% group="Farben"
     export function __colorNumberPicker(value: number) {
         return value;
@@ -501,7 +501,6 @@ namespace informatiktheater {
         //% pixeloffset.defl=0
         //% pixeloffset.min=0
         //% pixeloffset.max=255
-
         //% rgb.shadow=neopixel_colors
         //% parts="neopixel"
         //% subcategory="Stripe"
@@ -746,7 +745,7 @@ namespace informatiktheater {
     //% green.defl=255 green.min=0 green.max=255
     //% 
     //% weight=21
-    //% group="Farben" 
+    
     export function rgb(red: number, green: number, blue: number): number {
         return packRGB(red, green, blue);
     }
@@ -760,9 +759,8 @@ namespace informatiktheater {
     //% block.loc.de="Farbe (0-255) %hue"
     //% jsdoc.loc.de="Erstellt eine Farbe"
     //% hue.shadow="colorWheelHsvPicker"
-    //% 
     //% weight=80
-    //% group="Farben" 
+     
 
     export function hsv_picker(hue: number): number {
         let mapped_hue = (hue * 360) / 255;
@@ -776,9 +774,7 @@ namespace informatiktheater {
     //% blockId="neopixel_colors" block="%color"
     //% block.loc.de="%color"
     //% jsdoc.loc.de="Bekannte RGB-Farben"
-    //% 
-    //% weight=90
-    //% group="Farben"
+    //% weight=50
     export function colors(color: NeoPixelColors): number {
         return color;
     }
