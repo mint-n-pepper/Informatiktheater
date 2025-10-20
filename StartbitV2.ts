@@ -946,6 +946,7 @@ namespace informatiktheater {
         //%setpoint.min=0
         //%setpoint.max=255
         //% subcategory="Matrix"
+        //% weight=200
         //% group="Setup"
         setBrightness(setpoint: number): void {
             this.strip.setBrightness(setpoint);
