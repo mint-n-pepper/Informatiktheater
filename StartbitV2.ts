@@ -1983,7 +1983,7 @@ namespace informatiktheater {
       case startbit_trittmattePort.P14:
         pin = DigitalPin.P14;
         break;
-       case startbit_trittmattePort.P13:
+      case startbit_trittmattePort.P13:
         pin = DigitalPin.P13;
         break;
       case startbit_trittmattePort.P16:
